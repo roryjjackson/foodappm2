@@ -4,10 +4,21 @@
     <%= form.text_field :name %>
   </div>
 
-  <div class="field">
-    <%= form.label :recipes %>
-    <%= form.collection_select :recipe_ids, Recipe.all, :id, :name, {}, multiple: true %>
+    <div class="field">
+    <%= form.label :description %>
+    <%= form.text_area :description %>
   </div>
+
+
+  <%# <div class="field"> %>
+    <%# <%= form.label :recipes %>
+    <%# <%= form.collection_select :recipe_ids, Recipe.all, :id, :name, {}, multiple: true %>
+  <%# </div> %>
+
+    <div class="field">
+      <%= form.label :tags %>
+      <%= form.collection_check_boxes :recipe_ids, Recipe.all, :id, :name %>
+    </div>
 
   <div class="actions">
     <%= form.submit 'Create Menu' %>

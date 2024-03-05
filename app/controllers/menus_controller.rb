@@ -10,6 +10,7 @@ class MenusController < ApplicationController
 
   def new
     @menu = Menu.new
+    @tags = Tag.all
   end
 
   def create
@@ -21,6 +22,7 @@ class MenusController < ApplicationController
       render :new
     end
   end
+
 
   def edit
   end
@@ -45,6 +47,6 @@ class MenusController < ApplicationController
   end
 
   def menu_params
-    params.require(:menu).permit(:name, recipe_ids: [])
+    params.require(:menu).permit(:name, :description, recipe_ids: [])
   end
 end

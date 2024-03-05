@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
   resources :tags
   resources :recipes
-  resources :menus
+  resources :menus do
+    collection do
+      post 'create_random_menu'
+    end
+  end
   devise_for :users
   root to: "pages#home"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html

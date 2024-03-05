@@ -5,7 +5,10 @@
 
 <p>
   <strong>Recipes:</strong>
-  <%= @menu.recipes.map(&:name).join(', ') %>
+  <%# <%= @menu.recipes.map(&:name).join(', ') %>
+  <% @menu.recipes.each do |recipe| %>
+    <%= link_to "#{recipe.name}", recipe_path(recipe.id) %>
+  <% end %>
 </p>
 
 <%= link_to 'Edit', edit_menu_path(@menu) %> |
