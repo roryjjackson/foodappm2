@@ -4,6 +4,10 @@ class RecipesController < ApplicationController
   # GET /recipes or /recipes.json
   def index
     @recipes = Recipe.all
+
+    if params[:tag_id].present?
+      @recipes = @recipes.joins(:tags).where(tags: { id: params[:tag_id] })
+    end
   end
 
   # GET /recipes/1 or /recipes/1.json
@@ -65,6 +69,6 @@ class RecipesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def recipe_params
-      params.require(:recipe).permit(:name, :description, :instructions, :prep_time, :cook_time, :user_id)
+      params.require(:recipe).permit(:name, :description, :instructions, :prep_time, :cook_time, :user_id, tag_ids: [])
     end
 end
