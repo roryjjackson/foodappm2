@@ -8,3 +8,7 @@
 
   <%= button_to "Destroy this recipe", @recipe, method: :delete %>
 </div>
+<h2>Tags attached below</h2>
+<% @recipe.tags.each do |tag| %>
+  <p><%= tag.name %></p>
+<% end %>
