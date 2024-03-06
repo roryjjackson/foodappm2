@@ -3,4 +3,7 @@ class Recipe < ApplicationRecord
   has_and_belongs_to_many :menus
   has_many :recipe_tags
   has_many :tags, through: :recipe_tags
+
+  has_many :recipe_ingredients, dependent: :destroy
+  has_many :ingredients, through: :recipe_ingredients
 end

@@ -17,6 +17,7 @@ class RecipesController < ApplicationController
   # GET /recipes/new
   def new
     @recipe = Recipe.new
+    @ingredients = Ingredient.all
   end
 
   # GET /recipes/1/edit
@@ -29,6 +30,14 @@ class RecipesController < ApplicationController
 
     respond_to do |format|
       if @recipe.save
+        selected_ingredient_ids = recipe_params[:ingredient_ids]
+
+        # ingredients = Ingredient.joins(:recipe_ingredients).where(recipe_ingredients: { id: selected_ingredient_ids }).distinct
+        ingredients = Ingredient.joins(:recipe_ingredients).where(recipe_ingredients: { recipe_id: @recipe.id, ingredient_id: selected_ingredient_ids }).distinct
+
+
+        @recipe.ingredients << ingredients
+
         format.html { redirect_to recipe_url(@recipe), notice: "Recipe was successfully created." }
         format.json { render :show, status: :created, location: @recipe }
       else
@@ -53,6 +62,7 @@ class RecipesController < ApplicationController
 
   # DELETE /recipes/1 or /recipes/1.json
   def destroy
+    @recipe.ingredients.destroy_all
     @recipe.destroy
 
     respond_to do |format|
@@ -69,6 +79,13 @@ class RecipesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def recipe_params
-      params.require(:recipe).permit(:name, :description, :instructions, :prep_time, :cook_time, :user_id, tag_ids: [])
+      params.require(:recipe).permit(:name,
+                                     :description,
+                                     :instructions,
+                                     :prep_time,
+                                     :cook_time,
+                                     :user_id,
+                                     tag_ids: [],
+                                     ingredient_ids: [])
     end
 end

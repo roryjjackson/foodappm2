@@ -10,9 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_03_06_091358) do
+ActiveRecord::Schema[7.0].define(version: 2024_03_06_130703) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "ingredients", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "menu_ingredients", force: :cascade do |t|
+    t.bigint "menu_id", null: false
+    t.bigint "ingredient_id", null: false
+    t.index ["ingredient_id"], name: "index_menu_ingredients_on_ingredient_id"
+    t.index ["menu_id"], name: "index_menu_ingredients_on_menu_id"
+  end
 
   create_table "menu_tags", id: false, force: :cascade do |t|
     t.bigint "menu_id", null: false
@@ -33,6 +47,13 @@ ActiveRecord::Schema[7.0].define(version: 2024_03_06_091358) do
     t.bigint "recipe_id", null: false
     t.index ["menu_id", "recipe_id"], name: "index_menus_recipes_on_menu_id_and_recipe_id"
     t.index ["recipe_id", "menu_id"], name: "index_menus_recipes_on_recipe_id_and_menu_id"
+  end
+
+  create_table "recipe_ingredients", id: false, force: :cascade do |t|
+    t.bigint "recipe_id", null: false
+    t.bigint "ingredient_id", null: false
+    t.index ["ingredient_id"], name: "index_recipe_ingredients_on_ingredient_id"
+    t.index ["recipe_id"], name: "index_recipe_ingredients_on_recipe_id"
   end
 
   create_table "recipe_tags", force: :cascade do |t|
@@ -72,7 +93,11 @@ ActiveRecord::Schema[7.0].define(version: 2024_03_06_091358) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "menu_ingredients", "ingredients"
+  add_foreign_key "menu_ingredients", "menus"
   add_foreign_key "menu_tags", "menus"
   add_foreign_key "menu_tags", "tags"
+  add_foreign_key "recipe_ingredients", "ingredients"
+  add_foreign_key "recipe_ingredients", "recipes"
   add_foreign_key "recipes", "users"
 end
