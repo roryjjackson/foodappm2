@@ -19,10 +19,10 @@ class MenusController < ApplicationController
     if @menu.save
       # here i want to create a collection of tags that the user selects in the menu new file
       selected_tag_ids = menu_params[:tag_ids]
-      tags = Tag.where(id: selected_tag_ids)
+      # tags = Tag.where(id: selected_tag_ids)
 
 
-      # create an array of recipes that have the correct tags so that the menu can build an array of random recipes selected from this array
+      # create an array of recipes that have the correct tags so that the menu can build an array of random recipes
       recipes = Recipe.joins(:tags).where(tags: { id: selected_tag_ids }).distinct
       random_recipes = recipes.sample(3)
       @menu.recipes << random_recipes
