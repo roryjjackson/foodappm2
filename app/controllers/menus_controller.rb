@@ -39,6 +39,15 @@ class MenusController < ApplicationController
 
   def update
     if @menu.update(menu_params)
+      # Update the associated tags
+      selected_tag_ids = menu_params[:tag_ids]
+      @menu.tags = Tag.where(id: selected_tag_ids)
+
+      # Update the associated recipes based on the selected tags in menu_params
+      selected_tag_ids = menu_params[:tag_ids]
+      recipes = Recipe.joins(:tags).where(tags: { id: selected_tag_ids }).distinct
+      random_recipes = recipes.sample(3)
+      @menu.recipes = random_recipes
       redirect_to @menu, notice: 'Menu was successfully updated.'
     else
       render :edit
