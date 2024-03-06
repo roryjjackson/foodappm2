@@ -7,7 +7,6 @@
 #   Character.create(name: "Luke", movie: movies.first)
 
 # Create User for Testing
-
 user1 = User.create!(email: "test1@test.com", password: "123456")
 
 
