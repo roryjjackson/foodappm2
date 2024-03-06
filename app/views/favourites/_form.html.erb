@@ -1,0 +1,14 @@
+
+<%= simple_form_for(@favourite) do |f| %>
+  <%= f.error_notification %>
+  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+  <div class="field">
+    <%= f.label :recipe_ids %>
+    <%= f.collection_check_boxes :recipe_ids, Recipe.all, :id, :name, {}, multiple: true %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>
