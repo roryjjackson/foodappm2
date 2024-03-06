@@ -12,3 +12,7 @@
 <% @recipe.tags.each do |tag| %>
   <p><%= tag.name %></p>
 <% end %>
+<p>ingredients in this dish</p>
+<% @recipe.ingredients.each do |ingredient| %>
+  <p><%= ingredient.name %></p>
+<% end %>

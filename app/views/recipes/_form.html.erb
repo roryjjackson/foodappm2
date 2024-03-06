@@ -15,6 +15,11 @@
       <%= f.label :tag_ids, 'Tags' %>
       <%= f.collection_check_boxes :tag_ids, Tag.all, :id, :name %>
     </div>
+
+    <div class="field">
+      <%= f.label :ingredient_ids, 'Ingredients' %>
+      <%= f.collection_check_boxes :ingredient_ids, Ingredient.all, :id, :name %>
+    </div>
   </div>
 
   <div class="form-actions">
