@@ -10,23 +10,44 @@ class MenusController < ApplicationController
 
   def new
     @menu = Menu.new
+    @tags = Tag.all
   end
 
   def create
     @menu = Menu.new(menu_params)
 
     if @menu.save
+      # here i want to create a collection of tags that the user selects in the menu new file
+      selected_tag_ids = menu_params[:tag_ids]
+      tags = Tag.where(id: selected_tag_ids)
+
+
+      # create an array of recipes that have the correct tags so that the menu can build an array of random recipes selected from this array
+      recipes = Recipe.joins(:tags).where(tags: { id: selected_tag_ids }).distinct
+      random_recipes = recipes.sample(3)
+      @menu.recipes << random_recipes
+
       redirect_to @menu, notice: 'Menu was successfully created.'
     else
       render :new
     end
   end
 
+
   def edit
   end
 
   def update
     if @menu.update(menu_params)
+      # Update the associated tags
+      selected_tag_ids = menu_params[:tag_ids]
+      @menu.tags = Tag.where(id: selected_tag_ids)
+
+      # Update the associated recipes based on the selected tags in menu_params
+      selected_tag_ids = menu_params[:tag_ids]
+      recipes = Recipe.joins(:tags).where(tags: { id: selected_tag_ids }).distinct
+      random_recipes = recipes.sample(3)
+      @menu.recipes = random_recipes
       redirect_to @menu, notice: 'Menu was successfully updated.'
     else
       render :edit
@@ -34,6 +55,7 @@ class MenusController < ApplicationController
   end
 
   def destroy
+    @menu.tags.destroy_all
     @menu.destroy
     redirect_to menus_url, notice: 'Menu was successfully destroyed.'
   end
@@ -45,6 +67,6 @@ class MenusController < ApplicationController
   end
 
   def menu_params
-    params.require(:menu).permit(:name, recipe_ids: [])
+    params.require(:menu).permit(:name, :description, tag_ids: [], recipe_ids: [])
   end
 end

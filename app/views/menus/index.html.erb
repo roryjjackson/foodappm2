@@ -16,7 +16,13 @@
         <td><%= menu.recipes.map(&:name).join(', ') %></td>
         <td><%= link_to 'Show', menu %></td>
         <td><%= link_to 'Edit', edit_menu_path(menu) %></td>
-        <td><%= link_to 'Destroy', menu, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+
+        <%= form_with(model: menu, method: :delete, url: menu_path(menu), data: { confirm: 'Are you sure?' }) do |form| %>
+         <td><%= form.submit 'Destroy' %></td>
+        <% end %>
+
+
+        <%# <td><%= link_to 'Destroy', menu, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>

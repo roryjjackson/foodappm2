@@ -1,15 +1,1 @@
-<%= form_with(model: @menu, local: true) do |form| %>
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
-  </div>
-
-  <div class="field">
-    <%= form.label :recipes %>
-    <%= form.collection_select :recipe_ids, Recipe.all, :id, :name, {}, multiple: true %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit 'Update Menu' %>
-  </div>
-<% end %>
+<%= render "form", recipe: @recipe %>

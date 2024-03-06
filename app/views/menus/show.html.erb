@@ -5,12 +5,14 @@
 
 <p>
   <strong>Recipes:</strong>
-  <%= @menu.recipes.map(&:name).join(', ') %>
+  <%# <%= @menu.recipes.map(&:name).join(', ') %>
+  <% @menu.recipes.each do |recipe| %>
+    <%= link_to "#{recipe.name}", recipe_path(recipe.id) %>
+  <% end %>
 </p>
 
 <%= link_to 'Edit', edit_menu_path(@menu) %> |
 <%= link_to 'Back', menus_path %>
-<%# <%= link_to 'Destroy', menu_path(@menu), method: :delete, data: { confirm: 'Are you sure?' } %>
 
 <%= form_with(model: @menu, method: :delete, url: menu_path(@menu), data: { confirm: 'Are you sure?' }) do |form| %>
   <%= form.submit 'Destroy' %>

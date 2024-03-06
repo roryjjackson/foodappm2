@@ -10,6 +10,11 @@
     <%= f.input :prep_time %>
     <%= f.input :cook_time %>
     <%= f.association :user %>
+
+    <div class="field">
+      <%= f.label :tag_ids, 'Tags' %>
+      <%= f.collection_check_boxes :tag_ids, Tag.all, :id, :name %>
+    </div>
   </div>
 
   <div class="form-actions">
