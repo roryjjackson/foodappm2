@@ -1,0 +1,22 @@
+.dashboard {
+  padding: 0 50px;
+
+}
+
+.dashboard-container {
+  grid: 1fr 1fr;
+  grid-gap: 20px;
+  grid-template-columns: 1fr 1fr;
+  display: flex;
+}
+
+.dashboard-card {
+  border: solid black 1px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+
+  h3 {
+    font-family: 'Courier New', Courier, monospace;
+    padding: 20px 10px;
+  }
+}
