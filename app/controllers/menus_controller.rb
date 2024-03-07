@@ -14,16 +14,25 @@ class MenusController < ApplicationController
     @ingredients = Ingredient.all
   end
 
+  def compare_tags(array1, array2)
+    array2.all? { |element| array1.include?(element) }
+  end
+
   def create
     @menu = Menu.new(menu_params)
 
+
+
     if @menu.save
+      selected_tag_ids = menu_params[:tag_ids].reject { |element| element.empty? }
+      Recipe.all.each do |recipe|
+        tags_array = []
 
-      selected_tag_ids = menu_params[:tag_ids]
-      recipes = Recipe.joins(:tags).where(tags: { id: selected_tag_ids }).distinct
-      random_recipes = recipes.sample(3)
-      @menu.recipes << random_recipes
-
+        recipe.tags.each do |tag|
+          tags_array << tag.id
+        end
+        @menu.recipes << recipe if compare_tags(tags_array.map(&:to_s), selected_tag_ids)
+      end
       selected_ingredient_ids = menu_params[:ingredient_ids]
       ingredients = Ingredient.joins(:menu_ingredients).where(menu_ingredients: { menu_id: @menu.id, ingredient_id: selected_ingredient_ids }).distinct
       @menu.ingredients << ingredients

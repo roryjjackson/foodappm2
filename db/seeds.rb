@@ -12,16 +12,16 @@ user1 = User.create!(email: "test1@test.com", password: "123456")
 
 # Create tags
 tag1 = Tag.create!(name: "Asian")
-tag2 = Tag.create!(name: "Easy")
-tag3 = Tag.create!(name: "Hard")
+tag2 = Tag.create!(name: "Mexican")
+tag3 = Tag.create!(name: "British")
 
 # Create recipes
-recipe1 = Recipe.create!(name: "Dumplings", description: "", instructions: "", prep_time: "", cook_time: "", user_id: 1)
-recipe2 = Recipe.create!(name: "Pizza", description: "", instructions: "", prep_time: "", cook_time: "", user_id: 1)
-recipe3 = Recipe.create!(name: "Boeuf en croute", description: "", instructions: "", prep_time: "", cook_time: "", user_id: 1)
-recipe4 = Recipe.create!(name: "Noodles", description: "", instructions: "", prep_time: "", cook_time: "", user_id: 1)
-recipe5 = Recipe.create!(name: "Pasta", description: "", instructions: "", prep_time: "", cook_time: "", user_id: 1)
-recipe6 = Recipe.create!(name: "Wellington", description: "", instructions: "", prep_time: "", cook_time: "", user_id: 1)
+recipe1 = Recipe.create!(name: "Dumplings", description: "", instructions: "", prep_time: 30, cook_time: 120, user_id: 1)
+recipe2 = Recipe.create!(name: "Tacos", description: "", instructions: "", prep_time: 30, cook_time: 120, user_id: 1)
+recipe3 = Recipe.create!(name: "Steak and ale pie", description: "", instructions: "", prep_time: 30, cook_time: 120, user_id: 1)
+recipe4 = Recipe.create!(name: "Noodles", description: "", instructions: "", prep_time: 30, cook_time: 120, user_id: 1)
+recipe5 = Recipe.create!(name: "Fajitas", description: "", instructions: "", prep_time: 30, cook_time: 120, user_id: 1)
+recipe6 = Recipe.create!(name: "Fish and chips", description: "", instructions: "", prep_time: 30, cook_time: 120, user_id: 1)
 
 # Associate tags with recipes through the join table
 recipe1.tags << tag1
