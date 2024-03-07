@@ -1,18 +1,20 @@
-<p style="color: green"><%= notice %></p>
+<div class="recipes">
+  <p style="color: green"><%= notice %></p>
 
-<%= render @recipe %>
+  <%= render @recipe %>
 
-<div>
-  <%= link_to "Edit this recipe", edit_recipe_path(@recipe) %> |
-  <%= link_to "Back to recipes", recipes_path %>
+  <div>
+    <%= link_to "Edit this recipe", edit_recipe_path(@recipe), class: "button" %>
+    <%= link_to "Back to recipes", recipes_path, class: "button" %>
 
-  <%= button_to "Destroy this recipe", @recipe, method: :delete %>
+    <%= button_to "Destroy this recipe", @recipe, method: :delete, class: "button" %>
+  </div>
+  <h3>Tags</h3>
+  <% @recipe.tags.each do |tag| %>
+    <p><%= tag.name %></p>
+  <% end %>
+  <h3>Ingredients in this dish</h3>
+  <% @recipe.ingredients.each do |ingredient| %>
+    <p><%= ingredient.name %></p>
+  <% end %>
 </div>
-<h2>Tags attached below</h2>
-<% @recipe.tags.each do |tag| %>
-  <p><%= tag.name %></p>
-<% end %>
-<p>ingredients in this dish</p>
-<% @recipe.ingredients.each do |ingredient| %>
-  <p><%= ingredient.name %></p>
-<% end %>

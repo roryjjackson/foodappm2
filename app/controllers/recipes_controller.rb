@@ -30,13 +30,13 @@ class RecipesController < ApplicationController
 
     respond_to do |format|
       if @recipe.save
-        selected_ingredient_ids = recipe_params[:ingredient_ids]
+        # selected_ingredient_ids = recipe_params[:ingredient_ids]
 
-        # ingredients = Ingredient.joins(:recipe_ingredients).where(recipe_ingredients: { id: selected_ingredient_ids }).distinct
-        ingredients = Ingredient.joins(:recipe_ingredients).where(recipe_ingredients: { recipe_id: @recipe.id, ingredient_id: selected_ingredient_ids }).distinct
+        # # ingredients = Ingredient.joins(:recipe_ingredients).where(recipe_ingredients: { id: selected_ingredient_ids }).distinct
+        # ingredients = Ingredient.joins(:recipe_ingredients).where(recipe_ingredients: { recipe_id: @recipe.id, ingredient_id: selected_ingredient_ids }).distinct
 
 
-        @recipe.ingredients << ingredients
+        # @recipe.ingredients << ingredients
 
         format.html { redirect_to recipe_url(@recipe), notice: "Recipe was successfully created." }
         format.json { render :show, status: :created, location: @recipe }
