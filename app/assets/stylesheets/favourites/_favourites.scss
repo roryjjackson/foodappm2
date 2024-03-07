@@ -1,0 +1,14 @@
+.favourites {
+  padding: 0 50px;
+  margin-top: 30px;
+}
+
+.checkbox {
+  border: solid black 1px;
+}
+
+.favourite-recipes {
+  grid-template-columns: 1fr;
+  display: grid;
+  grid-gap: 30px;
+}
