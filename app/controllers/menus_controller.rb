@@ -21,8 +21,6 @@ class MenusController < ApplicationController
   def create
     @menu = Menu.new(menu_params)
 
-
-
     if @menu.save
       selected_tag_ids = menu_params[:tag_ids].reject { |element| element.empty? }
       Recipe.all.each do |recipe|

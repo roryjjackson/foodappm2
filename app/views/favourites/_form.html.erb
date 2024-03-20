@@ -1,14 +1,18 @@
 
-<%= simple_form_for(@favourite) do |f| %>
-  <%= f.error_notification %>
-  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+<div class="favourite-form">
+  <%= simple_form_for(@favourite) do |f| %>
+    <%= f.error_notification %>
+    <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
-  <div class="field">
-    <%= f.label :recipe_ids %>
-    <%= f.collection_check_boxes :recipe_ids, Recipe.all, :id, :name, {}, multiple: true %>
-  </div>
+    <div class="field favourite-recipes">
+      <%= f.collection_check_boxes :recipe_ids, Recipe.all, :id, :name, {}, multiple: true, class: "checkbox" do |cb| %>
+        <%= cb.check_box %>
+        <%= cb.label(class: 'checkbox-label') %>
+      <% end %>
+    </div>
 
-  <div class="form-actions">
-    <%= f.button :submit %>
-  </div>
-<% end %>
+    <div class="form-actions">
+      <%= f.submit "Update", class: "button" %>
+    </div>
+  <% end %>
+</div>

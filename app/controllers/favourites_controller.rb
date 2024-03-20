@@ -32,13 +32,6 @@ class FavouritesController < ApplicationController
 
     respond_to do |format|
       if @favourite.save
-
-        favourite_recipe_ids = favourite_params[:recipe_ids]
-
-        recipes = Recipe.joins(:favourite_recipes).where(favourite_recipes: { favourite_id: @favourite.id, recipe_id: favourite_recipe_ids })
-
-        @favourite.recipes << recipes
-
         format.html { redirect_to favourite_url(@favourite), notice: "Favourite was successfully created." }
         format.json { render :show, status: :created, location: @favourite }
       else

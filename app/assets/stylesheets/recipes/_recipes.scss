@@ -1,0 +1,15 @@
+.recipes {
+  padding: 0 50px;
+}
+
+.recipe-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 30px;
+}
+
+.recipe-card {
+  padding: 30px;
+  border: solid black 1px;
+  border-radius: 5px;
+}
