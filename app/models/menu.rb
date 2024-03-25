@@ -1,4 +1,6 @@
 class Menu < ApplicationRecord
+  serialize :meal_type, Array
+
   has_and_belongs_to_many :recipes
 
   accepts_nested_attributes_for :recipes

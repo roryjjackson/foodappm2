@@ -24,6 +24,14 @@
       <%= form.select :days_planned, (1..30), {}, { class: 'form-control' } %>
     </div>
 
+  <div class="field">
+    <%= form.label :meal_type %><br>
+    <%= form.check_box :meal_type, { multiple: true }, "breakfast", nil %> Breakfast
+    <%= form.check_box :meal_type, { multiple: true }, "lunch", nil %> Lunch
+    <%= form.check_box :meal_type, { multiple: true }, "dinner", nil %> Dinner
+  </div>
+
+
   <div class="actions">
     <%= form.submit 'Create Menu' %>
   </div>

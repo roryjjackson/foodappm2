@@ -46,7 +46,6 @@ class MenusController < ApplicationController
 
   def create
     @menu = Menu.new(menu_params)
-
     if @menu.save
       selected_tag_ids = menu_params[:tag_ids].reject { |element| element.empty? }
       days_planned = @menu.days_planned
@@ -108,6 +107,6 @@ class MenusController < ApplicationController
   end
 
   def menu_params
-    params.require(:menu).permit(:name, :description, :days_planned, tag_ids: [], recipe_ids: [], ingredient_ids: [] )
+    params.require(:menu).permit(:name, :description, :days_planned, tag_ids: [], recipe_ids: [], ingredient_ids: [], meal_type: [] )
   end
 end
