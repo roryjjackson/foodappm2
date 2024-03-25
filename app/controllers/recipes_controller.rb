@@ -4,7 +4,6 @@ class RecipesController < ApplicationController
   # GET /recipes or /recipes.json
   def index
     @recipes = Recipe.all
-
     if params[:tag_id].present?
       @recipes = @recipes.joins(:tags).where(tags: { id: params[:tag_id] })
     end
@@ -96,6 +95,7 @@ class RecipesController < ApplicationController
                                      :cook_time,
                                      :user_id,
                                      tag_ids: [],
-                                     ingredient_ids: [])
+                                     ingredient_ids: [],
+                                     meal_type: [])
     end
 end

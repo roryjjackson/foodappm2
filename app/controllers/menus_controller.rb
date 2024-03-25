@@ -17,21 +17,12 @@ class MenusController < ApplicationController
         @ingredients << ingredient.name
       end
     end
-    # @tags = Menu.find(params[:id])
     @menu_tags = []
 
     @menu.recipe_ids.each do |recipe_id|
       recipe = Recipe.where(id: recipe_id)
       @menu_tags << recipe.first.tag_ids
     end
-
-    # @menu = Menu.find(params[:id])
-    # @menu_ingredients = []
-
-    # @ingredients.recipe_ids.each do |recipe_id|
-    #   recipe = Recipe.where(id: recipe_id)
-    #   @menu_ingredients << recipe.first.tag_ids
-    # end
   end
 
   def new
@@ -40,16 +31,12 @@ class MenusController < ApplicationController
     @ingredients = Ingredient.all
   end
 
-  def compare_tags(array1, array2)
-    array2.all? { |element| array1.include?(element) }
-  end
 
   def create
     @menu = Menu.new(menu_params)
     if @menu.save
       selected_tag_ids = menu_params[:tag_ids].reject { |element| element.empty? }
-      days_planned = @menu.days_planned
-      Recipe.all.sample(days_planned * 2).each do |recipe|
+      Recipe.all.sample(@menu.days_planned * 2).each do |recipe|
         tags_array = []
         recipe.tags.each do |tag|
           tags_array << tag.id
@@ -98,6 +85,13 @@ class MenusController < ApplicationController
     @menu.ingredients.destroy_all
     @menu.destroy
     redirect_to menus_url, notice: 'Menu was successfully destroyed.'
+  end
+
+  def compare_tags(array1, array2)
+    array2.all? { |element| array1.include?(element) }
+  end
+
+  def choose_recipes
   end
 
   private

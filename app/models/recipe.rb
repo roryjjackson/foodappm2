@@ -1,4 +1,6 @@
 class Recipe < ApplicationRecord
+  serialize :meal_type, Array
+
   belongs_to :user
   has_and_belongs_to_many :menus
   has_many :recipe_tags

@@ -14,26 +14,28 @@ user1 = User.create!(email: "test1@test.com", password: "123456")
 tag1 = Tag.create!(name: "Asian")
 tag2 = Tag.create!(name: "Mexican")
 tag3 = Tag.create!(name: "British")
-tag5 = Tag.create!(name: "Breakfast")
-tag6 = Tag.create!(name: "Lunch")
-tag7 = Tag.create!(name: "Dinner")
-tag8 = Tag.create!(name: "Snack")
+# tag5 = Tag.create!(name: "Breakfast")
+# tag6 = Tag.create!(name: "Lunch")
+# tag7 = Tag.create!(name: "Dinner")
+# tag8 = Tag.create!(name: "Snack")/
 
 # Create recipes
-recipe1 = Recipe.create!(name: "Dumplings", description: "", instructions: "", prep_time: 30, cook_time: 120, user_id: 1)
-recipe2 = Recipe.create!(name: "Tacos", description: "", instructions: "", prep_time: 30, cook_time: 120, user_id: 1)
-recipe3 = Recipe.create!(name: "Steak and ale pie", description: "", instructions: "", prep_time: 30, cook_time: 120, user_id: 1)
-recipe4 = Recipe.create!(name: "Noodles", description: "", instructions: "", prep_time: 30, cook_time: 120, user_id: 1)
-recipe5 = Recipe.create!(name: "Fajitas", description: "", instructions: "", prep_time: 30, cook_time: 120, user_id: 1)
-recipe6 = Recipe.create!(name: "Fish and chips", description: "", instructions: "", prep_time: 30, cook_time: 120, user_id: 1)
+recipe1 = Recipe.create!(name: "Brekky Dumplings", description: "", instructions: "", prep_time: 30, cook_time: 120, user_id: 1, meal_type: ["Breakfast"])
+recipe2 = Recipe.create!(name: "Lunch Tacos", description: "", instructions: "", prep_time: 30, cook_time: 120, user_id: 1, meal_type: ["Lunch"])
+recipe3 = Recipe.create!(name: "Steak and ale pie", description: "", instructions: "", prep_time: 30, cook_time: 120, user_id: 1, meal_type: ["Dinner"])
+recipe4 = Recipe.create!(name: "Brekky Noodles", description: "", instructions: "", prep_time: 30, cook_time: 120, user_id: 1, meal_type: ["Breakfast"])
+recipe5 = Recipe.create!(name: "Lunch Fajitas", description: "", instructions: "", prep_time: 30, cook_time: 120, user_id: 1, meal_type: ["Lunch"])
+recipe6 = Recipe.create!(name: "Fish and chips", description: "", instructions: "", prep_time: 30, cook_time: 120, user_id: 1, meal_type: ["Dinner"])
 
 # Associate tags with recipes through the join table
 recipe1.tags << tag1
 recipe2.tags << tag2
 recipe3.tags << tag3
 recipe4.tags << tag1
-recipe5.tags << tag2  # Example of associating multiple tags with one recipe
+recipe5.tags << tag2
 recipe6.tags << tag3
+
+
 
 puts "Recipes and tags created"
 
@@ -1048,3 +1050,9 @@ miscellaneous = [
 miscellaneous.each do |item|
   Ingredient.create!(name: "#{item}", description: "miscellaneous")
 end
+recipe1.ingredients << Ingredient.where(name: "Chicken breast").first
+recipe2.ingredients << Ingredient.where(name: "Ribeye").first
+recipe3.ingredients << Ingredient.where(name: "Sirloin").first
+recipe4.ingredients << Ingredient.where(name: "Pork belly").first
+recipe5.ingredients << Ingredient.where(name: "Chicken thighs").first
+recipe6.ingredients << Ingredient.where(name: "Cod").first
