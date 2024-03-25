@@ -11,8 +11,12 @@
   <% end %>
 </p>
 
-<%= @menu_tags.each do |tag| %>
+<% @menu_tags.each do |tag| %>
   <p><%= Tag.where(id: tag).first.name %></p>
+<% end %>
+<h3>All ingredients</h3>
+<% @ingredients.each do |ingredient| %>
+  <p><%= ingredient %></p>
 <% end %>
 
 <%= link_to 'Edit', edit_menu_path(@menu) %> |

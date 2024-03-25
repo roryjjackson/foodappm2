@@ -6,13 +6,32 @@ class MenusController < ApplicationController
   end
 
   def show
-    @tags = Menu.find(params[:id])
+    @menu = Menu.find(params[:id])
+    @recipes = @menu.recipes.ids
+    @ingredients = []
+
+    @recipes.each do |recipe|
+      ingredients = Recipe.where(id: recipe).first.ingredients
+
+      ingredients.each do |ingredient|
+        @ingredients << ingredient.name
+      end
+    end
+    # @tags = Menu.find(params[:id])
     @menu_tags = []
 
-    @tags.recipe_ids.each do |recipe_id|
+    @menu.recipe_ids.each do |recipe_id|
       recipe = Recipe.where(id: recipe_id)
       @menu_tags << recipe.first.tag_ids
     end
+
+    # @menu = Menu.find(params[:id])
+    # @menu_ingredients = []
+
+    # @ingredients.recipe_ids.each do |recipe_id|
+    #   recipe = Recipe.where(id: recipe_id)
+    #   @menu_ingredients << recipe.first.tag_ids
+    # end
   end
 
   def new
