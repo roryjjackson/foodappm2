@@ -207,7 +207,6 @@ dairyandeggs.each do |item|
 end
 
 vegetables = [
-  "Potatoes:",
   "Russet potatoes",
   "Yukon Gold potatoes",
   "Red potatoes",
