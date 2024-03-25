@@ -49,9 +49,9 @@ class MenusController < ApplicationController
 
     if @menu.save
       selected_tag_ids = menu_params[:tag_ids].reject { |element| element.empty? }
-      Recipe.all.each do |recipe|
+      days_planned = @menu.days_planned
+      Recipe.all.sample(days_planned * 2).each do |recipe|
         tags_array = []
-
         recipe.tags.each do |tag|
           tags_array << tag.id
         end
@@ -108,6 +108,6 @@ class MenusController < ApplicationController
   end
 
   def menu_params
-    params.require(:menu).permit(:name, :description, tag_ids: [], recipe_ids: [], ingredient_ids: [])
+    params.require(:menu).permit(:name, :description, :days_planned, tag_ids: [], recipe_ids: [], ingredient_ids: [] )
   end
 end

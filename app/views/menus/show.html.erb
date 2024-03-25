@@ -5,12 +5,18 @@
 
 <p>
   <strong>Recipes:</strong>
-
-  <% @menu.recipes.each do |recipe| %>
-    <%= link_to "#{recipe.name}", recipe_path(recipe.id) %>
+<% @menu.recipes.each_with_index do |recipe, index| %>
+  <% if index.even? %>
+    <h1>Day: <%= (index / 2) + 1 %></h1>
+    <h4>Lunch</h4>
+  <% else %>
+    <h4>Dinner</h4>
   <% end %>
-</p>
+  <%= link_to "#{recipe.name}", recipe_path(recipe.id) %>
+<% end %>
 
+</p>
+<h3>Tags included in menu</h3>
 <% @menu_tags.each do |tag| %>
   <p><%= Tag.where(id: tag).first.name %></p>
 <% end %>
