@@ -1,18 +1,17 @@
-<p>
-  <strong>Name:</strong>
-  <%= @menu.name %>
-</p>
-
-<p>
-  <strong>Recipes:</strong>
 <% @menu.recipes.each_with_index do |recipe, index| %>
-  <% if index.even? %>
-    <h1>Day: <%= (index / 2) + 1 %></h1>
-    <h4>Lunch</h4>
-  <% else %>
-    <h4>Dinner</h4>
+  <h1>Menu day: <%= (index + 1) / @menu.meal_type.length %></h1>
+  <% case recipe.meal_type %>
+    <% when ["Breakfast"] %>
+      <!-- Code for Breakfast -->
+      <p>Breakfast: <%= link_to "#{recipe.name}", recipe_path(recipe.id) %></p>
+    <% when ["Lunch"] %>
+      <!-- Code for Lunch -->
+      <p>Lunch: <%= link_to "#{recipe.name}", recipe_path(recipe.id) %></p>
+
+    <% when ["Dinner"] %>
+      <!-- Code for Dinner -->
+      <p>Dinner: <%= link_to "#{recipe.name}", recipe_path(recipe.id) %></p>
   <% end %>
-  <%= link_to "#{recipe.name}", recipe_path(recipe.id) %>
 <% end %>
 
 </p>

@@ -31,14 +31,23 @@ class MenusController < ApplicationController
     @ingredients = Ingredient.all
   end
 
+  def sample_of_recipes(menu)
+    recipes = []
+
+    menu.meal_type.each do |type|
+      recipes << Recipe.all.where(meal_type: ["#{type}"]).sample(menu.days_planned)
+    end
+
+    recipes
+  end
 
   def create
     @menu = Menu.new(menu_params)
     if @menu.save
       selected_tag_ids = menu_params[:tag_ids].reject { |element| element.empty? }
-      Recipe.all.sample(@menu.days_planned * 2).each do |recipe|
+      sample_of_recipes(@menu).each do |recipe|
         tags_array = []
-        recipe.tags.each do |tag|
+        recipe.first.tags.each do |tag|
           tags_array << tag.id
         end
         @menu.recipes << recipe if compare_tags(tags_array.map(&:to_s), selected_tag_ids)
@@ -47,6 +56,10 @@ class MenusController < ApplicationController
 
       excluded_recipes = Recipe.joins(:ingredients).where(ingredients: { id: selected_ingredient_ids }).distinct
       @menu.recipes -= excluded_recipes
+
+      @breakfast_recipes = @menu.recipes.where(meal_type: ["Breakfast"])
+      @lunch_recipes = @menu.recipes.where(meal_type: ["Lunch"])
+      @dinner_recipes = @menu.recipes.where(meal_type: ["Dinner"])
 
       redirect_to @menu, notice: 'Menu was successfully created.'
     else
@@ -58,11 +71,11 @@ class MenusController < ApplicationController
   end
 
   def update
+    @menu.recipes.destroy_all
     if @menu.save
       selected_tag_ids = menu_params[:tag_ids].reject { |element| element.empty? }
-      Recipe.all.each do |recipe|
+      Recipe.all.sample(@menu.days_planned * 2).each do |recipe|
         tags_array = []
-
         recipe.tags.each do |tag|
           tags_array << tag.id
         end
