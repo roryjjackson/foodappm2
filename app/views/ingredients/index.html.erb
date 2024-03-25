@@ -1,13 +1,19 @@
 <p style="color: green"><%= notice %></p>
 
 <h1>Ingredients</h1>
+<%= render "ingredient_search_form" %>
 
 <div id="ingredients">
-  <% @ingredients.each do |ingredient| %>
-    <%= render ingredient %>
-    <p>
-      <%= link_to "Show this ingredient", ingredient %>
-    </p>
+  <% if @ingredients.exists? %>
+    <% @ingredients.each do |ingredient| %>
+      <%= render ingredient %>
+      <p>
+        <%= link_to "Show this ingredient", ingredient %>
+      </p>
+
+    <% end %>
+  <% else %>
+    <p>No ingredients found</p>
   <% end %>
 </div>
 

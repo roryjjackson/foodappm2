@@ -10,6 +10,13 @@ class RecipesController < ApplicationController
     end
   end
 
+  def ingredients
+    @ingredients = Ingredient.where("name LIKE ?", "%#{params[:search]}%")
+    respond_to do |format|
+      format.js
+    end
+  end
+
   # GET /recipes/1 or /recipes/1.json
   def show
   end
@@ -27,6 +34,9 @@ class RecipesController < ApplicationController
   # POST /recipes or /recipes.json
   def create
     @recipe = Recipe.new(recipe_params)
+    @ingredients = Ingredient.search_by_ingredient(params[:search])
+
+    @recipe.user = current_user
 
     respond_to do |format|
       if @recipe.save

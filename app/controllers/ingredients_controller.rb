@@ -3,7 +3,12 @@ class IngredientsController < ApplicationController
 
   # GET /ingredients or /ingredients.json
   def index
-    @ingredients = Ingredient.all
+    query = params[:query]
+    @ingredients = Ingredient.search_by_ingredient(query)
+    # @ingredients = Ingredient.all
+  end
+
+  def search
   end
 
   # GET /ingredients/1 or /ingredients/1.json
