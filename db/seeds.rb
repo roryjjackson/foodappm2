@@ -14,6 +14,10 @@ user1 = User.create!(email: "test1@test.com", password: "123456")
 tag1 = Tag.create!(name: "Asian")
 tag2 = Tag.create!(name: "Mexican")
 tag3 = Tag.create!(name: "British")
+tag5 = Tag.create!(name: "Breakfast")
+tag6 = Tag.create!(name: "Lunch")
+tag7 = Tag.create!(name: "Dinner")
+tag8 = Tag.create!(name: "Snack")
 
 # Create recipes
 recipe1 = Recipe.create!(name: "Dumplings", description: "", instructions: "", prep_time: 30, cook_time: 120, user_id: 1)

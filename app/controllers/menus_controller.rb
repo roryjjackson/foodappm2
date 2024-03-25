@@ -6,6 +6,13 @@ class MenusController < ApplicationController
   end
 
   def show
+    @tags = Menu.find(params[:id])
+    @menu_tags = []
+
+    @tags.recipe_ids.each do |recipe_id|
+      recipe = Recipe.where(id: recipe_id)
+      @menu_tags << recipe.first.tag_ids
+    end
   end
 
   def new
@@ -32,34 +39,41 @@ class MenusController < ApplicationController
         @menu.recipes << recipe if compare_tags(tags_array.map(&:to_s), selected_tag_ids)
       end
       selected_ingredient_ids = menu_params[:ingredient_ids]
-      ingredients = Ingredient.joins(:menu_ingredients).where(menu_ingredients: { menu_id: @menu.id, ingredient_id: selected_ingredient_ids }).distinct
-      @menu.ingredients << ingredients
+
+      excluded_recipes = Recipe.joins(:ingredients).where(ingredients: { id: selected_ingredient_ids }).distinct
+      @menu.recipes -= excluded_recipes
+
       redirect_to @menu, notice: 'Menu was successfully created.'
     else
       render :new
     end
   end
 
-
   def edit
   end
 
   def update
-    if @menu.update(menu_params)
-      # Update the associated tags
-      selected_tag_ids = menu_params[:tag_ids]
-      @menu.tags = Tag.where(id: selected_tag_ids)
+    if @menu.save
+      selected_tag_ids = menu_params[:tag_ids].reject { |element| element.empty? }
+      Recipe.all.each do |recipe|
+        tags_array = []
 
-      # Update the associated recipes based on the selected tags in menu_params
-      selected_tag_ids = menu_params[:tag_ids]
-      recipes = Recipe.joins(:tags).where(tags: { id: selected_tag_ids }).distinct
-      random_recipes = recipes.sample(3)
-      @menu.recipes = random_recipes
-      redirect_to @menu, notice: 'Menu was successfully updated.'
+        recipe.tags.each do |tag|
+          tags_array << tag.id
+        end
+        @menu.recipes << recipe if compare_tags(tags_array.map(&:to_s), selected_tag_ids)
+      end
+      selected_ingredient_ids = menu_params[:ingredient_ids]
+
+      excluded_recipes = Recipe.joins(:ingredients).where(ingredients: { id: selected_ingredient_ids }).distinct
+      @menu.recipes -= excluded_recipes
+
+      redirect_to @menu, notice: 'Menu was successfully created.'
     else
-      render :edit
+      render :new
     end
   end
+
 
   def destroy
     @menu.tags.destroy_all
