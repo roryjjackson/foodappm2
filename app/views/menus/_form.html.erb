@@ -1,43 +1,50 @@
-<%= form_with(model: @menu, local: true) do |form| %>
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
-  </div>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-12 col-sm-8 form-login">
 
-    <div class="field">
-    <%= form.label :description %>
-    <%= form.text_area :description %>
+      <%= form_with(model: @menu, local: true) do |form| %>
+        <div class="form-inputs">
+          <%= form.label :name %>
+          <%= form.text_field :name %>
+        </div>
+
+          <div class="form-inputs">
+          <%= form.label :description %>
+          <%= form.text_area :description %>
+          </div>
+
+          <div class="form-inputs">
+            <%= form.label :photo %>
+            <%= form.file_field :photo %>
+          </div>
+
+          <%# <div class="form-inputs"> %>
+            <%# <%= form.label :tags %>
+            <%# <%= form.collection_check_boxes :tag_ids, Tag.all, :id, :name, {}, multiple: true %>
+          <%# </div> %>
+
+          <%# <div class="form-inputs"> %>
+            <%# <%= form.label :ingredients %>
+            <%# <%= form.collection_check_boxes :ingredient_ids, Ingredient.all, :id, :name, {}, multiple: true %>
+          <%# </div> %>
+
+          <div class="form-inputs">
+            <%= form.label :days_planned %>
+            <%= form.select :days_planned, (1..30), {}, { class: 'form-control' } %>
+          </div>
+
+        <div class="form-inputs">
+          <%= form.label :meal_type %><br>
+          <%= form.check_box :meal_type, { multiple: true }, "Breakfast", nil %> Breakfast
+          <%= form.check_box :meal_type, { multiple: true }, "Lunch", nil %> Lunch
+          <%= form.check_box :meal_type, { multiple: true }, "Dinner", nil %> Dinner
+        </div>
+
+
+        <div class="actions">
+          <%= form.submit 'Create Menu' %>
+        </div>
+      <% end %>
     </div>
-
-    <div class="field">
-      <%= form.label :photo %>
-      <%= form.file_field :photo %>
-    </div>
-
-    <%# <div class="field"> %>
-      <%# <%= form.label :tags %>
-      <%# <%= form.collection_check_boxes :tag_ids, Tag.all, :id, :name, {}, multiple: true %>
-    <%# </div> %>
-
-    <%# <div class="field"> %>
-      <%# <%= form.label :ingredients %>
-      <%# <%= form.collection_check_boxes :ingredient_ids, Ingredient.all, :id, :name, {}, multiple: true %>
-    <%# </div> %>
-
-    <div class="field">
-      <%= form.label :days_planned %>
-      <%= form.select :days_planned, (1..30), {}, { class: 'form-control' } %>
-    </div>
-
-  <div class="field">
-    <%= form.label :meal_type %><br>
-    <%= form.check_box :meal_type, { multiple: true }, "Breakfast", nil %> Breakfast
-    <%= form.check_box :meal_type, { multiple: true }, "Lunch", nil %> Lunch
-    <%= form.check_box :meal_type, { multiple: true }, "Dinner", nil %> Dinner
   </div>
-
-
-  <div class="actions">
-    <%= form.submit 'Create Menu' %>
-  </div>
-<% end %>
+</div>

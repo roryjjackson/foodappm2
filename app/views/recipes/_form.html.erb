@@ -1,39 +1,46 @@
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-12 col-sm-8 form-login">
+      <h1>Build recipe</h1>
 
-<%= simple_form_for(@recipe) do |f| %>
-  <%= f.error_notification %>
-  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+      <%= simple_form_for(@recipe) do |f| %>
+        <%= f.error_notification %>
+        <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
-  <div class="form-inputs">
-    <%= f.input :name %>
-    <%= f.input :description %>
-    <%= f.input :instructions %>
-    <%= f.input :prep_time %>
-    <%= f.input :cook_time %>
+        <div class="form-inputs">
+          <%= f.input :name %>
+          <%= f.input :description %>
+          <%= f.input :instructions %>
+          <%= f.input :prep_time %>
+          <%= f.input :cook_time %>
 
-    <div class="field">
-      <%= f.label :tag_ids, 'Tags' %>
-      <%= f.collection_check_boxes :tag_ids, Tag.all, :id, :name %>
-    </div>
+          <div class="field">
+            <%= f.label :tag_ids, 'Tags' %>
+            <%= f.collection_check_boxes :tag_ids, Tag.all, :id, :name %>
+          </div>
 
-    <div class="field">
-      <%= f.label :ingredient_ids, 'Ingredients' %>
-      <%= f.collection_check_boxes :ingredient_ids, Ingredient.all, :id, :name %>
-    </div>
+          <%# <div class="field"> %>
+            <%# <%= f.label :ingredient_ids, 'Ingredients' %>
+            <%# <%= f.collection_check_boxes :ingredient_ids, Ingredient.all, :id, :name %>
+          <%# </div> %>
 
-    <div class="field">
-      <%= f.input :photo, as: :file %>
-    </div>
+          <div class="field">
+            <%= f.input :photo, as: :file %>
+          </div>
 
 
-    <div class="field">
-      <%= f.label :meal_type %><br>
-      <%= f.check_box :meal_type, { multiple: true }, "Breakfast", nil %> Breakfast
-      <%= f.check_box :meal_type, { multiple: true }, "Lunch", nil %> Lunch
-      <%= f.check_box :meal_type, { multiple: true }, "Dinner", nil %> Dinner
+          <div class="field">
+            <%= f.label :meal_type %><br>
+            <%= f.check_box :meal_type, { multiple: true }, "Breakfast", nil %> Breakfast
+            <%= f.check_box :meal_type, { multiple: true }, "Lunch", nil %> Lunch
+            <%= f.check_box :meal_type, { multiple: true }, "Dinner", nil %> Dinner
+          </div>
+        </div>
+
+        <div class="form-actions">
+          <%= f.button :submit, class: "btn-flat" %>
+        </div>
+      <% end %>
     </div>
   </div>
-
-  <div class="form-actions">
-    <%= f.button :submit %>
-  </div>
-<% end %>
+</div>
