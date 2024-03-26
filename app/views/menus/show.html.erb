@@ -23,6 +23,9 @@
 
 
 
+
+
+
 <h3>Tags included in menu</h3>
 <% @menu_tags.each do |tag| %>
   <p><%= Tag.where(id: tag).first.name %></p>
