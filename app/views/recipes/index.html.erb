@@ -1,9 +1,6 @@
 <div class="recipes">
-  <p style="color: green"><%= notice %></p>
-
   <h1>Recipes</h1>
-
-  <div class="recipe-container">
+  <div class="cards">
     <% @recipes.each do |recipe| %>
       <%= link_to recipe_path(recipe.id) do %>
         <%= render recipe %>
@@ -11,5 +8,8 @@
     <% end %>
   </div>
 
-  <%= link_to "New recipe", new_recipe_path %>
+  <%= link_to new_recipe_path, class: "btn btn-flat" do %>
+    New Recipe
+  <% end %>
+
 </div>

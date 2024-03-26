@@ -1,32 +1,3 @@
-<div id="<%= dom_id recipe %>" class="card recipe-card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path @recipe.photo.key, height: 300, crop: :fill %>')">
-  <p>
-    <strong>Name:</strong>
-    <%= recipe.name %>
-  </p>
-
-  <p>
-    <strong>Description:</strong>
-    <%= recipe.description %>
-  </p>
-
-  <p>
-    <strong>Instructions:</strong>
-    <%= recipe.instructions %>
-  </p>
-
-  <p>
-    <strong>Prep time:</strong>
-    <%= recipe.prep_time %>
-  </p>
-
-  <p>
-    <strong>Cook time:</strong>
-    <%= recipe.cook_time %>
-  </p>
-
-  <p>
-    <strong>User:</strong>
-    <%= recipe.user_id %>
-  </p>
-
+<div id="<%= dom_id recipe %>" class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path recipe.photo.key, height: 300, crop: :fill %>')">
+  <%= recipe.name %>
 </div>

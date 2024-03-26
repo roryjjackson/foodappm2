@@ -3,7 +3,7 @@
   <% @menus.each do |menu| %>
     <%= link_to menu_path(menu) do %>
       <div class="card-product">
-        <img src="https://res.cloudinary.com/dfipoufmj/image/upload/v1689253823/production/ndaidlm5c2jdlwv17k1knq3mtcs3.jpg" />
+        <%= cl_image_tag menu.photo.key, height: 300, width: 400, crop: :fill %>
         <div class="card-product-infos">
           <h2><%= menu.name %></h2>
           <p>Menu description: <%= menu.description %></p>

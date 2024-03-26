@@ -48,6 +48,7 @@ class MenusController < ApplicationController
 
   def show
     @menu = Menu.find(params[:id])
+    @recipes = @menu.recipes
     day_by_day_plan(@menu)
 
     @ingredients = []
@@ -137,6 +138,7 @@ class MenusController < ApplicationController
     params.require(:menu).permit(:name,
                                  :description,
                                  :days_planned,
+                                 :photo,
                                  tag_ids: [],
                                  recipe_ids: [],
                                  ingredient_ids: [],

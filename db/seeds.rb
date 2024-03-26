@@ -1,3 +1,5 @@
+require "open-uri"
+
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
 #
@@ -18,6 +20,12 @@ tag3 = Tag.create!(name: "British")
 # tag6 = Tag.create!(name: "Lunch")
 # tag7 = Tag.create!(name: "Dinner")
 # tag8 = Tag.create!(name: "Snack")/
+file1 = URI.open("https://res.cloudinary.com/dfipoufmj/image/upload/v1711457480/development/ft2ujru7qgg1d980ej4ccr565icn.jpg")
+file2 = URI.open("https://res.cloudinary.com/dfipoufmj/image/upload/v1711457480/development/ft2ujru7qgg1d980ej4ccr565icn.jpg")
+file3 = URI.open("https://res.cloudinary.com/dfipoufmj/image/upload/v1711457480/development/ft2ujru7qgg1d980ej4ccr565icn.jpg")
+file4 = URI.open("https://res.cloudinary.com/dfipoufmj/image/upload/v1711457480/development/ft2ujru7qgg1d980ej4ccr565icn.jpg")
+file5 = URI.open("https://res.cloudinary.com/dfipoufmj/image/upload/v1711457480/development/ft2ujru7qgg1d980ej4ccr565icn.jpg")
+file6 = URI.open("https://res.cloudinary.com/dfipoufmj/image/upload/v1711457480/development/ft2ujru7qgg1d980ej4ccr565icn.jpg")
 
 # Create recipes
 recipe1 = Recipe.create!(name: "Brekky Dumplings", description: "", instructions: "", prep_time: 30, cook_time: 120, user_id: 1, meal_type: ["Breakfast"])
@@ -27,6 +35,18 @@ recipe4 = Recipe.create!(name: "Brekky Noodles", description: "", instructions: 
 recipe5 = Recipe.create!(name: "Lunch Fajitas", description: "", instructions: "", prep_time: 30, cook_time: 120, user_id: 1, meal_type: ["Lunch"])
 recipe6 = Recipe.create!(name: "Fish and chips", description: "", instructions: "", prep_time: 30, cook_time: 120, user_id: 1, meal_type: ["Dinner"])
 
+recipe1.photo.attach(io: file1, filename: "nes.png", content_type: "image/png")
+recipe1.save
+recipe2.photo.attach(io: file2, filename: "nes.png", content_type: "image/png")
+recipe2.save
+recipe3.photo.attach(io: file3, filename: "nes.png", content_type: "image/png")
+recipe3.save
+recipe4.photo.attach(io: file4, filename: "nes.png", content_type: "image/png")
+recipe4.save
+recipe5.photo.attach(io: file5, filename: "nes.png", content_type: "image/png")
+recipe5.save
+recipe6.photo.attach(io: file6, filename: "nes.png", content_type: "image/png")
+recipe6.save
 # Associate tags with recipes through the join table
 recipe1.tags << tag1
 recipe2.tags << tag2
