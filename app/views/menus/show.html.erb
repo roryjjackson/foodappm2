@@ -1,25 +1,34 @@
-<% @menu.recipes.each_with_index do |recipe, index| %>
-  <h1>Menu day: <%= (index + 1) / @menu.meal_type.length %></h1>
-  <% case recipe.meal_type %>
-    <% when ["Breakfast"] %>
-      <!-- Code for Breakfast -->
-      <p>Breakfast: <%= link_to "#{recipe.name}", recipe_path(recipe.id) %></p>
-    <% when ["Lunch"] %>
-      <!-- Code for Lunch -->
-      <p>Lunch: <%= link_to "#{recipe.name}", recipe_path(recipe.id) %></p>
-
-    <% when ["Dinner"] %>
-      <!-- Code for Dinner -->
-      <p>Dinner: <%= link_to "#{recipe.name}", recipe_path(recipe.id) %></p>
+<% case @menu.meal_type.length %>
+<% when 3 %>
+  <% @recipes.each_with_index do |recipe, index| %>
+    <% if index % 3 == 0 %>
+      <h2>Day : <%= (index / 3 + 1).ceil %></h2>
+    <% end %>
+    <p><%= recipe.name %></p>
+  <% end %>
+<% when 2 %>
+  <% @recipes.each_with_index do |recipe, index| %>
+    <% if index % 2 == 0 %>
+      <h2>Day : <%= (index / 2 + 1).ceil %></h2>
+    <% end %>
+    <p><%= recipe.name %></p>
+  <% end %>
+<% when 1 %>
+  <% @recipes.each_with_index do |recipe, index| %>
+    <h2>Day : <%= (index / 1 + 1).ceil %></h2>
+    <p><%= recipe.name %></p>
   <% end %>
 <% end %>
 
-</p>
+
+
+
 <h3>Tags included in menu</h3>
 <% @menu_tags.each do |tag| %>
   <p><%= Tag.where(id: tag).first.name %></p>
 <% end %>
-<h3>All ingredients</h3>
+
+<h3>Ingredients included in menu</h3>
 <% @ingredients.each do |ingredient| %>
   <p><%= ingredient %></p>
 <% end %>

@@ -9,15 +9,15 @@
     <%= form.text_area :description %>
   </div>
 
-    <div class="field">
-      <%= form.label :tags %>
-      <%= form.collection_check_boxes :tag_ids, Tag.all, :id, :name, {}, multiple: true %>
-    </div>
+    <%# <div class="field"> %>
+      <%# <%= form.label :tags %>
+      <%# <%= form.collection_check_boxes :tag_ids, Tag.all, :id, :name, {}, multiple: true %>
+    <%# </div> %>
 
-    <div class="field">
-      <%= form.label :ingredients %>
-      <%= form.collection_check_boxes :ingredient_ids, Ingredient.all, :id, :name, {}, multiple: true %>
-    </div>
+    <%# <div class="field"> %>
+      <%# <%= form.label :ingredients %>
+      <%# <%= form.collection_check_boxes :ingredient_ids, Ingredient.all, :id, :name, {}, multiple: true %>
+    <%# </div> %>
 
     <div class="field">
       <%= form.label :days_planned %>
