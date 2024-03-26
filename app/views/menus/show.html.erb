@@ -31,25 +31,19 @@
   </div>
 <% end %>
 
-
-
-
-
-
-
-<h3>Tags included in menu</h3>
-<% @menu_tags.each do |tag| %>
-  <p><%= Tag.where(id: tag).first.name %></p>
-<% end %>
-
-<h3>Ingredients included in menu</h3>
+<h3>All Ingredients</h3>
 <% @ingredients.each do |ingredient| %>
   <p><%= ingredient %></p>
 <% end %>
 
-<%= link_to 'Edit', edit_menu_path(@menu) %> |
-<%= link_to 'Back', menus_path %>
 
-<%= form_with(model: @menu, method: :delete, url: menu_path(@menu), data: { confirm: 'Are you sure?' }) do |form| %>
-  <%= form.submit 'Destroy' %>
+
+<%= link_to menus_path, class: "btn btn-flat" do %>
+  Back to all menus
+<% end %>
+<%= link_to edit_menu_path(@menu), class: "btn btn-flat" do %>
+  Edit menu
+<% end %>
+<%= button_to @menu, method: :delete , class: "btn btn-flat" do %>
+  Delete this menu
 <% end %>

@@ -1,15 +1,11 @@
-<div class="recipes">
-  <h1>Recipes</h1>
-  <div class="cards">
-    <% @recipes.each do |recipe| %>
-      <%= link_to recipe_path(recipe.id) do %>
-        <%= render recipe %>
-      <% end %>
+<div class="cards">
+  <% @recipes.each do |recipe| %>
+    <%= link_to recipe_path(recipe.id) do %>
+      <%= render recipe %>
     <% end %>
-  </div>
-
-  <%= link_to new_recipe_path, class: "btn btn-flat" do %>
-    New Recipe
   <% end %>
-
 </div>
+
+<%= link_to new_recipe_path, class: "btn btn-flat" do %>
+  New Recipe
+<% end %>
