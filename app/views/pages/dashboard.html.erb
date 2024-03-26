@@ -2,41 +2,26 @@
   <h1>Dashboard</h1>
   <p>Unleash your inner food genius: Because managing your food brain from here is too important to be bland!</p>
   <div class="dashboard-container">
-    <div>
-      <%= link_to favourites_path do %>
-        <div class="dashboard-card">
-          <h3>Favourites</h3>
-        </div>
-      <% end %>
-      <%= link_to recipes_path do %>
-        <div class="dashboard-card">
-          <h3>Your recipes</h3>
-        </div>
-      <% end %>
+    <%= link_to ingredients_path do %>
+      <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg)">
+          Ingredients
+      </div>
+    <% end %>
 
-      <%= link_to ingredients_path do %>
-        <div class="dashboard-card">
-          <h3>Ingredients</h3>
-        </div>
-      <% end %>
-    </div>
-    <div>
-      <%= link_to menus_path do %>
-        <div class="dashboard-card">
-          <h3>Menu Plans</h3>
-        </div>
-      <% end %>
-      <%= link_to recipes_path do %>
-        <div class="dashboard-card">
-          <h3>All recipes</h3>
-        </div>
-      <% end %>
-      <%= link_to root_path do %>
-        <div class="dashboard-card">
-          <h3>Follow us</h3>
-        </div>
-      <% end %>
-    </div>
-
+    <%= link_to menus_path do %>
+      <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://res.cloudinary.com/dfipoufmj/image/upload/v1711457480/development/ft2ujru7qgg1d980ej4ccr565icn.jpg)">
+          Menus
+      </div>
+    <% end %>
+    <%= link_to recipes_path do %>
+      <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://res.cloudinary.com/dfipoufmj/image/upload/v1689253823/production/ndaidlm5c2jdlwv17k1knq3mtcs3.jpg)">
+          Recipes
+      </div>
+    <% end %>
+    <%= link_to root_path do %>
+      <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg)">
+          Follow us
+      </div>
+    <% end %>
   </div>
 </div>

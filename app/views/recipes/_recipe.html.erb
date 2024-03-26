@@ -1,4 +1,4 @@
-<div id="<%= dom_id recipe %>" class="recipe-card" >
+<div id="<%= dom_id recipe %>" class="card recipe-card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path @recipe.photo.key, height: 300, crop: :fill %>')">
   <p>
     <strong>Name:</strong>
     <%= recipe.name %>

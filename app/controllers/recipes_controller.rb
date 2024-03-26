@@ -93,6 +93,7 @@ class RecipesController < ApplicationController
                                      :instructions,
                                      :prep_time,
                                      :cook_time,
+                                     :photo,
                                      :user_id,
                                      tag_ids: [],
                                      ingredient_ids: [],
