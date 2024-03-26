@@ -1,15 +1,37 @@
-<p>
-  <strong>Name:</strong>
-  <%= @menu.name %>
-</p>
-
-<p>
-  <strong>Recipes:</strong>
-  <%# <%= @menu.recipes.map(&:name).join(', ') %>
-  <% @menu.recipes.each do |recipe| %>
-    <%= link_to "#{recipe.name}", recipe_path(recipe.id) %>
+<% case @menu.meal_type.length %>
+<% when 3 %>
+  <% @recipes.each_with_index do |recipe, index| %>
+    <% if index % 3 == 0 %>
+      <h2>Day : <%= (index / 3 + 1).ceil %></h2>
+    <% end %>
+    <p><%= recipe.name %></p>
   <% end %>
-</p>
+<% when 2 %>
+  <% @recipes.each_with_index do |recipe, index| %>
+    <% if index % 2 == 0 %>
+      <h2>Day : <%= (index / 2 + 1).ceil %></h2>
+    <% end %>
+    <p><%= recipe.name %></p>
+  <% end %>
+<% when 1 %>
+  <% @recipes.each_with_index do |recipe, index| %>
+    <h2>Day : <%= (index / 1 + 1).ceil %></h2>
+    <p><%= recipe.name %></p>
+  <% end %>
+<% end %>
+
+
+
+
+<h3>Tags included in menu</h3>
+<% @menu_tags.each do |tag| %>
+  <p><%= Tag.where(id: tag).first.name %></p>
+<% end %>
+
+<h3>Ingredients included in menu</h3>
+<% @ingredients.each do |ingredient| %>
+  <p><%= ingredient %></p>
+<% end %>
 
 <%= link_to 'Edit', edit_menu_path(@menu) %> |
 <%= link_to 'Back', menus_path %>

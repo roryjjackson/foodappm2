@@ -5,56 +5,111 @@ class MenusController < ApplicationController
     @menus = Menu.all
   end
 
+  def day_by_day_plan(menu)
+    @recipes = []
+
+    case menu.meal_type
+    when ["Breakfast", "Lunch", "Dinner"]
+      menu.recipes.where(meal_type: ["Breakfast"]).zip(menu.recipes.where(meal_type: ["Lunch"]), menu.recipes.where(meal_type: ["Dinner"])) do |recipe1, recipe2, recipe3|
+        @recipes << recipe1
+        @recipes << recipe2
+        @recipes << recipe3
+      end
+    when ["Breakfast", "Lunch"]
+      menu.recipes.where(meal_type: ["Breakfast"]).zip(menu.recipes.where(meal_type: ["Lunch"])) do |recipe1, recipe2|
+        @recipes << recipe1
+        @recipes << recipe2
+      end
+    when ["Lunch", "Dinner"]
+      menu.recipes.where(meal_type: ["Lunch"]).zip(menu.recipes.where(meal_type: ["Dinner"])) do |recipe1, recipe2|
+        @recipes << recipe1
+        @recipes << recipe2
+      end
+    when ["Breakfast", "Dinner"]
+      menu.recipes.where(meal_type: ["Breakfast"]).zip(menu.recipes.where(meal_type: ["Dinner"])) do |recipe1, recipe2|
+        @recipes << recipe1
+        @recipes << recipe2
+      end
+    when ["Breakfast"]
+      menu.recipes.where(meal_type: ["Breakfast"]).each do |recipe|
+        @recipes << recipe
+      end
+    when ["Lunch"]
+      menu.recipes.where(meal_type: ["Lunch"]).each do |recipe|
+        @recipes << recipe
+      end
+    when ["Dinner"]
+      menu.recipes.where(meal_type: ["Dinner"]).each do |recipe|
+        @recipes << recipe
+      end
+    end
+    @recipes
+  end
+
   def show
+    @menu = Menu.find(params[:id])
+    day_by_day_plan(@menu)
+
+    @ingredients = []
+
+    @menu.recipes.ids.each do |recipe|
+      ingredients = Recipe.where(id: recipe).first.ingredients
+
+      ingredients.each do |ingredient|
+        @ingredients << ingredient.name
+      end
+    end
+
+    @menu_tags = []
+
+    @menu.recipe_ids.each do |recipe_id|
+      recipe = Recipe.where(id: recipe_id)
+      @menu_tags << recipe.first.tag_ids
+    end
   end
 
   def new
     @menu = Menu.new
-    @tags = Tag.all
-    @ingredients = Ingredient.all
+    # @tags = Tag.all
+    # @ingredients = Ingredient.all
   end
 
-  def compare_tags(array1, array2)
-    array2.all? { |element| array1.include?(element) }
+  def add_recipes_by_meal_type(menu)
+    recipes = []
+
+    menu.meal_type.each do |type|
+      recipes << Recipe.all.where(meal_type: ["#{type}"]).sample(@menu.days_planned)
+    end
+
+    recipes
   end
 
   def create
     @menu = Menu.new(menu_params)
 
-    if @menu.save
-      selected_tag_ids = menu_params[:tag_ids].reject { |element| element.empty? }
-      Recipe.all.each do |recipe|
-        tags_array = []
+    relevant_recipes = add_recipes_by_meal_type(@menu)
 
-        recipe.tags.each do |tag|
-          tags_array << tag.id
-        end
-        @menu.recipes << recipe if compare_tags(tags_array.map(&:to_s), selected_tag_ids)
-      end
-      selected_ingredient_ids = menu_params[:ingredient_ids]
-      ingredients = Ingredient.joins(:menu_ingredients).where(menu_ingredients: { menu_id: @menu.id, ingredient_id: selected_ingredient_ids }).distinct
-      @menu.ingredients << ingredients
+    relevant_recipes.each do |recipe|
+      @menu.recipes << recipe
+    end
+
+    if @menu.save
       redirect_to @menu, notice: 'Menu was successfully created.'
     else
       render :new
     end
   end
 
-
   def edit
   end
 
   def update
-    if @menu.update(menu_params)
-      # Update the associated tags
-      selected_tag_ids = menu_params[:tag_ids]
-      @menu.tags = Tag.where(id: selected_tag_ids)
+    @menu.recipes.destroy_all
 
-      # Update the associated recipes based on the selected tags in menu_params
-      selected_tag_ids = menu_params[:tag_ids]
-      recipes = Recipe.joins(:tags).where(tags: { id: selected_tag_ids }).distinct
-      random_recipes = recipes.sample(3)
-      @menu.recipes = random_recipes
+    if @menu.update(menu_params)
+      relevant_recipes = add_recipes_by_meal_type(@menu)
+      @menu.recipes << relevant_recipes
+      day_by_day_plan(@menu)
       redirect_to @menu, notice: 'Menu was successfully updated.'
     else
       render :edit
@@ -68,6 +123,10 @@ class MenusController < ApplicationController
     redirect_to menus_url, notice: 'Menu was successfully destroyed.'
   end
 
+  def compare_tags(array1, array2)
+    array2.all? { |element| array1.include?(element) }
+  end
+
   private
 
   def set_menu
@@ -75,6 +134,12 @@ class MenusController < ApplicationController
   end
 
   def menu_params
-    params.require(:menu).permit(:name, :description, tag_ids: [], recipe_ids: [], ingredient_ids: [])
+    params.require(:menu).permit(:name,
+                                 :description,
+                                 :days_planned,
+                                 tag_ids: [],
+                                 recipe_ids: [],
+                                 ingredient_ids: [],
+                                 meal_type: [])
   end
 end
