@@ -1,3 +1,5 @@
+<%= render partial: 'recipe_search_form' %>
+
 <div class="cards">
   <% @recipes.each do |recipe| %>
     <%= link_to recipe_path(recipe.id) do %>

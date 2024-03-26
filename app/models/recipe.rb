@@ -13,13 +13,10 @@ class Recipe < ApplicationRecord
   has_many :favourite_recipes, dependent: :destroy
   has_many :favourites, through: :favourite_recipes
 
-  # include PgSearch::Model
-  # pg_search_scope :search_for_ingredient_from_recipe,
-  #                 against: [:name],
-  #                 # associated_against: {
-  #                 #   ingredients: [:name]
-  #                 # },
-  #                 using: {
-  #                   tsearch: { prefix: true }
-  #                 }
+  include PgSearch::Model
+  pg_search_scope :search_by_recipe,
+                  against: [:name],
+                  using: {
+                    tsearch: { prefix: true }
+                  }
 end
