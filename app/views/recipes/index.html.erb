@@ -1,5 +1,9 @@
-<%= render partial: 'recipe_search_form' %>
-
+<div class="utilities-container">
+  <%= render partial: 'recipe_search_form' %>
+  <%= link_to new_recipe_path, class: "btn btn-flat" do %>
+    New Recipe
+  <% end %>
+</div>
 <div class="cards">
   <% @recipes.each do |recipe| %>
     <%= link_to recipe_path(recipe.id) do %>
@@ -7,7 +11,3 @@
     <% end %>
   <% end %>
 </div>
-
-<%= link_to new_recipe_path, class: "btn btn-flat" do %>
-  New Recipe
-<% end %>

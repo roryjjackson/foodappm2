@@ -4,12 +4,22 @@ Tag.destroy_all
 Menu.destroy_all
 user1 = User.create!(email: "test1@test.com", password: "123456")
 
-# Create tags
-tag1 = Tag.create!(name: "Asian")
-tag2 = Tag.create!(name: "Mexican")
-tag3 = Tag.create!(name: "British")
+tags = ["Breakfast",
+        "Lunch",
+        "Dinner",
+        "Savoury snack",
+        "Sweet snack",
+        "Dessert",
+        "Side dish",
+        "Main",
+        "Starter",
+        "Bread"]
 
-puts "Recipes and tags created"
+tags.each do |tag|
+  Tag.create!(name: tag)
+end
+
+puts "tags created"
 
 meats = [
   "Sirloin",
@@ -1150,8 +1160,7 @@ Recipe.create!(user_id: user1.id, name: "Fruit Smoothie",
                instructions: "Blend together mixed fruits such as berries, bananas, and mango with yogurt and a drizzle of honey until smooth. Serve immediately.",
                prep_time: 10, cook_time: 0, meal_type: ["Breakfast"])
 
-
-
+puts "recipes created"
 
 Recipe.all.each do |recipe|
 require "open-uri"
@@ -1176,3 +1185,12 @@ require "open-uri"
   recipe.photo.attach(io: opened_pic, filename: "nes.png", content_type: "image/png") unless recipe.photo.attached?
   recipe.save
 end
+
+
+my_recipes = [
+  Recipe.create!(user_id: user1.id, name: "",
+    description: "",
+    instructions: "",
+    prep_time: 10, cook_time: 0, meal_type: [""])
+
+]
