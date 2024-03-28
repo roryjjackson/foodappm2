@@ -1,10 +1,18 @@
-.button {
-  border: solid black 1px;
-  border-radius: 5px;
-  font-family: 'Courier New', Courier, monospace;
-  background-color: black;
-  color: white;
-  padding: 20px;
-  text-decoration: none;
-  margin: 30px 30px 30px 0;
+.btn-flat {
+  color: $snow;
+  padding: 8px 24px;
+  border-radius: 4px;
+  background: $hollywoodCerise;
+  transition: background 0.3s ease;
+  margin: 20px 20px 0 0;
+
+}
+
+.btn-flat:hover {
+  background: $hollywoodCeriseHover;
+  color: $snow;
+}
+
+.btn {
+  color: $snow;
 }

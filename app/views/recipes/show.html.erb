@@ -1,20 +1,31 @@
 <div class="recipes">
-  <p style="color: green"><%= notice %></p>
-
   <%= render @recipe %>
+<div>
 
-  <div>
-    <%= link_to "Edit this recipe", edit_recipe_path(@recipe), class: "button" %>
-    <%= link_to "Back to recipes", recipes_path, class: "button" %>
+<p class="text"><%= @recipe.description %></p>
+<br/>
+<h3>Instructions</h3>
+<p class="text"><%= @recipe.instructions %></p>
 
-    <%= button_to "Destroy this recipe", @recipe, method: :delete, class: "button" %>
-  </div>
-  <h3>Tags</h3>
-  <% @recipe.tags.each do |tag| %>
-    <p><%= tag.name %></p>
+<h3>Course</h3>
+<p><%= @recipe.meal_type.join(", ") %></p>
+<h3>Tags</h3>
+<% @recipe.tags.each do |tag| %>
+  <p><%= tag.name %></p>
+<% end %>
+<h3>Ingredients</h3>
+<% @recipe.ingredients.each do |ingredient| %>
+  <p><%= ingredient.name %></p>
+<% end %>
+
+<div class="cards">
+  <%= link_to recipes_path, class: "btn btn-flat" do %>
+    Back to all Recipes
   <% end %>
-  <h3>Ingredients in this dish</h3>
-  <% @recipe.ingredients.each do |ingredient| %>
-    <p><%= ingredient.name %></p>
+  <%= link_to edit_recipe_path(@recipe), class: "btn btn-flat" do %>
+    Edit recipe
   <% end %>
+  <%# <%= button_to @recipe, method: :delete , class: "btn btn-flat" do %>
+    <%# Delete this Recipe %>
+  <%# <% end %>
 </div>

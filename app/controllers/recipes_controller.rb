@@ -4,8 +4,16 @@ class RecipesController < ApplicationController
   # GET /recipes or /recipes.json
   def index
     @recipes = Recipe.all
+
     if params[:tag_id].present?
       @recipes = @recipes.joins(:tags).where(tags: { id: params[:tag_id] })
+    end
+
+    query = params[:query]
+    if query.present?
+      @recipes = Recipe.search_by_recipe(query)
+    else
+      @recipes = Recipe.all
     end
   end
 
@@ -36,17 +44,8 @@ class RecipesController < ApplicationController
     @ingredients = Ingredient.search_by_ingredient(params[:search])
 
     @recipe.user = current_user
-
     respond_to do |format|
       if @recipe.save
-        # selected_ingredient_ids = recipe_params[:ingredient_ids]
-
-        # # ingredients = Ingredient.joins(:recipe_ingredients).where(recipe_ingredients: { id: selected_ingredient_ids }).distinct
-        # ingredients = Ingredient.joins(:recipe_ingredients).where(recipe_ingredients: { recipe_id: @recipe.id, ingredient_id: selected_ingredient_ids }).distinct
-
-
-        # @recipe.ingredients << ingredients
-
         format.html { redirect_to recipe_url(@recipe), notice: "Recipe was successfully created." }
         format.json { render :show, status: :created, location: @recipe }
       else
@@ -93,6 +92,7 @@ class RecipesController < ApplicationController
                                      :instructions,
                                      :prep_time,
                                      :cook_time,
+                                     :photo,
                                      :user_id,
                                      tag_ids: [],
                                      ingredient_ids: [],

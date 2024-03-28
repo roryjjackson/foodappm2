@@ -1,43 +1,25 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
-#   Character.create(name: "Luke", movie: movies.first)
-
-# Create User for Testing
+Recipe.destroy_all
+Ingredient.destroy_all
+Tag.destroy_all
+Menu.destroy_all
 user1 = User.create!(email: "test1@test.com", password: "123456")
 
+tags = ["Breakfast",
+        "Lunch",
+        "Dinner",
+        "Savoury snack",
+        "Sweet snack",
+        "Dessert",
+        "Side dish",
+        "Main",
+        "Starter",
+        "Bread"]
 
-# Create tags
-tag1 = Tag.create!(name: "Asian")
-tag2 = Tag.create!(name: "Mexican")
-tag3 = Tag.create!(name: "British")
-# tag5 = Tag.create!(name: "Breakfast")
-# tag6 = Tag.create!(name: "Lunch")
-# tag7 = Tag.create!(name: "Dinner")
-# tag8 = Tag.create!(name: "Snack")/
+tags.each do |tag|
+  Tag.create!(name: tag)
+end
 
-# Create recipes
-recipe1 = Recipe.create!(name: "Brekky Dumplings", description: "", instructions: "", prep_time: 30, cook_time: 120, user_id: 1, meal_type: ["Breakfast"])
-recipe2 = Recipe.create!(name: "Lunch Tacos", description: "", instructions: "", prep_time: 30, cook_time: 120, user_id: 1, meal_type: ["Lunch"])
-recipe3 = Recipe.create!(name: "Steak and ale pie", description: "", instructions: "", prep_time: 30, cook_time: 120, user_id: 1, meal_type: ["Dinner"])
-recipe4 = Recipe.create!(name: "Brekky Noodles", description: "", instructions: "", prep_time: 30, cook_time: 120, user_id: 1, meal_type: ["Breakfast"])
-recipe5 = Recipe.create!(name: "Lunch Fajitas", description: "", instructions: "", prep_time: 30, cook_time: 120, user_id: 1, meal_type: ["Lunch"])
-recipe6 = Recipe.create!(name: "Fish and chips", description: "", instructions: "", prep_time: 30, cook_time: 120, user_id: 1, meal_type: ["Dinner"])
-
-# Associate tags with recipes through the join table
-recipe1.tags << tag1
-recipe2.tags << tag2
-recipe3.tags << tag3
-recipe4.tags << tag1
-recipe5.tags << tag2
-recipe6.tags << tag3
-
-
-
-puts "Recipes and tags created"
+puts "tags created"
 
 meats = [
   "Sirloin",
@@ -105,7 +87,7 @@ meats = [
 ]
 
 meats.each do |meat|
-  Ingredient.create!(name: "#{meat}", description: "meat")
+  Ingredient.create!(name: "#{meat}", description: "Meat")
 end
 
 seafood = [
@@ -154,7 +136,7 @@ seafood = [
 ]
 
 seafood.each do |item|
-  Ingredient.create!(name: "#{item}", description: "seafood")
+  Ingredient.create!(name: "#{item}", description: "Seafood")
 end
 
 dairyandeggs = [
@@ -209,7 +191,7 @@ dairyandeggs = [
 ]
 
 dairyandeggs.each do |item|
-  Ingredient.create!(name: "#{item}", description: "dairy and eggs")
+  Ingredient.create!(name: "#{item}", description: "Dairy and eggs")
 end
 
 vegetables = [
@@ -301,7 +283,7 @@ vegetables = [
 ]
 
 vegetables.each do |item|
-  Ingredient.create!(name: "#{item}", description: "vegetable")
+  Ingredient.create!(name: "#{item}", description: "Vegetable")
 end
 
 fruits = [
@@ -417,7 +399,7 @@ fruits = [
 ]
 
 fruits.each do |item|
-  Ingredient.create!(name: "#{item}", description: "fruit")
+  Ingredient.create!(name: "#{item}", description: "Fruit")
 end
 
 grainsandcereals = [
@@ -485,7 +467,7 @@ grainsandcereals = [
 ]
 
 grainsandcereals.each do |item|
-  Ingredient.create!(name: "#{item}", description: "grains and cereal")
+  Ingredient.create!(name: "#{item}", description: "Grains and cereal")
 end
 
 legumesandpulses = [
@@ -538,7 +520,7 @@ legumesandpulses = [
 ]
 
 legumesandpulses.each do |item|
-  Ingredient.create!(name: "#{item}", description: "legumes and pulses")
+  Ingredient.create!(name: "#{item}", description: "Legumes and pulses")
 end
 
 nutsandseeds = [
@@ -586,7 +568,7 @@ nutsandseeds = [
 ]
 
 nutsandseeds.each do |item|
-  Ingredient.create!(name: "#{item}", description: "nuts and seeds")
+  Ingredient.create!(name: "#{item}", description: "Nuts and seeds")
 end
 
 herbsandspices = [
@@ -668,7 +650,7 @@ herbsandspices = [
 ]
 
 herbsandspices.each do |item|
-  Ingredient.create!(name: "#{item}", description: "herbs and spices")
+  Ingredient.create!(name: "#{item}", description: "Herbs and spices")
 end
 
 oilsandfats = [
@@ -736,7 +718,7 @@ oilsandfats = [
 ]
 
 oilsandfats.each do |item|
-  Ingredient.create!(name: "#{item}", description: "oils and fats")
+  Ingredient.create!(name: "#{item}", description: "Oils and fats")
 end
 
 sweeteners = [
@@ -768,7 +750,7 @@ sweeteners = [
 ]
 
 sweeteners.each do |item|
-  Ingredient.create!(name: "#{item}", description: "sweeteners")
+  Ingredient.create!(name: "#{item}", description: "Sweeteners")
 end
 
 condimentsandsauces = [
@@ -828,7 +810,7 @@ condimentsandsauces = [
 ]
 
 condimentsandsauces.each do |item|
-  Ingredient.create!(name: "#{item}", description: "condiments and sauces")
+  Ingredient.create!(name: "#{item}", description: "Condiments and sauces")
 end
 
 bakingandcookingessentials = [
@@ -892,7 +874,7 @@ bakingandcookingessentials = [
 ]
 
 bakingandcookingessentials.each do |item|
-  Ingredient.create!(name: "#{item}", description: "baking and cooking essentials")
+  Ingredient.create!(name: "#{item}", description: "Baking and cooking essentials")
 end
 
 beverages = [
@@ -952,7 +934,7 @@ beverages = [
 ]
 
 beverages.each do |item|
-  Ingredient.create!(name: "#{item}", description: "beverage")
+  Ingredient.create!(name: "#{item}", description: "Beverage")
 end
 
 pasta = [
@@ -989,7 +971,7 @@ pasta = [
 ]
 
 pasta.each do |item|
-  Ingredient.create!(name: "#{item}", description: "pasta")
+  Ingredient.create!(name: "#{item}", description: "Pasta")
 end
 
 miscellaneous = [
@@ -1048,11 +1030,167 @@ miscellaneous = [
 ]
 
 miscellaneous.each do |item|
-  Ingredient.create!(name: "#{item}", description: "miscellaneous")
+  Ingredient.create!(name: "#{item}", description: "Miscellaneous")
 end
-recipe1.ingredients << Ingredient.where(name: "Chicken breast").first
-recipe2.ingredients << Ingredient.where(name: "Ribeye").first
-recipe3.ingredients << Ingredient.where(name: "Sirloin").first
-recipe4.ingredients << Ingredient.where(name: "Pork belly").first
-recipe5.ingredients << Ingredient.where(name: "Chicken thighs").first
-recipe6.ingredients << Ingredient.where(name: "Cod").first
+
+#Building Recipes:
+
+Recipe.create!(user_id: user1.id, name: "Blueberry Pancakes",
+               description: "Fluffy pancakes bursting with blueberries",
+               instructions: "Mix flour, baking powder, milk, eggs, and blueberries. Cook on a hot griddle until golden brown. Serve with maple syrup.",
+               prep_time: 15, cook_time: 15, meal_type: ["Breakfast"])
+
+Recipe.create!(user_id: user1.id, name: "Chicken Caesar Salad",
+               description: "Classic salad with grilled chicken, romaine lettuce, and Caesar dressing",
+               instructions: "Grill chicken until cooked through. Toss chopped romaine lettuce with Caesar dressing. Top with sliced chicken and croutons.",
+               prep_time: 20, cook_time: 15, meal_type: ["Lunch"])
+
+Recipe.create!(user_id: user1.id, name: "Spaghetti Bolognese",
+               description: "Hearty pasta dish with savory meat sauce",
+               instructions: "Cook spaghetti until al dente. Meanwhile, brown ground beef with onions and garlic. Add tomatoes, herbs, and simmer. Serve sauce over cooked spaghetti.",
+               prep_time: 20, cook_time: 30, meal_type: ["Dinner"])
+
+Recipe.create!(user_id: user1.id, name: "Avocado Toast",
+               description: "Sliced avocado on toasted bread with seasoning",
+               instructions: "Toast bread until golden brown. Mash avocado onto toast. Sprinkle with salt, pepper, and red pepper flakes. Drizzle with olive oil.",
+               prep_time: 10, cook_time: 5, meal_type: ["Breakfast"])
+
+Recipe.create!(user_id: user1.id, name: "Turkey Sandwich",
+               description: "Classic sandwich with roasted turkey, lettuce, and tomato",
+               instructions: "Layer roasted turkey, lettuce, and tomato slices between two slices of bread. Add condiments as desired.",
+               prep_time: 10, cook_time: 0, meal_type: ["Lunch"])
+
+Recipe.create!(user_id: user1.id, name: "Beef Stir Fry",
+               description: "Quick and flavorful stir-fry with beef and vegetables",
+               instructions: "Stir-fry beef strips with bell peppers, onions, and broccoli. Add soy sauce and garlic. Serve over rice.",
+               prep_time: 15, cook_time: 15, meal_type: ["Dinner"])
+
+Recipe.create!(user_id: user1.id, name: "Omelette",
+               description: "Fluffy omelette filled with cheese, tomatoes, and spinach",
+               instructions: "Whisk eggs with a splash of milk. Cook in a hot skillet, adding cheese, tomatoes, and spinach. Fold and serve hot.",
+               prep_time: 10, cook_time: 10, meal_type: ["Breakfast"])
+
+Recipe.create!(user_id: user1.id, name: "Grilled Cheese Sandwich",
+               description: "Classic sandwich with melted cheese between grilled bread slices",
+               instructions: "Butter bread slices on one side. Place cheese between slices, buttered sides out. Grill in a skillet until golden brown and cheese is melted.",
+               prep_time: 5, cook_time: 10, meal_type: ["Lunch"])
+
+Recipe.create!(user_id: user1.id, name: "Salmon with Roasted Vegetables",
+               description: "Healthy dish with baked salmon and assorted roasted vegetables",
+               instructions: "Season salmon fillets with herbs and lemon juice. Roast alongside seasoned vegetables until cooked through. Serve hot.",
+               prep_time: 20, cook_time: 25, meal_type: ["Dinner"])
+
+Recipe.create!(user_id: user1.id, name: "Yogurt Parfait",
+               description: "Layered parfait with yogurt, granola, and fresh berries",
+               instructions: "Alternate layers of yogurt, granola, and berries in a glass. Repeat layers until full. Serve chilled.",
+               prep_time: 10, cook_time: 0, meal_type: ["Breakfast"])
+
+Recipe.create!(user_id: user1.id, name: "Caesar Wrap",
+               description: "Wrap filled with grilled chicken, romaine lettuce, and Caesar dressing",
+               instructions: "Grill chicken until cooked through. Toss with chopped romaine lettuce and Caesar dressing. Wrap in a tortilla.",
+               prep_time: 15, cook_time: 15, meal_type: ["Lunch"])
+
+Recipe.create!(user_id: user1.id, name: "Beef Tacos",
+               description: "Mexican street food favorite with seasoned beef and toppings",
+               instructions: "Brown ground beef with taco seasoning. Warm tortillas. Assemble tacos with beef, lettuce, tomato, cheese, and salsa.",
+               prep_time: 15, cook_time: 15, meal_type: ["Dinner"])
+
+Recipe.create!(user_id: user1.id, name: "Fruit Salad",
+               description: "Refreshing salad with assorted fruits and honey-lime dressing",
+               instructions: "Combine sliced fruits in a bowl. Drizzle with honey-lime dressing. Toss gently to coat. Serve chilled.",
+               prep_time: 15, cook_time: 0, meal_type: ["Breakfast"])
+
+Recipe.create!(user_id: user1.id, name: "BLT Sandwich",
+               description: "Classic sandwich with bacon, lettuce, and tomato",
+               instructions: "Fry bacon until crispy. Toast bread slices. Layer bacon, lettuce, and tomato between slices. Add mayonnaise if desired.",
+               prep_time: 10, cook_time: 10, meal_type: ["Lunch"])
+
+Recipe.create!(user_id: user1.id, name: "Pasta Primavera",
+               description: "Light and colorful pasta dish with mixed vegetables",
+               instructions: "Cook pasta until al dente. Saute assorted vegetables in olive oil. Toss with cooked pasta and Parmesan cheese.",
+               prep_time: 15, cook_time: 20, meal_type: ["Dinner"])
+
+Recipe.create!(user_id: user1.id, name: "Smoothie Bowl",
+               description: "Thick smoothie topped with granola, fruit, and seeds",
+               instructions: "Blend frozen fruit with yogurt or milk until smooth. Pour into a bowl and add toppings such as granola, sliced fruit, and chia seeds.",
+               prep_time: 10, cook_time: 0, meal_type: ["Breakfast"])
+
+Recipe.create!(user_id: user1.id, name: "Mushroom Soup",
+               description: "Creamy soup made with mushrooms, onions, and thyme",
+               instructions: "Saute mushrooms and onions until soft. Add broth and thyme. Simmer until flavors meld. Blend until smooth. Serve hot.",
+               prep_time: 20, cook_time: 25, meal_type: ["Lunch"])
+
+Recipe.create!(user_id: user1.id, name: "Chicken Alfredo Pasta",
+               description: "Creamy pasta dish with grilled chicken and Parmesan cheese",
+               instructions: "Cook pasta until al dente. Grill chicken until cooked through. Prepare Alfredo sauce with cream, butter, and Parmesan cheese. Toss cooked pasta with sauce and sliced chicken.",
+               prep_time: 20, cook_time: 20, meal_type: ["Dinner"])
+
+Recipe.create!(user_id: user1.id, name: "French Toast",
+               description: "Classic breakfast dish with bread dipped in egg mixture and fried",
+               instructions: "Whisk eggs with milk and cinnamon. Dip bread slices in mixture and fry until golden brown. Serve with syrup and powdered sugar.",
+               prep_time: 10, cook_time: 10, meal_type: ["Breakfast"])
+
+Recipe.create!(user_id: user1.id, name: "Chicken Salad Sandwich",
+               description: "Savory salad made with chicken, celery, and mayonnaise",
+               instructions: "Mix cooked chicken with chopped celery, mayonnaise, and seasonings. Serve on bread or in a wrap with lettuce and tomato.",
+               prep_time: 15, cook_time: 0, meal_type: ["Lunch"])
+
+Recipe.create!(user_id: user1.id, name: "Egg Fried Rice",
+               description: "Quick and flavorful fried rice with scrambled eggs and vegetables",
+               instructions: "Cook rice according to package instructions. Scramble eggs in a skillet and set aside. Stir-fry vegetables such as peas, carrots, and bell peppers. Add cooked rice and eggs to the skillet. Season with soy sauce and sesame oil. Cook until heated through.",
+               prep_time: 15, cook_time: 15, meal_type: ["Dinner"])
+
+Recipe.create!(user_id: user1.id, name: "Bagel with Lox",
+               description: "Classic breakfast or brunch dish with a toasted bagel topped with smoked salmon, cream cheese, and garnishes",
+               instructions: "Toast a bagel until golden brown. Spread cream cheese on both halves. Layer slices of smoked salmon on one half. Top with sliced tomato, red onion, capers, and fresh dill. Sandwich the two halves together and serve.",
+               prep_time: 10, cook_time: 0, meal_type: ["Breakfast"])
+
+Recipe.create!(user_id: user1.id, name: "Chicken Caesar Wrap",
+               description: "Wrap filled with grilled chicken, romaine lettuce, and Caesar dressing",
+               instructions: "Grill chicken until cooked through. Toss with chopped romaine lettuce and Caesar dressing. Wrap in a tortilla.",
+               prep_time: 15, cook_time: 15, meal_type: ["Lunch"])
+
+Recipe.create!(user_id: user1.id, name: "Beef Burrito Bowl",
+               description: "Mexican-inspired bowl with seasoned beef, rice, beans, and toppings",
+               instructions: "Cook rice according to package instructions. Brown ground beef with taco seasoning. Serve over rice with black beans, corn, diced tomatoes, avocado slices, and shredded cheese. Garnish with cilantro and lime wedges.",
+               prep_time: 20, cook_time: 25, meal_type: ["Dinner"])
+
+Recipe.create!(user_id: user1.id, name: "Fruit Smoothie",
+               description: "Refreshing drink made with assorted fruits, yogurt, and honey",
+               instructions: "Blend together mixed fruits such as berries, bananas, and mango with yogurt and a drizzle of honey until smooth. Serve immediately.",
+               prep_time: 10, cook_time: 0, meal_type: ["Breakfast"])
+
+puts "recipes created"
+
+Recipe.all.each do |recipe|
+require "open-uri"
+
+  photos = [
+    "https://res.cloudinary.com/dfipoufmj/image/upload/v1711536399/pexels-pascal-claivaz-410648_tsje0x.jpg",
+    "https://res.cloudinary.com/dfipoufmj/image/upload/v1711536399/pexels-nerfee-mirandilla-3186654_lyiovo.jpg",
+    "https://res.cloudinary.com/dfipoufmj/image/upload/v1711536399/pexels-robin-stickel-70497_fomzi6.jpg",
+    "https://res.cloudinary.com/dfipoufmj/image/upload/v1711536398/pexels-lumn-604969_l4nqnd.jpg",
+    "https://res.cloudinary.com/dfipoufmj/image/upload/v1711536398/pexels-dana-tentis-691114_llulqz.jpg",
+    "https://res.cloudinary.com/dfipoufmj/image/upload/v1711536398/pexels-ella-olsson-1640772_yciwhn.jpg",
+    "https://res.cloudinary.com/dfipoufmj/image/upload/v1711536397/pexels-lisa-fotios-1279330_nfpmgs.jpg",
+    "https://res.cloudinary.com/dfipoufmj/image/upload/v1711536397/pexels-chan-walrus-958545_gy1o9m.jpg",
+    "https://res.cloudinary.com/dfipoufmj/image/upload/v1711536395/pexels-jane-trang-doan-1099680_aszdqe.jpg",
+    "https://res.cloudinary.com/dfipoufmj/image/upload/v1711536394/pexels-jang-_s-_-699953_s5hoa4.jpg",
+    "https://res.cloudinary.com/dfipoufmj/image/upload/v1711536394/pexels-ash-376464_1_fo8uyf.jpg",
+    "https://res.cloudinary.com/dfipoufmj/image/upload/v1711457480/development/ft2ujru7qgg1d980ej4ccr565icn.jpg"
+  ]
+
+  piccy = photos.sample(1).first
+  opened_pic = URI.open(piccy)
+  recipe.photo.attach(io: opened_pic, filename: "nes.png", content_type: "image/png") unless recipe.photo.attached?
+  recipe.save
+end
+
+
+my_recipes = [
+  Recipe.create!(user_id: user1.id, name: "",
+    description: "",
+    instructions: "",
+    prep_time: 10, cook_time: 0, meal_type: [""])
+
+]

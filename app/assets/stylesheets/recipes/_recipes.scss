@@ -1,7 +1,3 @@
-.recipes {
-  padding: 0 50px;
-}
-
 .recipe-container {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -10,6 +6,10 @@
 
 .recipe-card {
   padding: 30px;
-  border: solid black 1px;
   border-radius: 5px;
+}
+
+.utilities-container {
+  display: block;
+  justify-content: space-between;
 }

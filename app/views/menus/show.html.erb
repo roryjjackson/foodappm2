@@ -1,41 +1,49 @@
 <% case @menu.meal_type.length %>
 <% when 3 %>
-  <% @recipes.each_with_index do |recipe, index| %>
-    <% if index % 3 == 0 %>
-      <h2>Day : <%= (index / 3 + 1).ceil %></h2>
+  <div class="cards menu-cards">
+    <% @recipes.each_with_index do |recipe, index| %>
+      <%= link_to recipe_path(recipe) do %>
+        <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= cl_image_path(recipe.photo.key, height: 300, width: 400, crop: :fill) %>)">
+          Day: <%= (index/3 +1).ceil %> <%= recipe.name %>
+        </div>
+      <% end %>
     <% end %>
-    <p><%= recipe.name %></p>
-  <% end %>
+  </div>
 <% when 2 %>
-  <% @recipes.each_with_index do |recipe, index| %>
-    <% if index % 2 == 0 %>
-      <h2>Day : <%= (index / 2 + 1).ceil %></h2>
+  <div class="cards menu-cards">
+    <% @recipes.each_with_index do |recipe, index| %>
+      <%= link_to recipe_path(recipe) do %>
+        <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= cl_image_path(recipe.photo.key, height: 300, width: 400, crop: :fill) %>)">
+          Day: <%= (index/2 +1).ceil %> <%= recipe.name %>
+        </div>
+      <% end %>
     <% end %>
-    <p><%= recipe.name %></p>
-  <% end %>
+  </div>
 <% when 1 %>
-  <% @recipes.each_with_index do |recipe, index| %>
-    <h2>Day : <%= (index / 1 + 1).ceil %></h2>
-    <p><%= recipe.name %></p>
-  <% end %>
+  <div class="cards menu-cards">
+    <% @recipes.each_with_index do |recipe, index| %>
+      <%= link_to recipe_path(recipe) do %>
+        <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= cl_image_path(recipe.photo.key, height: 300, width: 400, crop: :fill) %>)">
+          Day: <%= (index +1).ceil %> <%= recipe.name %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
 <% end %>
 
-
-
-
-<h3>Tags included in menu</h3>
-<% @menu_tags.each do |tag| %>
-  <p><%= Tag.where(id: tag).first.name %></p>
-<% end %>
-
-<h3>Ingredients included in menu</h3>
+<h3>All Ingredients</h3>
 <% @ingredients.each do |ingredient| %>
   <p><%= ingredient %></p>
 <% end %>
 
-<%= link_to 'Edit', edit_menu_path(@menu) %> |
-<%= link_to 'Back', menus_path %>
 
-<%= form_with(model: @menu, method: :delete, url: menu_path(@menu), data: { confirm: 'Are you sure?' }) do |form| %>
-  <%= form.submit 'Destroy' %>
+
+<%= link_to menus_path, class: "btn btn-flat" do %>
+  Back to all menus
+<% end %>
+<%= link_to edit_menu_path(@menu), class: "btn btn-flat" do %>
+  Edit menu
+<% end %>
+<%= button_to @menu, method: :delete , class: "btn btn-flat" do %>
+  Delete this menu
 <% end %>
