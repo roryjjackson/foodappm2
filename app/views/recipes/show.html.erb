@@ -14,8 +14,10 @@
   <p><%= tag.name %></p>
 <% end %>
 <h3>Ingredients</h3>
-<% @recipe.ingredients.each do |ingredient| %>
-  <p><%= ingredient.name %></p>
+<% @recipe.recipe_ingredients.each do |ingredient| %>
+  <p><%= Ingredient.find(ingredient.ingredient_id).name %></p>
+  <p><%= ingredient.quantity %></p>
+  <p><%= ingredient.unit_of_measure %></p>
 <% end %>
 
 <div class="cards">

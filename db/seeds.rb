@@ -1,3 +1,5 @@
+require "open-uri"
+
 Recipe.destroy_all
 Ingredient.destroy_all
 Tag.destroy_all
@@ -1162,8 +1164,9 @@ Recipe.create!(user_id: user1.id, name: "Fruit Smoothie",
 
 puts "recipes created"
 
+
+
 Recipe.all.each do |recipe|
-require "open-uri"
 
   photos = [
     "https://res.cloudinary.com/dfipoufmj/image/upload/v1711536399/pexels-pascal-claivaz-410648_tsje0x.jpg",
@@ -1186,11 +1189,6 @@ require "open-uri"
   recipe.save
 end
 
-
-my_recipes = [
-  Recipe.create!(user_id: user1.id, name: "",
-    description: "",
-    instructions: "",
-    prep_time: 10, cook_time: 0, meal_type: [""])
-
-]
+Recipe.last.recipe_ingredients.create(ingredient: Ingredient.all.first,
+                                      quantity: 2,
+                                      unit_of_measure: "grams")
