@@ -4,18 +4,16 @@ Recipe.destroy_all
 Ingredient.destroy_all
 Tag.destroy_all
 Menu.destroy_all
-user1 = User.create!(email: "test1@test.com", password: "123456")
+admin = User.create!(email: "test1@test.com", password: "123456")
 
-tags = ["Breakfast",
-        "Lunch",
-        "Dinner",
-        "Savoury snack",
+tags = ["Savoury snack",
         "Sweet snack",
         "Dessert",
-        "Side dish",
+        "Side",
         "Main",
-        "Starter",
-        "Bread"]
+        "Small plate",
+        "Bread",
+        "Component"]
 
 tags.each do |tag|
   Tag.create!(name: tag)
@@ -211,7 +209,7 @@ vegetables = [
   "Green onions (Scallions)",
   "Leeks",
   "Garlic",
-  "Beefsteak tomatoes",
+  "Beef tomatoes",
   "Roma tomatoes",
   "Cherry tomatoes",
   "Grape tomatoes",
@@ -809,6 +807,7 @@ condimentsandsauces = [
   "Relish",
   "Chutney",
   "Aioli",
+  "Burger Sauce"
 ]
 
 condimentsandsauces.each do |item|
@@ -821,7 +820,7 @@ bakingandcookingessentials = [
   "Brown Sugar",
   "Baking Powder",
   "Baking Soda",
-  "Salt (Table Salt, Kosher Salt, Sea Salt)",
+  "Salt",
   "Vanilla Extract",
   "Yeast",
   "Cornstarch",
@@ -1029,6 +1028,7 @@ miscellaneous = [
   "Udon Noodles",
   "Soba Noodles",
   "Coconut Cream",
+  "Brioche Bun"
 ]
 
 miscellaneous.each do |item|
@@ -1037,158 +1037,68 @@ end
 
 #Building Recipes:
 
-Recipe.create!(user_id: user1.id, name: "Blueberry Pancakes",
-               description: "Fluffy pancakes bursting with blueberries",
-               instructions: "Mix flour, baking powder, milk, eggs, and blueberries. Cook on a hot griddle until golden brown. Serve with maple syrup.",
-               prep_time: 15, cook_time: 15, meal_type: ["Breakfast"])
+def create_recipe(recipe, ingredients, tags, photo)
+  ingredients.each do |ingredient_data|
+    ingredient = Ingredient.find_or_create_by(name: ingredient_data[:ingredient])
 
-Recipe.create!(user_id: user1.id, name: "Chicken Caesar Salad",
-               description: "Classic salad with grilled chicken, romaine lettuce, and Caesar dressing",
-               instructions: "Grill chicken until cooked through. Toss chopped romaine lettuce with Caesar dressing. Top with sliced chicken and croutons.",
-               prep_time: 20, cook_time: 15, meal_type: ["Lunch"])
+    recipe.recipe_ingredients.create!(
+      ingredient: ingredient,
+      quantity: ingredient_data[:quantity],
+      unit_of_measure: ingredient_data[:unit_of_measure]
+    )
+  end
 
-Recipe.create!(user_id: user1.id, name: "Spaghetti Bolognese",
-               description: "Hearty pasta dish with savory meat sauce",
-               instructions: "Cook spaghetti until al dente. Meanwhile, brown ground beef with onions and garlic. Add tomatoes, herbs, and simmer. Serve sauce over cooked spaghetti.",
-               prep_time: 20, cook_time: 30, meal_type: ["Dinner"])
-
-Recipe.create!(user_id: user1.id, name: "Avocado Toast",
-               description: "Sliced avocado on toasted bread with seasoning",
-               instructions: "Toast bread until golden brown. Mash avocado onto toast. Sprinkle with salt, pepper, and red pepper flakes. Drizzle with olive oil.",
-               prep_time: 10, cook_time: 5, meal_type: ["Breakfast"])
-
-Recipe.create!(user_id: user1.id, name: "Turkey Sandwich",
-               description: "Classic sandwich with roasted turkey, lettuce, and tomato",
-               instructions: "Layer roasted turkey, lettuce, and tomato slices between two slices of bread. Add condiments as desired.",
-               prep_time: 10, cook_time: 0, meal_type: ["Lunch"])
-
-Recipe.create!(user_id: user1.id, name: "Beef Stir Fry",
-               description: "Quick and flavorful stir-fry with beef and vegetables",
-               instructions: "Stir-fry beef strips with bell peppers, onions, and broccoli. Add soy sauce and garlic. Serve over rice.",
-               prep_time: 15, cook_time: 15, meal_type: ["Dinner"])
-
-Recipe.create!(user_id: user1.id, name: "Omelette",
-               description: "Fluffy omelette filled with cheese, tomatoes, and spinach",
-               instructions: "Whisk eggs with a splash of milk. Cook in a hot skillet, adding cheese, tomatoes, and spinach. Fold and serve hot.",
-               prep_time: 10, cook_time: 10, meal_type: ["Breakfast"])
-
-Recipe.create!(user_id: user1.id, name: "Grilled Cheese Sandwich",
-               description: "Classic sandwich with melted cheese between grilled bread slices",
-               instructions: "Butter bread slices on one side. Place cheese between slices, buttered sides out. Grill in a skillet until golden brown and cheese is melted.",
-               prep_time: 5, cook_time: 10, meal_type: ["Lunch"])
-
-Recipe.create!(user_id: user1.id, name: "Salmon with Roasted Vegetables",
-               description: "Healthy dish with baked salmon and assorted roasted vegetables",
-               instructions: "Season salmon fillets with herbs and lemon juice. Roast alongside seasoned vegetables until cooked through. Serve hot.",
-               prep_time: 20, cook_time: 25, meal_type: ["Dinner"])
-
-Recipe.create!(user_id: user1.id, name: "Yogurt Parfait",
-               description: "Layered parfait with yogurt, granola, and fresh berries",
-               instructions: "Alternate layers of yogurt, granola, and berries in a glass. Repeat layers until full. Serve chilled.",
-               prep_time: 10, cook_time: 0, meal_type: ["Breakfast"])
-
-Recipe.create!(user_id: user1.id, name: "Caesar Wrap",
-               description: "Wrap filled with grilled chicken, romaine lettuce, and Caesar dressing",
-               instructions: "Grill chicken until cooked through. Toss with chopped romaine lettuce and Caesar dressing. Wrap in a tortilla.",
-               prep_time: 15, cook_time: 15, meal_type: ["Lunch"])
-
-Recipe.create!(user_id: user1.id, name: "Beef Tacos",
-               description: "Mexican street food favorite with seasoned beef and toppings",
-               instructions: "Brown ground beef with taco seasoning. Warm tortillas. Assemble tacos with beef, lettuce, tomato, cheese, and salsa.",
-               prep_time: 15, cook_time: 15, meal_type: ["Dinner"])
-
-Recipe.create!(user_id: user1.id, name: "Fruit Salad",
-               description: "Refreshing salad with assorted fruits and honey-lime dressing",
-               instructions: "Combine sliced fruits in a bowl. Drizzle with honey-lime dressing. Toss gently to coat. Serve chilled.",
-               prep_time: 15, cook_time: 0, meal_type: ["Breakfast"])
-
-Recipe.create!(user_id: user1.id, name: "BLT Sandwich",
-               description: "Classic sandwich with bacon, lettuce, and tomato",
-               instructions: "Fry bacon until crispy. Toast bread slices. Layer bacon, lettuce, and tomato between slices. Add mayonnaise if desired.",
-               prep_time: 10, cook_time: 10, meal_type: ["Lunch"])
-
-Recipe.create!(user_id: user1.id, name: "Pasta Primavera",
-               description: "Light and colorful pasta dish with mixed vegetables",
-               instructions: "Cook pasta until al dente. Saute assorted vegetables in olive oil. Toss with cooked pasta and Parmesan cheese.",
-               prep_time: 15, cook_time: 20, meal_type: ["Dinner"])
-
-Recipe.create!(user_id: user1.id, name: "Smoothie Bowl",
-               description: "Thick smoothie topped with granola, fruit, and seeds",
-               instructions: "Blend frozen fruit with yogurt or milk until smooth. Pour into a bowl and add toppings such as granola, sliced fruit, and chia seeds.",
-               prep_time: 10, cook_time: 0, meal_type: ["Breakfast"])
-
-Recipe.create!(user_id: user1.id, name: "Mushroom Soup",
-               description: "Creamy soup made with mushrooms, onions, and thyme",
-               instructions: "Saute mushrooms and onions until soft. Add broth and thyme. Simmer until flavors meld. Blend until smooth. Serve hot.",
-               prep_time: 20, cook_time: 25, meal_type: ["Lunch"])
-
-Recipe.create!(user_id: user1.id, name: "Chicken Alfredo Pasta",
-               description: "Creamy pasta dish with grilled chicken and Parmesan cheese",
-               instructions: "Cook pasta until al dente. Grill chicken until cooked through. Prepare Alfredo sauce with cream, butter, and Parmesan cheese. Toss cooked pasta with sauce and sliced chicken.",
-               prep_time: 20, cook_time: 20, meal_type: ["Dinner"])
-
-Recipe.create!(user_id: user1.id, name: "French Toast",
-               description: "Classic breakfast dish with bread dipped in egg mixture and fried",
-               instructions: "Whisk eggs with milk and cinnamon. Dip bread slices in mixture and fry until golden brown. Serve with syrup and powdered sugar.",
-               prep_time: 10, cook_time: 10, meal_type: ["Breakfast"])
-
-Recipe.create!(user_id: user1.id, name: "Chicken Salad Sandwich",
-               description: "Savory salad made with chicken, celery, and mayonnaise",
-               instructions: "Mix cooked chicken with chopped celery, mayonnaise, and seasonings. Serve on bread or in a wrap with lettuce and tomato.",
-               prep_time: 15, cook_time: 0, meal_type: ["Lunch"])
-
-Recipe.create!(user_id: user1.id, name: "Egg Fried Rice",
-               description: "Quick and flavorful fried rice with scrambled eggs and vegetables",
-               instructions: "Cook rice according to package instructions. Scramble eggs in a skillet and set aside. Stir-fry vegetables such as peas, carrots, and bell peppers. Add cooked rice and eggs to the skillet. Season with soy sauce and sesame oil. Cook until heated through.",
-               prep_time: 15, cook_time: 15, meal_type: ["Dinner"])
-
-Recipe.create!(user_id: user1.id, name: "Bagel with Lox",
-               description: "Classic breakfast or brunch dish with a toasted bagel topped with smoked salmon, cream cheese, and garnishes",
-               instructions: "Toast a bagel until golden brown. Spread cream cheese on both halves. Layer slices of smoked salmon on one half. Top with sliced tomato, red onion, capers, and fresh dill. Sandwich the two halves together and serve.",
-               prep_time: 10, cook_time: 0, meal_type: ["Breakfast"])
-
-Recipe.create!(user_id: user1.id, name: "Chicken Caesar Wrap",
-               description: "Wrap filled with grilled chicken, romaine lettuce, and Caesar dressing",
-               instructions: "Grill chicken until cooked through. Toss with chopped romaine lettuce and Caesar dressing. Wrap in a tortilla.",
-               prep_time: 15, cook_time: 15, meal_type: ["Lunch"])
-
-Recipe.create!(user_id: user1.id, name: "Beef Burrito Bowl",
-               description: "Mexican-inspired bowl with seasoned beef, rice, beans, and toppings",
-               instructions: "Cook rice according to package instructions. Brown ground beef with taco seasoning. Serve over rice with black beans, corn, diced tomatoes, avocado slices, and shredded cheese. Garnish with cilantro and lime wedges.",
-               prep_time: 20, cook_time: 25, meal_type: ["Dinner"])
-
-Recipe.create!(user_id: user1.id, name: "Fruit Smoothie",
-               description: "Refreshing drink made with assorted fruits, yogurt, and honey",
-               instructions: "Blend together mixed fruits such as berries, bananas, and mango with yogurt and a drizzle of honey until smooth. Serve immediately.",
-               prep_time: 10, cook_time: 0, meal_type: ["Breakfast"])
-
-puts "recipes created"
+  tags.each do |tag_data|
+    tag = Tag.where(name: tag_data[:name]).first
 
 
 
-Recipe.all.each do |recipe|
+    recipe.recipe_tags.create!(tag_id: tag.id, recipe_id: recipe.id)
+  end
 
-  photos = [
-    "https://res.cloudinary.com/dfipoufmj/image/upload/v1711536399/pexels-pascal-claivaz-410648_tsje0x.jpg",
-    "https://res.cloudinary.com/dfipoufmj/image/upload/v1711536399/pexels-nerfee-mirandilla-3186654_lyiovo.jpg",
-    "https://res.cloudinary.com/dfipoufmj/image/upload/v1711536399/pexels-robin-stickel-70497_fomzi6.jpg",
-    "https://res.cloudinary.com/dfipoufmj/image/upload/v1711536398/pexels-lumn-604969_l4nqnd.jpg",
-    "https://res.cloudinary.com/dfipoufmj/image/upload/v1711536398/pexels-dana-tentis-691114_llulqz.jpg",
-    "https://res.cloudinary.com/dfipoufmj/image/upload/v1711536398/pexels-ella-olsson-1640772_yciwhn.jpg",
-    "https://res.cloudinary.com/dfipoufmj/image/upload/v1711536397/pexels-lisa-fotios-1279330_nfpmgs.jpg",
-    "https://res.cloudinary.com/dfipoufmj/image/upload/v1711536397/pexels-chan-walrus-958545_gy1o9m.jpg",
-    "https://res.cloudinary.com/dfipoufmj/image/upload/v1711536395/pexels-jane-trang-doan-1099680_aszdqe.jpg",
-    "https://res.cloudinary.com/dfipoufmj/image/upload/v1711536394/pexels-jang-_s-_-699953_s5hoa4.jpg",
-    "https://res.cloudinary.com/dfipoufmj/image/upload/v1711536394/pexels-ash-376464_1_fo8uyf.jpg",
-    "https://res.cloudinary.com/dfipoufmj/image/upload/v1711457480/development/ft2ujru7qgg1d980ej4ccr565icn.jpg"
-  ]
-
-  piccy = photos.sample(1).first
-  opened_pic = URI.open(piccy)
-  recipe.photo.attach(io: opened_pic, filename: "nes.png", content_type: "image/png") unless recipe.photo.attached?
+  opened_photo = URI.open(photo)
+  recipe.photo.attach(io: opened_photo, filename: "nes.png", content_type: "image/png")
   recipe.save
 end
 
-Recipe.last.recipe_ingredients.create(ingredient: Ingredient.all.first,
-                                      quantity: 2,
-                                      unit_of_measure: "grams")
+
+
+# Define recipes and their associated ingredients
+recipes_with_data = [
+  {
+    recipe_data: {
+      user_id: admin.id,
+      name: "Smash Burgers",
+      description: "Dirty, salty, fatty, but tasty af",
+      instructions: "Combine melted butter, salt, and beef. Ball up into equal size and refrigerate. When ready to fry, 'smash' the patty and fry on a high heat. Serve immediately with plenty burger sauce in a toasted bun.",
+      prep_time: 10,
+      cook_time: 10,
+      meal_type: ["Lunch"]
+    },
+    ingredients: [
+      { ingredient: "Ground beef (minced beef)", quantity: 100, unit_of_measure: "g" },
+      { ingredient: "Unsalted butter", quantity: 20, unit_of_measure: "g" },
+      { ingredient: "Salt", quantity: 1, unit_of_measure: "pinch" },
+      { ingredient: "Paprika", quantity: 1, unit_of_measure: "pinch" },
+      { ingredient: "Brioche Bun", quantity: 1, unit_of_measure: "unit" },
+      { ingredient: "Burger Sauce", quantity: 25, unit_of_measure: "g" }
+    ],
+    tags: [
+      { name: "Main" }
+    ],
+    photo: "https://res.cloudinary.com/dfipoufmj/image/upload/v1712159137/pexels-jonathan-borba-2983101_i2amcd.jpg"
+  }
+  # Add more recipes with associated ingredients as needed
+]
+
+# Create recipes and their associated ingredients using the helper method
+recipes_with_data.each do |recipe|
+  recipe_data = recipe[:recipe_data]
+  ingredients = recipe[:ingredients]
+  tags = recipe[:tags]
+  photo = recipe[:photo]
+
+  new_recipe = Recipe.create!(recipe_data)
+
+  create_recipe(new_recipe, ingredients, tags, photo)
+end
