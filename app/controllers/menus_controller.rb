@@ -85,8 +85,21 @@ class MenusController < ApplicationController
     recipes
   end
 
+  def add_tagged_recipes(menu)
+    recipes = []
+
+    menu.tag_ids.each do |tag|
+      raise
+      recipes << Recipe.where(tag_id: tag)
+    end
+
+    recipes
+  end
+
   def create
     @menu = Menu.new(menu_params)
+
+    tagged_recipes = add_tagged_recipes(@menu)
 
     relevant_recipes = add_recipes_by_meal_type(@menu)
 
