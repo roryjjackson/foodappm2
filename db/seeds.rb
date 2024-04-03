@@ -6,1034 +6,862 @@ Tag.destroy_all
 Menu.destroy_all
 admin = User.create!(email: "test1@test.com", password: "123456")
 
-tags = ["Savoury snack",
-        "Sweet snack",
+default_photo = "https://res.cloudinary.com/dfipoufmj/image/upload/v1712164345/pexels-gdtography-911738_k92abl.jpg"
+
+tags = ["Snack",
         "Dessert",
         "Side",
         "Main",
         "Small plate",
         "Bread",
-        "Component"]
+        "Component",
+        "Baked Goods"]
 
 tags.each do |tag|
   Tag.create!(name: tag)
 end
 
-puts "tags created"
+sirloin = "Sirloin"
+ribeye = "Ribeye"
+filet_steak = "Tenderloin (filet mignon)"
+flank_steak = "Flank steak"
+chuck_roast = "Chuck roast"
+brisket = "Brisket"
+short_ribs = "Short ribs"
+ground_beef = "Ground beef"
+pork_chops = "Pork chops"
+pork_tenderloin = "Pork tenderloin"
+pork_belly = "Pork belly"
+spare_ribs = "Spare ribs"
+pork_shoulder = "Pork shoulder"
+gammon = "Gammon"
+bacon = "Bacon"
+ground_pork = "Ground pork"
+lamb_chops = "Lamb chops"
+leg_of_lamb = "Leg of lamb"
+lamb_shoulder = "Lamb shoulder"
+lamb_shank = "Lamb shank"
+ground_lamb = "Ground lamb"
+veal_chops = "Veal chops"
+veal_tenderloin = "Veal tenderloin"
+ground_veal = "Ground veal"
+chicken_breast = "Chicken breast"
+chicken_thighs = "Chicken thighs"
+chicken_drumsticks = "Chicken drumsticks"
+whole_chicken = "Whole chicken"
+duck_breast = "Duck breast"
+duck_legs = "Duck legs"
+turkey_breast = "Turkey breast"
+turkey_legs = "Turkey legs"
+ground_chicken = "Ground chicken"
+ground_turkey = "Ground turkey"
+venison = "Venison"
+rabbit = "Rabbit"
+pheasant = "Pheasant"
+quail = "Quail"
+pork_sausages = "Pork sausages"
+chicken_sausages = "Chicken Sausages"
+hot_dogs = "Hot dogs"
+salami = "Salami"
+pepperoni = "Pepperoni"
+pastrami = "Pastrami"
+salmon = "Salmon"
+tuna = "Tuna"
+cod = "Cod"
+mahi_mahi = "Mahi Mahi"
+halibut = "Halibut"
+trout = "Trout"
+snapper = "Snapper"
+mackerel = "Mackerel"
+swordfish = "Swordfish"
+haddock = "Haddock"
+sea_bass = "Sea Bass"
+perch = "Perch"
+sole = "Sole"
+anchovies = "Anchovies"
+eel = "Eel"
+wahoo = "Wahoo"
+lobster = "Lobster"
+crab = "Crab"
+prawns = "Prawns"
+clams = "Clams"
+mussels = "Mussels"
+oysters = "Oysters"
+scallops = "Scallops"
+conch = "Conch"
+octopus = "Octopus"
+squid = "Squid"
+caviar = "Caviar"
+milk = "Milk"
+unsalted_butter = "Unsalted butter"
+salted_butter = "Salted butter"
+plain_yogurt = "Plain yogurt"
+greek_yogurt = "Greek yogurt"
+cheddar = "Cheddar"
+mozzarella = "Mozzarella"
+swiss = "Swiss"
+feta = "Feta"
+parmesan = "Parmesan"
+brie = "Brie"
+blue_cheese = "Blue cheese"
+goat_cheese = "Goat cheese"
+heavy_cream = "Heavy cream"
+whipping_cream = "Whipping cream"
+sour_cream = "Sour cream"
+cottage_cheese = "Cottage Cheese"
+ricotta_cheese = "Ricotta Cheese"
+mascarpone_cheese = "Mascarpone Cheese"
+cream_cheese = "Cream Cheese"
+buttermilk = "Buttermilk"
+condensed_milk = "Condensed Milk"
+ghee = "Ghee"
+crème_fraîche = "Crème Fraîche"
+egg_whites = "Egg whites"
+egg_yolks = "Egg yolks"
+whole_eggs = "Whole Eggs"
+russet_potatoes = "Russet potatoes"
+maris_piper_potatoes = "Maris Piper Potatoes"
+red_potatoes = "Red potatoes"
+sweet_potatoes = "Sweet potatoes"
+new_potatoes = "New potatoes"
+white_onions = "White onions"
+red_onions = "Red onions"
+yellow_onions = "Yellow onions"
+shallots = "Shallots"
+green_onions = "Green onions"
+leeks = "Leeks"
+garlic = "Garlic"
+beef_tomatoes = "Beef tomatoes"
+cherry_tomatoes = "Cherry tomatoes"
+carrots = "Carrots"
+green_bell_peppers = "Green bell peppers"
+red_bell_peppers = "Red bell peppers"
+yellow_bell_peppers = "Yellow bell peppers"
+orange_bell_peppers = "Orange bell peppers"
+iceberg_lettuce = "Iceberg lettuce"
+romaine_lettuce = "Romaine lettuce"
+rocket = "Rocket"
+baby_spinach = "Baby spinach"
+broccoli = "Broccoli"
+tenderstem = "Tenderstem"
+white_cauliflower = "White cauliflower"
+green_cabbage = "Green cabbage"
+red_cabbage = "Red cabbage"
+savoy_cabbage = "Savoy cabbage"
+chinese_cabbage = "Chinese cabbage"
+aubergine = "Aubergine"
+courgette = "Courgette"
+button_mushrooms = "Button mushrooms"
+cremini_mushrooms = "Cremini mushrooms"
+portobello_mushrooms = "Portobello mushrooms"
+shiitake_mushrooms = "Shiitake mushrooms"
+oyster_mushrooms = "Oyster mushrooms"
+chanterelle_mushrooms = "Chanterelle mushrooms"
+porcini_mushrooms = "Porcini mushrooms"
+green_beans = "Green Beans"
+green_peas = "Green peas"
+snow_peas = "Snow peas"
+snap_peas = "Snap peas"
+corn_on_the_cob = "Corn on the cob"
+sweet_corn = "Sweet corn"
+baby_corn = "Baby corn"
+red_radishes = "Red radishes"
+daikon_radishes = "Daikon radishes"
+celery = "Celery"
+cucumbers = "Cucumbers"
+avocado = "Avocado"
+pumpkins = "Pumpkins"
+butternut_squash = "Butternut squash"
+spaghetti_squash = "Spaghetti squash"
+asparagus = "Asparagus"
+kale = "Kale"
+apples = "Apples"
+granny_smith_apples = "Granny Smith apples"
+pink_lady_apples = "Pink Lady apples"
+bananas = "Bananas"
+plantains = "Plantains"
+oranges = "Oranges"
+clementines = "Clementines"
+satsumas = "Satsumas"
+tangerines = "Tangerines"
+red_grapes = "Red grapes"
+green_grapes = "Green grapes"
+black_grapes = "Black grapes"
+strawberries = "Strawberries"
+blueberries = "Blueberries"
+raspberries = "Raspberries"
+blackberries = "Blackberries"
+cranberries = "Cranberries"
+goji_berries = "Goji berries"
+lemons = "Lemons"
+limes = "Limes"
+grapefruits = "Grapefruits"
+peaches = "Peaches"
+nectarines = "Nectarines"
+plums = "Plums"
+apricots = "Apricots"
+cherries = "Cherries"
+mangoes = "Mangoes"
+pineapples = "Pineapples"
+papayas = "Papayas"
+kiwifruits = "Kiwifruits"
+passion_fruits = "Passion fruits"
+lychees = "Lychees"
+dragon_fruits = "Dragon fruits"
+jackfruits = "Jackfruits"
+star_fruits = "Star fruits"
+watermelons = "Watermelons"
+cantaloupes = "Cantaloupes"
+honeydews = "Honeydews"
+pears = "Pears"
+cherries = "Cherries"
+plums = "Plums"
+figs = "Figs"
+medjool_dates = "Medjool dates"
+pomegranates = "Pomegranates"
+bread_flour = "Bread flour"
+bulgur = "Bulgur"
+semolina = "Semolina"
+white_rice = "White rice"
+brown_rice = "Brown rice"
+jasmine_rice = "Jasmine rice"
+basmati_rice = "Basmati rice"
+arborio_rice = "Arborio rice"
+sushi_rice = "Sushi rice"
+black_rice = "Black rice"
+wild_rice = "Wild rice"
+polenta = "Polenta"
+corn_flour = "Corn flour"
+pearl_barley = "Pearl barley"
+oats = "Oats"
+rye_flour = "Rye flour"
+quinoa = "Quinoa"
+buckwheat_flour = "Buckwheat flour"
+soba_noodles = "Soba noodles"
+spelt_flour = "Spelt flour"
+lentils = "Lentils"
+chickpeas = "Chickpeas"
+black_beans = "Black beans"
+kidney_beans = "Kidney beans"
+pinto_beans = "Pinto beans"
+cannellini_beans = "Cannellini beans"
+dried_mung_beans = "Dried mung beans"
+black_eyed_peas = "Black-eyed peas"
+yellow_split_peas = "Yellow split peas"
+edamame = "Edamame"
+tofu = "Tofu"
+lupini_beans = "Lupini beans"
+almonds = "Almonds"
+walnuts = "Walnuts"
+cashews = "Cashews"
+pistachios = "Pistachios"
+pecans = "Pecans"
+hazelnuts = "Hazelnuts"
+macadamia_nuts = "Macadamia nuts"
+brazil_nuts = "Brazil nuts"
+pine_nuts = "Pine nuts"
+peanuts = "Peanuts"
+sunflower_seeds = "Sunflower seeds"
+pumpkin_seeds = "Pumpkin seeds"
+sesame_seeds = "Sesame seeds"
+tahini = "Tahini"
+whole_flax_seeds = "Whole flax seeds"
+poppy_seeds = "Poppy seeds"
+shredded_coconut = "Shredded coconut"
+coconut_flakes = "Coconut flakes"
+chestnuts = "Chestnuts"
+basil = "Basil"
+parsley = "Parsley"
+coriander = "Coriander"
+mint = "Mint"
+thyme = "Thyme"
+rosemary = "Rosemary"
+sage = "Sage"
+oregano = "Oregano"
+dill = "Dill"
+chives = "Chives"
+bay_leaves = "Bay Leaves"
+tarragon = "Tarragon"
+marjoram = "Marjoram"
+curry_leaves = "Curry Leaves"
+cumin_seeds = "Cumin Seeds"
+coriander_seeds = "Coriander Seeds"
+fennel_seeds = "Fennel Seeds"
+mustard_seeds = "Mustard Seeds"
+fenugreek_seeds = "Fenugreek Seeds"
+caraway_seeds = "Caraway Seeds"
+celery_seeds = "Celery Seeds"
+nigella_seeds = "Nigella Seeds"
+cardamom_pods = "Cardamom Pods"
+cloves = "Cloves"
+cinnamon_sticks = "Cinnamon Sticks"
+nutmeg = "Nutmeg"
+allspice = "Allspice"
+star_anise = "Star Anise"
+saffron = "Saffron"
+turmeric = "Turmeric"
+ginger = "Ginger"
+paprika = "Paprika"
+cayenne_pepper = "Cayenne Pepper"
+chilli_flakes = "Chilli Flakes"
+black_pepper = "Black Pepper"
+white_pepper = "White Pepper"
+ground_cumin = "Ground Cumin"
+ground_coriander = "Ground Coriander"
+ground_ginger = "Ground Ginger"
+ground_turmeric = "Ground Turmeric"
+ground_cinnamon = "Ground Cinnamon"
+ground_cloves = "Ground Cloves"
+ground_nutmeg = "Ground Nutmeg"
+ground_allspice = "Ground Allspice"
+ground_cardamom = "Ground Cardamom"
+ground_fenugreek = "Ground Fenugreek"
+curry_powder = "Curry Powder"
+garam_masala = "Garam Masala"
+chinese_five_spice = "Chinese Five Spice"
+zaatar = "Zaatar"
+herbes_de_provence = "Herbes de Provence"
+ras_el_hanout = "Ras el Hanout"
+cajun_seasoning = "Cajun Seasoning"
+dukkah = "Dukkah"
+harissa = "Harissa"
+sumac = "Sumac"
+kaffir_lime_leaves = "Kaffir Lime Leaves"
+lemongrass = "Lemongrass"
+vanilla_bean = "Vanilla Bean"
+olive_oil = "Olive oil"
+coconut_oil = "Coconut oil"
+rapeseed_oil = "Rapeseed Oil"
+sunflower_oil = "Sunflower oil"
+peanut_oil = "Peanut Oil"
+sesame_oil = "Sesame oil"
+grapeseed_oil = "Grapeseed Oil"
+unsalted_butter = "Unsalted butter"
+salted_butter = "Salted butter"
+duck_fat = "Duck Fat"
+goose_fat = "Goose Fat"
+margarine = "Margarine"
+castor_sugar = "Castor Sugar"
+granulated_sugar = "Granulated Sugar"
+brown_sugar = "Brown Sugar"
+icing_sugar = "Icing Sugar"
+demerara_sugar = "Demerara Sugar"
+muscovado_sugar = "Muscovado Sugar"
+coconut_sugar = "Coconut Sugar"
+maple_syrup = "Maple Syrup"
+honey = "Honey"
+agave_syrup = "Agave Syrup"
+molasses = "Molasses"
+corn_syrup = "Corn Syrup"
+ketchup = "Ketchup"
+dijon_mustard = "Dijon mustard"
+whole_grain_mustard = "Whole grain mustard"
+mayonnaise = "Mayonnaise"
+tabasco = "Tabasco"
+sriracha = "Sriracha"
+soy_sauce = "Soy Sauce"
+worcestershire_sauce = "Worcestershire Sauce"
+fish_sauce = "Fish Sauce"
+hoisin_sauce = "Hoisin Sauce"
+oyster_sauce = "Oyster Sauce"
+teriyaki_sauce = "Teriyaki Sauce"
+sweet_chili_sauce = "Sweet Chili Sauce"
+gochujang = "Gochujang"
+miso_paste = "Miso Paste"
+pickles = "Pickles"
+burger_sauce = "Burger Sauce"
+plain_flour = "Plain Flour"
+dark_chocolate_70_percent = "Dark Chocolate (70%)"
+milk_chocolate = "Milk Chocolate"
+white_chocolate = "White Chocolate"
+chocolate_chips = "Chocolate Chips"
+baking_powder = "Baking Powder"
+baking_soda = "Baking Soda"
+salt = "Salt"
+vanilla_extract = "Vanilla Extract"
+yeast = "Yeast"
+cornstarch = "Cornstarch"
+cocoa_powder = "Cocoa Powder"
+panko_bread_crumbs = "Panko Bread Crumbs"
+canned_tomatoes = "Canned Tomatoes"
+tomato_paste = "Tomato Paste"
+chicken_stock = "Chicken Stock"
+beef_stock = "Beef Stock"
+vegetable_stock = "Vegetable Stock"
+white_vinegar = "White Vinegar"
+apple_cider_vinegar = "Apple Cider Vinegar"
+balsamic_vinegar = "Balsamic Vinegar"
+worcestershire_sauce = "Worcestershire Sauce"
+gelatin = "Gelatin"
+white_wine = "White Wine"
+red_wine = "Red Wine"
+rice_vinegar = "Rice Vinegar"
+mirin = "Mirin"
+agar_agar = "Agar Agar"
+coffee = "Coffee"
+tea = "Tea"
+water = "Water"
+almond_milk = "Almond Milk"
+soy_milk = "Soy Milk"
+oat_milk = "Oat Milk"
+coconut_milk = "Coconut Milk"
+ale = "Ale"
+stout = "Stout"
+vodka = "Vodka"
+rum = "Rum"
+whiskey = "Whiskey"
+gin = "Gin"
+tequila = "Tequila"
+spaghetti = "Spaghetti"
+linguine = "Linguine"
+fettuccine = "Fettuccine"
+tagliatelle = "Tagliatelle"
+penne = "Penne"
+rigatoni = "Rigatoni"
+fusilli = "Fusilli"
+ravioli = "Ravioli"
+tortellini = "Tortellini"
+gnocchi = "Gnocchi"
+orzo = "Orzo"
+cannelloni = "Cannelloni"
+pappardelle = "Pappardelle"
+truffle_oil = "Truffle Oil"
+saffron_threads = "Saffron Threads"
+edible_gold_leaf = "Edible Gold Leaf"
+rose_water = "Rose Water"
+xanthan_gum = "Xanthan Gum"
+guar_gum = "Guar Gum"
+arrowroot_powder = "Arrowroot Powder"
+cream_of_tartar = "Cream of Tartar"
+yeast = "Yeast"
+wasabi_paste = "Wasabi Paste"
+nori_sheets = "Nori sheets"
+brioche_bun = "Brioche Bun"
 
-meats = [
-  "Sirloin",
-  "Ribeye",
-  "Tenderloin (filet mignon)",
-  "Flank steak",
-  "Chuck roast",
-  "Brisket",
-  "Short ribs",
-  "Ground beef (minced beef)",
-  "Pork chops",
-  "Pork tenderloin",
-  "Pork belly",
-  "Spare ribs",
-  "Pork shoulder (Boston butt)",
-  "Ham",
-  "Bacon",
-  "Ground pork",
-  "Lamb chops",
-  "Leg of lamb",
-  "Lamb shoulder",
-  "Lamb shank",
-  "Ground lamb",
-  "Veal chops",
-  "Veal tenderloin",
-  "Veal cutlets",
-  "Ground veal",
-  "Chicken breast",
-  "Chicken thighs",
-  "Chicken drumsticks",
-  "Whole chicken",
-  "Duck breast",
-  "Duck legs",
-  "Turkey breast",
-  "Turkey legs",
-  "Ground chicken",
-  "Ground turkey",
-  "Venison (deer)",
-  "Rabbit",
-  "Pheasant",
-  "Quail",
-  "Wild boar",
-  "Bison",
-  "Elk",
-  "Ostrich",
-  "Liver",
-  "Kidneys",
-  "Hearts",
-  "Tongue",
-  "Sweetbreads",
-  "Tripe",
-  "Brains",
-  "Pork sausages",
-  "Chicken Sausages",
-  "Hot dogs",
-  "Ham",
-  "Turkey",
-  "Salami",
-  "Pepperoni",
-  "Bacon",
-  "Corned beef",
-  "Pastrami",
-  "Spam",
-  "Jerky"
+ingredients = [
+  { name: "Sirloin" },
+  { name: "Ribeye" },
+  { name: "Fillet steak" },
+  { name: "Flank steak" },
+  { name: "Chuck roast" },
+  { name: "Brisket" },
+  { name: "Short ribs" },
+  { name: "Ground beef" },
+  { name: "Pork chops" },
+  { name: "Pork tenderloin" },
+  { name: "Pork belly" },
+  { name: "Spare ribs" },
+  { name: "Pork shoulder" },
+  { name: "Gammon" },
+  { name: "Bacon" },
+  { name: "Ground pork" },
+  { name: "Lamb chops" },
+  { name: "Leg of lamb" },
+  { name: "Lamb shoulder" },
+  { name: "Lamb shank" },
+  { name: "Ground lamb" },
+  { name: "Veal chops" },
+  { name: "Veal tenderloin" },
+  { name: "Ground veal" },
+  { name: "Chicken breast" },
+  { name: "Chicken thighs" },
+  { name: "Chicken drumsticks" },
+  { name: "Whole chicken" },
+  { name: "Duck breast" },
+  { name: "Duck legs" },
+  { name: "Turkey breast" },
+  { name: "Turkey legs" },
+  { name: "Ground chicken" },
+  { name: "Ground turkey" },
+  { name: "Venison" },
+  { name: "Rabbit" },
+  { name: "Pheasant" },
+  { name: "Quail" },
+  { name: "Pork sausages" },
+  { name: "Chicken Sausages" },
+  { name: "Hot dogs" },
+  { name: "Salami" },
+  { name: "Pepperoni" },
+  { name: "Pastrami" },
+  { name: "Salmon" },
+  { name: "Tuna" },
+  { name: "Cod" },
+  { name: "Mahi Mahi" },
+  { name: "Halibut" },
+  { name: "Trout" },
+  { name: "Snapper" },
+  { name: "Mackerel" },
+  { name: "Swordfish" },
+  { name: "Haddock" },
+  { name: "Sea Bass" },
+  { name: "Perch" },
+  { name: "Sole" },
+  { name: "Anchovies" },
+  { name: "Eel" },
+  { name: "Wahoo" },
+  { name: "Lobster" },
+  { name: "Crab" },
+  { name: "Prawns" },
+  { name: "Clams" },
+  { name: "Mussels" },
+  { name: "Oysters" },
+  { name: "Scallops" },
+  { name: "Conch" },
+  { name: "Octopus" },
+  { name: "Squid" },
+  { name: "Caviar" },
+  { name: "Milk" },
+  { name: "Unsalted butter" },
+  { name: "Salted butter" },
+  { name: "Plain yogurt" },
+  { name: "Greek yogurt" },
+  { name: "Cheddar" },
+  { name: "Mozzarella" },
+  { name: "Swiss" },
+  { name: "Feta" },
+  { name: "Parmesan" },
+  { name: "Brie" },
+  { name: "Blue cheese" },
+  { name: "Goat cheese" },
+  { name: "Heavy cream" },
+  { name: "Whipping cream" },
+  { name: "Sour cream" },
+  { name: "Cottage Cheese" },
+  { name: "Ricotta Cheese" },
+  { name: "Mascarpone Cheese" },
+  { name: "Cream Cheese" },
+  { name: "Buttermilk" },
+  { name: "Condensed Milk" },
+  { name: "Ghee" },
+  { name: "Crème Fraîche" },
+  { name: "Egg whites" },
+  { name: "Egg yolks" },
+  { name: "Whole Eggs" },
+  { name: "Russet potatoes" },
+  { name: "Maris Piper Potatoes" },
+  { name: "Red potatoes" },
+  { name: "Sweet potatoes" },
+  { name: "New potatoes" },
+  { name: "White onions" },
+  { name: "Red onions" },
+  { name: "Yellow onions" },
+  { name: "Shallots" },
+  { name: "Green onions" },
+  { name: "Leeks" },
+  { name: "Garlic" },
+  { name: "Beef tomatoes" },
+  { name: "Cherry tomatoes" },
+  { name: "Carrots" },
+  { name: "Green bell peppers" },
+  { name: "Red bell peppers" },
+  { name: "Yellow bell peppers" },
+  { name: "Orange bell peppers" },
+  { name: "Iceberg lettuce" },
+  { name: "Romaine lettuce" },
+  { name: "Rocket" },
+  { name: "Baby spinach" },
+  { name: "Broccoli" },
+  { name: "Tenderstem" },
+  { name: "White cauliflower" },
+  { name: "Green cabbage" },
+  { name: "Red cabbage" },
+  { name: "Savoy cabbage" },
+  { name: "Chinese cabbage" },
+  { name: "Aubergine" },
+  { name: "Courgette" },
+  { name: "Button mushrooms" },
+  { name: "Cremini mushrooms" },
+  { name: "Portobello mushrooms" },
+  { name: "Shiitake mushrooms" },
+  { name: "Oyster mushrooms" },
+  { name: "Chanterelle mushrooms" },
+  { name: "Porcini mushrooms" },
+  { name: "Green Beans" },
+  { name: "Green peas" },
+  { name: "Snow peas" },
+  { name: "Snap peas" },
+  { name: "Corn on the cob" },
+  { name: "Sweet corn" },
+  { name: "Baby corn" },
+  { name: "Red radishes" },
+  { name: "Daikon radishes" },
+  { name: "Celery" },
+  { name: "Cucumbers" },
+  { name: "Avocado" },
+  { name: "Pumpkins" },
+  { name: "Butternut squash" },
+  { name: "Spaghetti squash" },
+  { name: "Asparagus" },
+  { name: "Kale" },
+  { name: "Apples" },
+  { name: "Granny Smith apples" },
+  { name: "Pink Lady apples" },
+  { name: "Bananas" },
+  { name: "Plantains" },
+  { name: "Oranges" },
+  { name: "Clementines" },
+  { name: "Satsumas" },
+  { name: "Tangerines" },
+  { name: "Red grapes" },
+  { name: "Green grapes" },
+  { name: "Black grapes" },
+  { name: "Strawberries" },
+  { name: "Blueberries" },
+  { name: "Raspberries" },
+  { name: "Blackberries" },
+  { name: "Cranberries" },
+  { name: "Goji berries" },
+  { name: "Lemons" },
+  { name: "Limes" },
+  { name: "Grapefruits" },
+  { name: "Peaches" },
+  { name: "Nectarines" },
+  { name: "Plums" },
+  { name: "Apricots" },
+  { name: "Cherries" },
+  { name: "Mangoes" },
+  { name: "Pineapples" },
+  { name: "Papayas" },
+  { name: "Kiwifruits" },
+  { name: "Passion fruits" },
+  { name: "Lychees" },
+  { name: "Dragon fruits" },
+  { name: "Jackfruits" },
+  { name: "Star fruits" },
+  { name: "Watermelons" },
+  { name: "Cantaloupes" },
+  { name: "Honeydews" },
+  { name: "Pears" },
+  { name: "Cherries" },
+  { name: "Plums" },
+  { name: "Figs" },
+  { name: "Medjool dates" },
+  { name: "Pomegranates" },
+  { name: "Bread flour" },
+  { name: "Bulgur" },
+  { name: "Semolina" },
+  { name: "White rice" },
+  { name: "Brown rice" },
+  { name: "Jasmine rice" },
+  { name: "Basmati rice" },
+  { name: "Arborio rice" },
+  { name: "Sushi rice" },
+  { name: "Black rice" },
+  { name: "Wild rice" },
+  { name: "Polenta" },
+  { name: "Corn flour" },
+  { name: "Pearl barley" },
+  { name: "Oats" },
+  { name: "Rye flour" },
+  { name: "Quinoa" },
+  { name: "Buckwheat flour" },
+  { name: "Soba noodles" },
+  { name: "Spelt flour" },
+  { name: "Lentils" },
+  { name: "Chickpeas" },
+  { name: "Black beans" },
+  { name: "Kidney beans" },
+  { name: "Pinto beans" },
+  { name: "Cannellini beans" },
+  { name: "Dried mung beans" },
+  { name: "Black-eyed peas" },
+  { name: "Yellow split peas" },
+  { name: "Edamame" },
+  { name: "Tofu" },
+  { name: "Lupini beans" },
+  { name: "Almonds" },
+  { name: "Walnuts" },
+  { name: "Cashews" },
+  { name: "Pistachios" },
+  { name: "Pecans" },
+  { name: "Hazelnuts" },
+  { name: "Macadamia nuts" },
+  { name: "Brazil nuts" },
+  { name: "Pine nuts" },
+  { name: "Peanuts" },
+  { name: "Sunflower seeds" },
+  { name: "Pumpkin seeds" },
+  { name: "Sesame seeds" },
+  { name: "Tahini" },
+  { name: "Whole flax seeds" },
+  { name: "Poppy seeds" },
+  { name: "Shredded coconut" },
+  { name: "Coconut flakes" },
+  { name: "Chestnuts" },
+  { name: "Basil" },
+  { name: "Parsley" },
+  { name: "Coriander" },
+  { name: "Mint" },
+  { name: "Thyme" },
+  { name: "Rosemary" },
+  { name: "Sage" },
+  { name: "Oregano" },
+  { name: "Dill" },
+  { name: "Chives" },
+  { name: "Bay Leaves" },
+  { name: "Tarragon" },
+  { name: "Marjoram" },
+  { name: "Curry Leaves" },
+  { name: "Cumin Seeds" },
+  { name: "Coriander Seeds" },
+  { name: "Fennel Seeds" },
+  { name: "Mustard Seeds" },
+  { name: "Fenugreek Seeds" },
+  { name: "Caraway Seeds" },
+  { name: "Celery Seeds" },
+  { name: "Nigella Seeds" },
+  { name: "Cardamom Pods" },
+  { name: "Cloves" },
+  { name: "Cinnamon Sticks" },
+  { name: "Nutmeg" },
+  { name: "Allspice" },
+  { name: "Star Anise" },
+  { name: "Saffron" },
+  { name: "Turmeric" },
+  { name: "Ginger" },
+  { name: "Paprika" },
+  { name: "Cayenne Pepper" },
+  { name: "Chilli Flakes" },
+  { name: "Black Pepper" },
+  { name: "White Pepper" },
+  { name: "Ground Cumin" },
+  { name: "Ground Coriander" },
+  { name: "Ground Ginger" },
+  { name: "Ground Turmeric" },
+  { name: "Ground Cinnamon" },
+  { name: "Ground Cloves" },
+  { name: "Ground Nutmeg" },
+  { name: "Ground Allspice" },
+  { name: "Ground Cardamom" },
+  { name: "Ground Fenugreek" },
+  { name: "Curry Powder" },
+  { name: "Garam Masala" },
+  { name: "Chinese Five Spice" },
+  { name: "Zaatar" },
+  { name: "Herbes de Provence" },
+  { name: "Ras el Hanout" },
+  { name: "Cajun Seasoning" },
+  { name: "Dukkah" },
+  { name: "Harissa" },
+  { name: "Sumac" },
+  { name: "Kaffir Lime Leaves" },
+  { name: "Lemongrass" },
+  { name: "Vanilla Bean" },
+  { name: "Olive oil" },
+  { name: "Coconut oil" },
+  { name: "Rapeseed Oil" },
+  { name: "Sunflower oil" },
+  { name: "Peanut Oil" },
+  { name: "Sesame oil" },
+  { name: "Grapeseed Oil" },
+  { name: "Unsalted butter" },
+  { name: "Salted butter" },
+  { name: "Duck Fat" },
+  { name: "Goose Fat" },
+  { name: "Margarine" },
+  { name: "Castor Sugar" },
+  { name: "Granulated Sugar" },
+  { name: "Brown Sugar" },
+  { name: "Icing Sugar" },
+  { name: "Demerara Sugar" },
+  { name: "Muscovado Sugar" },
+  { name: "Coconut Sugar" },
+  { name: "Maple Syrup" },
+  { name: "Honey" },
+  { name: "Agave Syrup" },
+  { name: "Molasses" },
+  { name: "Corn Syrup" },
+  { name: "Ketchup" },
+  { name: "Dijon mustard" },
+  { name: "Whole grain mustard" },
+  { name: "Mayonnaise" },
+  { name: "Tabasco" },
+  { name: "Sriracha" },
+  { name: "Soy Sauce" },
+  { name: "Worcestershire Sauce" },
+  { name: "Fish Sauce" },
+  { name: "Hoisin Sauce" },
+  { name: "Oyster Sauce" },
+  { name: "Teriyaki Sauce" },
+  { name: "Sweet Chili Sauce" },
+  { name: "Gochujang" },
+  { name: "Miso Paste" },
+  { name: "Pickles" },
+  { name: "Burger Sauce" },
+  { name: "Plain Flour" },
+  { name: "Dark Chocolate (70%)" },
+  { name: "Milk Chocolate" },
+  { name: "White Chocolate" },
+  { name: "Chocolate Chips" },
+  { name: "Baking Powder" },
+  { name: "Baking Soda" },
+  { name: "Salt" },
+  { name: "Vanilla Extract" },
+  { name: "Yeast" },
+  { name: "Cornstarch" },
+  { name: "Cocoa Powder" },
+  { name: "Panko Bread Crumbs" },
+  { name: "Canned Tomatoes" },
+  { name: "Tomato Paste" },
+  { name: "Chicken Stock" },
+  { name: "Beef Stock" },
+  { name: "Vegetable Stock" },
+  { name: "White Vinegar" },
+  { name: "Apple Cider Vinegar" },
+  { name: "Balsamic Vinegar" },
+  { name: "Worcestershire Sauce" },
+  { name: "Gelatin" },
+  { name: "White Wine" },
+  { name: "Red Wine" },
+  { name: "Rice Vinegar" },
+  { name: "Mirin" },
+  { name: "Agar Agar" },
+  { name: "Coffee" },
+  { name: "Tea" },
+  { name: "Water" },
+  { name: "Almond Milk" },
+  { name: "Soy Milk" },
+  { name: "Oat Milk" },
+  { name: "Coconut Milk" },
+  { name: "Ale" },
+  { name: "Stout" },
+  { name: "Vodka" },
+  { name: "Rum" },
+  { name: "Whiskey" },
+  { name: "Gin" },
+  { name: "Tequila" },
+  { name: "Spaghetti" },
+  { name: "Linguine" },
+  { name: "Fettuccine" },
+  { name: "Tagliatelle" },
+  { name: "Penne" },
+  { name: "Rigatoni" },
+  { name: "Fusilli" },
+  { name: "Ravioli" },
+  { name: "Tortellini" },
+  { name: "Gnocchi" },
+  { name: "Orzo" },
+  { name: "Cannelloni" },
+  { name: "Pappardelle" },
+  { name: "Truffle Oil" },
+  { name: "Saffron Threads" },
+  { name: "Edible Gold Leaf" },
+  { name: "Rose Water" },
+  { name: "Xanthan Gum" },
+  { name: "Guar Gum" },
+  { name: "Arrowroot Powder" },
+  { name: "Cream of Tartar" },
+  { name: "Yeast" },
+  { name: "Wasabi Paste" },
+  { name: "Nori sheets" },
+  { name: "Brioche Bun" }
 ]
 
-meats.each do |meat|
-  Ingredient.create!(name: "#{meat}", description: "Meat")
+ingredients.each do |ingredient|
+  Ingredient.create!(name: ingredient[:name])
 end
 
-seafood = [
-  "Salmon",
-  "Tuna",
-  "Cod",
-  "Mahi Mahi",
-  "Halibut",
-  "Trout",
-  "Snapper",
-  "Mackerel",
-  "Swordfish",
-  "Haddock",
-  "Tilapia",
-  "Catfish",
-  "Grouper",
-  "Bass",
-  "Perch",
-  "Sole",
-  "Flounder",
-  "Sardines",
-  "Anchovies",
-  "Carp",
-  "Pike",
-  "Eel",
-  "Wahoo",
-  "Lobster",
-  "Crab",
-  "Shrimp (prawns)",
-  "Crawfish (crayfish)",
-  "Clams",
-  "Mussels",
-  "Oysters",
-  "Scallops",
-  "Abalone",
-  "Conch",
-  "Octopus",
-  "Squid (calamari)",
-  "Cuttlefish",
-  "Cockles",
-  "Razor clams",
-  "Geoduck",
-  "Caviar (roe)",
-  "Seaweed (nori, wakame, kombu, dulse, etc.)",
-  "Sea snails (whelks, periwinkles)"
-]
-
-seafood.each do |item|
-  Ingredient.create!(name: "#{item}", description: "Seafood")
-end
-
-dairyandeggs = [
-  "Cow's milk",
-  "Goat's milk",
-  "Sheep's milk",
-  "Unsalted butter",
-  "Salted butter",
-  "Plain yogurt",
-  "Flavored yogurt",
-  "Greek yogurt",
-  "Regular yogurt",
-  "Cheddar cheese",
-  "Mozzarella cheese",
-  "Swiss cheese",
-  "Feta cheese",
-  "Parmesan cheese",
-  "Brie cheese",
-  "Blue cheese",
-  "Goat cheese",
-  "Heavy cream",
-  "Whipping cream",
-  "Sour cream",
-  "Cottage Cheese",
-  "Ricotta Cheese",
-  "Mascarpone Cheese",
-  "Cream Cheese",
-  "Buttermilk",
-  "Evaporated Milk",
-  "Condensed Milk",
-  "Ice Cream",
-  "Gelato",
-  "Sherbet",
-  "Frozen Yogurt",
-  "Kefir",
-  "Labneh",
-  "Whey",
-  "Ghee (Clarified Butter)",
-  "Quark",
-  "Fromage Blanc",
-  "Crème Fraîche",
-  "Chicken eggs",
-  "Duck eggs",
-  "Quail eggs",
-  "Egg whites",
-  "Egg yolks",
-  "Liquid egg whites (carton)",
-  "Liquid egg yolks (carton)",
-  "Egg beaters",
-  "Powdered egg whites",
-  "Powdered egg yolks"
-]
-
-dairyandeggs.each do |item|
-  Ingredient.create!(name: "#{item}", description: "Dairy and eggs")
-end
-
-vegetables = [
-  "Russet potatoes",
-  "Yukon Gold potatoes",
-  "Red potatoes",
-  "Fingerling potatoes",
-  "Purple potatoes",
-  "Sweet potatoes",
-  "New potatoes",
-  "White onions",
-  "Red onions",
-  "Yellow onions",
-  "Shallots",
-  "Green onions (Scallions)",
-  "Leeks",
-  "Garlic",
-  "Beef tomatoes",
-  "Roma tomatoes",
-  "Cherry tomatoes",
-  "Grape tomatoes",
-  "Heirloom tomatoes",
-  "Plum tomatoes",
-  "Orange carrots",
-  "Purple carrots",
-  "Yellow carrots",
-  "White carrots",
-  "Green bell peppers",
-  "Red bell peppers",
-  "Yellow bell peppers",
-  "Orange bell peppers",
-  "Iceberg lettuce",
-  "Romaine lettuce",
-  "Butterhead lettuce",
-  "Arugula (Rocket)",
-  "Red leaf lettuce",
-  "Green leaf lettuce",
-  "Boston lettuce",
-  "Baby spinach",
-  "Savoy spinach",
-  "Broccoli",
-  "Broccolini",
-  "Broccoli rabe (Rapini)",
-  "White cauliflower",
-  "Purple cauliflower",
-  "Romanesco cauliflower",
-  "Green cabbage",
-  "Red cabbage",
-  "Savoy cabbage",
-  "Napa cabbage (Chinese cabbage)",
-  "Aubergine",
-  "Globe eggplant",
-  "Japanese eggplant",
-  "Italian eggplant",
-  "Zucchini (Courgette)",
-  "Button mushrooms",
-  "Cremini mushrooms",
-  "Portobello mushrooms",
-  "Shiitake mushrooms",
-  "Oyster mushrooms",
-  "Chanterelle mushrooms",
-  "Enoki mushrooms",
-  "Morel mushrooms",
-  "Porcini mushrooms",
-  "Green Beans (String Beans)",
-  "Green peas",
-  "Snow peas",
-  "Snap peas",
-  "Corn (Maize):",
-  "Sweet corn",
-  "Baby corn",
-  "Red radishes",
-  "Daikon radishes",
-  "Celery",
-  "English cucumbers",
-  "Persian cucumbers",
-  "Avocado",
-  "Sugar pumpkins",
-  "Pie pumpkins",
-  "Kabocha squash",
-  "Butternut squash",
-  "Acorn squash",
-  "Spaghetti squash",
-  "Zucchini",
-  "Asparagus",
-  "Kale:",
-  "Curly kale",
-  "Lacinato kale (Dinosaur kale)",
-]
-
-vegetables.each do |item|
-  Ingredient.create!(name: "#{item}", description: "Vegetable")
-end
-
-fruits = [
-  "Granny Smith apples",
-  "Red Delicious apples",
-  "Gala apples",
-  "Fuji apples",
-  "Honeycrisp apples",
-  "Pink Lady apples",
-  "Golden Delicious apples",
-  "Braeburn apples",
-  "McIntosh apples",
-  "Cavendish bananas",
-  "Plantains",
-  "Red bananas",
-  "Lady Finger bananas",
-  "Navel oranges",
-  "Valencia oranges",
-  "Blood oranges",
-  "Mandarin oranges",
-  "Clementines",
-  "Satsumas",
-  "Tangerines",
-  "Seville oranges",
-  "Red grapes",
-  "Green grapes",
-  "Black grapes",
-  "Thompson seedless grapes",
-  "Concord grapes",
-  "Muscat grapes",
-  "Strawberries",
-  "Blueberries",
-  "Raspberries",
-  "Blackberries",
-  "Cranberries",
-  "Goji berries",
-  "Acai berries",
-  "Boysenberries",
-  "Lemons",
-  "Limes",
-  "Grapefruits",
-  "Pomelos",
-  "Kumquats",
-  "Yuzu",
-  "Peaches",
-  "Nectarines",
-  "Plums",
-  "Apricots",
-  "Cherries",
-  "Mangoes",
-  "Pineapples",
-  "Papayas",
-  "Kiwifruits",
-  "Passion fruits",
-  "Guavas",
-  "Lychees",
-  "Dragon fruits",
-  "Jackfruits",
-  "Star fruits",
-  "Watermelons",
-  "Cantaloupes (Muskmelons)",
-  "Honeydews",
-  "Galia melons",
-  "Crenshaw melons",
-  "Granny Smith apples",
-  "Red Delicious apples",
-  "Gala apples",
-  "Fuji apples",
-  "Honeycrisp apples",
-  "Pink Lady apples",
-  "Golden Delicious apples",
-  "Braeburn apples",
-  "McIntosh apples",
-  "Bartlett pears",
-  "Bosc pears",
-  "Anjou pears",
-  "Asian pears",
-  "Forelle pears",
-  "Comice pears",
-  "Bing cherries",
-  "Rainier cherries",
-  "Sweet cherries",
-  "Sour cherries",
-  "Red plums",
-  "Black plums",
-  "Green plums",
-  "Hawaiian papayas",
-  "Mexican papayas",
-  "Caribbean papayas",
-  "Black figs",
-  "Brown figs",
-  "Green figs",
-  "Fuyu persimmons",
-  "Hachiya persimmons",
-  "Fresh cranberries",
-  "Dried cranberries",
-  "Green kiwifruits",
-  "Gold kiwifruits",
-  "Medjool dates",
-  "Deglet Noor dates",
-  "Red pomegranates",
-  "White pomegranates",
-  "Ataulfo mangoes",
-  "Tommy Atkins mangoes",
-  "Champagne mangoes",
-  "Pink guavas",
-  "White guavas",
-  "Red lychees",
-  "Yellow lychees",
-  "Red dragon fruits",
-  "White dragon fruits",
-  "Purple passion fruits",
-]
-
-fruits.each do |item|
-  Ingredient.create!(name: "#{item}", description: "Fruit")
-end
-
-grainsandcereals = [
-  "Wheat berries",
-  "Wheat flour",
-  "Whole wheat bread",
-  "Bulgur",
-  "Farro",
-  "Semolina",
-  "Durum wheat",
-  "White rice",
-  "Brown rice",
-  "Jasmine rice",
-  "Basmati rice",
-  "Arborio rice",
-  "Sushi rice",
-  "Black rice",
-  "Wild rice",
-  "Cornmeal",
-  "Polenta",
-  "Grits",
-  "Corn flour",
-  "Corn flakes",
-  "Pearl barley",
-  "Hulled barley",
-  "Barley flour",
-  "Rolled oats",
-  "Steel-cut oats",
-  "Instant oats",
-  "Oat flour",
-  "Rye berries",
-  "Rye flour",
-  "Pumpernickel bread",
-  "Pearl millet",
-  "Finger millet (Ragi)",
-  "Foxtail millet",
-  "Proso millet",
-  "White quinoa",
-  "Red quinoa",
-  "Black quinoa",
-  "Buckwheat groats",
-  "Buckwheat flour",
-  "Soba noodles",
-  "Sorghum flour",
-  "Sorghum syrup",
-  "Teff flour",
-  "Injera (Ethiopian flatbread)",
-  "Fonio grains",
-  "Amaranth grains",
-  "Amaranth flour",
-  "Spelt flour",
-  "Spelt bread",
-  "Kamut flour",
-  "Kamut pasta",
-  "Bulgur",
-  "Farro",
-  "Freekeh",
-  "Triticale",
-  "Emmer",
-  "Einkorn",
-  "Chia Seeds",
-  "Hemp Seeds",
-  "Sunflower Seeds",
-  "Flax Seeds"
-]
-
-grainsandcereals.each do |item|
-  Ingredient.create!(name: "#{item}", description: "Grains and cereal")
-end
-
-legumesandpulses = [
-  "Brown lentils",
-  "Green lentils",
-  "Red lentils",
-  "French lentils (Puy lentils)",
-  "Black lentils (Beluga lentils)",
-  "Canned chickpeas",
-  "Dried chickpeas",
-  "Canned black beans",
-  "Dried black beans",
-  "Canned kidney beans",
-  "Dried kidney beans",
-  "Canned navy beans",
-  "Dried navy beans",
-  "Canned pinto beans",
-  "Dried pinto beans",
-  "Canned cannellini beans",
-  "Dried cannellini beans",
-  "Dried adzuki beans",
-  "Dried mung beans",
-  "Mung bean sprouts",
-  "Canned black-eyed peas",
-  "Dried black-eyed peas",
-  "Green split peas",
-  "Yellow split peas",
-  "Dried fava beans",
-  "Edamame",
-  "Tofu",
-  "Tempeh",
-  "Soy milk",
-  "Soy flour",
-  "Dried cowpeas",
-  "Dried lima beans",
-  "Green peas",
-  "Split peas",
-  "Dried lupini beans",
-  "Chickpea Flour (Gram Flour/Besan)",
-  "Whole urad dal",
-  "Split urad dal (Black lentils)",
-  "Whole moong dal",
-  "Split moong dal",
-  "Whole masoor dal",
-  "Split masoor dal",
-  "Split chana dal",
-  "Split toor dal",
-  "Whole green lentils",
-  "Whole red lentils",
-]
-
-legumesandpulses.each do |item|
-  Ingredient.create!(name: "#{item}", description: "Legumes and pulses")
-end
-
-nutsandseeds = [
-  "Raw almonds",
-  "Almond butter",
-  "Almond flour",
-  "Raw walnuts",
-  "Walnut halves",
-  "Raw cashews",
-  "Cashew butter",
-  "Raw pistachios",
-  "Pistachio kernels",
-  "Raw pecans",
-  "Pecan halves",
-  "Raw hazelnuts",
-  "Hazelnut butter",
-  "Raw macadamia nuts",
-  "Raw Brazil nuts",
-  "Raw pine nuts",
-  "Raw peanuts",
-  "Peanut butter",
-  "Raw sunflower seeds",
-  "Sunflower seed butter",
-  "Raw pumpkin seeds",
-  "Raw sesame seeds",
-  "Tahini (sesame seed paste)",
-  "Whole flax seeds",
-  "Ground flax seeds (flaxseed meal)",
-  "Hulled hemp seeds (hemp hearts)",
-  "Hemp seed oil",
-  "Raw poppy seeds",
-  "Quinoa seeds",
-  "Amaranth seeds",
-  "Buckwheat groats",
-  "Buckwheat flour",
-  "Millet seeds",
-  "Fresh pomegranate seeds",
-  "Shredded coconut",
-  "Coconut flakes",
-  "Coconut flour",
-  "Coconut oil",
-  "Raw cashews",
-  "Cashew butter",
-  "Raw chestnuts",
-]
-
-nutsandseeds.each do |item|
-  Ingredient.create!(name: "#{item}", description: "Nuts and seeds")
-end
-
-herbsandspices = [
-  "Basil",
-  "Parsley",
-  "Cilantro (Coriander)",
-  "Mint",
-  "Thyme",
-  "Rosemary",
-  "Sage",
-  "Oregano",
-  "Dill",
-  "Chives",
-  "Bay Leaves",
-  "Tarragon",
-  "Marjoram",
-  "Lavender",
-  "Lemongrass",
-  "Curry Leaves",
-  "Cumin Seeds",
-  "Coriander Seeds",
-  "Fennel Seeds",
-  "Mustard Seeds",
-  "Fenugreek Seeds",
-  "Caraway Seeds",
-  "Celery Seeds",
-  "Nigella Seeds (Black Cumin)",
-  "Cardamom Pods",
-  "Cloves",
-  "Cinnamon Sticks",
-  "Nutmeg",
-  "Allspice",
-  "Star Anise",
-  "Saffron",
-  "Turmeric",
-  "Ginger",
-  "Garlic Powder",
-  "Onion Powder",
-  "Chili Powder",
-  "Paprika",
-  "Cayenne Pepper",
-  "Red Pepper Flakes",
-  "Black Pepper",
-  "White Pepper",
-  "Ground Cumin",
-  "Ground Coriander",
-  "Ground Ginger",
-  "Ground Turmeric",
-  "Ground Cinnamon",
-  "Ground Cloves",
-  "Ground Nutmeg",
-  "Ground Allspice",
-  "Ground Cardamom",
-  "Ground Fenugreek",
-  "Curry Powder",
-  "Garam Masala",
-  "Chinese Five Spice",
-  "Za'atar",
-  "Herbes de Provence",
-  "Italian Seasoning",
-  "Ras el Hanout",
-  "Cajun Seasoning",
-  "Old Bay Seasoning",
-  "Adobo Seasoning",
-  "Jerk Seasoning",
-  "Poultry Seasoning",
-  "Taco Seasoning",
-  "Fajita Seasoning",
-  "Berbere Spice",
-  "Dukkah",
-  "Harissa",
-  "Sumac",
-  "Asafoetida (Hing)",
-  "Epazote",
-  "Kaffir Lime Leaves",
-  "Lemongrass",
-  "Mace",
-  "Vanilla Bean",
-]
-
-herbsandspices.each do |item|
-  Ingredient.create!(name: "#{item}", description: "Herbs and spices")
-end
-
-oilsandfats = [
-  "Extra virgin olive oil",
-  "Virgin olive oil",
-  "Pure olive oil",
-  "Light olive oil",
-  "Virgin coconut oil",
-  "Refined coconut oil",
-  "Fractionated coconut oil",
-  "Canola Oil (Rapeseed Oil)",
-  "Soybean oil",
-  "Corn oil",
-  "Sunflower oil",
-  "Safflower oil",
-  "Cottonseed oil",
-  "Avocado Oil",
-  "Peanut Oil (Groundnut Oil)",
-  "Toasted sesame oil",
-  "Unrefined sesame oil",
-  "Flaxseed Oil (Linseed Oil)",
-  "Walnut Oil",
-  "Grapeseed Oil",
-  "Almond Oil",
-  "Hazelnut Oil (Filbert Oil)",
-  "Macadamia Nut Oil",
-  "Pistachio Oil",
-  "Rice Bran Oil",
-  "Sunflower Oil",
-  "Safflower Oil",
-  "Unsalted butter",
-  "Salted butter",
-  "Ghee (Clarified Butter)",
-  "Lard",
-  "Duck Fat",
-  "Goose Fat",
-  "Schmaltz (Rendered Chicken Fat)",
-  "Tallow (Beef Fat)",
-  "Shortening",
-  "Margarine",
-  "Cocoa Butter",
-  "Palm Oil",
-  "Fish Oil",
-  "Emu Oil",
-  "Hemp Seed Oil",
-  "Camelina Oil",
-  "Pumpkin Seed Oil",
-  "Apricot Kernel Oil",
-  "Rice Bran Oil",
-  "Tamanu Oil",
-  "Black Seed Oil",
-  "Argan Oil",
-  "Jojoba Oil",
-  "Meadowfoam Oil",
-  "Marula Oil",
-  "Baobab Oil",
-  "Neem Oil",
-  "Tea Tree Oil",
-  "Castor Oil",
-  "Rosehip Oil",
-  "Evening Primrose Oil",
-  "Borage Oil",
-  "Sea Buckthorn Oil",
-  "Wheat Germ Oil",
-]
-
-oilsandfats.each do |item|
-  Ingredient.create!(name: "#{item}", description: "Oils and fats")
-end
-
-sweeteners = [
-  "White Sugar (Granulated Sugar)",
-  "Brown Sugar",
-  "Confectioners' Sugar (Powdered Sugar)",
-  "Cane Sugar",
-  "Turbinado Sugar",
-  "Demerara Sugar",
-  "Muscovado Sugar",
-  "Coconut Sugar",
-  "Date Sugar",
-  "Maple Syrup",
-  "Honey",
-  "Agave Syrup",
-  "Molasses",
-  "Rice Syrup (Brown Rice Syrup)",
-  "Corn Syrup",
-  "High-Fructose Corn Syrup",
-  "Stevia",
-  "Monk Fruit Sweetener",
-  "Xylitol",
-  "Erythritol",
-  "Sorbitol",
-  "Maltitol",
-  "Allulose",
-  "Invert Sugar",
-  "Barley Malt Syrup",
-]
-
-sweeteners.each do |item|
-  Ingredient.create!(name: "#{item}", description: "Sweeteners")
-end
-
-condimentsandsauces = [
-  "Ketchup",
-  "Yellow mustard",
-  "Dijon mustard",
-  "Whole grain mustard",
-  "Mayonnaise",
-  "BBQ Sauce",
-  "Tabasco",
-  "Sriracha",
-  "Soy Sauce",
-  "Worcestershire Sauce",
-  "Fish Sauce",
-  "Hoisin Sauce",
-  "Oyster Sauce",
-  "Teriyaki Sauce",
-  "Sweet Chili Sauce",
-  "Tartar Sauce",
-  "Ranch Dressing",
-  "Blue Cheese Dressing",
-  "Caesar Dressing",
-  "Italian Dressing",
-  "Balsamic Vinaigrette",
-  "Thousand Island Dressing",
-  "Salsa",
-  "Guacamole",
-  "Hummus",
-  "Pesto",
-  "Tahini",
-  "Harissa",
-  "Chimichurri Sauce",
-  "Hollandaise Sauce",
-  "Bechamel Sauce",
-  "Marinara Sauce",
-  "Alfredo Sauce",
-  "Pesto Sauce",
-  "Sriracha Mayo",
-  "Cocktail Sauce",
-  "Soy Ginger Glaze",
-  "Sweet and Sour Sauce",
-  "Gochujang",
-  "Peanut Sauce",
-  "Miso Paste",
-  "Tzatziki Sauce",
-  "Chipotle Mayo",
-  "Enchilada Sauce",
-  "Szechuan Sauce",
-  "Ponzu Sauce",
-  "Black Bean Sauce",
-  "Thai Curry Paste",
-  "Mole Sauce",
-  "Pickles",
-  "Relish",
-  "Chutney",
-  "Aioli",
-  "Burger Sauce"
-]
-
-condimentsandsauces.each do |item|
-  Ingredient.create!(name: "#{item}", description: "Condiments and sauces")
-end
-
-bakingandcookingessentials = [
-  "All-Purpose Flour",
-  "Granulated Sugar",
-  "Brown Sugar",
-  "Baking Powder",
-  "Baking Soda",
-  "Salt",
-  "Vanilla Extract",
-  "Yeast",
-  "Cornstarch",
-  "Cocoa Powder",
-  "Chocolate Chips",
-  "Vegetable Oil",
-  "Olive Oil",
-  "Butter",
-  "Eggs",
-  "Milk",
-  "Cream (Heavy Cream, Whipping Cream)",
-  "Sour Cream",
-  "Yogurt",
-  "Honey",
-  "Molasses",
-  "Maple Syrup",
-  "Cornmeal",
-  "Bread Crumbs",
-  "Panko Bread Crumbs",
-  "Canned Tomatoes",
-  "Crushed Tomatoes (can)",
-  "Diced Tomatoes (can)",
-  "Tomato Paste (can)",
-  "Chicken Broth",
-  "Beef Broth",
-  "Vegetable Broth",
-  "White Vinegar",
-  "Apple Cider Vinegar",
-  "Balsamic Vinegar",
-  "Soy Sauce",
-  "Worcestershire Sauce",
-  "Dijon Mustard",
-  "Canned Black Beans",
-  "Canned Kidney Beans",
-  "Canned Chickpeas",
-  "Canned Coconut Milk",
-  "Canned Pumpkin Puree",
-  "Canned Condensed Milk",
-  "Gelatin",
-  "Shortening",
-  "Confectioners' Sugar",
-  "Almond Extract",
-  "Lemon Extract",
-  "Cream of Tartar",
-  "White Wine",
-  "Red Wine",
-  "Rice Vinegar",
-  "Mirin",
-  "Cooking Wine",
-  "Coconut Oil",
-  "Agar Agar",
-]
-
-bakingandcookingessentials.each do |item|
-  Ingredient.create!(name: "#{item}", description: "Baking and cooking essentials")
-end
-
-beverages = [
-  "Coffee",
-  "Tea",
-  "Water",
-  "Milk",
-  "Almond Milk",
-  "Soy Milk",
-  "Oat Milk",
-  "Coconut Milk",
-  "Rice Milk",
-  "Orange Juice",
-  "Apple Juice",
-  "Grape Juice",
-  "Cranberry Juice",
-  "Carbonated Water",
-  "Lemonade",
-  "Hot Chocolate",
-  "Ginger Tea",
-  "Chai Tea",
-  "Matcha Tea",
-  "Kombucha",
-  "Red Wine",
-  "White Wine",
-  "Rosé Wine",
-  "Lager",
-  "Ale",
-  "Stout",
-  "Vodka",
-  "Rum",
-  "Whiskey",
-  "Gin",
-  "Tequila",
-  "Champagne",
-  "Sparkling Wine",
-  "Sake",
-  "Cider",
-  "Coconut Water",
-  "Tonic Water",
-  "Cola",
-  "Lemon-Lime Soda",
-  "Ginger Ale",
-  "Coconut Water",
-  "Fruit Infused Water",
-  "Peppermint Infusion",
-  "Chamomile Infusion",
-  "Yerba Mate",
-  "Espresso",
-  "Americano",
-  "Cappuccino",
-  "Latte",
-  "Macchiato",
-  "Flat White",
-  "Irish Coffee",
-  "Turkish Coffee",
-]
-
-beverages.each do |item|
-  Ingredient.create!(name: "#{item}", description: "Beverage")
-end
-
-pasta = [
-  "Spaghetti",
-  "Linguine",
-  "Fettuccine",
-  "Tagliatelle",
-  "Penne",
-  "Rigatoni",
-  "Fusilli",
-  "Rotini",
-  "Farfalle (Bowtie)",
-  "Conchiglie (Shell)",
-  "Orecchiette",
-  "Ravioli",
-  "Tortellini",
-  "Gnocchi",
-  "Orzo",
-  "Cavatappi",
-  "Manicotti",
-  "Cannelloni",
-  "Gemelli",
-  "Campanelle",
-  "Pappardelle",
-  "Capellini (Angel Hair)",
-  "Ziti",
-  "Rotelle",
-  "Paccheri",
-  "Paccheri",
-  "Strozzapreti",
-  "Mafaldine",
-  "Gigli",
-  "Farfalloni",
-]
-
-pasta.each do |item|
-  Ingredient.create!(name: "#{item}", description: "Pasta")
-end
-
-miscellaneous = [
-  "Truffle Oil",
-  "Vanilla Beans",
-  "Saffron Threads",
-  "Edible Gold Leaf",
-  "Lavender Extract",
-  "Rose Water",
-  "Orange Blossom Water",
-  "Almond Extract",
-  "Peppermint Extract",
-  "Coconut Extract",
-  "Maple Extract",
-  "Food Coloring (Liquid, Gel)",
-  "Agar Agar Powder",
-  "Xanthan Gum",
-  "Guar Gum",
-  "Arrowroot Powder",
-  "Cornstarch",
-  "Cream of Tartar",
-  "Instant Coffee",
-  "Baking Spray (Non-stick spray)",
-  "Pectin",
-  "Malt Extract",
-  "Yeast",
-  "Balsamic Vinegar",
-  "Rice Vinegar",
-  "Apple Cider Vinegar",
-  "Mirin",
-  "Miso Paste",
-  "Tahini Paste",
-  "Fish Sauce",
-  "Worcestershire Sauce",
-  "Gochujang",
-  "Hoisin Sauce",
-  "Harissa Paste",
-  "Wasabi Paste",
-  "Mirin",
-  "Rice Wine",
-  "Rice Vinegar",
-  "Seaweed Sheets (Nori)",
-  "Tamarind Paste",
-  "Furikake",
-  "Rice Paper",
-  "Coconut Aminos",
-  "Dashi Powder",
-  "Thai Curry Paste",
-  "Lemon Grass",
-  "Galangal",
-  "Kaffir Lime Leaves",
-  "Rice Noodles",
-  "Udon Noodles",
-  "Soba Noodles",
-  "Coconut Cream",
-  "Brioche Bun"
-]
-
-miscellaneous.each do |item|
-  Ingredient.create!(name: "#{item}", description: "Miscellaneous")
-end
+puts "Created ingredients"
 
 #Building Recipes:
 
@@ -1051,8 +879,6 @@ def create_recipe(recipe, ingredients, tags, photo)
   tags.each do |tag_data|
     tag = Tag.where(name: tag_data[:name]).first
 
-
-
     recipe.recipe_tags.create!(tag_id: tag.id, recipe_id: recipe.id)
   end
 
@@ -1060,7 +886,6 @@ def create_recipe(recipe, ingredients, tags, photo)
   recipe.photo.attach(io: opened_photo, filename: "nes.png", content_type: "image/png")
   recipe.save
 end
-
 
 
 # Define recipes and their associated ingredients
@@ -1076,19 +901,119 @@ recipes_with_data = [
       meal_type: ["Lunch"]
     },
     ingredients: [
-      { ingredient: "Ground beef (minced beef)", quantity: 100, unit_of_measure: "g" },
-      { ingredient: "Unsalted butter", quantity: 20, unit_of_measure: "g" },
-      { ingredient: "Salt", quantity: 1, unit_of_measure: "pinch" },
-      { ingredient: "Paprika", quantity: 1, unit_of_measure: "pinch" },
-      { ingredient: "Brioche Bun", quantity: 1, unit_of_measure: "unit" },
-      { ingredient: "Burger Sauce", quantity: 25, unit_of_measure: "g" }
+      { ingredient: ground_beef, quantity: 100, unit_of_measure: "g" },
+      { ingredient: unsalted_butter, quantity: 20, unit_of_measure: "g" },
+      { ingredient: salt, quantity: 1, unit_of_measure: "pinch" },
+      { ingredient: paprika, quantity: 1, unit_of_measure: "pinch" },
+      { ingredient: brioche_bun, quantity: 1, unit_of_measure: "unit" },
+      { ingredient: burger_sauce, quantity: 25, unit_of_measure: "g" }
     ],
     tags: [
       { name: "Main" }
     ],
     photo: "https://res.cloudinary.com/dfipoufmj/image/upload/v1712159137/pexels-jonathan-borba-2983101_i2amcd.jpg"
-  }
-  # Add more recipes with associated ingredients as needed
+  },
+  {
+    recipe_data: {
+      user_id: admin.id,
+      name: "Homemade chips",
+      description: "Crispy, golden slices of freshly fried potatoes",
+      instructions: "Peel, and slice into thick 1.5cm chips. part boil in salty water until just soft (~8mins), drain and allow to steam dry. Fry in oil @120 degrees for 10 mins. To finish, fry @ 180 degrees until golden. Season with salt",
+      prep_time: 10,
+      cook_time: 30,
+      meal_type: ["Lunch"]
+    },
+    ingredients: [
+      { ingredient: maris_piper_potatoes, quantity: 100, unit_of_measure: "g" },
+    ],
+    tags: [
+      { name: "Side" },
+      { name: "Component" },
+      { name: "Snack" }
+    ],
+    photo: default_photo
+  },
+  {
+    recipe_data: {
+      user_id: admin.id,
+      name: "Banana Bread",
+      description: "Moist, flavourful recipe, bursting with banana goodness",
+      instructions: "Mix dry ingredients together, smash ripe bananas and add other wet ingredients. Combine the two and bake until cooked through @ 170 degrees fan",
+      prep_time: 10,
+      cook_time: 30,
+      meal_type: ["Lunch"]
+    },
+    ingredients: [
+      { ingredient: plain_flour, quantity: 1.75, unit_of_measure: "cup" },
+      { ingredient: baking_soda, quantity: 1.5, unit_of_measure: "tsp" },
+      { ingredient: salt, quantity: 0.75, unit_of_measure: "pinch" },
+      { ingredient: castor_sugar, quantity: 1.5, unit_of_measure: "cup" },
+      { ingredient: whole_eggs, quantity: 3, unit_of_measure: "unit" },
+      { ingredient: sunflower_oil, quantity: 0.75, unit_of_measure: "cup" },
+      { ingredient: bananas, quantity: 1, unit_of_measure: "cup" },
+    ],
+    tags: [
+      { name: "Baked Goods" },
+      { name: "Component" },
+      { name: "Snack" }
+    ],
+    photo: default_photo
+  },
+  {
+    recipe_data: {
+      user_id: admin.id,
+      name: "Chocolate Brownie",
+      description: "A decadent, fudgy delight, rich with cocoa",
+      instructions: "Whisk eggs with sugar until pale yellow. Melt butter and chocolate and fold into egg mix. Bake at 170 (Longer cooking will result in a more cakey mixture, less cooking will be gooey).",
+      prep_time: 10,
+      cook_time: 25,
+      meal_type: ["Lunch"]
+    },
+    ingredients: [
+      { ingredient: whole_eggs, quantity: 10, unit_of_measure: "unit" },
+      { ingredient: castor_sugar, quantity: 600, unit_of_measure: "g" },
+      { ingredient: dark_chocolate_70_percent, quantity: 710, unit_of_measure: "g" },
+      { ingredient: milk_chocolate, quantity: 200, unit_of_measure: "g" },
+      { ingredient: unsalted_butter, quantity: 340, unit_of_measure: "g" },
+    ],
+    tags: [
+      { name: "Baked Goods" },
+      { name: "Component" },
+      { name: "Snack" }
+    ],
+    photo: default_photo
+  },
+  {
+    recipe_data: {
+      user_id: admin.id,
+      name: "Nutty Chocolate Brownie",
+      description: "A decadent, fudgy delight, rich with cocoa and studded with melty chocolate chips and nuts.",
+      instructions: "Beat eggs and sugar together until pale yellow. Add rest of dry ingredients. Melt chocolate and butter together. Combine two mixes. Fold in chopped chocolate and nuts and pour into lined tin. Bake at 170 degrees until cooked",
+      prep_time: 15,
+      cook_time: 25,
+      meal_type: ["Lunch"]
+    },
+    ingredients: [
+      { ingredient: whole_eggs, quantity: 6, unit_of_measure: "unit" },
+      { ingredient: castor_sugar, quantity: 300, unit_of_measure: "g" },
+      { ingredient: unsalted_butter, quantity: 375, unit_of_measure: "g" },
+      { ingredient: dark_chocolate_70_percent, quantity: 375, unit_of_measure: "g" },
+      { ingredient: baking_powder, quantity: 200, unit_of_measure: "g" },
+      { ingredient: plain_flour, quantity: 225, unit_of_measure: "g" },
+      { ingredient: salt, quantity: 10, unit_of_measure: "g" },
+      { ingredient: walnuts, quantity: 300, unit_of_measure: "g" },
+      { ingredient: hazelnuts, quantity: 200, unit_of_measure: "g" },
+      { ingredient: dark_chocolate_70_percent, quantity: 170, unit_of_measure: "g" },
+      { ingredient: milk_chocolate, quantity: 320, unit_of_measure: "g" },
+      { ingredient: white_chocolate, quantity: 220, unit_of_measure: "g" },
+    ],
+    tags: [
+      { name: "Baked Goods" },
+      { name: "Component" },
+      { name: "Snack" }
+    ],
+    photo: default_photo
+  },
 ]
 
 # Create recipes and their associated ingredients using the helper method
