@@ -5,51 +5,9 @@ class MenusController < ApplicationController
     @menus = Menu.all
   end
 
-  def day_by_day_plan(menu)
-    @recipes = []
-
-    case menu.meal_type
-    when ["Breakfast", "Lunch", "Dinner"]
-      menu.recipes.where(meal_type: ["Breakfast"]).zip(menu.recipes.where(meal_type: ["Lunch"]), menu.recipes.where(meal_type: ["Dinner"])) do |recipe1, recipe2, recipe3|
-        @recipes << recipe1
-        @recipes << recipe2
-        @recipes << recipe3
-      end
-    when ["Breakfast", "Lunch"]
-      menu.recipes.where(meal_type: ["Breakfast"]).zip(menu.recipes.where(meal_type: ["Lunch"])) do |recipe1, recipe2|
-        @recipes << recipe1
-        @recipes << recipe2
-      end
-    when ["Lunch", "Dinner"]
-      menu.recipes.where(meal_type: ["Lunch"]).zip(menu.recipes.where(meal_type: ["Dinner"])) do |recipe1, recipe2|
-        @recipes << recipe1
-        @recipes << recipe2
-      end
-    when ["Breakfast", "Dinner"]
-      menu.recipes.where(meal_type: ["Breakfast"]).zip(menu.recipes.where(meal_type: ["Dinner"])) do |recipe1, recipe2|
-        @recipes << recipe1
-        @recipes << recipe2
-      end
-    when ["Breakfast"]
-      menu.recipes.where(meal_type: ["Breakfast"]).each do |recipe|
-        @recipes << recipe
-      end
-    when ["Lunch"]
-      menu.recipes.where(meal_type: ["Lunch"]).each do |recipe|
-        @recipes << recipe
-      end
-    when ["Dinner"]
-      menu.recipes.where(meal_type: ["Dinner"]).each do |recipe|
-        @recipes << recipe
-      end
-    end
-    @recipes
-  end
-
   def show
     @menu = Menu.find(params[:id])
     @recipes = @menu.recipes
-    day_by_day_plan(@menu)
 
     @ingredients = []
 
@@ -71,28 +29,10 @@ class MenusController < ApplicationController
 
   def new
     @menu = Menu.new
-    # @tags = Tag.all
-    # @ingredients = Ingredient.all
-  end
-
-  def add_recipes_by_meal_type(menu)
-    recipes = []
-
-    menu.meal_type.each do |type|
-      recipes << Recipe.all.where(meal_type: ["#{type}"]).sample(@menu.days_planned)
-    end
-
-    recipes
   end
 
   def create
     @menu = Menu.new(menu_params)
-
-    relevant_recipes = add_recipes_by_meal_type(@menu)
-
-    relevant_recipes.each do |recipe|
-      @menu.recipes << recipe
-    end
 
     if @menu.save
       redirect_to @menu, notice: 'Menu was successfully created.'
@@ -122,10 +62,6 @@ class MenusController < ApplicationController
     @menu.ingredients.destroy_all
     @menu.destroy
     redirect_to menus_url, notice: 'Menu was successfully destroyed.'
-  end
-
-  def compare_tags(array1, array2)
-    array2.all? { |element| array1.include?(element) }
   end
 
   private
