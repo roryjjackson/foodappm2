@@ -1,0 +1,28 @@
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-12 col-sm-8 form-login">
+      <h1>Add quantity of ingredient to recipe</h1>
+
+      <%= simple_form_for(@recipe) do |f| %>
+        <%= f.error_notification %>
+        <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+        <div class="form-inputs">
+
+
+          <!-- app/views/recipes/_form.html.erb -->
+          <%= f.simple_fields_for :recipe_ingredients do |ri| %>
+          <% raise %>
+            <%= ri.label :ingredient_id %>
+            <%= ri.input :quantity %>
+          <% end %>
+
+        </div>
+
+        <div class="form-actions">
+          <%= f.button :submit, class: "btn-flat" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

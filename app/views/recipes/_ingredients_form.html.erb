@@ -1,0 +1,23 @@
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-12 col-sm-8 form-login">
+      <h1>Add Ingredients to recipe</h1>
+
+      <%= simple_form_for(@recipe) do |f| %>
+        <%= f.error_notification %>
+        <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+        <div class="form-inputs">
+          <div class="field">
+            <%= f.label :ingredient_ids, 'Ingredients' %>
+            <%= f.collection_check_boxes :ingredient_ids, Ingredient.all, :id, :name %>
+          </div>
+        </div>
+
+        <div class="form-actions">
+          <%= f.button :submit, class: "btn-flat" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

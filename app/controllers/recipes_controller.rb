@@ -96,6 +96,10 @@ class RecipesController < ApplicationController
                                      :user_id,
                                      tag_ids: [],
                                      ingredient_ids: [],
-                                     meal_type: [])
+                                     meal_type: [],
+                                     recipe_ingredients_attributes: [:id,
+                                                                     :ingredient_id,
+                                                                     :quantity,
+                                                                     :_destroy])
     end
 end
