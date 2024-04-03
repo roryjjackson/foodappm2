@@ -1185,12 +1185,3 @@ require "open-uri"
   recipe.photo.attach(io: opened_pic, filename: "nes.png", content_type: "image/png") unless recipe.photo.attached?
   recipe.save
 end
-
-
-my_recipes = [
-  Recipe.create!(user_id: user1.id, name: "",
-    description: "",
-    instructions: "",
-    prep_time: 10, cook_time: 0, meal_type: [""])
-
-]
