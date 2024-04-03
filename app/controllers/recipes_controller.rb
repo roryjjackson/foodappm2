@@ -27,6 +27,12 @@ class RecipesController < ApplicationController
 
   # GET /recipes/1 or /recipes/1.json
   def show
+    @recipe = Recipe.find(params[:id])
+    @ingredients = @recipe.ingredients
+    if params[:ingredient_ids]
+      # @ingredients = Ingredient.search_by_ingredient(params[:search])
+      @recipe.ingredients << Ingredient.where(id: params[:ingredient_ids])
+    end
   end
 
   # GET /recipes/new
@@ -42,9 +48,9 @@ class RecipesController < ApplicationController
   # POST /recipes or /recipes.json
   def create
     @recipe = Recipe.new(recipe_params)
-    @ingredients = Ingredient.search_by_ingredient(params[:search])
-
     @recipe.user = current_user
+
+
     respond_to do |format|
       if @recipe.save
         format.html { redirect_to recipe_url(@recipe), notice: "Recipe was successfully created." }

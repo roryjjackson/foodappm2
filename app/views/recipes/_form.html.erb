@@ -20,13 +20,16 @@
           </div>
 
           <div class="field">
-            <%= f.input :photo, as: :file %>
+            <%= f.input :photo, as: :file, required: true %>
           </div>
 
-          <div class="field">
-            <%= f.label :ingredient_ids, 'Ingredients' %>
-            <%= f.collection_check_boxes :ingredient_ids, Ingredient.all, :id, :name %>
-          </div>
+
+
+
+          <%# <div class="field"> %>
+            <%# <%= f.label :ingredient_ids, 'Ingredients' %> %>
+            <%# <%= f.collection_check_boxes :ingredient_ids, Ingredient.all, :id, :name %> %>
+          <%# </div> %>
 
           <div class="field">
             <%= f.label :meal_type %><br>
