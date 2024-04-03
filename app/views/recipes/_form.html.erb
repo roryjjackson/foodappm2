@@ -33,16 +33,10 @@
 
         <div class="field">
           <%= f.simple_fields_for :recipe_ingredients do |ri| %>
-            <div class="nested-fields">
-              <%= ri.collection_select :ingredient_id, Ingredient.all, :id, :name, { prompt: 'Select Ingredient' } %>
-              <%= ri.input :quantity %>
-              <%= ri.input :unit_of_measure %>
-              <%= ri.input :_destroy, as: :boolean, label: 'Remove' %>
-            </div>
+            <%= ri.collection_check_boxes :ingredient_ids, Ingredient.all, :id, :name %>
+            <%= ri.input :quantity %>
+            <%= ri.input :unit_of_measure %>
           <% end %>
-          <div class="links">
-            <%= link_to_add_association 'Add Ingredient', f, :recipe_ingredients, class: 'btn btn-secondary' %>
-          </div>
         </div>
 
         <div class="form-actions">
