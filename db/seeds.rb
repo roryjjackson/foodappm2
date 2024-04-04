@@ -26,7 +26,9 @@ tags = ["Snack",
         "European",
         "South American",
         "African",
-        "Caribbean"]
+        "Caribbean",
+        "Salad"
+       ]
 
 tags.each do |tag|
   Tag.create!(name: tag)
@@ -460,8 +462,28 @@ english_mustard = "English Mustard"
 whole_meal_flour = "Whole Meal Flour"
 treacle = "Treacle"
 capers = "Capers"
+red_wine_vinegar = "Red Wine Vinegar"
+fresh_chilli = "Fresh Chilli"
+sherry_vinegar = "Sherry Vinegar"
+mustard_powder = "Mustard Powder"
+lamb_fat = "Lamb Fat"
+golden_syrup = "Golden Syrup"
+lager_beer = "Lager Beer"
+flour_00 = "00 Flour"
+spring_onion = "Spring Onion"
+kohl_rabi = "Kohl Rabi"
 
 ingredients = [
+  { name: "Kohl Rabi" },
+  { name: "Spring Onion" },
+  { name: "00 Flour" },
+  { name: "Lager Beer" },
+  { name: "Golden Syrup" },
+  { name: "Lamb Fat" },
+  { name: "Mustard Powder" },
+  { name: "Sherry Vinegar" },
+  { name: "Fresh Chilli" },
+  { name: "Red Wine Vinegar" },
   { name: "Sirloin" },
   { name: "Ribeye" },
   { name: "Fillet steak" },
@@ -897,7 +919,7 @@ ingredients.each do |ingredient|
 end
 
 puts "Created ingredients"
-
+puts "creating Recipes"
 #Building Recipes:
 
 def create_recipe(recipe, ingredients, tags, photo)
@@ -925,25 +947,25 @@ end
 
 # Define recipes and their associated ingredients
 recipes_with_data = [
-  { # Template
-    recipe_data: {
-      user_id: admin.id,
-      name: "Template",
-      description: "",
-      instructions: "",
-      prep_time: 0,
-      cook_time: 0,
-      meal_type: [""]
-    },
-    ingredients: [
-      { ingredient: , quantity: 0, unit_of_measure: "g" },
-    ],
-    tags: [
-      { name: "" },
-      { name: "" }
-    ],
-    photo: default_photo
-  },
+  # { # Template
+  #   recipe_data: {
+  #     user_id: admin.id,
+  #     name: "Template",
+  #     description: "",
+  #     instructions: "",
+  #     prep_time: 0,
+  #     cook_time: 0,
+  #     meal_type: [""]
+  #   },
+  #   ingredients: [
+  #     { ingredient: , quantity: 0, unit_of_measure: "g" },
+  #   ],
+  #   tags: [
+  #     { name: "" },
+  #     { name: "" }
+  #   ],
+  #   photo: default_photo
+  # },
   { # Smash burgers
     recipe_data: {
       user_id: admin.id,
@@ -1597,6 +1619,484 @@ recipes_with_data = [
     ],
     photo: default_photo
   },
+  { # Chimichurri
+    recipe_data: {
+      user_id: admin.id,
+      name: "Chimichurri",
+      description: "Herby, spicy sauce that bangs with barbequed meats",
+      instructions: "Pick herbs, add everything except the oil to a blender. Slowly oil whilst blending to create emulsion",
+      prep_time: 10,
+      cook_time: 0,
+      meal_type: ["Daytime"]
+    },
+    ingredients: [
+      { ingredient: parsley, quantity: 1, unit_of_measure: "bunch" },
+      { ingredient: oregano, quantity: 1, unit_of_measure: "bunch" },
+      { ingredient: chilli_flakes, quantity: , unit_of_measure: "pinch" },
+      { ingredient: garlic, quantity: 4, unit_of_measure: "cloves" },
+      { ingredient: sunflower_oil, quantity: 150, unit_of_measure: "ml" },
+      { ingredient: red_wine_vinegar, quantity: 50, unit_of_measure: "ml" },
+      { ingredient: salt, quantity: 1, unit_of_measure: "pinch" },
+    ],
+    tags: [
+      { name: "Component" }
+    ],
+    photo: default_photo
+  },
+  { # Katsu Sauce
+    recipe_data: {
+      user_id: admin.id,
+      name: "Katsu Sauce",
+      description: "Slap this with breaded chicken and rice for one hell of a meal",
+      instructions: "Sweat onions, ginger, chilli, garlic, carrots in butter. Add flour and cook out. Add sugar, soy sauce, garam masala, curry powder, and chicken stock. Simmer for 20 mins and blend.",
+      prep_time: 15,
+      cook_time: 20,
+      meal_type: ["Daytime"]
+    },
+    ingredients: [
+      { ingredient: ginger, quantity: 50, unit_of_measure: "g" },
+      { ingredient: white_onions, quantity: 4, unit_of_measure: "" },
+      { ingredient: carrots, quantity: 6, unit_of_measure: "" },
+      { ingredient: garlic, quantity: 4, unit_of_measure: "cloves" },
+      { ingredient: fresh_chilli, quantity: 1, unit_of_measure: "" },
+      { ingredient: unsalted_butter, quantity: 75, unit_of_measure: "g" },
+      { ingredient: plain_flour, quantity: 2, unit_of_measure: "tbsp" },
+      { ingredient: soy_sauce, quantity: 50, unit_of_measure: "ml" },
+      { ingredient: garam_masala, quantity: 2, unit_of_measure: "tbsp" },
+      { ingredient: curry_powder, quantity: 2, unit_of_measure: "tbsp" },
+      { ingredient: chicken_stock, quantity: 500, unit_of_measure: "ml" },
+      { ingredient: brown_sugar, quantity: 1, unit_of_measure: "tbsp" },
+    ],
+    tags: [
+      { name: "Japanese" },
+      { name: "Component" }
+    ],
+    photo: default_photo
+  },
+  { # Scotch Pancakes
+    recipe_data: {
+      user_id: admin.id,
+      name: "Scotch Pancakes",
+      description: "Thick, fluffy breakfast goodness",
+      instructions: "Combine ingredients well. Allow to rest in fridge for at 30 mins. Ideally overnight.",
+      prep_time: 10,
+      cook_time: 5,
+      meal_type: ["Morning"]
+    },
+    ingredients: [
+      { ingredient: plain_flour, quantity: 2.25, unit_of_measure: "cups" },
+      { ingredient: baking_powder, quantity: 3, unit_of_measure: "tsp" },
+      { ingredient: castor_sugar, quantity: 0.5, unit_of_measure: "cups" },
+      { ingredient: whole_eggs, quantity: 1, unit_of_measure: "" },
+      { ingredient: milk, quantity: 1.25, unit_of_measure: "cups" },
+      { ingredient: creme_fraiche, quantity: 0.5, unit_of_measure: "cups" },
+      { ingredient: unsalted_butter, quantity: 0.5, unit_of_measure: "cups" }
+    ],
+    tags: [
+      { name: "American" },
+      { name: "Component" },
+      { name: "Sweet Treat" }
+    ],
+    photo: default_photo
+  },
+  { # Crepes
+    recipe_data: {
+      user_id: admin.id,
+      name: "Crepes",
+      description: "Simple. Elegant. Should come out more often.",
+      instructions: "Combine ingredients well. Allow to sit in fridge for 30mins, ideally overnight.",
+      prep_time: 5,
+      cook_time: 5,
+      meal_type: ["Morning"]
+    },
+    ingredients: [
+      { ingredient: plain_flour, quantity: 100, unit_of_measure: "g" },
+      { ingredient: milk, quantity: 300, unit_of_measure: "ml" },
+      { ingredient: whole_eggs, quantity: 2, unit_of_measure: "" },
+    ],
+    tags: [
+      { name: "European" },
+      { name: "Component" }
+    ],
+    photo: default_photo
+  },
+  { # House Dressing
+    recipe_data: {
+      user_id: admin.id,
+      name: "House Dressing",
+      description: "A salad dressing for every occasion",
+      instructions: "Blend all ingredients except oil. Slowly add oil to blender to create emulsion.",
+      prep_time: 10,
+      cook_time: 0,
+      meal_type: ["Daytime"]
+    },
+    ingredients: [
+      { ingredient: sherry_vinegar, quantity: 325, unit_of_measure: "ml" },
+      { ingredient: mustard_powder, quantity: 10, unit_of_measure: "g" },
+      { ingredient: salt, quantity: 50, unit_of_measure: "g" },
+      { ingredient: garlic, quantity: 6, unit_of_measure: "cloves" },
+      { ingredient: black_pepper, quantity: 10, unit_of_measure: "g" },
+      { ingredient: demerara_sugar, quantity: 140, unit_of_measure: "g" },
+      { ingredient: grapeseed_oil, quantity: 900, unit_of_measure: "ml" },
+      { ingredient: olive_oil, quantity: 900, unit_of_measure: "ml" }
+    ],
+    tags: [
+      { name: "Component" },
+      { name: "European" }
+    ],
+    photo: default_photo
+  },
+  { # Ricotta Gnocchi
+    recipe_data: {
+      user_id: admin.id,
+      name: "Ricotta Gnocchi",
+      description: "A seamingly lighter, yet no less tasty version of the original",
+      instructions: "Combine ingredients, knead until smooth. Roll into snakes, chop into pillows. Blanch in salted boiling water until they rise to surface. Allow to dry and use as wished.",
+      prep_time: 30,
+      cook_time: 10,
+      meal_type: ["Daytime"]
+    },
+    ingredients: [
+      { ingredient: whole_eggs, quantity: 1, unit_of_measure: "" },
+      { ingredient: ricotta_cheese, quantity: 250, unit_of_measure: "g" },
+      { ingredient: plain_flour, quantity: 110, unit_of_measure: "g" },
+    ],
+    tags: [
+      { name: "Component" },
+      { name: "European" }
+    ],
+    photo: default_photo
+  },
+  { # Pickling Liqor
+    recipe_data: {
+      user_id: admin.id,
+      name: "Pickling Liqor",
+      description: "A staple, base set up to pickle anything you fancy",
+      instructions: "Bring to boil and cool. Use as wished",
+      prep_time: 5,
+      cook_time: 5,
+      meal_type: ["Daytime"]
+    },
+    ingredients: [
+      { ingredient: white_vinegar, quantity: 100, unit_of_measure: "g" },
+      { ingredient: castor_sugar, quantity: 200, unit_of_measure: "g" },
+      { ingredient: water, quantity: 300, unit_of_measure: "g" },
+    ],
+    tags: [
+      { name: "Component" }
+    ],
+    photo: default_photo
+  },
+  { # Spicy Savoury Granola
+    recipe_data: {
+      user_id: admin.id,
+      name: "Spicy Savoury Granola",
+      description: "Add to small plates for a bit of crunch",
+      instructions: "Combine all ingredients and bake at 180°C until toasted",
+      prep_time: 10,
+      cook_time: 25,
+      meal_type: ["Daytime"]
+    },
+    ingredients: [
+      { ingredient: oats, quantity: 100, unit_of_measure: "g" },
+      { ingredient: pumpkin_seeds, quantity: 100, unit_of_measure: "g" },
+      { ingredient: sunflower_seeds, quantity: 100, unit_of_measure: "g" },
+      { ingredient: mustard_seeds, quantity: 30, unit_of_measure: "g" },
+      { ingredient: unsalted_butter, quantity: 30, unit_of_measure: "g" },
+      { ingredient: lamb_fat, quantity: 60, unit_of_measure: "g" },
+      { ingredient: salt, quantity: 1, unit_of_measure: "pinch" },
+      { ingredient: golden_syrup, quantity: 30, unit_of_measure: "g" },
+      { ingredient: paprika, quantity: 2, unit_of_measure: "tsp" },
+      { ingredient: cayenne_pepper, quantity: 1, unit_of_measure: "tsp" },
+      { ingredient: chilli_flakes, quantity: 2, unit_of_measure: "tsp" }
+    ],
+    tags: [
+      { name: "Component" },
+      { name: "European" }
+    ],
+    photo: default_photo
+  },
+  { # Beer Batter
+    recipe_data: {
+      user_id: admin.id,
+      name: "Beer Batter",
+      description: "Turn that boring whatever into a crispy delight",
+      instructions: "Mix ingredients well",
+      prep_time: 10,
+      cook_time: 0,
+      meal_type: [""]
+    },
+    ingredients: [
+      { ingredient: plain_flour, quantity: 200, unit_of_measure: "g" },
+      { ingredient: lager_beer, quantity: 150, unit_of_measure: "ml" },
+      { ingredient: ale, quantity: 150, unit_of_measure: "ml" },
+      { ingredient: salt, quantity: 5, unit_of_measure: "g" },
+      { ingredient: black_pepper, quantity: 5, unit_of_measure: "g" },
+      { ingredient: curry_powder, quantity: 5, unit_of_measure: "g" },
+    ],
+    tags: [
+      { name: "Component" },
+      { name: "European" }
+    ],
+    photo: default_photo
+  },
+  { # Cheddar Shortcrust Pastry
+    recipe_data: {
+      user_id: admin.id,
+      name: "Cheddar Shortcrust Pastry",
+      description: "Love pastry? Add cheese and its just even better",
+      instructions: "Rub cold cubed butter with flour. Add other ingredients. Knead lighlty and chill in cling film until needed.",
+      prep_time: 10,
+      cook_time: 0,
+      meal_type: [""]
+    },
+    ingredients: [
+      { ingredient: cheddar, quantity: 60, unit_of_measure: "g" },
+      { ingredient: plain_flour, quantity: 120, unit_of_measure: "g" },
+      { ingredient: salt, quantity: 1, unit_of_measure: "pinch" },
+      { ingredient: unsalted_butter, quantity: 60, unit_of_measure: "g" },
+      { ingredient: whole_eggs, quantity: 1, unit_of_measure: "" },
+    ],
+    tags: [
+      { name: "Component" },
+      { name: "Pastry" }
+    ],
+    photo: default_photo
+  },
+  { # Bechamel
+    recipe_data: {
+      user_id: admin.id,
+      name: "Bechamel",
+      description: "The base for sauces everyone should know",
+      instructions: "Melt butter, add flour and cook out for 1 minute. Add milk and herbs and cook on very low heat for 30 mins until thick and glossy.",
+      prep_time: 5,
+      cook_time: 30,
+      meal_type: [""]
+    },
+    ingredients: [
+      { ingredient: plain_flour, quantity: 50, unit_of_measure: "g" },
+      { ingredient: unsalted_butter, quantity: 80, unit_of_measure: "g" },
+      { ingredient: milk, quantity: 900, unit_of_measure: "ml" },
+      { ingredient: bay_leaves, quantity: 2, unit_of_measure: "" },
+      { ingredient: thyme, quantity: 2, unit_of_measure: "sprigs" },
+    ],
+    tags: [
+      { name: "Component" },
+      { name: "European" }
+    ],
+    photo: default_photo
+  },
+  { # Chicken Stock
+    recipe_data: {
+      user_id: admin.id,
+      name: "Chicken Stock",
+      description: "Far better homemade than that horrible salty stuff in cubes.",
+      instructions: "Prepare chicken, keep any meat, we only need the carcass. Roughly chop all veg. Add to pan, cover and simmer for 3 hrs. DO NOT BOIL.",
+      prep_time: 10,
+      cook_time: 180,
+      meal_type: [""]
+    },
+    ingredients: [
+      { ingredient: whole_chicken, quantity: 1, unit_of_measure: "" },
+      { ingredient: white_onions, quantity: 1, unit_of_measure: "" },
+      { ingredient: carrots, quantity: 1, unit_of_measure: "" },
+      { ingredient: celery, quantity: 1, unit_of_measure: "stick" },
+      { ingredient: thyme, quantity: 1, unit_of_measure: "sprig" },
+      { ingredient: garlic, quantity: 1, unit_of_measure: "bulb" }
+    ],
+    tags: [
+      { name: "Component" }
+    ],
+    photo: default_photo
+  },
+  { # Fresh Pasta
+    recipe_data: {
+      user_id: admin.id,
+      name: "Fresh Pasta",
+      description: "If you have the time, its worth it. If you don't, then make time.",
+      instructions: "Sieve flour. Create a mound of flour with a well. Add lightly beaten eggs, mix gently. Knead for 5-10 mins until smooth. Rest in fridge in cling film for an hour. Take a small piece, flatten and feed through pasta machine on thickest setting. Slowly decrease thickness until desired.",
+      prep_time: 30,
+      cook_time: 3,
+      meal_type: [""]
+    },
+    ingredients: [
+      { ingredient: flour_00, quantity: 500, unit_of_measure: "g" },
+      { ingredient: salt, quantity: 1, unit_of_measure: "pinch" },
+      { ingredient: egg_yolks, quantity: 6, unit_of_measure: "" },
+      { ingredient: whole_eggs, quantity: 4, unit_of_measure: "" },
+      { ingredient: olive_oil, quantity: 25, unit_of_measure: "ml" },
+    ],
+    tags: [
+      { name: "Component" },
+      { name: "European" }
+    ],
+    photo: default_photo
+  },
+  { # Tomato and Aubergine Salad
+    recipe_data: {
+      user_id: admin.id,
+      name: "Tomato and Aubergine Salad",
+      description: "Fresh, wholesome summer salad.",
+      instructions: "Dice Aubergine, cover in salt and leave to drain for 30mins, then squeeze out excess liquid, pat dry and fry in olive oil until golden. Prepare rest of ingredients and toss altogether.",
+      prep_time: 45,
+      cook_time: 15,
+      meal_type: [""]
+    },
+    ingredients: [
+      { ingredient: aubergine, quantity: 1, unit_of_measure: "" },
+      { ingredient: cherry_tomatoes, quantity: 2, unit_of_measure: "punnets" },
+      { ingredient: pomegranates, quantity: 0.5, unit_of_measure: "" },
+      { ingredient: oregano, quantity: 0.5, unit_of_measure: "bunch" },
+      { ingredient: parsley, quantity: 0.25, unit_of_measure: "bunch" },
+      { ingredient: olive_oil, quantity: 50, unit_of_measure: "ml" },
+      { ingredient: sherry_vinegar, quantity: 25, unit_of_measure: "ml" },
+      { ingredient: salt, quantity: 1, unit_of_measure: "pinch" },
+      { ingredient: black_pepper, quantity: 1, unit_of_measure: "pinch" },
+      { ingredient: garlic, quantity: 2, unit_of_measure: "cloves" },
+      { ingredient: zaatar, quantity: 1, unit_of_measure: "tbsp" },
+      { ingredient: maple_syrup, quantity: 0.75, unit_of_measure: "tsp" },
+    ],
+    tags: [
+      { name: "Component" },
+      { name: "European" },
+      { name: "Salad" }
+    ],
+    photo: default_photo
+  },
+  { # Fennel and Apple Salad
+    recipe_data: {
+      user_id: admin.id,
+      name: "Fennel and Apple Salad",
+      description: "Eyebrow raising initally, but instantly proves itself",
+      instructions: "Thinly slice apple, celery, and fennel. Toast nuts. Chop herbs, zest and squeeze out orange juice. Toss altogether and serve",
+      prep_time: 15,
+      cook_time: 5,
+      meal_type: ["Daytime"]
+    },
+    ingredients: [
+      { ingredient: fennel, quantity: 1, unit_of_measure: "bulb" },
+      { ingredient: apple, quantity: 2, unit_of_measure: "" },
+      { ingredient: celery, quantity: 1, unit_of_measure: "stick" },
+      { ingredient: orange, quantity: 2, unit_of_measure: "" },
+      { ingredient: dried_cranberries, quantity: 30, unit_of_measure: "g" },
+      { ingredient: almond, quantity: 50, unit_of_measure: "g" },
+      { ingredient: olive_oil, quantity: 30, unit_of_measure: "ml" },
+      { ingredient: salt, quantity: 1, unit_of_measure: "pinch" },
+      { ingredient: dill, quantity: 0.5, unit_of_measure: "bunch" },
+    ],
+    tags: [
+      { name: "Component" },
+      { name: "Salad" },
+      { name: "European" }
+    ],
+    photo: default_photo
+  },
+  { # Grilled Courgette and Halloumi
+    recipe_data: {
+      user_id: admin.id,
+      name: "Grilled Courgette and Halloumi",
+      description: "A salad perfect for a summers BBQ. A crowd pleaser.",
+      instructions: "Slice courgette, lightly oil and grill until charred. Blanch asparagus in boiling water for 20 seconds then grill. Grill the halloumi then add rest of ingredients and serve.",
+      prep_time: 15,
+      cook_time: 20,
+      meal_type: ["Daytime"]
+    },
+    ingredients: [
+      { ingredient: cherry_tomatoes, quantity: 350, unit_of_measure: "g" },
+      { ingredient: olive_oil, quantity: 140, unit_of_measure: "ml" },
+      { ingredient: asparagus, quantity: 24, unit_of_measure: "spears" },
+      { ingredient: courgette, quantity: 2, unit_of_measure: "" },
+      { ingredient: rocket, quantity: 25, unit_of_measure: "g" },
+      { ingredient: salt, quantity: 1, unit_of_measure: "pinch" },
+      { ingredient: basil, quantity: 0.5, unit_of_measure: "bunch" }
+    ],
+    tags: [
+      { name: "Salad" },
+      { name: "European" },
+      { name: "Component" }
+    ],
+    photo: default_photo
+  },
+  { # Fattoush
+    recipe_data: {
+      user_id: admin.id,
+      name: "Fattoush",
+      description: "Turkish delight, but the salad version.",
+      instructions: "Slice and dice all components. Crush Garlic. Add toasted/stale bread if desired. Combine together and serve.",
+      prep_time: 15,
+      cook_time: 0,
+      meal_type: ["Daytime"]
+    },
+    ingredients: [
+      { ingredient: greek_yogurt, quantity: 200, unit_of_measure: "g" },
+      { ingredient: tomatoes, quantity: 380, unit_of_measure: "g" },
+      { ingredient: radishes, quantity: 100, unit_of_measure: "g" },
+      { ingredient: cucumbers, quantity: 1, unit_of_measure: "" },
+      { ingredient: spring_onion, quantity: 2, unit_of_measure: "" },
+      { ingredient: mint, quantity: 15, unit_of_measure: "g" },
+      { ingredient: parsley, quantity: 25, unit_of_measure: "g" },
+      { ingredient: garlic, quantity: 2, unit_of_measure: "cloves" },
+      { ingredient: lemons, quantity: 1, unit_of_measure: "" },
+      { ingredient: olive_oil, quantity: 60, unit_of_measure: "ml" },
+    ],
+    tags: [
+      { name: "European" },
+      { name: "Salad" },
+      { name: "Component" }
+    ],
+    photo: default_photo
+  },
+  { # Charred Peas with Lemon and Parmesan
+    recipe_data: {
+      user_id: admin.id,
+      name: "Charred Peas with Lemon and Parmesan",
+      description: "If you want a tasty side salad, look no further.",
+      instructions: "Blanch greens for 30 seconds then grill until charred. Juice and zest lemon. Prepare ingredients as desired, combine and serve.",
+      prep_time: 15,
+      cook_time: 10,
+      meal_type: ["Daytime"]
+    },
+    ingredients: [
+      { ingredient: lemons, quantity: 1, unit_of_measure: "" },
+      { ingredient: garlic, quantity: 1, unit_of_measure: "clove" },
+      { ingredient: miso_paste, quantity: 1, unit_of_measure: "tsp" },
+      { ingredient: parmesan, quantity: 20, unit_of_measure: "g" },
+      { ingredient: olive_oil, quantity: 3.5, unit_of_measure: "tbsp" },
+      { ingredient: snap_peas, quantity: 320, unit_of_measure: "g" },
+      { ingredient: basil, quantity: 10, unit_of_measure: "g" },
+    ],
+    tags: [
+      { name: "Salad" },
+      { name: "European" }
+    ],
+    photo: default_photo
+  },
+  { # Kohl Rabi, Beetroot and Apple
+    recipe_data: {
+      user_id: admin.id,
+      name: "Kohl Rabi, Beetroot and Apple",
+      description: "A powerful accompaniment to a rich quiche or other.",
+      instructions: "Thinly slice kohl rabi, apple. Grate beetroot, chop coriander and crush garlic. Toss all inngredients together.",
+      prep_time: 15,
+      cook_time: 0,
+      meal_type: ["Daytime"]
+    },
+    ingredients: [
+      { ingredient: kohl_rabi, quantity: 2, unit_of_measure: "" },
+      { ingredient: apples, quantity: 3, unit_of_measure: "" },
+      { ingredient: beetroot, quantity: 1, unit_of_measure: "" },
+      { ingredient: coriander, quantity: 40, unit_of_measure: "g" },
+      { ingredient: garlic, quantity: 1, unit_of_measure: "clove" },
+      { ingredient: apple_cider_vinegar, quantity: 55, unit_of_measure: "ml" },
+      { ingredient: olive_oil, quantity: 50, unit_of_measure: "ml" },
+      { ingredient: salt, quantity: 1, unit_of_measure: "pinch" }
+    ],
+    tags: [
+      { name: "Salad" },
+      { name: "European" }
+    ],
+    photo: default_photo
+  }
 
 ]
 
