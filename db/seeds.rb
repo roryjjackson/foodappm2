@@ -472,8 +472,13 @@ lager_beer = "Lager Beer"
 flour_00 = "00 Flour"
 spring_onion = "Spring Onion"
 kohl_rabi = "Kohl Rabi"
+fennel = "Fennel"
+tomatoes = "Tomatoes"
+beetroot = "Beetroot"
 
 ingredients = [
+  { name: "Tomatoes" },
+  { name: "Fennel" },
   { name: "Kohl Rabi" },
   { name: "Spring Onion" },
   { name: "00 Flour" },
@@ -1632,7 +1637,7 @@ recipes_with_data = [
     ingredients: [
       { ingredient: parsley, quantity: 1, unit_of_measure: "bunch" },
       { ingredient: oregano, quantity: 1, unit_of_measure: "bunch" },
-      { ingredient: chilli_flakes, quantity: , unit_of_measure: "pinch" },
+      { ingredient: chilli_flakes, quantity: 1, unit_of_measure: "pinch" },
       { ingredient: garlic, quantity: 4, unit_of_measure: "cloves" },
       { ingredient: sunflower_oil, quantity: 150, unit_of_measure: "ml" },
       { ingredient: red_wine_vinegar, quantity: 50, unit_of_measure: "ml" },
@@ -1975,11 +1980,11 @@ recipes_with_data = [
     },
     ingredients: [
       { ingredient: fennel, quantity: 1, unit_of_measure: "bulb" },
-      { ingredient: apple, quantity: 2, unit_of_measure: "" },
+      { ingredient: apples, quantity: 2, unit_of_measure: "" },
       { ingredient: celery, quantity: 1, unit_of_measure: "stick" },
-      { ingredient: orange, quantity: 2, unit_of_measure: "" },
+      { ingredient: oranges, quantity: 2, unit_of_measure: "" },
       { ingredient: dried_cranberries, quantity: 30, unit_of_measure: "g" },
-      { ingredient: almond, quantity: 50, unit_of_measure: "g" },
+      { ingredient: almonds, quantity: 50, unit_of_measure: "g" },
       { ingredient: olive_oil, quantity: 30, unit_of_measure: "ml" },
       { ingredient: salt, quantity: 1, unit_of_measure: "pinch" },
       { ingredient: dill, quantity: 0.5, unit_of_measure: "bunch" },
@@ -2030,7 +2035,7 @@ recipes_with_data = [
     ingredients: [
       { ingredient: greek_yogurt, quantity: 200, unit_of_measure: "g" },
       { ingredient: tomatoes, quantity: 380, unit_of_measure: "g" },
-      { ingredient: radishes, quantity: 100, unit_of_measure: "g" },
+      { ingredient: red_radishes, quantity: 100, unit_of_measure: "g" },
       { ingredient: cucumbers, quantity: 1, unit_of_measure: "" },
       { ingredient: spring_onion, quantity: 2, unit_of_measure: "" },
       { ingredient: mint, quantity: 15, unit_of_measure: "g" },
