@@ -10,12 +10,23 @@ default_photo = "https://res.cloudinary.com/dfipoufmj/image/upload/v1712164345/p
 
 tags = ["Snack",
         "Dessert",
+        "Sweet Treat",
+        "Pastry",
         "Side",
         "Main",
-        "Small plate",
+        "Small Plate",
         "Bread",
         "Component",
-        "Baked Goods"]
+        "Baked Goods",
+        "Mediterranean",
+        "Asian",
+        "Indian",
+        "American",
+        "Japanese",
+        "European",
+        "South American",
+        "African",
+        "Caribbean"]
 
 tags.each do |tag|
   Tag.create!(name: tag)
@@ -192,6 +203,9 @@ blueberries = "Blueberries"
 raspberries = "Raspberries"
 blackberries = "Blackberries"
 cranberries = "Cranberries"
+dried_cranberries = "Dried Cranberries"
+dried_apricot = "Dried Apricot"
+raisins = "Raisins"
 goji_berries = "Goji berries"
 lemons = "Lemons"
 limes = "Limes"
@@ -437,6 +451,15 @@ yeast = "Yeast"
 wasabi_paste = "Wasabi Paste"
 nori_sheets = "Nori sheets"
 brioche_bun = "Brioche Bun"
+creme_fraiche = "Creme Fraiche"
+almond_butter = "Almond Butter"
+chia_seeds = "Chia Seeds"
+cornichon = "Cornichon"
+watercress = "Watercress"
+english_mustard = "English Mustard"
+whole_meal_flour = "Whole Meal Flour"
+treacle = "Treacle"
+capers = "Capers"
 
 ingredients = [
   { name: "Sirloin" },
@@ -854,7 +877,19 @@ ingredients = [
   { name: "Yeast" },
   { name: "Wasabi Paste" },
   { name: "Nori sheets" },
-  { name: "Brioche Bun" }
+  { name: "Brioche Bun" },
+  { name: "Creme Fraiche" },
+  { name: "Dried Cranberries" },
+  { name: "Raisins" },
+  { name: "Dried Apricot" },
+  { name: "Almond Butter" },
+  { name: "Chia Seeds" },
+  { name: "Cornichon" },
+  { name: "Watercress" },
+  { name: "English Mustard" },
+  { name: "Whole Meal Flour" },
+  { name: "Treacle" },
+  { name: "Capers" }
 ]
 
 ingredients.each do |ingredient|
@@ -890,7 +925,26 @@ end
 
 # Define recipes and their associated ingredients
 recipes_with_data = [
-  {
+  { # Template
+    recipe_data: {
+      user_id: admin.id,
+      name: "Template",
+      description: "",
+      instructions: "",
+      prep_time: 0,
+      cook_time: 0,
+      meal_type: [""]
+    },
+    ingredients: [
+      { ingredient: , quantity: 0, unit_of_measure: "g" },
+    ],
+    tags: [
+      { name: "" },
+      { name: "" }
+    ],
+    photo: default_photo
+  },
+  { # Smash burgers
     recipe_data: {
       user_id: admin.id,
       name: "Smash Burgers",
@@ -898,7 +952,7 @@ recipes_with_data = [
       instructions: "Combine melted butter, salt, and beef. Ball up into equal size and refrigerate. When ready to fry, 'smash' the patty and fry on a high heat. Serve immediately with plenty burger sauce in a toasted bun.",
       prep_time: 10,
       cook_time: 10,
-      meal_type: ["Lunch"]
+      meal_type: ["Daytime"]
     },
     ingredients: [
       { ingredient: ground_beef, quantity: 100, unit_of_measure: "g" },
@@ -909,11 +963,12 @@ recipes_with_data = [
       { ingredient: burger_sauce, quantity: 25, unit_of_measure: "g" }
     ],
     tags: [
-      { name: "Main" }
+      { name: "Main" },
+      { name: "American" }
     ],
-    photo: "https://res.cloudinary.com/dfipoufmj/image/upload/v1712159137/pexels-jonathan-borba-2983101_i2amcd.jpg"
+    photo: default_photo
   },
-  {
+  { # Homemade chips
     recipe_data: {
       user_id: admin.id,
       name: "Homemade chips",
@@ -921,7 +976,7 @@ recipes_with_data = [
       instructions: "Peel, and slice into thick 1.5cm chips. part boil in salty water until just soft (~8mins), drain and allow to steam dry. Fry in oil @120 degrees for 10 mins. To finish, fry @ 180 degrees until golden. Season with salt",
       prep_time: 10,
       cook_time: 30,
-      meal_type: ["Lunch"]
+      meal_type: ["Daytime"]
     },
     ingredients: [
       { ingredient: maris_piper_potatoes, quantity: 100, unit_of_measure: "g" },
@@ -929,11 +984,12 @@ recipes_with_data = [
     tags: [
       { name: "Side" },
       { name: "Component" },
-      { name: "Snack" }
+      { name: "Snack" },
+      { name: "American" }
     ],
     photo: default_photo
   },
-  {
+  { # Julios Banana bread
     recipe_data: {
       user_id: admin.id,
       name: "Banana Bread",
@@ -941,7 +997,7 @@ recipes_with_data = [
       instructions: "Mix dry ingredients together, smash ripe bananas and add other wet ingredients. Combine the two and bake until cooked through @ 170 degrees fan",
       prep_time: 10,
       cook_time: 30,
-      meal_type: ["Lunch"]
+      meal_type: ["Daytime"]
     },
     ingredients: [
       { ingredient: plain_flour, quantity: 1.75, unit_of_measure: "cup" },
@@ -955,11 +1011,12 @@ recipes_with_data = [
     tags: [
       { name: "Baked Goods" },
       { name: "Component" },
-      { name: "Snack" }
+      { name: "Snack" },
+      { name: "European" }
     ],
     photo: default_photo
   },
-  {
+  { # Chocolate brownie
     recipe_data: {
       user_id: admin.id,
       name: "Chocolate Brownie",
@@ -967,7 +1024,7 @@ recipes_with_data = [
       instructions: "Whisk eggs with sugar until pale yellow. Melt butter and chocolate and fold into egg mix. Bake at 170 (Longer cooking will result in a more cakey mixture, less cooking will be gooey).",
       prep_time: 10,
       cook_time: 25,
-      meal_type: ["Lunch"]
+      meal_type: ["Daytime"]
     },
     ingredients: [
       { ingredient: whole_eggs, quantity: 10, unit_of_measure: "unit" },
@@ -979,11 +1036,12 @@ recipes_with_data = [
     tags: [
       { name: "Baked Goods" },
       { name: "Component" },
-      { name: "Snack" }
+      { name: "Snack" },
+      { name: "European" }
     ],
     photo: default_photo
   },
-  {
+  { # Nutty chocolate brownie
     recipe_data: {
       user_id: admin.id,
       name: "Nutty Chocolate Brownie",
@@ -991,7 +1049,7 @@ recipes_with_data = [
       instructions: "Beat eggs and sugar together until pale yellow. Add rest of dry ingredients. Melt chocolate and butter together. Combine two mixes. Fold in chopped chocolate and nuts and pour into lined tin. Bake at 170 degrees until cooked",
       prep_time: 15,
       cook_time: 25,
-      meal_type: ["Lunch"]
+      meal_type: ["Daytime"]
     },
     ingredients: [
       { ingredient: whole_eggs, quantity: 6, unit_of_measure: "unit" },
@@ -1010,10 +1068,536 @@ recipes_with_data = [
     tags: [
       { name: "Baked Goods" },
       { name: "Component" },
-      { name: "Snack" }
+      { name: "Snack" },
+      { name: "European" }
     ],
     photo: default_photo
   },
+  { # Banana bread
+    recipe_data: {
+      user_id: admin.id,
+      name: "Banana Bread",
+      description: "A moist and flavorful loaf made with ripe bananas",
+      instructions: "Mix together flour, baking powder/soda, and salt. Cream butter and sugar, add eggs and vanilla. Add half flour until well combined, then add other half. Add banana and creme fraiche. Bake at 170.",
+      prep_time: 10,
+      cook_time: 35,
+      meal_type: ["Daytime"]
+    },
+    ingredients: [
+      { ingredient: plain_flour, quantity: 170, unit_of_measure: "g" },
+      { ingredient: baking_powder, quantity: 3, unit_of_measure: "g" },
+      { ingredient: baking_soda, quantity: 3, unit_of_measure: "g" },
+      { ingredient: salt, quantity: 4, unit_of_measure: "g" },
+      { ingredient: unsalted_butter, quantity: 120, unit_of_measure: "g" },
+      { ingredient: brown_sugar, quantity: 140, unit_of_measure: "g" },
+      { ingredient: whole_eggs, quantity: 80, unit_of_measure: "g" },
+      { ingredient: creme_fraiche, quantity: 24, unit_of_measure: "g" },
+      { ingredient: bananas, quantity: 250, unit_of_measure: "g" }
+    ],
+    tags: [
+      { name: "Baked Goods" },
+      { name: "Component" },
+      { name: "Snack" },
+      { name: "European" }
+    ],
+    photo: default_photo
+  },
+  { # Granola
+    recipe_data: {
+      user_id: admin.id,
+      name: "Granola",
+      description: "A crunchy, wholesome mix of oats, nuts, seeds, and fruits.",
+      instructions: "Bring honey, salt, maple syrup, and oil to the boil. Pour over mixed dry ingredients (EXCEPT DRIED FRUIT!!). Mix well and cook in 160 dc oven, stir every 15 mins until cooked. Leave to cool and stir in dried fruit.",
+      prep_time: 10,
+      cook_time: 40,
+      meal_type: ["Daytime"]
+    },
+    ingredients: [
+      { ingredient: honey, quantity: 175, unit_of_measure: "g" },
+      { ingredient: maple_syrup, quantity: 175, unit_of_measure: "g" },
+      { ingredient: sunflower_oil, quantity: 160, unit_of_measure: "g" },
+      { ingredient: salt, quantity: 20, unit_of_measure: "g" },
+      { ingredient: oats, quantity: 1, unit_of_measure: "kg" },
+      { ingredient: almonds, quantity: 240, unit_of_measure: "g" },
+      { ingredient: brazil_nuts, quantity: 160, unit_of_measure: "g" },
+      { ingredient: cashews, quantity: 160, unit_of_measure: "g" },
+      { ingredient: sunflower_seeds, quantity: 240, unit_of_measure: "g" },
+      { ingredient: pumpkin_seeds, quantity: 240, unit_of_measure: "g" },
+      { ingredient: dried_cranberries, quantity: 240, unit_of_measure: "g" },
+      { ingredient: raisins, quantity: 240, unit_of_measure: "g" },
+      { ingredient: dried_apricot, quantity: 240, unit_of_measure: "g" }
+    ],
+    tags: [
+      { name: "Baked Goods" },
+      { name: "Component" },
+      { name: "Snack" },
+      { name: "European" }
+    ],
+    photo: default_photo
+  },
+  { # Granola Bar
+    recipe_data: {
+      user_id: admin.id,
+      name: "Granola Bar",
+      description: "Pumpkin seed and almond granola bar. A chewy, healthy snack.",
+      instructions: "Blend pitted dates, almond butter, maple syrup until smooth. Chop nuts, blend chia seeds and mix with all other ingredients. Combine altogether with a splash of water. Bake in lined tray at 180.",
+      prep_time: 10,
+      cook_time: 40,
+      meal_type: ["Daytime"]
+    },
+    ingredients: [
+      { ingredient: oats, quantity: 160, unit_of_measure: "g" },
+      { ingredient: raisins, quantity: 130, unit_of_measure: "g" },
+      { ingredient: almonds, quantity: 80, unit_of_measure: "g" },
+      { ingredient: maple_syrup, quantity: 125, unit_of_measure: "ml" },
+      { ingredient: sunflower_seeds, quantity: 265, unit_of_measure: "g" },
+      { ingredient: pumpkin_seeds, quantity: 65, unit_of_measure: "g" },
+      { ingredient: almond_butter, quantity: 2, unit_of_measure: "tbsp" },
+      { ingredient: ground_cinnamon, quantity: 2, unit_of_measure: "tsp" },
+      { ingredient: chia_seeds, quantity: 2.5, unit_of_measure: "tbsp" },
+      { ingredient: medjool_dates, quantity: 6, unit_of_measure: "unit" },
+      { ingredient: salt, quantity: 1, unit_of_measure: "pinch" }
+    ],
+    tags: [
+      { name: "Baked Goods" },
+      { name: "Component" },
+      { name: "Snack" },
+      { name: "European" }
+    ],
+    photo: default_photo
+  },
+  { # Dukkah
+    recipe_data: {
+      user_id: admin.id,
+      name: "Dukkah",
+      description: "A spice blend to use on mediterranean dishes",
+      instructions: "Lightly crush almonds and hazelnuts in pestel and mortar. Toast spices. Mix all together.",
+      prep_time: 5,
+      cook_time: 10,
+      meal_type: ["Daytime"]
+    },
+    ingredients: [
+      { ingredient: almonds, quantity: 150, unit_of_measure: "g" },
+      { ingredient: hazelnuts, quantity: 150, unit_of_measure: "g" },
+      { ingredient: sesame_seeds, quantity: 50, unit_of_measure: "g" },
+      { ingredient: coriander_seeds, quantity: 25, unit_of_measure: "g" },
+      { ingredient: cumin_seeds, quantity: 25, unit_of_measure: "g" },
+      { ingredient: salt, quantity: 10, unit_of_measure: "g" },
+      { ingredient: black_pepper, quantity: 10, unit_of_measure: "g" },
+      { ingredient: thyme, quantity: 10, unit_of_measure: "g" }
+    ],
+    tags: [
+      { name: "Component" },
+      { name: "Snack" },
+      { name: "European" },
+      { name: "Mediterranean" }
+    ],
+    photo: default_photo
+  },
+  { # Caeser Dressing
+    recipe_data: {
+      user_id: admin.id,
+      name: "Caeser Dressing",
+      description: "A creamy, tangy blend of mayonnaise, anchovies, garlic, lemon juice, and Parmesan cheese, perfect for elevating salads and sandwiches.",
+      instructions: "Add all ingredients except parmesan and oil into a blender. Blend until smooth. Then very gradually add the oil with blender spinning. Add grated parmesan to finish.",
+      prep_time: 5,
+      cook_time: 0,
+      meal_type: ["Daytime"]
+    },
+    ingredients: [
+      { ingredient: egg_yolks, quantity: 75, unit_of_measure: "g" },
+      { ingredient: sunflower_oil, quantity: 300, unit_of_measure: "ml" },
+      { ingredient: white_vinegar, quantity: 40, unit_of_measure: "g" },
+      { ingredient: worcestershire_sauce, quantity: 20, unit_of_measure: "g" },
+      { ingredient: tabasco, quantity: 6, unit_of_measure: "drops" },
+      { ingredient: garlic, quantity: 2, unit_of_measure: "cloves" },
+      { ingredient: anchovies, quantity: 2, unit_of_measure: "unit" },
+      { ingredient: parmesan, quantity: 50, unit_of_measure: "g" }
+    ],
+    tags: [
+      { name: "Component" },
+      { name: "European" },
+      { name: "Mediterranean" },
+      { name: "American" }
+    ],
+    photo: default_photo
+  },
+  { # Burger Sauce
+    recipe_data: {
+      user_id: admin.id,
+      name: "Burger Sauce",
+      description: "The perfect accompaniment to a juicy burger.",
+      instructions: "Bruniose the shallot, finely chop herbs and mix.",
+      prep_time: 5,
+      cook_time: 0,
+      meal_type: ["Daytime"]
+    },
+    ingredients: [
+      { ingredient: ketchup, quantity: 300, unit_of_measure: "g" },
+      { ingredient: mayonnaise, quantity: 200, unit_of_measure: "g" },
+      { ingredient: dijon_mustard, quantity: 200, unit_of_measure: "g" },
+      { ingredient: tarragon, quantity: 1, unit_of_measure: "bunch" },
+      { ingredient: chives, quantity: 1, unit_of_measure: "bunch" },
+      { ingredient: shallots, quantity: 100, unit_of_measure: "g" }
+    ],
+    tags: [
+      { name: "Component" },
+      { name: "American" }
+    ],
+    photo: default_photo
+  },
+  { # Rarebit
+    recipe_data: {
+      user_id: admin.id,
+      name: "Rarebit",
+      description: "Cheese on toast but boujie",
+      instructions: "Melt butter and flour, gradually add ale and cook gently. add mustard, cayenne and worcestershire. Cool slightly, grate in nutmeg and fold in cheese.",
+      prep_time: 10,
+      cook_time: 20,
+      meal_type: ["Daytime"]
+    },
+    ingredients: [
+      { ingredient: plain_flour, quantity: 60, unit_of_measure: "g" },
+      { ingredient: unsalted_butter, quantity: 40, unit_of_measure: "g" },
+      { ingredient: dijon_mustard, quantity: 25, unit_of_measure: "g" },
+      { ingredient: ale, quantity: 200, unit_of_measure: "ml" },
+      { ingredient: worcestershire_sauce, quantity: 30, unit_of_measure: "ml" },
+      { ingredient: cayenne_pepper, quantity: 5, unit_of_measure: "g" },
+      { ingredient: nutmeg, quantity: 0.5, unit_of_measure: "unit" },
+      { ingredient: cheddar, quantity: 450, unit_of_measure: "g" }
+    ],
+    tags: [
+      { name: "Component" },
+      { name: "European" },
+      { name: "Snack" },
+      { name: "Small Plate" }
+    ],
+    photo: default_photo
+  },
+  { # Tartar Sauce
+    recipe_data: {
+      user_id: admin.id,
+      name: "Tartar Sauce",
+      description: "Fish with this is banging",
+      instructions: "Brunoise shallot and salt for 10 mins. Finelly chop cornichon, capers, tarragon and chervil/chives. Mix altogether.",
+      prep_time: 10,
+      cook_time: 0,
+      meal_type: ["Daytime"]
+    },
+    ingredients: [
+      { ingredient: mayonnaise, quantity: 500, unit_of_measure: "g" },
+      { ingredient: creme_fraiche, quantity: 150, unit_of_measure: "g" },
+      { ingredient: cornichon, quantity: 100, unit_of_measure: "g" },
+      { ingredient: capers, quantity: 100, unit_of_measure: "g" },
+      { ingredient: shallots, quantity: 30, unit_of_measure: "g" },
+      { ingredient: tarragon, quantity: 1, unit_of_measure: "bunch" },
+      { ingredient: chives, quantity: 1, unit_of_measure: "bunch" }
+    ],
+    tags: [
+      { name: "Component" },
+      { name: "European" }
+    ],
+    photo: default_photo
+  },
+  { # Spring Salsa Sauce
+    recipe_data: {
+      user_id: admin.id,
+      name: "Spring Salsa Sauce",
+      description: "A light, fresh sauce that goes well with Lamb and Fish",
+      instructions: "Add herbs, capers, mustard, vinegar to a blender and blend. Slowly add oil to create an emulsion. Fold through brunoise shallot and apple.",
+      prep_time: 10,
+      cook_time: 0,
+      meal_type: ["Daytime"]
+    },
+    ingredients: [
+      { ingredient: watercress, quantity: 30, unit_of_measure: "g" },
+      { ingredient: tarragon, quantity: 10, unit_of_measure: "g" },
+      { ingredient: parsley, quantity: 10, unit_of_measure: "g" },
+      { ingredient: capers, quantity: 20, unit_of_measure: "g" },
+      { ingredient: shallots, quantity: 20, unit_of_measure: "g" },
+      { ingredient: dijon_mustard, quantity: 8, unit_of_measure: "g" },
+      { ingredient: apples, quantity: 20, unit_of_measure: "g" },
+      { ingredient: white_vinegar, quantity: 20, unit_of_measure: "g" },
+      { ingredient: rapeseed_oil, quantity: 50, unit_of_measure: "g" },
+    ],
+    tags: [
+      { name: "Component" },
+      { name: "European" }
+    ],
+    photo: default_photo
+  },
+  { # Pastry
+    recipe_data: {
+      user_id: admin.id,
+      name: "Pastry",
+      description: "To be used for savoury tarts",
+      instructions: "Rub cold diced butter with dry ingredients. Add egg yolks, mustard and a touch of water. Should be very soft, rest in fridge for at least 2 hours.",
+      prep_time: 15,
+      cook_time: 0,
+      meal_type: ["Daytime"]
+    },
+    ingredients: [
+      { ingredient: plain_flour, quantity: 200, unit_of_measure: "g" },
+      { ingredient: rye_flour, quantity: 75, unit_of_measure: "g" },
+      { ingredient: icing_sugar, quantity: 8, unit_of_measure: "g" },
+      { ingredient: salt, quantity: 3, unit_of_measure: "g" },
+      { ingredient: parmesan, quantity: 25, unit_of_measure: "g" },
+      { ingredient: egg_yolks, quantity: 2, unit_of_measure: "unit" },
+      { ingredient: unsalted_butter, quantity: 150, unit_of_measure: "g" },
+      { ingredient: english_mustard, quantity: 15, unit_of_measure: "g" },
+      { ingredient: water, quantity: 1, unit_of_measure: "splash" }
+    ],
+    tags: [
+      { name: "Component" },
+      { name: "European" }
+    ],
+    photo: default_photo
+  },
+  { # Soda Bread
+    recipe_data: {
+      user_id: admin.id,
+      name: "Soda Bread",
+      description: "An easy, soft, dark bread",
+      instructions: "Combine ingredients and bake at 170",
+      prep_time: 5,
+      cook_time: 20,
+      meal_type: ["Daytime"]
+    },
+    ingredients: [
+      { ingredient: plain_flour, quantity: 100, unit_of_measure: "g" },
+      { ingredient: whole_meal_flour, quantity: 100, unit_of_measure: "g" },
+      { ingredient: salt, quantity: 4, unit_of_measure: "g" },
+      { ingredient: baking_soda, quantity: 6, unit_of_measure: "g" },
+      { ingredient: oats, quantity: 60, unit_of_measure: "g" },
+      { ingredient: treacle, quantity: 12, unit_of_measure: "g" },
+      { ingredient: honey, quantity: 12, unit_of_measure: "g" },
+      { ingredient: buttermilk, quantity: 200, unit_of_measure: "g" }
+    ],
+    tags: [
+      { name: "Component" },
+      { name: "Bread" },
+      { name: "European" }
+    ],
+    photo: default_photo
+  },
+  { # Hummus
+    recipe_data: {
+      user_id: admin.id,
+      name: "Hummus",
+      description: "Everyone knows hummus right? Banging dip",
+      instructions: "Roast garlic. Juice lemon. Cook chickpeas (unless canned). Add ingredients and blend",
+      prep_time: 10,
+      cook_time: 0,
+      meal_type: ["Daytime"]
+    },
+    ingredients: [
+      { ingredient: chickpeas, quantity: 1, unit_of_measure: "kg" },
+      { ingredient: garlic, quantity: 30, unit_of_measure: "g" },
+      { ingredient: tahini, quantity: 100, unit_of_measure: "g" },
+      { ingredient: lemons, quantity: 30, unit_of_measure: "g" },
+      { ingredient: rapeseed_oil, quantity: 100, unit_of_measure: "ml" },
+      { ingredient: water, quantity: 250, unit_of_measure: "ml" }
+    ],
+    tags: [
+      { name: "Component" },
+      { name: "European" }
+    ],
+    photo: default_photo
+  },
+  { # Fennel Cracker
+    recipe_data: {
+      user_id: admin.id,
+      name: "Fennel Cracker",
+      description: "Thin, crispy cracker great for dips",
+      instructions: "Toast and chop fennel seeds. Mix ingredients, spread flat and bake at 180",
+      prep_time: 5,
+      cook_time: 20,
+      meal_type: ["Daytime"]
+    },
+    ingredients: [
+      { ingredient: plain_flour, quantity: 250, unit_of_measure: "g" },
+      { ingredient: fennel_seeds, quantity: 15, unit_of_measure: "g" },
+      { ingredient: milk, quantity: 92, unit_of_measure: "g" },
+      { ingredient: whole_eggs, quantity: 1, unit_of_measure: "unit" },
+      { ingredient: castor_sugar, quantity: 3, unit_of_measure: "g" },
+      { ingredient: salt, quantity: 2, unit_of_measure: "g" }
+    ],
+    tags: [
+      { name: "Component" },
+      { name: "Bread" },
+      { name: "European" }
+    ],
+    photo: default_photo
+  },
+  { # Gnocchi
+    recipe_data: {
+      user_id: admin.id,
+      name: "Gnocchi",
+      description: "Some things are just better when you make them from scratch. Gnocchi epitomises that.",
+      instructions: "Bake potatoes in foil with salt. Mash cooked potato. Add eggs, parmesan, oil, salt, pepper, flour. Knead until smooth. Roll out long tubes ~2cm thick and slice into pillows. Cook in salted water until rises to the top. Fry or use as you wish.",
+      prep_time: 45,
+      cook_time: 120,
+      meal_type: ["Evening"]
+    },
+    ingredients: [
+      { ingredient: maris_piper_potatoes, quantity: 400, unit_of_measure: "g" },
+      { ingredient: egg_yolks, quantity: 4, unit_of_measure: "unit" },
+      { ingredient: plain_flour, quantity: 200, unit_of_measure: "g" },
+      { ingredient: olive_oil, quantity: 50, unit_of_measure: "ml" },
+      { ingredient: parmesan, quantity: 80, unit_of_measure: "g" },
+      { ingredient: salt, quantity: 1, unit_of_measure: "per taste" },
+      { ingredient: black_pepper, quantity: 1, unit_of_measure: "per taste" },
+    ],
+    tags: [
+      { name: "Component" },
+      { name: "European" },
+      { name: "Main" }
+    ],
+    photo: default_photo
+  },
+  { # Potato Burger Buns
+    recipe_data: {
+      user_id: admin.id,
+      name: "Potato Burger Buns",
+      description: "Surprisingly springy, soft buns",
+      instructions: "Boil and mash potato. Combine ingredients (Water at 38 degreess, soft room temp butter, egg lightly beaten) and knead until smooth. Allow to prove. Roll into buns, glaze and bake.",
+      prep_time: 30,
+      cook_time: 20,
+      meal_type: [""]
+    },
+    ingredients: [
+      { ingredient: bread_flour, quantity: 6, unit_of_measure: "cups" },
+      { ingredient: castor_sugar, quantity: 0.5, unit_of_measure: "cups" },
+      { ingredient: salt, quantity: 1, unit_of_measure: "tbsp" },
+      { ingredient: yeast, quantity: 1.5, unit_of_measure: "tsp" },
+      { ingredient: water, quantity: 1.5, unit_of_measure: "cups" },
+      { ingredient: honey, quantity: 0.25, unit_of_measure: "cups" },
+      { ingredient: maris_piper_potatoes, quantity: 1, unit_of_measure: "cups" },
+      { ingredient: whole_eggs, quantity: 2, unit_of_measure: "" },
+      { ingredient: unsalted_butter, quantity: 115, unit_of_measure: "g" }
+    ],
+    tags: [
+      { name: "American" },
+      { name: "Component" },
+      { name: "Bread" }
+    ],
+    photo: default_photo
+  },
+  { # Doughnuts
+    recipe_data: {
+      user_id: admin.id,
+      name: "Doughnuts",
+      description: "Pillows of joy. No more need saying.",
+      instructions: "Mix all dough ingredients (excluding butter) and knead by hand for 8 minutes, stretching and tearing.
+                     Add butter gradually until fully incorporated.
+                     Knead dough for another 5 minutes until glossy, smooth, and elastic.
+                     Cover dough with cling film and let it double in size. Knock back dough, cover again, and refrigerate overnight.
+                     Next day, divide into 50g pieces. Roll into tight buns. Leave to dbl in size covered for 4hrs.
+                     Fry in oil at 180°C. Coat with sugar whilst warm. Fill when cold.",
+      prep_time: 30,
+      cook_time: 2,
+      meal_type: ["Daytime"]
+    },
+    ingredients: [
+      { ingredient: bread_flour, quantity: 170, unit_of_measure: "g" },
+      { ingredient: whole_eggs, quantity: 1, unit_of_measure: "" },
+      { ingredient: water, quantity: 40, unit_of_measure: "g" },
+      { ingredient: castor_sugar, quantity: 15, unit_of_measure: "g" },
+      { ingredient: yeast, quantity: 2, unit_of_measure: "g" },
+      { ingredient: salt, quantity: 3, unit_of_measure: "g" },
+      { ingredient: unsalted_butter, quantity: 40, unit_of_measure: "g" },
+    ],
+    tags: [
+      { name: "Sweet Treat" },
+      { name: "Bread" },
+      { name: "European" },
+      { name: "American" }
+    ],
+    photo: default_photo
+  },
+  { # Focaccia
+    recipe_data: {
+      user_id: admin.id,
+      name: "Focaccia",
+      description: "Italian olive bread, great center piece for a family feast",
+      instructions: "Combine Flour and salt. Mix water and yest separately.
+                     Add liquid to flour and knead for 5 mins until stretchy and smooth.
+                     Then three times do every 30 mins, fold onto itself trapping air bubbles.
+                     Once doubled in size, heavily oil a tray and stretch out to fill. Allow to prove again.
+                     Make indents using oiled finger when space is filled. Rest 30 then bake at 220. Glaze with oil oil when hot.",
+      prep_time: 30,
+      cook_time: 25,
+      meal_type: ["Daytime"]
+    },
+    ingredients: [
+      { ingredient: bread_flour, quantity: 500, unit_of_measure: "g" },
+      { ingredient: salt, quantity: 10, unit_of_measure: "g" },
+      { ingredient: yeast, quantity: 3, unit_of_measure: "g" },
+      { ingredient: water, quantity: 400, unit_of_measure: "g" },
+      { ingredient: olive_oil, quantity: 80, unit_of_measure: "g" }
+    ],
+    tags: [
+      { name: "Bread" },
+      { name: "European" },
+      { name: "Component" }
+    ],
+    photo: default_photo
+  },
+  { # Ciabatta
+    recipe_data: {
+      user_id: admin.id,
+      name: "Ciabatta",
+      description: "Italian light, soft bread. Their version of the baguette",
+      instructions: "Preheat Oven to 250°C. Combine Flour and salt. Mix water and yest separately.
+                     Add liquid to flour and bring together just.
+                     Then three times do every 30 mins, fold onto itself trapping air bubbles using oil. Keep covered.
+                     Once doubled in size, heavily flour a tray and stretch out to a loaf size. Allow to prove again.
+                     Bake for 16 mins",
+      prep_time: 30,
+      cook_time: 16,
+      meal_type: ["Daytime"]
+    },
+    ingredients: [
+      { ingredient: bread_flour, quantity: 400, unit_of_measure: "g" },
+      { ingredient: salt, quantity: 8, unit_of_measure: "g" },
+      { ingredient: yeast, quantity: 3, unit_of_measure: "g" },
+      { ingredient: water, quantity: 350, unit_of_measure: "g" },
+      { ingredient: olive_oil, quantity: 20, unit_of_measure: "g" }
+    ],
+    tags: [
+      { name: "Bread" },
+      { name: "European" },
+      { name: "Component" }
+    ],
+    photo: default_photo
+  },
+  { # Basic Muffin
+    recipe_data: {
+      user_id: admin.id,
+      name: "Basic Muffin",
+      description: "An easy guaranteed victory of a muffin recipe.",
+      instructions: "Combine wet and dry ingredients separately. Add one cup of any filling (Blueberries/nuts etc). Mix and bake at 180°C.",
+      prep_time: 5,
+      cook_time: 15,
+      meal_type: ["Morning"]
+    },
+    ingredients: [
+      { ingredient: plain_flour, quantity: 2, unit_of_measure: "cups" },
+      { ingredient: castor_sugar, quantity: 1, unit_of_measure: "cups" },
+      { ingredient: baking_powder, quantity: 2, unit_of_measure: "tsp" },
+      { ingredient: baking_soda, quantity: 1, unit_of_measure: "tsp" },
+      { ingredient: milk, quantity: 1, unit_of_measure: "cups" },
+      { ingredient: sunflower_oil, quantity: 0.25, unit_of_measure: "cups" },
+      { ingredient: whole_eggs, quantity: 2, unit_of_measure: "" }
+    ],
+    tags: [
+      { name: "Baked Goods" },
+      { name: "Sweet Treat" },
+      { name: "American" }
+    ],
+    photo: default_photo
+  },
+
 ]
 
 # Create recipes and their associated ingredients using the helper method
