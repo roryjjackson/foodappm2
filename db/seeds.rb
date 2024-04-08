@@ -949,6 +949,11 @@ def create_recipe(recipe, ingredients, tags, photo)
   recipe.save
 end
 
+# Meal type options:
+breakfast = "Breakfast"
+lunch = "Lunch"
+dinner = "Dinner"
+snack = "Snack"
 
 # Define recipes and their associated ingredients
 recipes_with_data = [
@@ -979,14 +984,14 @@ recipes_with_data = [
       instructions: "Combine melted butter, salt, and beef. Ball up into equal size and refrigerate. When ready to fry, 'smash' the patty and fry on a high heat. Serve immediately with plenty burger sauce in a toasted bun.",
       prep_time: 10,
       cook_time: 10,
-      meal_type: ["Daytime"]
+      meal_type: [lunch, dinner]
     },
     ingredients: [
       { ingredient: ground_beef, quantity: 100, unit_of_measure: "g" },
       { ingredient: unsalted_butter, quantity: 20, unit_of_measure: "g" },
       { ingredient: salt, quantity: 1, unit_of_measure: "pinch" },
       { ingredient: paprika, quantity: 1, unit_of_measure: "pinch" },
-      { ingredient: brioche_bun, quantity: 1, unit_of_measure: "unit" },
+      { ingredient: brioche_bun, quantity: 1, unit_of_measure: "" },
       { ingredient: burger_sauce, quantity: 25, unit_of_measure: "g" }
     ],
     tags: [
@@ -1003,7 +1008,7 @@ recipes_with_data = [
       instructions: "Peel, and slice into thick 1.5cm chips. part boil in salty water until just soft (~8mins), drain and allow to steam dry. Fry in oil @120 degrees for 10 mins. To finish, fry @ 180 degrees until golden. Season with salt",
       prep_time: 10,
       cook_time: 30,
-      meal_type: ["Daytime"]
+      meal_type: [lunch, dinner, snack]
     },
     ingredients: [
       { ingredient: maris_piper_potatoes, quantity: 100, unit_of_measure: "g" },
@@ -1019,19 +1024,19 @@ recipes_with_data = [
   { # Julios Banana bread
     recipe_data: {
       user_id: admin.id,
-      name: "Banana Bread",
+      name: "Julios Banana Bread",
       description: "Moist, flavourful recipe, bursting with banana goodness",
       instructions: "Mix dry ingredients together, smash ripe bananas and add other wet ingredients. Combine the two and bake until cooked through @ 170 degrees fan",
       prep_time: 10,
       cook_time: 30,
-      meal_type: ["Daytime"]
+      meal_type: [snack]
     },
     ingredients: [
       { ingredient: plain_flour, quantity: 1.75, unit_of_measure: "cup" },
       { ingredient: baking_soda, quantity: 1.5, unit_of_measure: "tsp" },
       { ingredient: salt, quantity: 0.75, unit_of_measure: "pinch" },
       { ingredient: castor_sugar, quantity: 1.5, unit_of_measure: "cup" },
-      { ingredient: whole_eggs, quantity: 3, unit_of_measure: "unit" },
+      { ingredient: whole_eggs, quantity: 3, unit_of_measure: "" },
       { ingredient: sunflower_oil, quantity: 0.75, unit_of_measure: "cup" },
       { ingredient: bananas, quantity: 1, unit_of_measure: "cup" },
     ],
@@ -1051,10 +1056,10 @@ recipes_with_data = [
       instructions: "Whisk eggs with sugar until pale yellow. Melt butter and chocolate and fold into egg mix. Bake at 170 (Longer cooking will result in a more cakey mixture, less cooking will be gooey).",
       prep_time: 10,
       cook_time: 25,
-      meal_type: ["Daytime"]
+      meal_type: [lunch, dinner, snack]
     },
     ingredients: [
-      { ingredient: whole_eggs, quantity: 10, unit_of_measure: "unit" },
+      { ingredient: whole_eggs, quantity: 10, unit_of_measure: "" },
       { ingredient: castor_sugar, quantity: 600, unit_of_measure: "g" },
       { ingredient: dark_chocolate_70_percent, quantity: 710, unit_of_measure: "g" },
       { ingredient: milk_chocolate, quantity: 200, unit_of_measure: "g" },
@@ -1076,10 +1081,10 @@ recipes_with_data = [
       instructions: "Beat eggs and sugar together until pale yellow. Add rest of dry ingredients. Melt chocolate and butter together. Combine two mixes. Fold in chopped chocolate and nuts and pour into lined tin. Bake at 170 degrees until cooked",
       prep_time: 15,
       cook_time: 25,
-      meal_type: ["Daytime"]
+      meal_type: [lunch, dinner, snack]
     },
     ingredients: [
-      { ingredient: whole_eggs, quantity: 6, unit_of_measure: "unit" },
+      { ingredient: whole_eggs, quantity: 6, unit_of_measure: "" },
       { ingredient: castor_sugar, quantity: 300, unit_of_measure: "g" },
       { ingredient: unsalted_butter, quantity: 375, unit_of_measure: "g" },
       { ingredient: dark_chocolate_70_percent, quantity: 375, unit_of_measure: "g" },
@@ -1108,7 +1113,7 @@ recipes_with_data = [
       instructions: "Mix together flour, baking powder/soda, and salt. Cream butter and sugar, add eggs and vanilla. Add half flour until well combined, then add other half. Add banana and creme fraiche. Bake at 170.",
       prep_time: 10,
       cook_time: 35,
-      meal_type: ["Daytime"]
+      meal_type: [breakfast, lunch, snack]
     },
     ingredients: [
       { ingredient: plain_flour, quantity: 170, unit_of_measure: "g" },
@@ -1137,7 +1142,7 @@ recipes_with_data = [
       instructions: "Bring honey, salt, maple syrup, and oil to the boil. Pour over mixed dry ingredients (EXCEPT DRIED FRUIT!!). Mix well and cook in 160 dc oven, stir every 15 mins until cooked. Leave to cool and stir in dried fruit.",
       prep_time: 10,
       cook_time: 40,
-      meal_type: ["Daytime"]
+      meal_type: [breakfast]
     },
     ingredients: [
       { ingredient: honey, quantity: 175, unit_of_measure: "g" },
@@ -1170,7 +1175,7 @@ recipes_with_data = [
       instructions: "Blend pitted dates, almond butter, maple syrup until smooth. Chop nuts, blend chia seeds and mix with all other ingredients. Combine altogether with a splash of water. Bake in lined tray at 180.",
       prep_time: 10,
       cook_time: 40,
-      meal_type: ["Daytime"]
+      meal_type: [breakfast, snack]
     },
     ingredients: [
       { ingredient: oats, quantity: 160, unit_of_measure: "g" },
@@ -1182,7 +1187,7 @@ recipes_with_data = [
       { ingredient: almond_butter, quantity: 2, unit_of_measure: "tbsp" },
       { ingredient: ground_cinnamon, quantity: 2, unit_of_measure: "tsp" },
       { ingredient: chia_seeds, quantity: 2.5, unit_of_measure: "tbsp" },
-      { ingredient: medjool_dates, quantity: 6, unit_of_measure: "unit" },
+      { ingredient: medjool_dates, quantity: 6, unit_of_measure: "" },
       { ingredient: salt, quantity: 1, unit_of_measure: "pinch" }
     ],
     tags: [
@@ -1201,7 +1206,7 @@ recipes_with_data = [
       instructions: "Lightly crush almonds and hazelnuts in pestel and mortar. Toast spices. Mix all together.",
       prep_time: 5,
       cook_time: 10,
-      meal_type: ["Daytime"]
+      meal_type: [lunch, dinner]
     },
     ingredients: [
       { ingredient: almonds, quantity: 150, unit_of_measure: "g" },
@@ -1229,7 +1234,7 @@ recipes_with_data = [
       instructions: "Add all ingredients except parmesan and oil into a blender. Blend until smooth. Then very gradually add the oil with blender spinning. Add grated parmesan to finish.",
       prep_time: 5,
       cook_time: 0,
-      meal_type: ["Daytime"]
+      meal_type: [lunch]
     },
     ingredients: [
       { ingredient: egg_yolks, quantity: 75, unit_of_measure: "g" },
@@ -1238,7 +1243,7 @@ recipes_with_data = [
       { ingredient: worcestershire_sauce, quantity: 20, unit_of_measure: "g" },
       { ingredient: tabasco, quantity: 6, unit_of_measure: "drops" },
       { ingredient: garlic, quantity: 2, unit_of_measure: "cloves" },
-      { ingredient: anchovies, quantity: 2, unit_of_measure: "unit" },
+      { ingredient: anchovies, quantity: 2, unit_of_measure: "" },
       { ingredient: parmesan, quantity: 50, unit_of_measure: "g" }
     ],
     tags: [
@@ -1257,7 +1262,7 @@ recipes_with_data = [
       instructions: "Bruniose the shallot, finely chop herbs and mix.",
       prep_time: 5,
       cook_time: 0,
-      meal_type: ["Daytime"]
+      meal_type: [lunch, dinner]
     },
     ingredients: [
       { ingredient: ketchup, quantity: 300, unit_of_measure: "g" },
@@ -1281,7 +1286,7 @@ recipes_with_data = [
       instructions: "Melt butter and flour, gradually add ale and cook gently. add mustard, cayenne and worcestershire. Cool slightly, grate in nutmeg and fold in cheese.",
       prep_time: 10,
       cook_time: 20,
-      meal_type: ["Daytime"]
+      meal_type: [lunch]
     },
     ingredients: [
       { ingredient: plain_flour, quantity: 60, unit_of_measure: "g" },
@@ -1290,7 +1295,7 @@ recipes_with_data = [
       { ingredient: ale, quantity: 200, unit_of_measure: "ml" },
       { ingredient: worcestershire_sauce, quantity: 30, unit_of_measure: "ml" },
       { ingredient: cayenne_pepper, quantity: 5, unit_of_measure: "g" },
-      { ingredient: nutmeg, quantity: 0.5, unit_of_measure: "unit" },
+      { ingredient: nutmeg, quantity: 0.5, unit_of_measure: "" },
       { ingredient: cheddar, quantity: 450, unit_of_measure: "g" }
     ],
     tags: [
@@ -1309,7 +1314,7 @@ recipes_with_data = [
       instructions: "Brunoise shallot and salt for 10 mins. Finelly chop cornichon, capers, tarragon and chervil/chives. Mix altogether.",
       prep_time: 10,
       cook_time: 0,
-      meal_type: ["Daytime"]
+      meal_type: [lunch, dinner]
     },
     ingredients: [
       { ingredient: mayonnaise, quantity: 500, unit_of_measure: "g" },
@@ -1334,7 +1339,7 @@ recipes_with_data = [
       instructions: "Add herbs, capers, mustard, vinegar to a blender and blend. Slowly add oil to create an emulsion. Fold through brunoise shallot and apple.",
       prep_time: 10,
       cook_time: 0,
-      meal_type: ["Daytime"]
+      meal_type: [lunch, dinner]
     },
     ingredients: [
       { ingredient: watercress, quantity: 30, unit_of_measure: "g" },
@@ -1361,7 +1366,7 @@ recipes_with_data = [
       instructions: "Rub cold diced butter with dry ingredients. Add egg yolks, mustard and a touch of water. Should be very soft, rest in fridge for at least 2 hours.",
       prep_time: 15,
       cook_time: 0,
-      meal_type: ["Daytime"]
+      meal_type: [lunch, dinner, snack]
     },
     ingredients: [
       { ingredient: plain_flour, quantity: 200, unit_of_measure: "g" },
@@ -1369,7 +1374,7 @@ recipes_with_data = [
       { ingredient: icing_sugar, quantity: 8, unit_of_measure: "g" },
       { ingredient: salt, quantity: 3, unit_of_measure: "g" },
       { ingredient: parmesan, quantity: 25, unit_of_measure: "g" },
-      { ingredient: egg_yolks, quantity: 2, unit_of_measure: "unit" },
+      { ingredient: egg_yolks, quantity: 2, unit_of_measure: "" },
       { ingredient: unsalted_butter, quantity: 150, unit_of_measure: "g" },
       { ingredient: english_mustard, quantity: 15, unit_of_measure: "g" },
       { ingredient: water, quantity: 1, unit_of_measure: "splash" }
@@ -1388,7 +1393,7 @@ recipes_with_data = [
       instructions: "Combine ingredients and bake at 170",
       prep_time: 5,
       cook_time: 20,
-      meal_type: ["Daytime"]
+      meal_type: [lunch, dinner]
     },
     ingredients: [
       { ingredient: plain_flour, quantity: 100, unit_of_measure: "g" },
@@ -1415,7 +1420,7 @@ recipes_with_data = [
       instructions: "Roast garlic. Juice lemon. Cook chickpeas (unless canned). Add ingredients and blend",
       prep_time: 10,
       cook_time: 0,
-      meal_type: ["Daytime"]
+      meal_type: [lunch, snack, dinner]
     },
     ingredients: [
       { ingredient: chickpeas, quantity: 1, unit_of_measure: "kg" },
@@ -1439,13 +1444,13 @@ recipes_with_data = [
       instructions: "Toast and chop fennel seeds. Mix ingredients, spread flat and bake at 180",
       prep_time: 5,
       cook_time: 20,
-      meal_type: ["Daytime"]
+      meal_type: [snack, lunch, dinner]
     },
     ingredients: [
       { ingredient: plain_flour, quantity: 250, unit_of_measure: "g" },
       { ingredient: fennel_seeds, quantity: 15, unit_of_measure: "g" },
       { ingredient: milk, quantity: 92, unit_of_measure: "g" },
-      { ingredient: whole_eggs, quantity: 1, unit_of_measure: "unit" },
+      { ingredient: whole_eggs, quantity: 1, unit_of_measure: "" },
       { ingredient: castor_sugar, quantity: 3, unit_of_measure: "g" },
       { ingredient: salt, quantity: 2, unit_of_measure: "g" }
     ],
@@ -1464,11 +1469,11 @@ recipes_with_data = [
       instructions: "Bake potatoes in foil with salt. Mash cooked potato. Add eggs, parmesan, oil, salt, pepper, flour. Knead until smooth. Roll out long tubes ~2cm thick and slice into pillows. Cook in salted water until rises to the top. Fry or use as you wish.",
       prep_time: 45,
       cook_time: 120,
-      meal_type: ["Evening"]
+      meal_type: [dinner, lunch]
     },
     ingredients: [
       { ingredient: maris_piper_potatoes, quantity: 400, unit_of_measure: "g" },
-      { ingredient: egg_yolks, quantity: 4, unit_of_measure: "unit" },
+      { ingredient: egg_yolks, quantity: 4, unit_of_measure: "" },
       { ingredient: plain_flour, quantity: 200, unit_of_measure: "g" },
       { ingredient: olive_oil, quantity: 50, unit_of_measure: "ml" },
       { ingredient: parmesan, quantity: 80, unit_of_measure: "g" },
@@ -1490,7 +1495,7 @@ recipes_with_data = [
       instructions: "Boil and mash potato. Combine ingredients (Water at 38 degreess, soft room temp butter, egg lightly beaten) and knead until smooth. Allow to prove. Roll into buns, glaze and bake.",
       prep_time: 30,
       cook_time: 20,
-      meal_type: [""]
+      meal_type: [lunch, dinner]
     },
     ingredients: [
       { ingredient: bread_flour, quantity: 6, unit_of_measure: "cups" },
@@ -1523,7 +1528,7 @@ recipes_with_data = [
                      Fry in oil at 180°C. Coat with sugar whilst warm. Fill when cold.",
       prep_time: 30,
       cook_time: 2,
-      meal_type: ["Daytime"]
+      meal_type: [lunch, snack]
     },
     ingredients: [
       { ingredient: bread_flour, quantity: 170, unit_of_measure: "g" },
@@ -1554,7 +1559,7 @@ recipes_with_data = [
                      Make indents using oiled finger when space is filled. Rest 30 then bake at 220. Glaze with oil oil when hot.",
       prep_time: 30,
       cook_time: 25,
-      meal_type: ["Daytime"]
+      meal_type: [lunch, dinner, snack]
     },
     ingredients: [
       { ingredient: bread_flour, quantity: 500, unit_of_measure: "g" },
@@ -1582,7 +1587,7 @@ recipes_with_data = [
                      Bake for 16 mins",
       prep_time: 30,
       cook_time: 16,
-      meal_type: ["Daytime"]
+      meal_type: [breakfast, lunch, dinner, snack]
     },
     ingredients: [
       { ingredient: bread_flour, quantity: 400, unit_of_measure: "g" },
@@ -1606,7 +1611,7 @@ recipes_with_data = [
       instructions: "Combine wet and dry ingredients separately. Add one cup of any filling (Blueberries/nuts etc). Mix and bake at 180°C.",
       prep_time: 5,
       cook_time: 15,
-      meal_type: ["Morning"]
+      meal_type: [breakfast, snack]
     },
     ingredients: [
       { ingredient: plain_flour, quantity: 2, unit_of_measure: "cups" },
@@ -1632,7 +1637,7 @@ recipes_with_data = [
       instructions: "Pick herbs, add everything except the oil to a blender. Slowly oil whilst blending to create emulsion",
       prep_time: 10,
       cook_time: 0,
-      meal_type: ["Daytime"]
+      meal_type: [lunch, dinner]
     },
     ingredients: [
       { ingredient: parsley, quantity: 1, unit_of_measure: "bunch" },
@@ -1656,7 +1661,7 @@ recipes_with_data = [
       instructions: "Sweat onions, ginger, chilli, garlic, carrots in butter. Add flour and cook out. Add sugar, soy sauce, garam masala, curry powder, and chicken stock. Simmer for 20 mins and blend.",
       prep_time: 15,
       cook_time: 20,
-      meal_type: ["Daytime"]
+      meal_type: [lunch, dinner]
     },
     ingredients: [
       { ingredient: ginger, quantity: 50, unit_of_measure: "g" },
@@ -1686,7 +1691,7 @@ recipes_with_data = [
       instructions: "Combine ingredients well. Allow to rest in fridge for at 30 mins. Ideally overnight.",
       prep_time: 10,
       cook_time: 5,
-      meal_type: ["Morning"]
+      meal_type: [breakfast]
     },
     ingredients: [
       { ingredient: plain_flour, quantity: 2.25, unit_of_measure: "cups" },
@@ -1712,7 +1717,7 @@ recipes_with_data = [
       instructions: "Combine ingredients well. Allow to sit in fridge for 30mins, ideally overnight.",
       prep_time: 5,
       cook_time: 5,
-      meal_type: ["Morning"]
+      meal_type: [breakfast]
     },
     ingredients: [
       { ingredient: plain_flour, quantity: 100, unit_of_measure: "g" },
@@ -1733,7 +1738,7 @@ recipes_with_data = [
       instructions: "Blend all ingredients except oil. Slowly add oil to blender to create emulsion.",
       prep_time: 10,
       cook_time: 0,
-      meal_type: ["Daytime"]
+      meal_type: [lunch, dinner]
     },
     ingredients: [
       { ingredient: sherry_vinegar, quantity: 325, unit_of_measure: "ml" },
@@ -1759,7 +1764,7 @@ recipes_with_data = [
       instructions: "Combine ingredients, knead until smooth. Roll into snakes, chop into pillows. Blanch in salted boiling water until they rise to surface. Allow to dry and use as wished.",
       prep_time: 30,
       cook_time: 10,
-      meal_type: ["Daytime"]
+      meal_type: [lunch, dinner]
     },
     ingredients: [
       { ingredient: whole_eggs, quantity: 1, unit_of_measure: "" },
@@ -1780,7 +1785,7 @@ recipes_with_data = [
       instructions: "Bring to boil and cool. Use as wished",
       prep_time: 5,
       cook_time: 5,
-      meal_type: ["Daytime"]
+      meal_type: [lunch, dinner]
     },
     ingredients: [
       { ingredient: white_vinegar, quantity: 100, unit_of_measure: "g" },
@@ -1800,7 +1805,7 @@ recipes_with_data = [
       instructions: "Combine all ingredients and bake at 180°C until toasted",
       prep_time: 10,
       cook_time: 25,
-      meal_type: ["Daytime"]
+      meal_type: [lunch, dinner]
     },
     ingredients: [
       { ingredient: oats, quantity: 100, unit_of_measure: "g" },
@@ -1829,7 +1834,7 @@ recipes_with_data = [
       instructions: "Mix ingredients well",
       prep_time: 10,
       cook_time: 0,
-      meal_type: [""]
+      meal_type: [lunch, dinner, snack]
     },
     ingredients: [
       { ingredient: plain_flour, quantity: 200, unit_of_measure: "g" },
@@ -1853,7 +1858,7 @@ recipes_with_data = [
       instructions: "Rub cold cubed butter with flour. Add other ingredients. Knead lighlty and chill in cling film until needed.",
       prep_time: 10,
       cook_time: 0,
-      meal_type: [""]
+      meal_type: [lunch, dinner, snack]
     },
     ingredients: [
       { ingredient: cheddar, quantity: 60, unit_of_measure: "g" },
@@ -1876,7 +1881,7 @@ recipes_with_data = [
       instructions: "Melt butter, add flour and cook out for 1 minute. Add milk and herbs and cook on very low heat for 30 mins until thick and glossy.",
       prep_time: 5,
       cook_time: 30,
-      meal_type: [""]
+      meal_type: [lunch, dinner]
     },
     ingredients: [
       { ingredient: plain_flour, quantity: 50, unit_of_measure: "g" },
@@ -1899,7 +1904,7 @@ recipes_with_data = [
       instructions: "Prepare chicken, keep any meat, we only need the carcass. Roughly chop all veg. Add to pan, cover and simmer for 3 hrs. DO NOT BOIL.",
       prep_time: 10,
       cook_time: 180,
-      meal_type: [""]
+      meal_type: [lunch, dinner]
     },
     ingredients: [
       { ingredient: whole_chicken, quantity: 1, unit_of_measure: "" },
@@ -1922,7 +1927,7 @@ recipes_with_data = [
       instructions: "Sieve flour. Create a mound of flour with a well. Add lightly beaten eggs, mix gently. Knead for 5-10 mins until smooth. Rest in fridge in cling film for an hour. Take a small piece, flatten and feed through pasta machine on thickest setting. Slowly decrease thickness until desired.",
       prep_time: 30,
       cook_time: 3,
-      meal_type: [""]
+      meal_type: [lunch, dinner]
     },
     ingredients: [
       { ingredient: flour_00, quantity: 500, unit_of_measure: "g" },
@@ -1937,7 +1942,7 @@ recipes_with_data = [
     ],
     photo: default_photo
   },
-  { # Tomato and Aubergine Salad
+  { # Tomato and Aubergine Saladw
     recipe_data: {
       user_id: admin.id,
       name: "Tomato and Aubergine Salad",
@@ -1945,7 +1950,7 @@ recipes_with_data = [
       instructions: "Dice Aubergine, cover in salt and leave to drain for 30mins, then squeeze out excess liquid, pat dry and fry in olive oil until golden. Prepare rest of ingredients and toss altogether.",
       prep_time: 45,
       cook_time: 15,
-      meal_type: [""]
+      meal_type: [lunch, dinner]
     },
     ingredients: [
       { ingredient: aubergine, quantity: 1, unit_of_measure: "" },
@@ -1976,7 +1981,7 @@ recipes_with_data = [
       instructions: "Thinly slice apple, celery, and fennel. Toast nuts. Chop herbs, zest and squeeze out orange juice. Toss altogether and serve",
       prep_time: 15,
       cook_time: 5,
-      meal_type: ["Daytime"]
+      meal_type: [lunch, dinner]
     },
     ingredients: [
       { ingredient: fennel, quantity: 1, unit_of_measure: "bulb" },
@@ -2004,7 +2009,7 @@ recipes_with_data = [
       instructions: "Slice courgette, lightly oil and grill until charred. Blanch asparagus in boiling water for 20 seconds then grill. Grill the halloumi then add rest of ingredients and serve.",
       prep_time: 15,
       cook_time: 20,
-      meal_type: ["Daytime"]
+      meal_type: [lunch, dinner]
     },
     ingredients: [
       { ingredient: cherry_tomatoes, quantity: 350, unit_of_measure: "g" },
@@ -2030,7 +2035,7 @@ recipes_with_data = [
       instructions: "Slice and dice all components. Crush Garlic. Add toasted/stale bread if desired. Combine together and serve.",
       prep_time: 15,
       cook_time: 0,
-      meal_type: ["Daytime"]
+      meal_type: [lunch, dinner]
     },
     ingredients: [
       { ingredient: greek_yogurt, quantity: 200, unit_of_measure: "g" },
@@ -2059,7 +2064,7 @@ recipes_with_data = [
       instructions: "Blanch greens for 30 seconds then grill until charred. Juice and zest lemon. Prepare ingredients as desired, combine and serve.",
       prep_time: 15,
       cook_time: 10,
-      meal_type: ["Daytime"]
+      meal_type: [lunch, dinner]
     },
     ingredients: [
       { ingredient: lemons, quantity: 1, unit_of_measure: "" },
@@ -2084,7 +2089,7 @@ recipes_with_data = [
       instructions: "Thinly slice kohl rabi, apple. Grate beetroot, chop coriander and crush garlic. Toss all inngredients together.",
       prep_time: 15,
       cook_time: 0,
-      meal_type: ["Daytime"]
+      meal_type: [lunch, dinner]
     },
     ingredients: [
       { ingredient: kohl_rabi, quantity: 2, unit_of_measure: "" },
