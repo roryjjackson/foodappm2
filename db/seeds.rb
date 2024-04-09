@@ -20,9 +20,11 @@ tags = ["Snack",
         "Baked Goods",
         "Mediterranean",
         "Asian",
+        "Mexican",
         "Indian",
         "American",
         "Japanese",
+        "Italian",
         "European",
         "South American",
         "African",
@@ -463,6 +465,7 @@ whole_meal_flour = "Whole Meal Flour"
 treacle = "Treacle"
 capers = "Capers"
 red_wine_vinegar = "Red Wine Vinegar"
+white_wine_vinegar = "White Wine Vinegar"
 fresh_chilli = "Fresh Chilli"
 sherry_vinegar = "Sherry Vinegar"
 mustard_powder = "Mustard Powder"
@@ -475,8 +478,15 @@ kohl_rabi = "Kohl Rabi"
 fennel = "Fennel"
 tomatoes = "Tomatoes"
 beetroot = "Beetroot"
+bomba_rice = "Bomba Rice"
+fish_stock = "Fish Stock"
+chesnut_mushrooms = "Chesnut Mushrooms"
 
 ingredients = [
+  { name: "Chesnut Mushrooms" },
+  { name: "Fish Stock" },
+  { name: "Bomba Rice" },
+  { name: "White Wine Vinegar" },
   { name: "Tomatoes" },
   { name: "Fennel" },
   { name: "Kohl Rabi" },
@@ -957,25 +967,25 @@ snack = "Snack"
 
 # Define recipes and their associated ingredients
 recipes_with_data = [
-  # { # Template
-  #   recipe_data: {
-  #     user_id: admin.id,
-  #     name: "Template",
-  #     description: "",
-  #     instructions: "",
-  #     prep_time: 0,
-  #     cook_time: 0,
-  #     meal_type: [""]
-  #   },
-  #   ingredients: [
-  #     { ingredient: , quantity: 0, unit_of_measure: "g" },
-  #   ],
-  #   tags: [
-  #     { name: "" },
-  #     { name: "" }
-  #   ],
-  #   photo: default_photo
-  # },
+  { # Template
+    recipe_data: {
+      user_id: admin.id,
+      name: "Template",
+      description: "",
+      instructions: "",
+      prep_time: 0,
+      cook_time: 0,
+      meal_type: [""]
+    },
+    ingredients: [
+      { ingredient: , quantity: 0, unit_of_measure: "g" },
+    ],
+    tags: [
+      { name: "" },
+      { name: "" }
+    ],
+    photo: default_photo
+  },
   { # Smash burgers
     recipe_data: {
       user_id: admin.id,
@@ -984,7 +994,7 @@ recipes_with_data = [
       instructions: "Combine melted butter, salt, and beef. Ball up into equal size and refrigerate. When ready to fry, 'smash' the patty and fry on a high heat. Serve immediately with plenty burger sauce in a toasted bun.",
       prep_time: 10,
       cook_time: 10,
-      meal_type: [lunch, dinner]
+      meal_type: []
     },
     ingredients: [
       { ingredient: ground_beef, quantity: 100, unit_of_measure: "g" },
@@ -1008,7 +1018,7 @@ recipes_with_data = [
       instructions: "Peel, and slice into thick 1.5cm chips. part boil in salty water until just soft (~8mins), drain and allow to steam dry. Fry in oil @120 degrees for 10 mins. To finish, fry @ 180 degrees until golden. Season with salt",
       prep_time: 10,
       cook_time: 30,
-      meal_type: [lunch, dinner, snack]
+      meal_type: [snack]
     },
     ingredients: [
       { ingredient: maris_piper_potatoes, quantity: 100, unit_of_measure: "g" },
@@ -1056,7 +1066,7 @@ recipes_with_data = [
       instructions: "Whisk eggs with sugar until pale yellow. Melt butter and chocolate and fold into egg mix. Bake at 170 (Longer cooking will result in a more cakey mixture, less cooking will be gooey).",
       prep_time: 10,
       cook_time: 25,
-      meal_type: [lunch, dinner, snack]
+      meal_type: [snack]
     },
     ingredients: [
       { ingredient: whole_eggs, quantity: 10, unit_of_measure: "" },
@@ -1081,7 +1091,7 @@ recipes_with_data = [
       instructions: "Beat eggs and sugar together until pale yellow. Add rest of dry ingredients. Melt chocolate and butter together. Combine two mixes. Fold in chopped chocolate and nuts and pour into lined tin. Bake at 170 degrees until cooked",
       prep_time: 15,
       cook_time: 25,
-      meal_type: [lunch, dinner, snack]
+      meal_type: [snack]
     },
     ingredients: [
       { ingredient: whole_eggs, quantity: 6, unit_of_measure: "" },
@@ -1113,7 +1123,7 @@ recipes_with_data = [
       instructions: "Mix together flour, baking powder/soda, and salt. Cream butter and sugar, add eggs and vanilla. Add half flour until well combined, then add other half. Add banana and creme fraiche. Bake at 170.",
       prep_time: 10,
       cook_time: 35,
-      meal_type: [breakfast, lunch, snack]
+      meal_type: [breakfast, snack]
     },
     ingredients: [
       { ingredient: plain_flour, quantity: 170, unit_of_measure: "g" },
@@ -1206,7 +1216,7 @@ recipes_with_data = [
       instructions: "Lightly crush almonds and hazelnuts in pestel and mortar. Toast spices. Mix all together.",
       prep_time: 5,
       cook_time: 10,
-      meal_type: [lunch, dinner]
+      meal_type: []
     },
     ingredients: [
       { ingredient: almonds, quantity: 150, unit_of_measure: "g" },
@@ -1234,7 +1244,7 @@ recipes_with_data = [
       instructions: "Add all ingredients except parmesan and oil into a blender. Blend until smooth. Then very gradually add the oil with blender spinning. Add grated parmesan to finish.",
       prep_time: 5,
       cook_time: 0,
-      meal_type: [lunch]
+      meal_type: []
     },
     ingredients: [
       { ingredient: egg_yolks, quantity: 75, unit_of_measure: "g" },
@@ -1262,7 +1272,7 @@ recipes_with_data = [
       instructions: "Bruniose the shallot, finely chop herbs and mix.",
       prep_time: 5,
       cook_time: 0,
-      meal_type: [lunch, dinner]
+      meal_type: []
     },
     ingredients: [
       { ingredient: ketchup, quantity: 300, unit_of_measure: "g" },
@@ -1286,7 +1296,7 @@ recipes_with_data = [
       instructions: "Melt butter and flour, gradually add ale and cook gently. add mustard, cayenne and worcestershire. Cool slightly, grate in nutmeg and fold in cheese.",
       prep_time: 10,
       cook_time: 20,
-      meal_type: [lunch]
+      meal_type: [snack]
     },
     ingredients: [
       { ingredient: plain_flour, quantity: 60, unit_of_measure: "g" },
@@ -1314,7 +1324,7 @@ recipes_with_data = [
       instructions: "Brunoise shallot and salt for 10 mins. Finelly chop cornichon, capers, tarragon and chervil/chives. Mix altogether.",
       prep_time: 10,
       cook_time: 0,
-      meal_type: [lunch, dinner]
+      meal_type: []
     },
     ingredients: [
       { ingredient: mayonnaise, quantity: 500, unit_of_measure: "g" },
@@ -1339,7 +1349,7 @@ recipes_with_data = [
       instructions: "Add herbs, capers, mustard, vinegar to a blender and blend. Slowly add oil to create an emulsion. Fold through brunoise shallot and apple.",
       prep_time: 10,
       cook_time: 0,
-      meal_type: [lunch, dinner]
+      meal_type: []
     },
     ingredients: [
       { ingredient: watercress, quantity: 30, unit_of_measure: "g" },
@@ -1366,7 +1376,7 @@ recipes_with_data = [
       instructions: "Rub cold diced butter with dry ingredients. Add egg yolks, mustard and a touch of water. Should be very soft, rest in fridge for at least 2 hours.",
       prep_time: 15,
       cook_time: 0,
-      meal_type: [lunch, dinner, snack]
+      meal_type: []
     },
     ingredients: [
       { ingredient: plain_flour, quantity: 200, unit_of_measure: "g" },
@@ -1393,7 +1403,7 @@ recipes_with_data = [
       instructions: "Combine ingredients and bake at 170",
       prep_time: 5,
       cook_time: 20,
-      meal_type: [lunch, dinner]
+      meal_type: []
     },
     ingredients: [
       { ingredient: plain_flour, quantity: 100, unit_of_measure: "g" },
@@ -1420,7 +1430,7 @@ recipes_with_data = [
       instructions: "Roast garlic. Juice lemon. Cook chickpeas (unless canned). Add ingredients and blend",
       prep_time: 10,
       cook_time: 0,
-      meal_type: [lunch, snack, dinner]
+      meal_type: [snack]
     },
     ingredients: [
       { ingredient: chickpeas, quantity: 1, unit_of_measure: "kg" },
@@ -1444,7 +1454,7 @@ recipes_with_data = [
       instructions: "Toast and chop fennel seeds. Mix ingredients, spread flat and bake at 180",
       prep_time: 5,
       cook_time: 20,
-      meal_type: [snack, lunch, dinner]
+      meal_type: []
     },
     ingredients: [
       { ingredient: plain_flour, quantity: 250, unit_of_measure: "g" },
@@ -1469,7 +1479,7 @@ recipes_with_data = [
       instructions: "Bake potatoes in foil with salt. Mash cooked potato. Add eggs, parmesan, oil, salt, pepper, flour. Knead until smooth. Roll out long tubes ~2cm thick and slice into pillows. Cook in salted water until rises to the top. Fry or use as you wish.",
       prep_time: 45,
       cook_time: 120,
-      meal_type: [dinner, lunch]
+      meal_type: []
     },
     ingredients: [
       { ingredient: maris_piper_potatoes, quantity: 400, unit_of_measure: "g" },
@@ -1495,7 +1505,7 @@ recipes_with_data = [
       instructions: "Boil and mash potato. Combine ingredients (Water at 38 degreess, soft room temp butter, egg lightly beaten) and knead until smooth. Allow to prove. Roll into buns, glaze and bake.",
       prep_time: 30,
       cook_time: 20,
-      meal_type: [lunch, dinner]
+      meal_type: []
     },
     ingredients: [
       { ingredient: bread_flour, quantity: 6, unit_of_measure: "cups" },
@@ -1528,7 +1538,7 @@ recipes_with_data = [
                      Fry in oil at 180°C. Coat with sugar whilst warm. Fill when cold.",
       prep_time: 30,
       cook_time: 2,
-      meal_type: [lunch, snack]
+      meal_type: [snack]
     },
     ingredients: [
       { ingredient: bread_flour, quantity: 170, unit_of_measure: "g" },
@@ -1559,7 +1569,7 @@ recipes_with_data = [
                      Make indents using oiled finger when space is filled. Rest 30 then bake at 220. Glaze with oil oil when hot.",
       prep_time: 30,
       cook_time: 25,
-      meal_type: [lunch, dinner, snack]
+      meal_type: [snack]
     },
     ingredients: [
       { ingredient: bread_flour, quantity: 500, unit_of_measure: "g" },
@@ -1587,7 +1597,7 @@ recipes_with_data = [
                      Bake for 16 mins",
       prep_time: 30,
       cook_time: 16,
-      meal_type: [breakfast, lunch, dinner, snack]
+      meal_type: []
     },
     ingredients: [
       { ingredient: bread_flour, quantity: 400, unit_of_measure: "g" },
@@ -1637,7 +1647,7 @@ recipes_with_data = [
       instructions: "Pick herbs, add everything except the oil to a blender. Slowly oil whilst blending to create emulsion",
       prep_time: 10,
       cook_time: 0,
-      meal_type: [lunch, dinner]
+      meal_type: []
     },
     ingredients: [
       { ingredient: parsley, quantity: 1, unit_of_measure: "bunch" },
@@ -1661,7 +1671,7 @@ recipes_with_data = [
       instructions: "Sweat onions, ginger, chilli, garlic, carrots in butter. Add flour and cook out. Add sugar, soy sauce, garam masala, curry powder, and chicken stock. Simmer for 20 mins and blend.",
       prep_time: 15,
       cook_time: 20,
-      meal_type: [lunch, dinner]
+      meal_type: []
     },
     ingredients: [
       { ingredient: ginger, quantity: 50, unit_of_measure: "g" },
@@ -1738,7 +1748,7 @@ recipes_with_data = [
       instructions: "Blend all ingredients except oil. Slowly add oil to blender to create emulsion.",
       prep_time: 10,
       cook_time: 0,
-      meal_type: [lunch, dinner]
+      meal_type: []
     },
     ingredients: [
       { ingredient: sherry_vinegar, quantity: 325, unit_of_measure: "ml" },
@@ -1764,7 +1774,7 @@ recipes_with_data = [
       instructions: "Combine ingredients, knead until smooth. Roll into snakes, chop into pillows. Blanch in salted boiling water until they rise to surface. Allow to dry and use as wished.",
       prep_time: 30,
       cook_time: 10,
-      meal_type: [lunch, dinner]
+      meal_type: []
     },
     ingredients: [
       { ingredient: whole_eggs, quantity: 1, unit_of_measure: "" },
@@ -1785,10 +1795,10 @@ recipes_with_data = [
       instructions: "Bring to boil and cool. Use as wished",
       prep_time: 5,
       cook_time: 5,
-      meal_type: [lunch, dinner]
+      meal_type: []
     },
     ingredients: [
-      { ingredient: white_vinegar, quantity: 100, unit_of_measure: "g" },
+      { ingredient: white_wine_vinegar, quantity: 100, unit_of_measure: "g" },
       { ingredient: castor_sugar, quantity: 200, unit_of_measure: "g" },
       { ingredient: water, quantity: 300, unit_of_measure: "g" },
     ],
@@ -1805,7 +1815,7 @@ recipes_with_data = [
       instructions: "Combine all ingredients and bake at 180°C until toasted",
       prep_time: 10,
       cook_time: 25,
-      meal_type: [lunch, dinner]
+      meal_type: []
     },
     ingredients: [
       { ingredient: oats, quantity: 100, unit_of_measure: "g" },
@@ -1834,7 +1844,7 @@ recipes_with_data = [
       instructions: "Mix ingredients well",
       prep_time: 10,
       cook_time: 0,
-      meal_type: [lunch, dinner, snack]
+      meal_type: []
     },
     ingredients: [
       { ingredient: plain_flour, quantity: 200, unit_of_measure: "g" },
@@ -1858,7 +1868,7 @@ recipes_with_data = [
       instructions: "Rub cold cubed butter with flour. Add other ingredients. Knead lighlty and chill in cling film until needed.",
       prep_time: 10,
       cook_time: 0,
-      meal_type: [lunch, dinner, snack]
+      meal_type: []
     },
     ingredients: [
       { ingredient: cheddar, quantity: 60, unit_of_measure: "g" },
@@ -1881,7 +1891,7 @@ recipes_with_data = [
       instructions: "Melt butter, add flour and cook out for 1 minute. Add milk and herbs and cook on very low heat for 30 mins until thick and glossy.",
       prep_time: 5,
       cook_time: 30,
-      meal_type: [lunch, dinner]
+      meal_type: []
     },
     ingredients: [
       { ingredient: plain_flour, quantity: 50, unit_of_measure: "g" },
@@ -1904,7 +1914,7 @@ recipes_with_data = [
       instructions: "Prepare chicken, keep any meat, we only need the carcass. Roughly chop all veg. Add to pan, cover and simmer for 3 hrs. DO NOT BOIL.",
       prep_time: 10,
       cook_time: 180,
-      meal_type: [lunch, dinner]
+      meal_type: []
     },
     ingredients: [
       { ingredient: whole_chicken, quantity: 1, unit_of_measure: "" },
@@ -1927,7 +1937,7 @@ recipes_with_data = [
       instructions: "Sieve flour. Create a mound of flour with a well. Add lightly beaten eggs, mix gently. Knead for 5-10 mins until smooth. Rest in fridge in cling film for an hour. Take a small piece, flatten and feed through pasta machine on thickest setting. Slowly decrease thickness until desired.",
       prep_time: 30,
       cook_time: 3,
-      meal_type: [lunch, dinner]
+      meal_type: []
     },
     ingredients: [
       { ingredient: flour_00, quantity: 500, unit_of_measure: "g" },
@@ -1950,7 +1960,7 @@ recipes_with_data = [
       instructions: "Dice Aubergine, cover in salt and leave to drain for 30mins, then squeeze out excess liquid, pat dry and fry in olive oil until golden. Prepare rest of ingredients and toss altogether.",
       prep_time: 45,
       cook_time: 15,
-      meal_type: [lunch, dinner]
+      meal_type: []
     },
     ingredients: [
       { ingredient: aubergine, quantity: 1, unit_of_measure: "" },
@@ -1981,7 +1991,7 @@ recipes_with_data = [
       instructions: "Thinly slice apple, celery, and fennel. Toast nuts. Chop herbs, zest and squeeze out orange juice. Toss altogether and serve",
       prep_time: 15,
       cook_time: 5,
-      meal_type: [lunch, dinner]
+      meal_type: []
     },
     ingredients: [
       { ingredient: fennel, quantity: 1, unit_of_measure: "bulb" },
@@ -2009,7 +2019,7 @@ recipes_with_data = [
       instructions: "Slice courgette, lightly oil and grill until charred. Blanch asparagus in boiling water for 20 seconds then grill. Grill the halloumi then add rest of ingredients and serve.",
       prep_time: 15,
       cook_time: 20,
-      meal_type: [lunch, dinner]
+      meal_type: []
     },
     ingredients: [
       { ingredient: cherry_tomatoes, quantity: 350, unit_of_measure: "g" },
@@ -2035,7 +2045,7 @@ recipes_with_data = [
       instructions: "Slice and dice all components. Crush Garlic. Add toasted/stale bread if desired. Combine together and serve.",
       prep_time: 15,
       cook_time: 0,
-      meal_type: [lunch, dinner]
+      meal_type: []
     },
     ingredients: [
       { ingredient: greek_yogurt, quantity: 200, unit_of_measure: "g" },
@@ -2064,7 +2074,7 @@ recipes_with_data = [
       instructions: "Blanch greens for 30 seconds then grill until charred. Juice and zest lemon. Prepare ingredients as desired, combine and serve.",
       prep_time: 15,
       cook_time: 10,
-      meal_type: [lunch, dinner]
+      meal_type: []
     },
     ingredients: [
       { ingredient: lemons, quantity: 1, unit_of_measure: "" },
@@ -2089,7 +2099,7 @@ recipes_with_data = [
       instructions: "Thinly slice kohl rabi, apple. Grate beetroot, chop coriander and crush garlic. Toss all inngredients together.",
       prep_time: 15,
       cook_time: 0,
-      meal_type: [lunch, dinner]
+      meal_type: []
     },
     ingredients: [
       { ingredient: kohl_rabi, quantity: 2, unit_of_measure: "" },
@@ -2106,7 +2116,201 @@ recipes_with_data = [
       { name: "European" }
     ],
     photo: default_photo
-  }
+  },
+  { # Chicken Katsu Curry
+    recipe_data: {
+      user_id: admin.id,
+      name: "Chicken Katsu Curry",
+      description: "A Japanese favourite in the household. It's a bit of a treat really as its deep fried chicken with a sauce.",
+      instructions: "Prep the katsu sauce (Separate Recipe). Prep chicken breast, add milk and soy to brine the chicken for 2 hours. Pane and fry chicken. Cook rice and serve.",
+      prep_time: 45,
+      cook_time: 30,
+      meal_type: [lunch, dinner]
+    },
+    ingredients: [
+      { ingredient: chicken_breast, quantity: 2, unit_of_measure: "" },
+      { ingredient: sushi_rice, quantity: 150, unit_of_measure: "g" },
+      { ingredient: panko_bread_crumbs, quantity: 50, unit_of_measure: "g" },
+      { ingredient: whole_eggs, quantity: 3, unit_of_measure: "" },
+      { ingredient: milk, quantity: 200, unit_of_measure: "ml" },
+      { ingredient: soy_sauce, quantity: 25, unit_of_measure: "g" },
+      { ingredient: plain_flour, quantity: 50, unit_of_measure: "g" }
+    ],
+    tags: [
+      { name: "Japanese" },
+      { name: "Main" }
+    ],
+    photo: default_photo
+  },
+  { # Paella
+    recipe_data: {
+      user_id: admin.id,
+      name: "Paella",
+      description: "A Spanish staple. Saffron infused rice with some of the tastiest seafood you'll eat",
+      instructions: "Sweat onions and garlic. Add diced chicken and chipolatas to pan. Once browned, add saffron, paprika and tomatoes.
+                     Cook until nearly dry. Add rice, add stock. Do not stir for first 15 mins.
+                     Add langoustines and cook 8-10 mins. Cook mussels separately. Add prepped squid and mussels to paella and serve with chopped parsley.",
+      prep_time: 45,
+      cook_time: 45,
+      meal_type: [lunch, dinner]
+    },
+    ingredients: [
+      { ingredient: chicken_breast, quantity: 2, unit_of_measure: "" },
+      { ingredient: chipolatas, quantity: 4, unit_of_measure: "" },
+      { ingredient: squid, quantity: 1, unit_of_measure: "" },
+      { ingredient: mussels, quantity: 500, unit_of_measure: "g" },
+      { ingredient: langoustines, quantity: 4, unit_of_measure: "" },
+      { ingredient: white_onions, quantity: 1, unit_of_measure: "" },
+      { ingredient: garlic, quantity: 3, unit_of_measure: "cloves" },
+      { ingredient: saffron_threads, quantity: 1, unit_of_measure: "pinch" },
+      { ingredient: paprika, quantity: 1, unit_of_measure: "tsp" },
+      { ingredient: canned_tomatoes, quantity: 400, unit_of_measure: "g" },
+      { ingredient: bomba_rice, quantity: 400, unit_of_measure: "g" },
+      { ingredient: fish_stock, quantity: 1.2, unit_of_measure: "l" },
+      { ingredient: parsley, quantity: 1, unit_of_measure: "tbsp" },
+    ],
+    tags: [
+      { name: "Mediterranean" },
+      { name: "Main" }
+    ],
+    photo: default_photo
+  },
+  { # Pizza
+    recipe_data: {
+      user_id: admin.id,
+      name: "Pizza",
+      description: "No explanation needed. We all know what this is.",
+      instructions: "Mix and knead until smooth and springy. Rest in floured bowl and cover until doubled. Knock back and ball up. Store in fridge until needed.
+                     Make sauce. Cook down tomatoes, garlic, oregano, salt and olive oil.",
+      prep_time: 20,
+      cook_time: 6,
+      meal_type: [lunch, dinner]
+    },
+    ingredients: [
+      { ingredient: yeast, quantity: 7, unit_of_measure: "g" },
+      { ingredient: olive_oil, quantity: 25, unit_of_measure: "ml" },
+      { ingredient: castor_sugar, quantity: 1, unit_of_measure: "tsp" },
+      { ingredient: water, quantity: 250, unit_of_measure: "ml" },
+      { ingredient: flour_00, quantity: 500, unit_of_measure: "g" },
+      { ingredient: salt, quantity: 5, unit_of_measure: "g" },
+      { ingredient: canned_tomatoes, quantity: 400, unit_of_measure: "g" },
+      { ingredient: garlic, quantity: 3, unit_of_measure: "cloves" },
+      { ingredient: oregano, quantity: 1, unit_of_measure: "handful" },
+      { ingredient: basil, quantity: 1, unit_of_measure: "handful" },
+    ],
+    tags: [
+      { name: "Italian" },
+      { name: "Mediterranean" },
+      { name: "Main" }
+    ],
+    photo: default_photo
+  },
+  { # Bolognese
+    recipe_data: {
+      user_id: admin.id,
+      name: "Bolognese",
+      description: "An authentic family recipe from Italy.",
+      instructions: "Fry meats until golden then set aside. Cook mirepoix, add tomato paste and cook for 5 mins.
+                     Return meat, add wine. Simmer for 3 hours. Add milk for final 40 mins. Serve.",
+      prep_time: 35,
+      cook_time: 240,
+      meal_type: [lunch, dinner]
+    },
+    ingredients: [
+      { ingredient: ground_beef, quantity: 300, unit_of_measure: "g" },
+      { ingredient: ground_pork, quantity: 150, unit_of_measure: "g" },
+      { ingredient: unsalted_butter, quantity: 50, unit_of_measure: "g" },
+      { ingredient: white_onions, quantity: 50, unit_of_measure: "g" },
+      { ingredient: carrots, quantity: 50, unit_of_measure: "g" },
+      { ingredient: celery, quantity: 50, unit_of_measure: "g" },
+      { ingredient: red_wine, quantity: 125, unit_of_measure: "ml" },
+      { ingredient: tomato_paste, quantity: 30, unit_of_measure: "g" },
+      { ingredient: milk, quantity: 125, unit_of_measure: "ml" }
+    ],
+    tags: [
+      { name: "Italian" },
+      { name: "Main" }
+    ],
+    photo: default_photo
+  },
+  { # Mushroom Risotto with Gremolata
+    recipe_data: {
+      user_id: admin.id,
+      name: "Mushroom Risotto with Gremolata",
+      description: "A classic dish that uses bog standard chesnut mushrooms, with the porcini, brown butter and miso adding depth.",
+      instructions: "Prep gremolata. Rehydrate procini in chicken stock. Fry onions, add garlic, add sliced chesnut mushrooms and cook for 15 mins. Add wine until cooked off, add rice and miso. Cook using stock , finish with gremolata and brown butter.",
+      prep_time: 20,
+      cook_time: 40,
+      meal_type: [lunch, dinner]
+    },
+    ingredients: [
+      { ingredient: porcini_mushrooms, quantity: 1, unit_of_measure: "tbsp" },
+      { ingredient: chicken_stock, quantity: 500, unit_of_measure: "ml" },
+      { ingredient: white_onions, quantity: 1, unit_of_measure: "" },
+      { ingredient: garlic, quantity: 3, unit_of_measure: "cloves" },
+      { ingredient: chesnut_mushrooms, quantity: 250, unit_of_measure: "g" },
+      { ingredient: white_wine, quantity: 125, unit_of_measure: "ml" },
+      { ingredient: arborio_rice, quantity: 150, unit_of_measure: "g" },
+      { ingredient: miso_paste, quantity: 1, unit_of_measure: "tsp" },
+      { ingredient: parmesan, quantity: 50, unit_of_measure: "g" }
+    ],
+    tags: [
+      { name: "European" },
+      { name: "Main" }
+    ],
+    photo: default_photo
+  },
+  { # Gremolata
+    recipe_data: {
+      user_id: admin.id,
+      name: "Gremolata",
+      description: "Elevate simple dishes. Add to meat, fish, and veg dishes to add freshness and depth.",
+      instructions: "Finely chop parsley, zest and juice lemon, grate garlic. Add oil.",
+      prep_time: 5,
+      cook_time: 0,
+      meal_type: []
+    },
+    ingredients: [
+      { ingredient: olive_oil, quantity: 1, unit_of_measure: "dash" },
+      { ingredient: garlic, quantity: 1, unit_of_measure: "clove" },
+      { ingredient: lemons, quantity: 1, unit_of_measure: "" },
+      { ingredient: parsley, quantity: 1, unit_of_measure: "handful" },
+    ],
+    tags: [
+      { name: "European" },
+      { name: "Component" }
+    ],
+    photo: default_photo
+  },
+  { # Fajitas
+    recipe_data: {
+      user_id: admin.id,
+      name: "Fajitas",
+      description: "A family favourite. Crowd pleaser. Whatever you want to say about it, it bangs.",
+      instructions: "Fry onion, garlic, and peppers. Set Aside. Marinade diced chicken in cajun, salt, olive oil and lemon. Fry until golden.
+                     Add chicken to veg. Serve with wraps, sour cream, guacamole, and grated cheese.",
+      prep_time: 25,
+      cook_time: 20,
+      meal_type: [lunch, dinner]
+    },
+    ingredients: [
+      { ingredient: chicken_thighs, quantity: 500, unit_of_measure: "g" },
+      { ingredient: cajun_seasoning, quantity: 2, unit_of_measure: "tbsp" },
+      { ingredient: salt, quantity: 1, unit_of_measure: "pinch" },
+      { ingredient: lemons, quantity: 1, unit_of_measure: "" },
+      { ingredient: olive_oil, quantity: 50, unit_of_measure: "ml" },
+      { ingredient: red_bell_peppers, quantity: 1, unit_of_measure: "" },
+      { ingredient: yellow_bell_peppers, quantity: 1, unit_of_measure: "" },
+      { ingredient: green_bell_peppers, quantity: 1, unit_of_measure: "" },
+      { ingredient: red_onions, quantity: 1, unit_of_measure: "" },
+      { ingredient: garlic, quantity: 2, unit_of_measure: "cloves" }
+    ],
+    tags: [
+      { name: "Mexican" },
+      { name: "Main" }
+    ],
+    photo: default_photo
+  },
 
 ]
 

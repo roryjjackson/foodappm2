@@ -1,20 +1,20 @@
-<p style="color: green"><%= notice %></p>
+<div class="page">
+  <p style="color: green"><%= notice %></p>
 
-<h1>Ingredients</h1>
-<%= render "ingredient_search_form" %>
+  <h1>Ingredients</h1>
+  <%= render "ingredient_search_form" %>
 
-<div id="ingredients">
-  <% if @ingredients.exists? %>
-    <% @ingredients.each do |ingredient| %>
-      <%= render ingredient %>
-      <p>
-        <%= link_to "Show this ingredient", ingredient %>
-      </p>
-
+  <div id="ingredients" class="cards" >
+    <% if @ingredients.exists? %>
+      <% @ingredients.each do |ingredient| %>
+        <%= link_to ingredient_path(ingredient.id) do %>
+          <%= render ingredient %>
+        <% end %>
+      <% end %>
+    <% else %>
+      <p>No ingredients found</p>
     <% end %>
-  <% else %>
-    <p>No ingredients found</p>
-  <% end %>
-</div>
+  </div>
 
-<%= link_to "New ingredient", new_ingredient_path %>
+  <%= link_to "New ingredient", new_ingredient_path %>
+</div>
