@@ -29,7 +29,6 @@ class MenusController < ApplicationController
     dinners = []
     tagged_recipes = []
 
-
     if menu.tags.exists?
       Recipe.all.each do |recipe|
         tagged_recipes << recipe if (recipe.tags & menu.tags).any?
