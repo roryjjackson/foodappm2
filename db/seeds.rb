@@ -481,8 +481,16 @@ beetroot = "Beetroot"
 bomba_rice = "Bomba Rice"
 fish_stock = "Fish Stock"
 chesnut_mushrooms = "Chesnut Mushrooms"
+english_muffin = "English Muffin"
+ham = "Ham"
+chipolatas = "Chipolatas"
+langoustines = "Langoustines"
 
 ingredients = [
+  { name: "Langoustines" },
+  { name: "Chipolatas" },
+  { name: "Ham" },
+  { name: "English Muffin" },
   { name: "Chesnut Mushrooms" },
   { name: "Fish Stock" },
   { name: "Bomba Rice" },
@@ -967,25 +975,25 @@ snack = "Snack"
 
 # Define recipes and their associated ingredients
 recipes_with_data = [
-  { # Template
-    recipe_data: {
-      user_id: admin.id,
-      name: "Template",
-      description: "",
-      instructions: "",
-      prep_time: 0,
-      cook_time: 0,
-      meal_type: [""]
-    },
-    ingredients: [
-      { ingredient: , quantity: 0, unit_of_measure: "g" },
-    ],
-    tags: [
-      { name: "" },
-      { name: "" }
-    ],
-    photo: default_photo
-  },
+  # { # Template
+  #   recipe_data: {
+  #     user_id: admin.id,
+  #     name: "Template",
+  #     description: "",
+  #     instructions: "",
+  #     prep_time: 0,
+  #     cook_time: 0,
+  #     meal_type: [""]
+  #   },
+  #   ingredients: [
+  #     { ingredient: , quantity: 0, unit_of_measure: "g" },
+  #   ],
+  #   tags: [
+  #     { name: "" },
+  #     { name: "" }
+  #   ],
+  #   photo: default_photo
+  # },
   { # Smash burgers
     recipe_data: {
       user_id: admin.id,
@@ -2308,6 +2316,70 @@ recipes_with_data = [
     tags: [
       { name: "Mexican" },
       { name: "Main" }
+    ],
+    photo: default_photo
+  },
+  { # Rosti
+    recipe_data: {
+      user_id: admin.id,
+      name: "Rosti",
+      description: "A swiss alpine staple. Their version of the famed hash brown.",
+      instructions: "Peel and grate potato. Squeeze out as much water as you can (tea-towel is a good method). Add butter, salt, and pepper. Cook in clarified butter or neutral oil until cripsy.",
+      prep_time: 10,
+      cook_time: 10,
+      meal_type: [breakfast]
+    },
+    ingredients: [
+      { ingredient: maris_piper_potatoes, quantity: 500, unit_of_measure: "g" },
+      { ingredient: unsalted_butter, quantity: 50, unit_of_measure: "g" },
+      { ingredient: salt, quantity: 10, unit_of_measure: "g" },
+    ],
+    tags: [
+      { name: "European" },
+      { name: "Component" }
+    ],
+    photo: default_photo
+  },
+  { # Hollondaise Sauce
+    recipe_data: {
+      user_id: admin.id,
+      name: "Hollondaise Sauce",
+      description: "Rich and creamy emulsion of egg yolks, butter, and lemon juice.",
+      instructions: "Whisk egg yolks and vinegar over gently steaming water until pale and frothy. Melt butter and skim off any solids. Make sure butter is just warm to touch, too hot and it will split. Very slow pour in butter to egg mix whilst constantly stirring. Finish with salt and lemon juice to taste.",
+      prep_time: 5,
+      cook_time: 10,
+      meal_type: []
+    },
+    ingredients: [
+      { ingredient: egg_yolks, quantity: 2, unit_of_measure: "" },
+      { ingredient: unsalted_butter, quantity: 125, unit_of_measure: "g" },
+      { ingredient: white_wine_vinegar, quantity: 0.5, unit_of_measure: "tsp" },
+      { ingredient: lemons, quantity: 1, unit_of_measure: "squueze" }
+    ],
+    tags: [
+      { name: "European" },
+      { name: "Component" }
+    ],
+    photo: default_photo
+  },
+  { # Eggs Benedict
+    recipe_data: {
+      user_id: admin.id,
+      name: "Eggs Benedict",
+      description: "A staple served in every trendy breakfast place in the UK.",
+      instructions: "Make hollondaise sauce. Toast english muffin. Poach egg for 3 mins in salted boiling water (with vinegar).
+                     Top hame with egg and hollondaise and serve.",
+      prep_time: 15,
+      cook_time: 5,
+      meal_type: [breakfast]
+    },
+    ingredients: [
+      { ingredient: english_muffin, quantity: 1, unit_of_measure: "" },
+      { ingredient: whole_eggs, quantity: 2, unit_of_measure: "" },
+      { ingredient: ham, quantity: 2, unit_of_measure: "slices" }
+    ],
+    tags: [
+      { name: "European" }
     ],
     photo: default_photo
   },
