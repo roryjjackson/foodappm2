@@ -7,9 +7,7 @@ class MenusController < ApplicationController
 
   def show
     @menu = Menu.find(params[:id])
-    @recipes = @menu.recipes
-    @categorized_recipes = add_recipes_by_meal_type(@menu)
-
+    @categorized_recipes = add_recipes(@menu)
 
 
     @menu_tags = []
@@ -24,15 +22,22 @@ class MenusController < ApplicationController
     @menu = Menu.new
   end
 
-  def add_recipes_by_meal_type(menu)
+  def add_recipes(menu)
     snacks = []
     breakfasts = []
     lunches = []
     dinners = []
     tagged_recipes = []
 
-    Recipe.all.each do |recipe|
-      tagged_recipes << recipe if (recipe.tags & menu.tags).any?
+
+    if menu.tags.exists?
+      Recipe.all.each do |recipe|
+        tagged_recipes << recipe if (recipe.tags & menu.tags).any?
+      end
+    else
+      Recipe.all.each do |recipe|
+        tagged_recipes << recipe
+      end
     end
 
     tagged_recipes.each do |recipe|
@@ -55,6 +60,10 @@ class MenusController < ApplicationController
   def create
     @menu = Menu.new(menu_params)
 
+    # @recipes = @menu.recipes
+    @categorized_recipes = add_recipes(@menu)
+
+
     if @menu.save
       redirect_to @menu, notice: 'Menu was successfully created.'
     else
@@ -66,12 +75,9 @@ class MenusController < ApplicationController
   end
 
   def update
-    @menu.recipes.destroy_all
-
+    # @menu.recipes.destroy_all
     if @menu.update(menu_params)
-      relevant_recipes = add_recipes_by_meal_type(@menu)
-      @menu.recipes << relevant_recipes
-      day_by_day_plan(@menu)
+
       redirect_to @menu, notice: 'Menu was successfully updated.'
     else
       render :edit
