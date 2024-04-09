@@ -1,6 +1,5 @@
 body {
   background-color: $snow;
-  max-width: 95vw;
   margin: auto;
 }
 
@@ -15,4 +14,9 @@ body {
 
 .logo {
   width: 200px;
+}
+
+.page {
+  max-width: 95vw;
+  margin: auto;
 }

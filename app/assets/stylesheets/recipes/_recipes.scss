@@ -13,3 +13,23 @@
   display: block;
   justify-content: space-between;
 }
+
+.recipe-information {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 20px;
+
+}
+
+.ingredients-container {
+  display: flex;
+
+  p {
+    margin-bottom: 2px;
+  }
+}
+
+#ingredient-quantity {
+  text-align: right;
+  padding-right: 2px;
+}

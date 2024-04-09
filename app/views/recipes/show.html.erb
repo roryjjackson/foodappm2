@@ -1,33 +1,53 @@
-<div class="recipes">
-  <%= render @recipe %>
-<div>
+<div class="page">
+  <div class="recipe-show-container">
+    <div class="cards">
+      <%# <%= link_to edit_recipe_path(@recipe), class: "btn btn-flat" do %>
+        <%# Edit recipe %>
+      <%# <% end %>
+    </div>
+    <div class="row">
+      <div class="col-3">
+        <%= render @recipe %>
 
-<p class="text"><%= @recipe.description %></p>
-<br/>
-<h3>Instructions</h3>
-<p class="text"><%= @recipe.instructions %></p>
+        <%= link_to recipes_path, class: "btn btn-flat" do %>
+          Back to all Recipes
+        <% end %>
+      </div>
 
-<h3>Course</h3>
-<p><%= @recipe.meal_type.join(", ") %></p>
-<h3>Tags</h3>
-<% @recipe.tags.each do |tag| %>
-  <p><%= tag.name %></p>
-<% end %>
-<h3>Ingredients</h3>
-<% @recipe.recipe_ingredients.each do |ingredient| %>
-  <p><%= Ingredient.find(ingredient.ingredient_id).name %></p>
-  <p><%= ingredient.quantity %></p>
-  <p><%= ingredient.unit_of_measure %></p>
-<% end %>
+      <div class="col-7">
+        <h2><%= @recipe.name %></h2>
+        <p><%= @recipe.description %></p>
 
-<div class="cards">
-  <%= link_to recipes_path, class: "btn btn-flat" do %>
-    Back to all Recipes
-  <% end %>
-  <%= link_to edit_recipe_path(@recipe), class: "btn btn-flat" do %>
-    Edit recipe
-  <% end %>
-  <%# <%= button_to @recipe, method: :delete , class: "btn btn-flat" do %>
-    <%# Delete this Recipe %>
-  <%# <% end %>
+        <div class="recipe-information">
+          <div class="card">
+            <h3>Ingredients</h3>
+            <div class="recipe-data">
+              <% @recipe.recipe_ingredients.each do |ingredient| %>
+                <div class="ingredients-container">
+                  <p class="col-6"><%= Ingredient.find(ingredient.ingredient_id).name %></p>
+                  <p class="col-4" id="ingredient-quantity"><%= ingredient.quantity % 1 == 0 ? ingredient.quantity.to_i : ingredient.quantity %></p>
+                  <p class="col-2" ><%= ingredient.unit_of_measure %></p>
+                </div>
+              <% end %>
+            </div>
+          </div>
+
+          <div class="card">
+            <h3>Instructions</h3>
+            <p class="recipe-data text"><%= @recipe.instructions %></p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-2 card">
+        <h3>Tags</h3>
+        <% @recipe.tags.each do |tag| %>
+          <p><%= tag.name %></p>
+        <% end %>
+        <h3>Meal Type</h3>
+        <p><%= @recipe.meal_type %></p>
+      </div>
+
+    </div>
+  </div>
 </div>

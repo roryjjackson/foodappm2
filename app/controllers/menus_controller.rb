@@ -5,46 +5,46 @@ class MenusController < ApplicationController
     @menus = Menu.all
   end
 
-  def day_by_day_plan(menu)
-    @recipes = []
+  # def day_by_day_plan(menu)
+  #   @recipes = []
 
-    case menu.meal_type
-    when ["Breakfast", "Lunch", "Dinner"]
-      menu.recipes.where(meal_type: ["Breakfast"]).zip(menu.recipes.where(meal_type: ["Lunch"]), menu.recipes.where(meal_type: ["Dinner"])) do |recipe1, recipe2, recipe3|
-        @recipes << recipe1
-        @recipes << recipe2
-        @recipes << recipe3
-      end
-    when ["Breakfast", "Lunch"]
-      menu.recipes.where(meal_type: ["Breakfast"]).zip(menu.recipes.where(meal_type: ["Lunch"])) do |recipe1, recipe2|
-        @recipes << recipe1
-        @recipes << recipe2
-      end
-    when ["Lunch", "Dinner"]
-      menu.recipes.where(meal_type: ["Lunch"]).zip(menu.recipes.where(meal_type: ["Dinner"])) do |recipe1, recipe2|
-        @recipes << recipe1
-        @recipes << recipe2
-      end
-    when ["Breakfast", "Dinner"]
-      menu.recipes.where(meal_type: ["Breakfast"]).zip(menu.recipes.where(meal_type: ["Dinner"])) do |recipe1, recipe2|
-        @recipes << recipe1
-        @recipes << recipe2
-      end
-    when ["Breakfast"]
-      menu.recipes.where(meal_type: ["Breakfast"]).each do |recipe|
-        @recipes << recipe
-      end
-    when ["Lunch"]
-      menu.recipes.where(meal_type: ["Lunch"]).each do |recipe|
-        @recipes << recipe
-      end
-    when ["Dinner"]
-      menu.recipes.where(meal_type: ["Dinner"]).each do |recipe|
-        @recipes << recipe
-      end
-    end
-    @recipes
-  end
+  #   case menu.meal_type
+  #   when ["Breakfast", "Lunch", "Dinner"]
+  #     menu.recipes.where(meal_type: ["Breakfast"]).zip(menu.recipes.where(meal_type: ["Lunch"]), menu.recipes.where(meal_type: ["Dinner"])) do |recipe1, recipe2, recipe3|
+  #       @recipes << recipe1
+  #       @recipes << recipe2
+  #       @recipes << recipe3
+  #     end
+  #   when ["Breakfast", "Lunch"]
+  #     menu.recipes.where(meal_type: ["Breakfast"]).zip(menu.recipes.where(meal_type: ["Lunch"])) do |recipe1, recipe2|
+  #       @recipes << recipe1
+  #       @recipes << recipe2
+  #     end
+  #   when ["Lunch", "Dinner"]
+  #     menu.recipes.where(meal_type: ["Lunch"]).zip(menu.recipes.where(meal_type: ["Dinner"])) do |recipe1, recipe2|
+  #       @recipes << recipe1
+  #       @recipes << recipe2
+  #     end
+  #   when ["Breakfast", "Dinner"]
+  #     menu.recipes.where(meal_type: ["Breakfast"]).zip(menu.recipes.where(meal_type: ["Dinner"])) do |recipe1, recipe2|
+  #       @recipes << recipe1
+  #       @recipes << recipe2
+  #     end
+  #   when ["Breakfast"]
+  #     menu.recipes.where(meal_type: ["Breakfast"]).each do |recipe|
+  #       @recipes << recipe
+  #     end
+  #   when ["Lunch"]
+  #     menu.recipes.where(meal_type: ["Lunch"]).each do |recipe|
+  #       @recipes << recipe
+  #     end
+  #   when ["Dinner"]
+  #     menu.recipes.where(meal_type: ["Dinner"]).each do |recipe|
+  #       @recipes << recipe
+  #     end
+  #   end
+  #   @recipes
+  # end
 
   def show
     @menu = Menu.find(params[:id])

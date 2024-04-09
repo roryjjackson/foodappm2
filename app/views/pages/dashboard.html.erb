@@ -1,9 +1,11 @@
-<div class="dashboard">
+<div class="page">
   <p>Unleash your inner food genius: Because managing your food brain from here is too important to be bland!</p>
+
   <div class="cards">
-    <%= link_to ingredients_path do %>
-      <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg)">
-          Ingredients
+
+    <%= link_to recipes_path do %>
+      <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://res.cloudinary.com/dfipoufmj/image/upload/v1689253823/production/ndaidlm5c2jdlwv17k1knq3mtcs3.jpg)">
+          Recipes
       </div>
     <% end %>
 
@@ -12,15 +14,12 @@
           Menus
       </div>
     <% end %>
-    <%= link_to recipes_path do %>
-      <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://res.cloudinary.com/dfipoufmj/image/upload/v1689253823/production/ndaidlm5c2jdlwv17k1knq3mtcs3.jpg)">
-          Recipes
-      </div>
-    <% end %>
-    <%= link_to root_path do %>
+
+    <%= link_to ingredients_path do %>
       <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg)">
-          Follow us
+          Ingredients
       </div>
     <% end %>
+
   </div>
 </div>

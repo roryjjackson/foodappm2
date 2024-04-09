@@ -1,10 +1,12 @@
-<p style="color: green"><%= notice %></p>
+<div class="page">
+  <p style="color: green"><%= notice %></p>
 
-<%= render @ingredient %>
+  <%= render @ingredient %>
 
-<div>
-  <%= link_to "Edit this ingredient", edit_ingredient_path(@ingredient) %> |
-  <%= link_to "Back to ingredients", ingredients_path %>
+  <div>
+    <%= link_to "Edit this ingredient", edit_ingredient_path(@ingredient) %> |
+    <%= link_to "Back to ingredients", ingredients_path %>
 
-  <%= button_to "Destroy this ingredient", @ingredient, method: :delete %>
+    <%= button_to "Destroy this ingredient", @ingredient, method: :delete %>
+  </div>
 </div>
