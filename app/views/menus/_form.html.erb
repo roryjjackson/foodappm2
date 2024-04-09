@@ -26,6 +26,18 @@
           </div>
         </div>
 
+          <br/>
+
+        <div class="field">
+          <%= f.label :tag_ids, "Tags" %>
+          <br/>
+          <br/>
+          <%= f.collection_check_boxes :tag_ids, Tag.all, :id, :name do |b| %>
+            <%= b.check_box %>
+            <%= b.label %>
+          <% end %>
+        </div>
+
         <div class="form-actions">
           <%= f.button :submit, class: "btn-flat" %>
         </div>

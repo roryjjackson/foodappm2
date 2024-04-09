@@ -10,13 +10,7 @@ class MenusController < ApplicationController
     @recipes = @menu.recipes
     @categorized_recipes = add_recipes_by_meal_type(@menu)
 
-    @ingredients = []
 
-    # [:snacks, :breakfasts, :lunches, :dinners].each do |type|
-    #   @categorized_recipes[type].each do |recipe|
-    #     @ingredients << recipe.recipe_ingredients
-    #   end
-    # end
 
     @menu_tags = []
 
@@ -35,8 +29,13 @@ class MenusController < ApplicationController
     breakfasts = []
     lunches = []
     dinners = []
+    tagged_recipes = []
 
     Recipe.all.each do |recipe|
+      tagged_recipes << recipe if (recipe.tags & menu.tags).any?
+    end
+
+    tagged_recipes.each do |recipe|
       if (recipe.meal_type & menu.meal_type).any?
         snacks << recipe if recipe.meal_type.include?("Snack") && menu.meal_type.include?("Snack")
         breakfasts << recipe if recipe.meal_type.include?("Breakfast") && menu.meal_type.include?("Breakfast")
@@ -55,8 +54,6 @@ class MenusController < ApplicationController
 
   def create
     @menu = Menu.new(menu_params)
-
-    @categorized_recipes = add_recipes_by_meal_type(@menu)
 
     if @menu.save
       redirect_to @menu, notice: 'Menu was successfully created.'
