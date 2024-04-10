@@ -1,79 +1,15 @@
 <div class="page">
-  <% if @menu.meal_type.include?("Snack") %>
-    <div>
-    <h2>Snacks</h2>
-    <div class="cards menu-cards">
-
-      <% @categorized_recipes[:snacks].each do |recipe| %>
-        <%= link_to recipe_path(recipe) do %>
-          <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= cl_image_path(recipe.photo.key, height: 300, width: 400, crop: :fill) %>)">
-          <p><%= recipe.name %></p>
+  <div class="cards">
+    <% @recipes.each_with_index do |recipe, index| %>
+      <%= link_to recipe_path(recipe) do %>
+        <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path recipe.photo.key, height: 300, crop: :fill %>')">
+          Day <%= (index / @menu.meal_type.length).round + 1 %> | <%= recipe.name %>
         </div>
-        <% end %>
       <% end %>
-      </div>
-    </div>
-  <% end %>
-  <% if @menu.meal_type.include?("Breakfast") %>
-    <div>
-      <h2>Breakfasts</h2>
-    <div class="cards menu-cards">
-
-        <% @categorized_recipes[:breakfasts].each do |recipe| %>
-          <%= link_to recipe_path(recipe) do %>
-          <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= cl_image_path(recipe.photo.key, height: 300, width: 400, crop: :fill) %>)">
-            <p><%= recipe.name %></p>
-          </div>
-          <% end %>
-        <% end %>
-        </div>
-    </div>
-  <% end %>
-  <% if @menu.meal_type.include?("Lunch") %>
-    <div>
-      <h2>Lunches</h2>
-    <div class="cards menu-cards">
-
-      <% @categorized_recipes[:lunches].each do |recipe| %>
-        <%= link_to recipe_path(recipe) do %>
-          <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= cl_image_path(recipe.photo.key, height: 300, width: 400, crop: :fill) %>)">
-          <p><%= recipe.name %></p>
-        </div>
-        <% end %>
+    <% end %>
+  </div>
+      <%= link_to edit_menu_path(@menu), class: "btn btn-flat" do %>
+        Edit menu
       <% end %>
-      </div>
-    </div>
-  <% end %>
-  <% if @menu.meal_type.include?("Dinner") %>
-    <div>
-      <h2>Dinners</h2>
-    <div class="cards menu-cards">
-
-      <% @categorized_recipes[:dinners].each do |recipe| %>
-        <%= link_to recipe_path(recipe) do %>
-          <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= cl_image_path(recipe.photo.key, height: 300, width: 400, crop: :fill) %>)">
-          <p><%= recipe.name %></p>
-        </div>
-        <% end %>
-      <% end %>
-      </div>
-    </div>
-  <% end %>
-
-  <%# <h3>All Ingredients</h3> %>
-  <%# <% @ingredients.each do |ingredient| %>
-    <%# <p><%= Ingredient.where(id: ingredient.first.ingredient_id).name %></p>
-    <%# <p><%= ingredient.quantity %></p>
-    <%# <p><%= ingredient.unit_of_measure %></p>
-  <%# <% end %>
-
-    <%= link_to menus_path, class: "btn btn-flat" do %>
-    Back to all menus
-  <% end %>
-  <%= link_to edit_menu_path(@menu), class: "btn btn-flat" do %>
-    Edit menu
-  <% end %>
-  <%= button_to @menu, method: :delete , class: "btn btn-flat" do %>
-    Delete this menu
-  <% end %>
+      <%= button_to "Destroy Menu", @menu, method: :delete, class: "btn btn-flat" %>
 </div>
