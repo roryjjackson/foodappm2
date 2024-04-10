@@ -45,7 +45,7 @@
           <p><%= tag.name %></p>
         <% end %>
         <h3>Meal Type</h3>
-        <p><%= @recipe.meal_type %></p>
+        <p><%= @recipe.meal_type.join(" | ") %></p>
       </div>
 
     </div>

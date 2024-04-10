@@ -1131,7 +1131,7 @@ recipes_with_data = [
       instructions: "Mix together flour, baking powder/soda, and salt. Cream butter and sugar, add eggs and vanilla. Add half flour until well combined, then add other half. Add banana and creme fraiche. Bake at 170.",
       prep_time: 10,
       cook_time: 35,
-      meal_type: [breakfast, snack]
+      meal_type: [snack, breakfast]
     },
     ingredients: [
       { ingredient: plain_flour, quantity: 170, unit_of_measure: "g" },
@@ -1193,7 +1193,7 @@ recipes_with_data = [
       instructions: "Blend pitted dates, almond butter, maple syrup until smooth. Chop nuts, blend chia seeds and mix with all other ingredients. Combine altogether with a splash of water. Bake in lined tray at 180.",
       prep_time: 10,
       cook_time: 40,
-      meal_type: [breakfast, snack]
+      meal_type: [snack, breakfast]
     },
     ingredients: [
       { ingredient: oats, quantity: 160, unit_of_measure: "g" },
@@ -1629,7 +1629,7 @@ recipes_with_data = [
       instructions: "Combine wet and dry ingredients separately. Add one cup of any filling (Blueberries/nuts etc). Mix and bake at 180°C.",
       prep_time: 5,
       cook_time: 15,
-      meal_type: [breakfast, snack]
+      meal_type: [snack, breakfast]
     },
     ingredients: [
       { ingredient: plain_flour, quantity: 2, unit_of_measure: "cups" },
