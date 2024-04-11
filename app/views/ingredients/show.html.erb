@@ -4,9 +4,9 @@
   <%= render @ingredient %>
 
   <div>
-    <%= link_to "Edit this ingredient", edit_ingredient_path(@ingredient) %> |
-    <%= link_to "Back to ingredients", ingredients_path %>
+    <%# <%= link_to "Edit this ingredient", edit_ingredient_path(@ingredient) %>
+    <%= link_to "Back to ingredients", ingredients_path, class: "btn btn-flat" %>
 
-    <%= button_to "Destroy this ingredient", @ingredient, method: :delete %>
+    <%# <%= button_to "Destroy this ingredient", @ingredient, method: :delete %>
   </div>
 </div>

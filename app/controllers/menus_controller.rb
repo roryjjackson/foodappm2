@@ -54,8 +54,6 @@ class MenusController < ApplicationController
       lunch: lunch.sample(menu.days_planned),
       dinner: dinner.sample(menu.days_planned)
     }
-    raise
-
   end
 
   def add_recipes_to_menu(recipe_hash)
@@ -110,7 +108,7 @@ class MenusController < ApplicationController
     params.require(:menu).permit(:name,
                                  :description,
                                  :days_planned,
-                                 :photo,
+                                #  :photo,
                                  tag_ids: [],
                                  recipe_ids: [],
                                  ingredient_ids: [],
