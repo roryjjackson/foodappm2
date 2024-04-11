@@ -9,9 +9,9 @@
           <%= f.input :name %>
           <%= f.input :description %>
 
-          <div class="field">
-            <%= f.input :photo, as: :file %>
-          </div>
+          <%# <div class="field"> %>
+            <%# <%= f.input :photo, as: :file %>
+          <%# </div> %>
 
           <div class="field">
             <%= f.input :days_planned, collection: 1..7 %>
@@ -26,7 +26,7 @@
           </div>
         </div>
 
-          <br/>
+        <br/>
 
         <div class="field">
           <%= f.label :tag_ids, "Tags" %>

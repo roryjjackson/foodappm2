@@ -3,18 +3,15 @@
   <div class="cards">
     <% @menus.each do |menu| %>
       <%= link_to menu_path(menu) do %>
-        <div class="card-product">
-          <%= cl_image_tag menu.photo.key, height: 300, width: 400, crop: :fill %>
-          <div class="card-product-infos">
-            <h2><%= menu.name %></h2>
-            <p>Menu description: <%= menu.description %></p>
-          </div>
+        <div class="card-category" style="background-color: #EC058E">
+          <h2><%= menu.name %></h2>
         </div>
       <% end %>
     <% end %>
+    </div>
+    <%= link_to new_menu_path, class: "btn btn-flat" do %>
+      New menu
+    <% end %>
   </div>
 
-  <%= link_to new_menu_path, class: "btn btn-flat" do %>
-    New menu
-  <% end %>
 </div>
