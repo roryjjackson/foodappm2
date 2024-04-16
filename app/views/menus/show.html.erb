@@ -1,4 +1,8 @@
 <div class="page">
+      <%= link_to edit_menu_path(@menu), class: "btn btn-flat" do %>
+        Edit menu
+      <% end %>
+      <%= button_to "Delete Menu", @menu, method: :delete, class: "btn btn-flat" %>
   <div class="cards">
     <% @recipes.each_with_index do |recipe, index| %>
       <%= link_to recipe_path(recipe) do %>
@@ -9,8 +13,4 @@
       <% end %>
     <% end %>
   </div>
-      <%= link_to edit_menu_path(@menu), class: "btn btn-flat" do %>
-        Edit menu
-      <% end %>
-      <%= button_to "Destroy Menu", @menu, method: :delete, class: "btn btn-flat" %>
 </div>
