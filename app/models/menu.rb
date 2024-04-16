@@ -1,6 +1,6 @@
 class Menu < ApplicationRecord
   serialize :meal_type, Array
-  has_one_attached :photo
+  # has_one_attached :photo
 
   has_and_belongs_to_many :recipes
 

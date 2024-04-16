@@ -24,9 +24,9 @@
             <%= f.collection_check_boxes :ingredient_ids, Ingredient.all, :id, :name %>
           </div>
 
-          <div class="field">
-            <%= f.input :photo, as: :file %>
-          </div>
+          <%# <div class="field"> %>
+            <%# <%= f.input :photo, as: :file %>
+          <%# </div> %>
 
           <div class="field">
             <%= f.label :meal_type %><br>
