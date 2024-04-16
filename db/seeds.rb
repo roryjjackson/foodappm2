@@ -1,4 +1,4 @@
-require "open-uri"
+# require "open-uri"
 
 Recipe.destroy_all
 Ingredient.destroy_all
@@ -945,7 +945,6 @@ puts "creating Recipes"
 #Building Recipes:
 
 
-default_photo = "https://res.cloudinary.com/dfipoufmj/image/upload/v1712164345/pexels-gdtography-911738_k92abl.jpg"
 
 # Meal type options:
 breakfast = "Breakfast"
@@ -997,8 +996,7 @@ recipes_with_data = [
     tags: [
       { name: "Main" },
       { name: "American" }
-    ],
-    photo: default_photo
+    ]
   },
   { # Homemade chips
     recipe_data: {
@@ -1019,8 +1017,7 @@ recipes_with_data = [
       { name: "Component" },
       { name: "Snack" },
       { name: "American" }
-    ],
-    photo: default_photo
+    ]
   },
   { # Julios Banana bread
     recipe_data: {
@@ -1047,8 +1044,7 @@ recipes_with_data = [
       { name: "Component" },
       { name: "Snack" },
       { name: "European" }
-    ],
-    photo: default_photo
+    ]
   },
   { # Chocolate brownie
     recipe_data: {
@@ -1073,8 +1069,7 @@ recipes_with_data = [
       { name: "Component" },
       { name: "Snack" },
       { name: "European" }
-    ],
-    photo: default_photo
+    ]
   },
   { # Nutty chocolate brownie
     recipe_data: {
@@ -1106,8 +1101,7 @@ recipes_with_data = [
       { name: "Component" },
       { name: "Snack" },
       { name: "European" }
-    ],
-    photo: default_photo
+    ]
   },
   { # Banana bread
     recipe_data: {
@@ -1136,8 +1130,7 @@ recipes_with_data = [
       { name: "Component" },
       { name: "Snack" },
       { name: "European" }
-    ],
-    photo: default_photo
+    ]
   },
   { # Granola
     recipe_data: {
@@ -1170,8 +1163,7 @@ recipes_with_data = [
       { name: "Component" },
       { name: "Snack" },
       { name: "European" }
-    ],
-    photo: default_photo
+    ]
   },
   { # Granola Bar
     recipe_data: {
@@ -1202,8 +1194,7 @@ recipes_with_data = [
       { name: "Component" },
       { name: "Snack" },
       { name: "European" }
-    ],
-    photo: default_photo
+    ]
   },
   { # Dukkah
     recipe_data: {
@@ -1231,8 +1222,7 @@ recipes_with_data = [
       { name: "Snack" },
       { name: "European" },
       { name: "Mediterranean" }
-    ],
-    photo: default_photo
+    ]
   },
   { # Caeser Dressing
     recipe_data: {
@@ -1260,8 +1250,7 @@ recipes_with_data = [
       { name: "European" },
       { name: "Mediterranean" },
       { name: "American" }
-    ],
-    photo: default_photo
+    ]
   },
   { # Burger Sauce
     recipe_data: {
@@ -1285,8 +1274,7 @@ recipes_with_data = [
     tags: [
       { name: "Component" },
       { name: "American" }
-    ],
-    photo: default_photo
+    ]
   },
   { # Rarebit
     recipe_data: {
@@ -1314,8 +1302,7 @@ recipes_with_data = [
       { name: "European" },
       { name: "Snack" },
       { name: "Small Plate" }
-    ],
-    photo: default_photo
+    ]
   },
   { # Tartar Sauce
     recipe_data: {
@@ -1340,8 +1327,7 @@ recipes_with_data = [
     tags: [
       { name: "Component" },
       { name: "European" }
-    ],
-    photo: default_photo
+    ]
   },
   { # Spring Salsa Sauce
     recipe_data: {
@@ -1368,8 +1354,7 @@ recipes_with_data = [
     tags: [
       { name: "Component" },
       { name: "European" }
-    ],
-    photo: default_photo
+    ]
   },
   { # Pastry
     recipe_data: {
@@ -1396,8 +1381,7 @@ recipes_with_data = [
     tags: [
       { name: "Component" },
       { name: "European" }
-    ],
-    photo: default_photo
+    ]
   },
   { # Soda Bread
     recipe_data: {
@@ -1424,8 +1408,7 @@ recipes_with_data = [
       { name: "Component" },
       { name: "Bread" },
       { name: "European" }
-    ],
-    photo: default_photo
+    ]
   },
   { # Hummus
     recipe_data: {
@@ -1449,8 +1432,7 @@ recipes_with_data = [
     tags: [
       { name: "Component" },
       { name: "European" }
-    ],
-    photo: default_photo
+    ]
   },
   { # Fennel Cracker
     recipe_data: {
@@ -1475,8 +1457,7 @@ recipes_with_data = [
       { name: "Component" },
       { name: "Bread" },
       { name: "European" }
-    ],
-    photo: default_photo
+    ]
   },
   { # Gnocchi
     recipe_data: {
@@ -1502,8 +1483,7 @@ recipes_with_data = [
       { name: "Component" },
       { name: "European" },
       { name: "Main" }
-    ],
-    photo: default_photo
+    ]
   },
   { # Potato Burger Buns
     recipe_data: {
@@ -1531,8 +1511,7 @@ recipes_with_data = [
       { name: "American" },
       { name: "Component" },
       { name: "Bread" }
-    ],
-    photo: default_photo
+    ]
   },
   { # Doughnuts
     recipe_data: {
@@ -1564,8 +1543,7 @@ recipes_with_data = [
       { name: "Bread" },
       { name: "European" },
       { name: "American" }
-    ],
-    photo: default_photo
+    ]
   },
   { # Focaccia
     recipe_data: {
@@ -1593,8 +1571,7 @@ recipes_with_data = [
       { name: "Bread" },
       { name: "European" },
       { name: "Component" }
-    ],
-    photo: default_photo
+    ]
   },
   { # Ciabatta
     recipe_data: {
@@ -1622,8 +1599,7 @@ recipes_with_data = [
       { name: "Bread" },
       { name: "European" },
       { name: "Component" }
-    ],
-    photo: default_photo
+    ]
   },
   { # Basic Muffin
     recipe_data: {
@@ -1649,8 +1625,7 @@ recipes_with_data = [
       { name: "Baked Goods" },
       { name: "Sweet Treat" },
       { name: "American" }
-    ],
-    photo: default_photo
+    ]
   },
   { # Chimichurri
     recipe_data: {
@@ -1674,8 +1649,7 @@ recipes_with_data = [
     ],
     tags: [
       { name: "Component" }
-    ],
-    photo: default_photo
+    ]
   },
   { # Katsu Sauce
     recipe_data: {
@@ -1705,8 +1679,7 @@ recipes_with_data = [
     tags: [
       { name: "Japanese" },
       { name: "Component" }
-    ],
-    photo: default_photo
+    ]
   },
   { # Scotch Pancakes
     recipe_data: {
@@ -1732,8 +1705,7 @@ recipes_with_data = [
       { name: "American" },
       { name: "Component" },
       { name: "Sweet Treat" }
-    ],
-    photo: default_photo
+    ]
   },
   { # Crepes
     recipe_data: {
@@ -1754,8 +1726,7 @@ recipes_with_data = [
     tags: [
       { name: "European" },
       { name: "Component" }
-    ],
-    photo: default_photo
+    ]
   },
   { # House Dressing
     recipe_data: {
@@ -1781,8 +1752,7 @@ recipes_with_data = [
     tags: [
       { name: "Component" },
       { name: "European" }
-    ],
-    photo: default_photo
+    ]
   },
   { # Ricotta Gnocchi
     recipe_data: {
@@ -1803,8 +1773,7 @@ recipes_with_data = [
     tags: [
       { name: "Component" },
       { name: "European" }
-    ],
-    photo: default_photo
+    ]
   },
   { # Pickling Liqor
     recipe_data: {
@@ -1824,8 +1793,7 @@ recipes_with_data = [
     ],
     tags: [
       { name: "Component" }
-    ],
-    photo: default_photo
+    ]
   },
   { # Spicy Savoury Granola
     recipe_data: {
@@ -1854,8 +1822,7 @@ recipes_with_data = [
     tags: [
       { name: "Component" },
       { name: "European" }
-    ],
-    photo: default_photo
+    ]
   },
   { # Beer Batter
     recipe_data: {
@@ -1879,8 +1846,7 @@ recipes_with_data = [
     tags: [
       { name: "Component" },
       { name: "European" }
-    ],
-    photo: default_photo
+    ]
   },
   { # Cheddar Shortcrust Pastry
     recipe_data: {
@@ -1903,8 +1869,7 @@ recipes_with_data = [
     tags: [
       { name: "Component" },
       { name: "Pastry" }
-    ],
-    photo: default_photo
+    ]
   },
   { # Bechamel
     recipe_data: {
@@ -1927,8 +1892,7 @@ recipes_with_data = [
     tags: [
       { name: "Component" },
       { name: "European" }
-    ],
-    photo: default_photo
+    ]
   },
   { # Chicken Stock
     recipe_data: {
@@ -1951,8 +1915,7 @@ recipes_with_data = [
     ],
     tags: [
       { name: "Component" }
-    ],
-    photo: default_photo
+    ]
   },
   { # Fresh Pasta
     recipe_data: {
@@ -1975,8 +1938,7 @@ recipes_with_data = [
     tags: [
       { name: "Component" },
       { name: "European" }
-    ],
-    photo: default_photo
+    ]
   },
   { # Tomato and Aubergine Saladw
     recipe_data: {
@@ -2007,8 +1969,7 @@ recipes_with_data = [
       { name: "Component" },
       { name: "European" },
       { name: "Salad" }
-    ],
-    photo: default_photo
+    ]
   },
   { # Fennel and Apple Salad
     recipe_data: {
@@ -2036,8 +1997,7 @@ recipes_with_data = [
       { name: "Component" },
       { name: "Salad" },
       { name: "European" }
-    ],
-    photo: default_photo
+    ]
   },
   { # Grilled Courgette and Halloumi
     recipe_data: {
@@ -2063,8 +2023,7 @@ recipes_with_data = [
       { name: "Salad" },
       { name: "European" },
       { name: "Component" }
-    ],
-    photo: default_photo
+    ]
   },
   { # Fattoush
     recipe_data: {
@@ -2093,8 +2052,7 @@ recipes_with_data = [
       { name: "European" },
       { name: "Salad" },
       { name: "Component" }
-    ],
-    photo: default_photo
+    ]
   },
   { # Charred Peas with Lemon and Parmesan
     recipe_data: {
@@ -2119,8 +2077,7 @@ recipes_with_data = [
     tags: [
       { name: "Salad" },
       { name: "European" }
-    ],
-    photo: default_photo
+    ]
   },
   { # Kohl Rabi, Beetroot and Apple
     recipe_data: {
@@ -2146,8 +2103,7 @@ recipes_with_data = [
     tags: [
       { name: "Salad" },
       { name: "European" }
-    ],
-    photo: default_photo
+    ]
   },
   { # Chicken Katsu Curry
     recipe_data: {
@@ -2172,8 +2128,7 @@ recipes_with_data = [
     tags: [
       { name: "Japanese" },
       { name: "Main" }
-    ],
-    photo: default_photo
+    ]
   },
   { # Paella
     recipe_data: {
@@ -2206,8 +2161,7 @@ recipes_with_data = [
     tags: [
       { name: "Mediterranean" },
       { name: "Main" }
-    ],
-    photo: default_photo
+    ]
   },
   { # Pizza
     recipe_data: {
@@ -2237,8 +2191,7 @@ recipes_with_data = [
       { name: "Italian" },
       { name: "Mediterranean" },
       { name: "Main" }
-    ],
-    photo: default_photo
+    ]
   },
   { # Bolognese
     recipe_data: {
@@ -2266,8 +2219,7 @@ recipes_with_data = [
     tags: [
       { name: "Italian" },
       { name: "Main" }
-    ],
-    photo: default_photo
+    ]
   },
   { # Mushroom Risotto with Gremolata
     recipe_data: {
@@ -2294,8 +2246,7 @@ recipes_with_data = [
     tags: [
       { name: "European" },
       { name: "Main" }
-    ],
-    photo: default_photo
+    ]
   },
   { # Gremolata
     recipe_data: {
@@ -2317,8 +2268,7 @@ recipes_with_data = [
     tags: [
       { name: "European" },
       { name: "Component" }
-    ],
-    photo: default_photo
+    ]
   },
   { # Fajitas
     recipe_data: {
@@ -2347,8 +2297,7 @@ recipes_with_data = [
     tags: [
       { name: "Mexican" },
       { name: "Main" }
-    ],
-    photo: default_photo
+    ]
   },
   { # Rosti
     recipe_data: {
@@ -2369,8 +2318,7 @@ recipes_with_data = [
     tags: [
       { name: "European" },
       { name: "Component" }
-    ],
-    photo: default_photo
+    ]
   },
   { # Hollondaise Sauce
     recipe_data: {
@@ -2392,8 +2340,7 @@ recipes_with_data = [
     tags: [
       { name: "European" },
       { name: "Component" }
-    ],
-    photo: default_photo
+    ]
   },
   { # Eggs Benedict
     recipe_data: {
@@ -2414,10 +2361,12 @@ recipes_with_data = [
     ],
     tags: [
       { name: "European" }
-    ],
-    photo: default_photo
+    ]
   }
 ]
+
+puts "created recipe hashes"
+
 def create_recipe(recipe, ingredients, tags, photo)
   ingredients.each do |ingredient_data|
     ingredient = Ingredient.find_or_create_by(name: ingredient_data[:ingredient])
@@ -2435,19 +2384,23 @@ def create_recipe(recipe, ingredients, tags, photo)
     recipe.recipe_tags.create!(tag_id: tag.id, recipe_id: recipe.id)
   end
 
-  opened_photo = URI.open(photo)
-  recipe.photo.attach(io: opened_photo, filename: "nes.png", content_type: "image/png")
+  # opened_photo = URI.open(photo)
+  # recipe.photo.attach(io: opened_photo, filename: "nes.png", content_type: "image/png")
   recipe.save
 end
+
+puts "created create-recipe def"
 
 # Create recipes and their associated ingredients using the helper method
 recipes_with_data.each do |recipe|
   recipe_data = recipe[:recipe_data]
   ingredients = recipe[:ingredients]
   tags = recipe[:tags]
-  photo = recipe[:photo]
+  # photo = recipe[:photo]
 
   new_recipe = Recipe.create!(recipe_data)
 
-  create_recipe(new_recipe, ingredients, tags, photo)
+  create_recipe(new_recipe, ingredients, tags)
 end
+
+puts "finished seeding"

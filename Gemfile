@@ -80,4 +80,4 @@ group :test do
 end
 
 gem "pg_search"
-gem "cloudinary"
+# gem "cloudinary"
