@@ -945,27 +945,7 @@ puts "Created ingredients"
 puts "creating Recipes"
 #Building Recipes:
 
-def create_recipe(recipe, ingredients, tags, photo)
-  ingredients.each do |ingredient_data|
-    ingredient = Ingredient.find_or_create_by(name: ingredient_data[:ingredient])
 
-    recipe.recipe_ingredients.create!(
-      ingredient: ingredient,
-      quantity: ingredient_data[:quantity],
-      unit_of_measure: ingredient_data[:unit_of_measure]
-    )
-  end
-
-  tags.each do |tag_data|
-    tag = Tag.where(name: tag_data[:name]).first
-
-    recipe.recipe_tags.create!(tag_id: tag.id, recipe_id: recipe.id)
-  end
-
-  opened_photo = URI.open(photo)
-  recipe.photo.attach(io: opened_photo, filename: "nes.png", content_type: "image/png")
-  recipe.save
-end
 
 # Meal type options:
 breakfast = "Breakfast"
@@ -2438,6 +2418,27 @@ recipes_with_data = [
     photo: default_photo
   }
 ]
+def create_recipe(recipe, ingredients, tags, photo)
+  ingredients.each do |ingredient_data|
+    ingredient = Ingredient.find_or_create_by(name: ingredient_data[:ingredient])
+
+    recipe.recipe_ingredients.create!(
+      ingredient: ingredient,
+      quantity: ingredient_data[:quantity],
+      unit_of_measure: ingredient_data[:unit_of_measure]
+    )
+  end
+
+  tags.each do |tag_data|
+    tag = Tag.where(name: tag_data[:name]).first
+
+    recipe.recipe_tags.create!(tag_id: tag.id, recipe_id: recipe.id)
+  end
+
+  opened_photo = URI.open(photo)
+  recipe.photo.attach(io: opened_photo, filename: "nes.png", content_type: "image/png")
+  recipe.save
+end
 
 # Create recipes and their associated ingredients using the helper method
 recipes_with_data.each do |recipe|
