@@ -96,6 +96,7 @@ class RecipesController < ApplicationController
                                      :user_id,
                                      tag_ids: [],
                                      ingredient_ids: [],
-                                     meal_type: [])
+                                     meal_type: [],
+                                     included_recipes: [])
     end
 end
