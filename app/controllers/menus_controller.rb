@@ -56,15 +56,21 @@ class MenusController < ApplicationController
     }
   end
 
-  def add_recipes_to_menu(recipe_hash)
-    @menu.recipes.destroy_all
+  # def add_recipes_to_menu(recipe_hash)
+  #   @menu.recipes.destroy_all
 
-    @menu.meal_type.each do |type|
-      recipe_hash[type.to_sym.downcase].each do |recipe|
-        @menu.recipes << recipe
-      end
-    end
-  end
+  #   @menu.meal_type.each do |type|
+  #     recipe_hash[type.to_sym.downcase].each do |recipe|
+  #       @menu.recipes << recipe
+  #     end
+  #   end
+  # end
+
+  # def add_recipes_to_menu(recipe_hash)
+  #   @menu.meal_type.each do |type|
+
+  #   end
+  # end
 
   def create
     @menu = Menu.new(menu_params)
