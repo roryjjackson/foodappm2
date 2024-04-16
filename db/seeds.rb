@@ -2367,7 +2367,7 @@ recipes_with_data = [
 
 puts "created recipe hashes"
 
-def create_recipe(recipe, ingredients, tags, photo)
+def create_recipe(recipe, ingredients, tags)
   ingredients.each do |ingredient_data|
     ingredient = Ingredient.find_or_create_by(name: ingredient_data[:ingredient])
 
