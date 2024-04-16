@@ -6,19 +6,22 @@
         <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
         <div class="form-inputs">
-          <%= f.input :name %>
-          <%= f.input :description %>
+          <%= f.input :name, label: "What is this recipe for?" %>
+          <%# <%= f.input :description %>
 
           <%# <div class="field"> %>
             <%# <%= f.input :photo, as: :file %>
           <%# </div> %>
 
           <div class="field">
-            <%= f.input :days_planned, collection: 1..7 %>
+            <%# <%= f.label "How many days do you want planned?" %>
+            <%= f.input :days_planned, collection: 1..7, label: "How many days do you want planned?" %>
           </div>
 
           <div class="field">
-            <%= f.label :meal_type %><br>
+            <%= f.label "What do you want included?" %>
+            <br/>
+            <br/>
             <%= f.check_box :meal_type, { multiple: true }, "Snack", nil %> Snack
             <%= f.check_box :meal_type, { multiple: true }, "Breakfast", nil %> Breakfast
             <%= f.check_box :meal_type, { multiple: true }, "Lunch", nil %> Lunch
@@ -28,15 +31,15 @@
 
         <br/>
 
-        <div class="field">
-          <%= f.label :tag_ids, "Tags" %>
-          <br/>
-          <br/>
-          <%= f.collection_check_boxes :tag_ids, Tag.all, :id, :name do |b| %>
-            <%= b.check_box %>
-            <%= b.label %>
-          <% end %>
-        </div>
+        <%# <div class="field"> %>
+          <%# <%= f.label :tag_ids, "Tags" %>
+          <%# <br/> %>
+          <%# <br/> %>
+          <%# <%= f.collection_check_boxes :tag_ids, Tag.all, :id, :name do |b| %>
+            <%# <%= b.check_box %>
+            <%# <%= b.label %>
+          <%# <% end %>
+        <%# </div> %>
 
         <div class="form-actions">
           <%= f.button :submit, class: "btn-flat" %>

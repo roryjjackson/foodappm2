@@ -11,4 +11,21 @@ class Menu < ApplicationRecord
 
   has_many :menu_ingredients, dependent: :destroy
   has_many :ingredients, through: :menu_ingredients
+
+  validates :name, presence: true
+  validates :meal_type, presence: true
+  validates :days_planned, presence: true
+
+  validate :meal_type_presence
+  # validate :days_planned_presence
+
+  private
+
+  # def days_planned_presence
+  #   erros.add(:days_planned, "")
+  # end
+
+  def meal_type_presence
+    @errors.add(:meal_type, "Must select at least one meal type") unless meal_type.present?
+  end
 end
