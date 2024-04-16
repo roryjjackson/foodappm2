@@ -68,13 +68,18 @@ class MenusController < ApplicationController
 
   def create
     @menu = Menu.new(menu_params)
-    @categorized_recipes = add_recipes(@menu)
-    add_recipes_to_menu(@categorized_recipes)
 
-    if @menu.save
-      redirect_to @menu, notice: 'Menu was successfully created.'
-    else
-      render :new
+    respond_to do |format|
+      if @menu.save
+        @categorized_recipes = add_recipes(@menu)
+        add_recipes_to_menu(@categorized_recipes)
+        format.html { redirect_to menu_url(@menu), notice: "Menu was successfully created." }
+        format.json { render :show, status: :created, location: @menu }
+        # redirect_to @menu, notice: 'Menu was successfully created.'
+      else
+        format.html { render :new, status: :unprocessable_entity }
+        format.json { render json: @menu.errors, status: :unprocessable_entity }
+      end
     end
   end
 
