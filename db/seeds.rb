@@ -6,7 +6,6 @@ Tag.destroy_all
 Menu.destroy_all
 admin = User.create!(email: "test1@test.com", password: "123456")
 
-default_photo = "https://res.cloudinary.com/dfipoufmj/image/upload/v1712164345/pexels-gdtography-911738_k92abl.jpg"
 
 tags = ["Snack",
         "Dessert",
@@ -946,6 +945,7 @@ puts "creating Recipes"
 #Building Recipes:
 
 
+default_photo = "https://res.cloudinary.com/dfipoufmj/image/upload/v1712164345/pexels-gdtography-911738_k92abl.jpg"
 
 # Meal type options:
 breakfast = "Breakfast"
