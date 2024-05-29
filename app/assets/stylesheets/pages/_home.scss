@@ -1,21 +1,28 @@
-.banner {
+.home-page {
   background-size: cover;
   background-position: center;
-  padding: 150px 0;
-  height: 90vh;
+  height: 100vh;
 }
 
-.banner h1 {
+.home-page h1 {
   margin: 0;
-  color: $snow;
-  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
   font-size: 32px;
   font-weight: bold;
 }
 
-.banner p {
+.home-page p {
   font-size: 20px;
-  color: $snow;
   opacity: .7;
-  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+}
+
+.home-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.home-inner-container {
+  border: solid black 1px;
+}
+#menu-card {
+  height: 300px;
 }
