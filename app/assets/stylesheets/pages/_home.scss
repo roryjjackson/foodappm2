@@ -21,8 +21,30 @@
 }
 
 .home-inner-container {
+  position: relative;
   border: solid black 1px;
+  background-position: cover;
+  height: 500px;
 }
+
 #menu-card {
   height: 300px;
+  position: absolute;
+  top: 120px;
+  left: 5%;
+}
+
+#sml-menu-card {
+  height: 200px;
+  position: absolute;
+  bottom: 50px;
+  left: 50%;
+}
+
+#landing-circle {
+  height: 20rem;
+  position: absolute;
+  left: 20%;
+  top: 50px;
+
 }
