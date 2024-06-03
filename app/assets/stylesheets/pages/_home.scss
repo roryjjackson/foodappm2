@@ -1,12 +1,12 @@
 .home-page {
   background-size: cover;
   background-position: center;
-  height: 100vh;
+  // height: 100vh;
 }
 
 .home-page h1 {
   margin: 0;
-  font-size: 32px;
+  font-size: 3rem;
   font-weight: bold;
 }
 
@@ -17,34 +17,72 @@
 
 .home-container {
   display: grid;
+  border-top: solid 1px rgba(0, 0, 0, 0.25);
+  border-bottom: solid 1px rgba(0, 0, 0, 0.25);
   grid-template-columns: 1fr 1fr;
+}
+
+.highlight {
+  color: $main1;
+  text-decoration: underline;
+}
+
+.home-content {
+  width: 70%;
 }
 
 .home-inner-container {
   position: relative;
-  border: solid black 1px;
   background-position: cover;
-  height: 500px;
+  height: 600px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .left {
+    margin: auto;
+  }
 }
 
-#menu-card {
-  height: 300px;
-  position: absolute;
-  top: 120px;
-  left: 5%;
+.home-inner-container.left {
+  border-right: solid 1px rgba(0, 0, 0, 0.25);
 }
 
-#sml-menu-card {
-  height: 200px;
-  position: absolute;
-  bottom: 50px;
-  left: 50%;
+#landing-graphic {
+  height: 100%;
 }
 
-#landing-circle {
-  height: 20rem;
-  position: absolute;
-  left: 20%;
-  top: 50px;
+.home-container-lower {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  padding: 30px 40px;
+  background-image: url(https://res.cloudinary.com/dfipoufmj/image/upload/v1716993170/circle_with_circles_w9nxjs.png);
+  background-size: 300px;
+  background-repeat: no-repeat;
+  background-position-x: -150px;
+  // background-position-y: -50px;
+}
 
+.trusted-users {
+  display: flex;
+
+  p {
+    margin: 0;
+  }
+}
+
+.trusted-users-content {
+  padding-left: 20px;
+}
+
+.avatar-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.avatar-large {
+  width: 56px;
+  border-radius: 50%;
 }
