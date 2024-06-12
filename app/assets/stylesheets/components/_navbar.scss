@@ -1,7 +1,12 @@
 .navbar {
-  position: static;
+  position: sticky;
   width: 100%;
-  height: 10vh;
+  height: 70px;
+  position: sticky;
+  top: 0%;
+  bottom: auto;
+  left: 0%;
+  right: 0%;
 }
 
 .navbar-lewagon {

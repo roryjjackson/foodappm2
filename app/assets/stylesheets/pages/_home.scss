@@ -1,7 +1,7 @@
 .home-page {
   background-size: cover;
   background-position: center;
-  // height: 100vh;
+  min-height: 100vh;
 }
 
 .home-page h1 {
@@ -34,7 +34,7 @@
 .home-inner-container {
   position: relative;
   background-position: cover;
-  height: 600px;
+  height: 75vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -53,6 +53,7 @@
 }
 
 .home-container-lower {
+  height: 25vh;
   position: relative;
   display: flex;
   justify-content: space-between;
