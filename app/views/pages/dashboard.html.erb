@@ -1,7 +1,43 @@
 <div class="page">
+  <h2>Good morning, <%= current_user.email %></h2>
   <p>
-    Browse my recipes, or create your own menus and let the system give you some ideas
+    Please edit your profile
   </p>
+
+  <div class="dashboard-content">
+    <div class="dashboard-left">
+<div class="dashboard-favourite-recipes">
+  <h3>Favourite Recipes</h3>
+  <% if recipes = Recipe.all.sample(3) %>
+    <% recipes.each do |recipe| %>
+      <div class="card-product">
+        <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
+        <div class="card-product-infos">
+          <h2><%= recipe.name %></h2>
+          <p><%= recipe.description %></p>
+        </div>
+      </div>
+    <% end %>
+  <% else %>
+    <p>No favourite recipes available.</p>
+  <% end %>
+
+  <p>Show more</p>
+</div>
+
+
+      <div class="dashboard-recipes">
+        <h3>Recipes</h3>
+        <p>Show more</p>
+      </div>
+    </div>
+
+    <div class="dashboard-right">
+      <div class="dashboard-menu-plans"></div>
+      <div class="dashboard-subscription-banner"></div>
+      <div class="dashboard-socials"></div>
+    </div>
+  </div>
 
   <div class="cards">
 
