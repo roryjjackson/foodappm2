@@ -52,10 +52,11 @@
     <div class="dashboard-right">
       <div class="dashboard-panel dashboard-menu-plans">
         <h3>Menu Plans</h3>
-          <% if menus = Menu.all.sample(1) %>
-           <% menus.each do |menu| %>
+        <% if menus = Menu.all.sample(1) %>
+          <% menus.each do |menu| %>
             <div class="card-menu">
               <h4>Menu <%= menu.id %></h4>
+              <p>Days: <%= menu.days_planned %></p>
               <div>
                 <h5>Description</h5>
                 <p><%= menu.description %></p>
@@ -65,32 +66,25 @@
                 <p><%= menu.tag_ids %></p>
               </div>
               <div>
-                <h5>Removed Ingredients</h5>
-                <p>Broccoli</p>
-              </div>
-              <div>
                 <h5>Number of People</h5>
                 <p>12 People</p>
               </div>
-              <div>
-                <h5>Days Planned</h5>
-                <p><%= menu.days_planned %></p>
-              </div>
-            <% end %>
-          <% else %>
-            <h3>No menus to display yet</h3>
+
+            </div>
           <% end %>
-          <button class="btn-flat" href="/dashboard">
-            ADD A NEW MENU PLAN | <i class="fa-solid fa-arrow-up-right-from-square"></i>
-          </button>
-        </div>
+        <% else %>
+          <h3>No menus to display yet</h3>
+        <% end %>
+        <button class="btn-flat" href="/dashboard">
+          ADD A NEW MENU PLAN | <i class="fa-solid fa-arrow-up-right-from-square"></i>
+        </button>
       </div>
       <div class="dashboard-subscription-banner">
-        <div class="card-product">
-          <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
+        <div class="card-product" style="height: 180px">
+          <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" style="width: 180px"/>
           <div class="card-product-infos">
             <h2>Get Premium Subsciption Plan</h2>
-            <p>Unlock the full experience with our <strong>Premium Subscription Plan!</strong> Get exclusive features, ad-free browsing, and priority support. Upgrade now to enhance your journey!</p>
+            <p style="margin-bottom: 20px">Unlock the full experience with our <strong>Premium Subscription Plan!</strong> Get exclusive features, ad-free browsing, and priority support. Upgrade now to enhance your journey!</p>
             <button class="btn-flat" href="/dashboard">
               GET Membership | <i class="fa-solid fa-arrow-up-right-from-square"></i>
             </button>
