@@ -6,58 +6,113 @@
 
   <div class="dashboard-content">
     <div class="dashboard-left">
-<div class="dashboard-favourite-recipes">
-  <h3>Favourite Recipes</h3>
-  <% if recipes = Recipe.all.sample(3) %>
-    <% recipes.each do |recipe| %>
-      <div class="card-product">
-        <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
-        <div class="card-product-infos">
-          <h2><%= recipe.name %></h2>
-          <p><%= recipe.description %></p>
+      <div class="dashboard-panel dashboard-favourite-recipes">
+        <h3>Favourite Recipes</h3>
+        <div class="recipes-grid">
+          <% if recipes = Recipe.all.sample(3) %>
+            <% recipes.each do |recipe| %>
+              <div class="card-product">
+                <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
+                <div class="card-product-infos">
+                  <h2><%= recipe.name %></h2>
+                  <p><%= recipe.description %></p>
+                </div>
+              </div>
+            <% end %>
+          <% else %>
+            <p>No favourite recipes available.</p>
+          <% end %>
         </div>
+
+        <p class="show-more-btn">Show more</p>
       </div>
-    <% end %>
-  <% else %>
-    <p>No favourite recipes available.</p>
-  <% end %>
-
-  <p>Show more</p>
-</div>
 
 
-      <div class="dashboard-recipes">
+      <div class="dashboard-panel dashboard-recipes">
         <h3>Recipes</h3>
-        <p>Show more</p>
+        <div class="recipes-grid">
+          <% if recipes = Recipe.all.sample(2) %>
+            <% recipes.each do |recipe| %>
+              <div class="card-product">
+                <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
+                <div class="card-product-infos">
+                  <h2><%= recipe.name %></h2>
+                  <p><%= recipe.description %></p>
+                </div>
+              </div>
+            <% end %>
+          <% else %>
+            <p>No favourite recipes available.</p>
+          <% end %>
+        </div>
+        <p class="show-more-btn">Show more</p>
       </div>
     </div>
 
     <div class="dashboard-right">
-      <div class="dashboard-menu-plans"></div>
-      <div class="dashboard-subscription-banner"></div>
-      <div class="dashboard-socials"></div>
+      <div class="dashboard-panel dashboard-menu-plans">
+        <h3>Menu Plans</h3>
+          <% if menus = Menu.all.sample(1) %>
+           <% menus.each do |menu| %>
+            <div class="card-menu">
+              <h4>Menu <%= menu.id %></h4>
+              <div>
+                <h5>Description</h5>
+                <p><%= menu.description %></p>
+              </div>
+              <div>
+                <h5>Tags</h5>
+                <p><%= menu.tag_ids %></p>
+              </div>
+              <div>
+                <h5>Removed Ingredients</h5>
+                <p>Broccoli</p>
+              </div>
+              <div>
+                <h5>Number of People</h5>
+                <p>12 People</p>
+              </div>
+              <div>
+                <h5>Days Planned</h5>
+                <p><%= menu.days_planned %></p>
+              </div>
+            <% end %>
+          <% else %>
+            <h3>No menus to display yet</h3>
+          <% end %>
+          <button class="btn-flat" href="/dashboard">
+            ADD A NEW MENU PLAN | <i class="fa-solid fa-arrow-up-right-from-square"></i>
+          </button>
+        </div>
+      </div>
+      <div class="dashboard-subscription-banner">
+        <div class="card-product">
+          <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
+          <div class="card-product-infos">
+            <h2>Get Premium Subsciption Plan</h2>
+            <p>Unlock the full experience with our <strong>Premium Subscription Plan!</strong> Get exclusive features, ad-free browsing, and priority support. Upgrade now to enhance your journey!</p>
+            <button class="btn-flat" href="/dashboard">
+              GET Membership | <i class="fa-solid fa-arrow-up-right-from-square"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="dashboard-panel dashboard-socials">
+        <h4>Follow us on</h4>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-facebook"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+      </div>
+      <div class="dashboard-video"></div>
     </div>
   </div>
 
-  <div class="cards">
+  <%# <div class="cards"> %>
 
-    <%= link_to recipes_path do %>
-      <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://res.cloudinary.com/dfipoufmj/image/upload/v1689253823/production/ndaidlm5c2jdlwv17k1knq3mtcs3.jpg)">
+    <%# <%= link_to recipes_path do %>
+      <%# <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://res.cloudinary.com/dfipoufmj/image/upload/v1689253823/production/ndaidlm5c2jdlwv17k1knq3mtcs3.jpg)">
           Recipes
-      </div>
-    <% end %>
+      </div> %>
+    <%# <% end %>
 
-    <%= link_to menus_path do %>
-      <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://res.cloudinary.com/dfipoufmj/image/upload/v1711457480/development/ft2ujru7qgg1d980ej4ccr565icn.jpg)">
-          Menus
-      </div>
-    <% end %>
-
-    <%= link_to ingredients_path do %>
-      <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg)">
-          Ingredients
-      </div>
-    <% end %>
-
-  </div>
-</div>
+  <%# </div> %>
