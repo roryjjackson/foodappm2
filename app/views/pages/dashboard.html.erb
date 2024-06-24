@@ -23,8 +23,9 @@
             <p>No favourite recipes available.</p>
           <% end %>
         </div>
-
-        <p class="show-more-btn">Show more</p>
+        <%= link_to recipes_path do %>
+          <p class="show-more-btn">Show more</p>
+        <% end %>
       </div>
 
 
@@ -45,7 +46,9 @@
             <p>No favourite recipes available.</p>
           <% end %>
         </div>
-        <p class="show-more-btn">Show more</p>
+        <%= link_to recipes_path do %>
+          <p class="show-more-btn">Show more</p>
+        <% end %>
       </div>
     </div>
 
@@ -66,6 +69,10 @@
                 <p><%= menu.tag_ids %></p>
               </div>
               <div>
+                <h5>Meals included</h5>
+                <p><%= menu.meal_type.to_s %></p>
+              </div>
+              <div>
                 <h5>Number of People</h5>
                 <p>12 People</p>
               </div>
@@ -75,9 +82,11 @@
         <% else %>
           <h3>No menus to display yet</h3>
         <% end %>
-        <button class="btn-flat" href="/dashboard">
-          ADD A NEW MENU PLAN | <i class="fa-solid fa-arrow-up-right-from-square"></i>
-        </button>
+        <%= link_to new_menu_path do %>
+          <button class="btn-flat" href="/dashboard">
+            ADD A NEW MENU PLAN | <i class="fa-solid fa-arrow-up-right-from-square"></i>
+          </button>
+        <% end %>
       </div>
       <div class="dashboard-subscription-banner">
         <div class="card-product" style="height: 180px">
