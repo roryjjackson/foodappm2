@@ -1,18 +1,35 @@
+// .btn-flat {
+//   color: $snow;
+//   padding: 8px 24px;
+//   border-radius: 4px;
+//   background: $hollywoodCerise;
+//   transition: background 0.3s ease;
+//   margin: 20px 20px 0 0;
+
+// }
+
+// .btn-flat:hover {
+//   background: $hollywoodCeriseHover;
+//   color: $snow;
+// }
+
+// .btn {
+//   color: $snow;
+// }
+
 .btn-flat {
-  color: $snow;
-  padding: 8px 24px;
-  border-radius: 4px;
-  background: $hollywoodCerise;
-  transition: background 0.3s ease;
-  margin: 20px 20px 0 0;
-
+  color: white;
+  background-color: $main1;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
 }
 
-.btn-flat:hover {
-  background: $hollywoodCeriseHover;
-  color: $snow;
+.fa-solid {
+  color: white;
 }
 
-.btn {
-  color: $snow;
+.show-more-btn {
+  text-align: right;
+  margin: 20px 0 0 0;
 }
