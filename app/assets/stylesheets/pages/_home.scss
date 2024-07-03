@@ -1,11 +1,15 @@
 .home-page {
-  background-size: cover;
-  background-position: center;
   height: calc(100vh -70px);
   position: fixed;
   top: 0;
   padding-top: 70px;
   width: 100%;
+
+  background-image: url(https://res.cloudinary.com/dfipoufmj/image/upload/v1719990967/landing_graphic_4_1_io0nin.png);
+  background-size: 25vh;
+  background-repeat: no-repeat;
+  background-position-x: left;
+  background-position-y: bottom;
 }
 
 .home-page h1 {
@@ -31,7 +35,8 @@
 }
 
 .home-content {
-  width: 70%;
+  max-width: 625px;
+  margin: auto 0 auto auto;
 
   p {
     font-size: 1.2rem;
@@ -45,40 +50,48 @@
   display: flex;
   justify-content: center;
   align-items: center;
-
-  .left {
-    margin: auto;
-  }
 }
 
 .home-inner-container.left {
+  margin: auto;
   border-right: solid 1px rgba(0, 0, 0, 0.15);
+  width: 100%;
+}
+
+.home-inner-container.right {
+  max-width: 625px;
+  margin: auto auto auto 0;
+  width: 100%;
+  display: flex;
+  justify-content: right;
 }
 
 #landing-graphic {
+  margin-right: 0;
   height: 100%;
+  width: auto;
 }
 
 .home-container-lower {
-  // height: calc(25vh - 20px);
   height: 25vh;
   position: relative;
   display: flex;
   justify-content: space-between;
-  padding: 30px 40px;
-  background-image: url(https://res.cloudinary.com/dfipoufmj/image/upload/v1716993170/circle_with_circles_w9nxjs.png);
-  background-size: 300px;
-  background-repeat: no-repeat;
-  background-position-x: -150px;
-  // background-position-y: -50px;
+  max-width: 1250px;
+  margin: auto;
+  padding-left: 130px;
 }
 
 .trusted-users {
   display: flex;
 
+
   p {
     margin: 0;
   }
+}
+#apple-google-store {
+  height: 50px;
 }
 
 .trusted-users-content {
@@ -87,12 +100,10 @@
 }
 
 .avatar-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  margin: auto 0;
 
   p {
-    margin-bottom: 0;
+    margin-bottom: 10px;
   }
 }
 

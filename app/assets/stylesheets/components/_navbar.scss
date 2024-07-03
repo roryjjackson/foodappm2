@@ -26,4 +26,10 @@
 .container-fluid {
   max-width: 1250px;
   margin: 0 auto;
+  padding: 0;
+}
+
+.navbar-layout {
+  display: flex;
+  justify-content: space-between;
 }
