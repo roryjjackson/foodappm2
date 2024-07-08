@@ -1,3 +1,8 @@
+.recipes-index {
+  max-width: 1250px;
+  margin: auto;
+}
+
 .recipe-container {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -10,8 +15,14 @@
 }
 
 .utilities-container {
-  display: block;
+  display: flex;
   justify-content: space-between;
+}
+
+.recipes-searchbar {
+  margin: auto 0;
+  display: flex;
+  justify-content: right;
 }
 
 .recipe-information {
@@ -32,4 +43,46 @@
 #ingredient-quantity {
   text-align: right;
   padding-right: 2px;
+}
+
+
+// Smallest device
+@media (min-width: 100px) and (max-width: 575px) {
+  .recipes-index {
+    max-width: 1250px;
+    margin: 15px;
+  }
+}
+
+// Small devices (landscape phones, 576px and up)
+@media (min-width: 576px) {
+  .recipes-index {
+    max-width: 1250px;
+    margin: 20px;
+
+  }
+}
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) {
+  .recipes-index {
+    max-width: 1250px;
+    margin: 30px;
+  }
+}
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) {
+  .recipes-index {
+    max-width: 1250px;
+    margin: 30px;
+  }
+}
+
+// Extra large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) {
+  .recipes-index {
+    margin: auto;
+    max-width: 1250px;
+  }
 }

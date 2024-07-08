@@ -1,3 +1,23 @@
-<div id="<%= dom_id recipe %>" class="card-category" style="background-color: grey">
-  <%= recipe.name %>
+<div id="<%= dom_id recipe %>" class="card-category">
+  <div class="recipe-card-img-container">
+    <img src="https://res.cloudinary.com/dfipoufmj/image/upload/v1712152558/development/zfmu8kpkdlsnbygquiftmezglq3w.jpg" class="recipe-card-image" alt="">
+  </div>
+  <div class="recipe-card-content">
+    <h3><%= recipe.name %></h3>
+    <div class="recipe-card-tags">
+      <% recipe.tags.each do |tag| %>
+        <p class="tag"><%= tag.name %></p>
+      <% end %>
+    </div>
+    <p><%= recipe.description %></p>
+    <div class="recipe-card-times">
+      <p class="time"><i class="clock-icon fa-regular fa-clock"></i> Prep time: <%= recipe.prep_time %> mins</p>
+      <p class="time"> Cook time: <%= recipe.cook_time %> mins</p>
+    </div>
+    <div>
+    <button class="btn-flat">
+      Read more
+    </button>
+    </div>
+  </div>
 </div>
