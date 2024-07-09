@@ -1,0 +1,23 @@
+<div id="<%= dom_id menu %>" class="card-category">
+  <div class="recipe-card-img-container">
+    <img src="https://res.cloudinary.com/dfipoufmj/image/upload/v1712152558/development/zfmu8kpkdlsnbygquiftmezglq3w.jpg" class="recipe-card-image" alt="">
+  </div>
+  <div class="recipe-card-content">
+    <h3><%= menu.name %></h3>
+    <div class="recipe-card-tags">
+      <% menu.meal_type.each do |type| %>
+        <p class="tag"><%= type %></p>
+      <% end %>
+    </div>
+    <p>Description: <%= menu.description %></p>
+    <div class="recipe-card-times">
+      <p class="time"><i class="clock-icon fa-regular fa-clock"></i> Days planned: <%= menu.days_planned %> days</p>
+      <p class="time"></p>
+    </div>
+    <div>
+    <button class="btn-flat">
+      Read more
+    </button>
+    </div>
+  </div>
+</div>

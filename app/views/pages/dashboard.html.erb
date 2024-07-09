@@ -77,7 +77,6 @@
                   <h5>Number of People</h5>
                   <p>12 People</p>
                 </div>
-
               </div>
             <% end %>
           <% else %>
@@ -86,6 +85,11 @@
           <%= link_to new_menu_path do %>
             <button class="btn-flat">
               ADD A NEW MENU PLAN | <i class="fa-solid fa-arrow-up-right-from-square"></i>
+            </button>
+          <% end %>
+          <%= link_to menus_path do %>
+            <button class="btn-flat">
+              ALL MENUS | <i class="fa-solid fa-arrow-up-right-from-square"></i>
             </button>
           <% end %>
         </div>
