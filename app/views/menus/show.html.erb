@@ -1,10 +1,9 @@
 <div class="page">
   <div class="menu-show">
-    <div>
+    <div class="menu-banner">
       <div>
         <h2><%= @menu.name %></h2>
         <p>Brief description of menu</p>
-        <%= button_to "Delete Menu", @menu, method: :delete, class: "btn btn-flat" %>
       </div>
       <div>
         <% @menu.days_planned.times do |i| %>
@@ -20,7 +19,7 @@
     <div>
       <div>
         <h3>Recipes for day X</h3>
-        <div>
+        <div class="menu-recipe-list">
           <% @recipes.each_with_index do |recipe, index| %>
             <%= link_to recipe_path(recipe) do %>
               <%# <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path recipe.photo.key, height: 300, crop: :fill %>
@@ -60,5 +59,6 @@
         </div>
       </div>
     </div>
+    <%= button_to "Delete Menu", @menu, method: :delete, class: "btn btn-flat" %>
   </div>
 </div>
