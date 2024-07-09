@@ -7,6 +7,7 @@
   bottom: auto;
   left: 0%;
   right: 0%;
+  padding: 0;
 }
 
 .navbar-lewagon {
@@ -18,9 +19,7 @@
   flex-grow: 0;
 }
 
-.navbar-lewagon .navbar-brand img {
-  width: 200px;
-}
+
 
 .container-fluid {
   max-width: 1250px;
@@ -35,10 +34,14 @@
 
 
 // Smallest device
-@media (min-width: 100px) and (max-width: 575px) {
+@media (min-width: 100px) {
   .container-fluid {
     max-width: 1250px;
-    margin: 15px;
+    margin: 0 15px;
+  }
+
+  .navbar-lewagon .navbar-brand img {
+    width: 150px;
   }
 }
 
@@ -46,8 +49,7 @@
 @media (min-width: 576px) {
   .container-fluid {
     max-width: 1250px;
-    margin: 20px;
-
+    margin: 0 20px;
   }
 }
 
@@ -64,6 +66,10 @@
   .container-fluid {
     max-width: 1250px;
     margin: 30px;
+  }
+
+  .navbar-lewagon .navbar-brand img {
+    width: 200px;
   }
 }
 
