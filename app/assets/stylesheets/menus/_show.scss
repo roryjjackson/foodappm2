@@ -13,7 +13,18 @@
   margin-bottom: 40px;
 }
 
+.menu-show-main-container {
+  display: flex;
+}
 
+.menu-recipes {
+  width: 30%;
+  padding-right: 10px;
+}
 .menu-recipe-list {
+}
 
+.menu-ingredients {
+  padding-left: 10px;
+  width: 70%;
 }
