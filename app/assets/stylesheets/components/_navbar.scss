@@ -12,11 +12,12 @@
 
 .navbar-lewagon {
   justify-content: space-between;
-  background: transparent;
+  background: $backgroundcolor2;
 }
 
 .navbar-lewagon .navbar-collapse {
   flex-grow: 0;
+  background-color: $backgroundcolor2;
 }
 
 .container-fluid {
@@ -30,12 +31,18 @@
   justify-content: space-between;
 }
 
+.nav-item-sub-container {
+  display: flex;
+  align-items: center;
+  margin-right: 5px;
+}
+
 
 // Smallest device
 @media (min-width: 100px) {
   .container-fluid {
     max-width: 1250px;
-    margin: 0 15px;
+    padding: 0 15px;
   }
 
   .navbar-lewagon .navbar-brand img {
