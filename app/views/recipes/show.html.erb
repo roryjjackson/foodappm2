@@ -16,30 +16,45 @@
               </ul>
             <% end %>
           </div>
-        </div>
-        <div class="recipe-show-spec">
           <div>
             <h3>Method</h3>
             <p><%= @recipe.instructions %></p>
           </div>
+        </div>
+        <div class="recipe-show-spec">
           <h3>Specifications</h3>
           <div class="card-menu">
-            <h4>Menu <%= @recipe.id %></h4>
-            <p class="time"><i class="clock-icon fa-regular fa-clock"></i> Prep time: <%= @recipe.prep_time %> mins</p>
-            <p class="time"> Cook time: <%= @recipe.cook_time %> mins</p>
-            <div>
+            <div class="spec-subsection">
+              <h5>Cook Time</h5>
+              <div class="tag-box">
+                <i class="clock-icon fa-regular fa-clock"></i> <%= @recipe.cook_time %> mins
+              </div>
+            </div>
+            <div class="spec-subsection">
+              <h5>Prep Time</h5>
+              <div class="tag-box">
+                <i class="clock-icon fa-regular fa-clock"></i> <%= @recipe.prep_time %> mins
+              </div>
+            </div>
+            <div class="spec-subsection">
               <h5>Tags</h5>
               <% @recipe.tags.each do |tag| %>
-                <p><%= tag.name %></p>
+              <div class="tag-box">
+                <%= tag.name %>
+              </div>
               <% end %>
             </div>
-            <div>
-              <h5>Meals included</h5>
-              <p><%= @recipe.meal_type.join(" | ") %></p>
+            <div class="spec-subsection">
+              <h5>Meal type</h5>
+              <div class="tag-box">
+                <%= @recipe.meal_type.join(" | ") %>
+              </div>
             </div>
-            <div>
+            <div class="spec-subsection">
               <h5>Number of People</h5>
-              <p># People</p>
+              <div class="tag-box">
+                # People
+              </div>
             </div>
           </div>
         </div>

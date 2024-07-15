@@ -14,6 +14,11 @@
   box-shadow: 0 0 8px rgba(0,0,0,0.2);
   border-radius: 4px;
   margin: 8px;
+  position: relative;
+  top: 75px;
+  z-index: 3;
+  max-width: 1250px;
+  margin: 8px auto;
 }
 
 .flash-success {

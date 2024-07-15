@@ -63,19 +63,27 @@
                 <p>Days: <%= menu.days_planned %></p>
                 <div>
                   <h5>Description</h5>
-                  <p><%= menu.description %></p>
+                  <div class="tag-box">
+                    <%= menu.description %>
+                  </div>
                 </div>
                 <div>
                   <h5>Tags</h5>
-                  <p><%= menu.tag_ids %></p>
+                  <div class="tag-box">
+                    <%= menu.tag_ids %>
+                  </div>
                 </div>
                 <div>
                   <h5>Meals included</h5>
-                  <p><%= menu.meal_type.to_s %></p>
+                  <div class="tag-box">
+                    <%= menu.meal_type.join(', ') %>
+                  </div>
                 </div>
                 <div>
                   <h5>Number of People</h5>
-                  <p>12 People</p>
+                  <div class="tag-box">
+                    12 People
+                  </div>
                 </div>
               </div>
             <% end %>
