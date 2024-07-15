@@ -1,0 +1,31 @@
+.menu-show {
+  margin: 0 30px;
+}
+
+.menu-banner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  background-color: $white;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  border-radius: 10px;
+  margin-bottom: 40px;
+  color: $textblue;
+}
+
+.menu-show-main-container {
+  display: flex;
+}
+
+.menu-recipes {
+  width: 30%;
+  padding-right: 10px;
+}
+.menu-recipe-list {
+}
+
+.menu-ingredients {
+  padding-left: 10px;
+  width: 70%;
+}

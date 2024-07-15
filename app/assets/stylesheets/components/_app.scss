@@ -1,7 +1,33 @@
-body {
-  background-color: #fffcf5;
+.nav-link {
+  color: $white;
 }
 
+
 .page {
-  margin: 0 auto;
+  margin: 70px auto 0 auto;
+  padding-top: 20px;
+}
+
+a {
+  text-decoration: none;
+}
+
+.tag-box {
+  background: $grey;
+  display: inline;
+  padding: 3px;
+  border-radius: 5px;
+  color: $dark-grey;
+  margin-right: 5px;
+}
+
+.spec-subsection {
+  margin-bottom: 20px;
+}
+
+@media (min-width: 100px) {
+  body {
+    background:
+      linear-gradient(to bottom, $backgroundcolor2 450px, $background-blue 450px);
+  }
 }

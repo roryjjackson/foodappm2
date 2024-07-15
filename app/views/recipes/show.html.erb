@@ -1,71 +1,74 @@
 <div class="page">
-  <%= link_to recipes_path, class: "btn btn-flat" do %>
-    Back to all Recipes
-  <% end %>
-  <div class="recipe-card-container">
-    <div class="recipe-card">
-      <div>
-        <h2><%= @recipe.name %></h2>
-        <br/>
-        <p><%= @recipe.description %></p>
+  <div class="recipe-show">
+    <div class="dashboard-panel ">
+      <div class="recipe-show-header" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg)">
+        <%= @recipe.name %>
       </div>
-    </div>
+      <div class="recipe-show-data-container">
+        <div class="recipe-show-content">
+          <p><%= @recipe.description %></p>
 
-    <div class="recipe-card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://res.cloudinary.com/dfipoufmj/image/upload/v1713276681/pexels-cottonbro-studio-3843282_xpkcek.jpg)">
-    <%# <div class="recipe-card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path @recipe.photo.key, height: 300, crop: :fill %>
-    </div>
-    <div class="recipe-card">
-      <div>
-        <h3>Instructions</h3>
-        <p class="recipe-data text"><%= @recipe.instructions %></p>
-      </div>
-    </div>
-    <div class="recipe-card">
-      <div style="width: 100%">
-        <h3>Ingredients</h3>
-        <div class="recipe-data">
-          <% @recipe.recipe_ingredients.each do |ingredient| %>
-            <div class="ingredients-container">
-              <p class="col-6"><%= Ingredient.find(ingredient.ingredient_id).name %></p>
-              <p class="col-3" id="ingredient-quantity"><%= ingredient.quantity % 1 == 0 ? ingredient.quantity.to_i : ingredient.quantity %></p>
-              <p class="col-3" style="text-align: left"><%= ingredient.unit_of_measure %></p>
-            </div>
-          <% end %>
-        </div>
-      </div>
-    </div>
-    <div class="recipe-card">
-      <div>
-        <h3>Linked recipes</h3>
-
-        <br/>
-
-        <div class="linked-recipes-container">
-          <% @recipe.included_recipes.each do |recipe| %>
-            <% if recipe.present? %>
-              <div class="card-category">
-                <%= link_to recipe, recipe_path(Recipe.where(name: recipe).first.id) %>
-              </div>
+          <div>
+            <h3>Ingredients</h3>
+            <% @recipe.recipe_ingredients.each do |ingredient| %>
+              <ul class="ingredients-container">
+                <li id="ingredient-quantity"><%= ingredient.quantity % 1 == 0 ? ingredient.quantity.to_i : ingredient.quantity %> <%= ingredient.unit_of_measure %> - <%= Ingredient.find(ingredient.ingredient_id).name %></li>
+              </ul>
             <% end %>
-          <% end %>
+          </div>
+          <div>
+            <h3>Method</h3>
+            <p><%= @recipe.instructions %></p>
+          </div>
+        </div>
+        <div class="recipe-show-spec">
+          <h3>Specifications</h3>
+          <div class="card-menu">
+            <div class="spec-subsection">
+              <h5>Cook Time</h5>
+              <div class="tag-box">
+                <i class="clock-icon fa-regular fa-clock"></i> <%= @recipe.cook_time %> mins
+              </div>
+            </div>
+            <div class="spec-subsection">
+              <h5>Prep Time</h5>
+              <div class="tag-box">
+                <i class="clock-icon fa-regular fa-clock"></i> <%= @recipe.prep_time %> mins
+              </div>
+            </div>
+            <div class="spec-subsection">
+              <h5>Tags</h5>
+              <% @recipe.tags.each do |tag| %>
+              <div class="tag-box">
+                <%= tag.name %>
+              </div>
+              <% end %>
+            </div>
+            <div class="spec-subsection">
+              <h5>Meal type</h5>
+              <div class="tag-box">
+                <%= @recipe.meal_type.join(" | ") %>
+              </div>
+            </div>
+            <div class="spec-subsection">
+              <h5>Number of People</h5>
+              <div class="tag-box">
+                # People
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-    <div class="recipe-card">
-      <div>
-        <h3>Tags</h3>
-
-        <% @recipe.tags.each do |tag| %>
-          <p><%= tag.name %></p>
-        <% end %>
-        <h3>Meal Type</h3>
-        <p><%= @recipe.meal_type.join(" | ") %></p>
+    <div class="recipe-show-footer">
+      <div class="dashboard-panel recipe-photos">
+        <h3>Photos</h3>
+        <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg" alt="">
+        <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg" alt="">
+        <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg" alt="">
+      </div>
+      <div class="dashboard-panel video-panel" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg); margin-bottom: 0;">
+        Watch Video Tutorial
       </div>
     </div>
   </div>
-  <div style="margin-bottom: 50px">
-    <%= link_to recipes_path, class: "btn btn-flat" do %>
-      Back to all Recipes
-    <% end %>
-  </div>
-</div>

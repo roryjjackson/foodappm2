@@ -13,19 +13,69 @@
 }
 
 .card-category {
-  background-size: cover;
-  background-position: center;
-  height: 180px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: white;
-  font-size: 24px;
-  text-align: center;
-  font-weight: bold;
-  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  height: 500px;
+  // width: 400px;
+  width: 100%;
   border-radius: 5px;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  padding: 10px;
+  background-color: $white;
+}
+
+.recipe-card-img-container {
+  height: 150px;
+  width: 100%;
+  display: flex;
+  border-radius: 5px;
+  justify-content: center;
+
+  img {
+    width: 100%;
+    object-fit: cover;
+    border-radius: 5px;
+  }
+}
+
+.recipe-card-content {
+  // max-width: 300px;
+
+  h3 {
+    padding-top: 10px;
+    color: $textblue;
+  }
+
+  p  {
+
+    color: $textblue;
+    font-size: 1rem;
+  }
+}
+
+.recipe-card-image {
+  height: 150px;
+}
+
+.recipe-card-tags {
+  display: flex;
+
+  .tag {
+    color: $main1;
+    display: inline-block;
+    margin-right: 8px;
+  }
+}
+
+.recipe-card-times {
+  display: flex;
+
+  .clock-icon {
+    color: $main1;
+  }
+
+  .time {
+    display: inline-block;
+    margin-right: 8px;
+  }
 }
 
 .card-product {

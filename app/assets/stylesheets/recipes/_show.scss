@@ -1,0 +1,110 @@
+.recipe-show-header {
+  background-size: cover;
+  background-position: center;
+  height: 250px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 24px;
+  font-weight: bold;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  border-radius: 5px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.recipe-show {
+  max-width: 1250px;
+  margin: auto;
+  margin-bottom: 20px;
+  color: $textblue;
+}
+
+.recipe-show-footer {
+  display: flex;
+  margin-top: 20px;
+  justify-content: space-between;
+}
+
+.recipe-photos {
+  width: 60%;
+  margin-right: 20px;
+
+
+  img {
+    height: 100px;
+    width: 120px;
+    object-fit: cover;
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    border-radius: 5px;
+  }
+}
+
+.video-panel {
+  height: 200px;
+  width: calc(40% + 20px);
+}
+
+
+// Smallest device
+@media (min-width: 100px) {
+  .recipe-show {
+    margin: 0 15px;
+  }
+
+  .recipe-show-data-container {
+    display: block;
+    justify-content: space-between;
+  }
+
+  .recipe-show-spec {
+    width: 100%;
+  }
+
+  .recipe-show-content {
+    width: 100%;
+  }
+}
+
+// Small devices (landscape phones, 576px and up)
+@media (min-width: 576px) {
+  .recipe-show {
+    margin: 0 20px;
+  }
+}
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) {
+  .recipe-show {
+    margin: 30px;
+  }
+
+  .recipe-show-data-container {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .recipe-show-spec {
+    width: 40%;
+  }
+
+  .recipe-show-content {
+    width: 50%;
+  }
+}
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) {
+  .recipe-show {
+    margin: 30px;
+  }
+}
+
+// Extra large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) {
+  .recipe-show {
+    margin: auto;
+  }
+}

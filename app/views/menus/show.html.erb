@@ -1,16 +1,102 @@
 <div class="page">
-      <%= link_to edit_menu_path(@menu), class: "btn btn-flat" do %>
-        Edit menu
-      <% end %>
-      <%= button_to "Delete Menu", @menu, method: :delete, class: "btn btn-flat" %>
-  <div class="cards">
-    <% @recipes.each_with_index do |recipe, index| %>
-      <%= link_to recipe_path(recipe) do %>
-        <%# <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path recipe.photo.key, height: 300, crop: :fill %>
-        <div class="card-category" style="background-color: black">
-          Day <%= (index / @menu.meal_type.length).round + 1 %> | <%= recipe.name %>
+  <div class="dashboard">
+    <h2>Welcome to your menu</h2>
+    <p>
+      Find all your details below
+    </p>
+
+    <div class="menu-banner">
+      <div>
+        <h2><%= @menu.name %></h2>
+        <p>Brief description of menu</p>
+      </div>
+      <div>
+        <% @menu.days_planned.times do |i| %>
+          <button class="btn-flat">
+            Day <%= i + 1 %>
+          </button>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="dashboard-content">
+      <div class="dashboard-left">
+        <div class="dashboard-panel dashboard-favourite-recipes">
+          <h3>Recipes for day X</h3>
+          <div class="recipes-grid">
+            <% @recipes.each_with_index do |recipe, index| %>
+              <%= link_to recipe_path(recipe) do %>
+                <div class="card-product">
+                  <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
+                  <div class="card-product-infos">
+                    <h2><%= recipe.name %></h2>
+                    <p><%= recipe.description %></p>
+                  </div>
+                </div>
+              <% end %>
+            <% end %>
+          </div>
+          <%= link_to recipes_path do %>
+            <p class="show-more-btn">Show more</p>
+          <% end %>
         </div>
-      <% end %>
-    <% end %>
-  </div>
+      </div>
+
+      <div class="dashboard-right">
+        <div class="dashboard-panel dashboard-menu-plans">
+          <h3>Ingredients for Day X's recipes</h3>
+          <div class="card-menu">
+            <ul>
+              <li>Broccoli</li>
+              <li>Carrot</li>
+              <li>Peas</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="dashboard-panel dashboard-menu-plans">
+          <h3>Specifications</h3>
+          <div class="card-menu">
+            <h4>Menu <%= @menu.id %></h4>
+            <p>Days: <%= @menu.days_planned %></p>
+            <div>
+              <h5>Description</h5>
+              <div class="tag-box">
+                Some short description of the menu here
+              </div>
+            </div>
+            <div>
+              <h5>Tags</h5>
+              <div class="tag-box">
+                <%= @menu.tag_ids %>
+              </div>
+            </div>
+            <div>
+              <h5>Meals included</h5>
+              <div class="tag-box">
+                <%= @menu.meal_type.to_s %>
+              </div>
+            </div>
+            <div>
+              <h5>Number of People</h5>
+              <div class="tag-box">
+                12 People
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="dashboard-panel dashboard-socials">
+          <h4>Follow us on</h4>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-facebook"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+        </div>
+        <div class="dashboard-video"></div>
+        <%= button_to "Delete Menu", @menu, method: :delete, class: "btn btn-flat" %>
+      </div>
+
+
+    </div>
+
 </div>

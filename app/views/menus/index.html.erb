@@ -1,17 +1,29 @@
 <div class="page">
-  <h1>Menus</h1>
-  <div class="cards">
-    <% @menus.each do |menu| %>
-      <%= link_to menu_path(menu) do %>
-        <div class="card-category" style="background-color: #EC058E">
-          <h2><%= menu.name %></h2>
-        </div>
-      <% end %>
-    <% end %>
-    </div>
-    <%= link_to new_menu_path, class: "btn btn-flat" do %>
-      New menu
-    <% end %>
-  </div>
+  <div class="recipes-index">
+    <h2>Good morning, <%= current_user.email %></h2>
+    <p>
+      Please edit your profile
+    </p>
 
+    <div class="dashboard-panel utilities-container">
+      <div>
+        <h3>Your Menus</h3>
+        <p># recipes found</p>
+      </div>
+      <div class="recipes-searchbar">
+        <%= link_to new_menu_path, class: "btn btn-flat" do %>
+            New menu
+        <% end %>
+      </div>
+    </div>
+
+    <div class="cards">
+      <% @menus.each do |menu| %>
+        <%= link_to menu_path(menu) do %>
+          <%= render menu %>
+        <% end %>
+      <% end %>
+      </div>
+    </div>
+  </div>
 </div>

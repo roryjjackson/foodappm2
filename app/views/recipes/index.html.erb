@@ -1,15 +1,24 @@
 <div class="page">
-  <div class="utilities-container">
-    <%= render partial: 'recipe_search_form' %>
-    <%# <%= link_to new_recipe_path, class: "btn btn-flat" do %>
-      <%# New Recipe %>
-    <%# <% end %>
-  </div>
-  <div class="cards">
-    <% @recipes.each do |recipe| %>
-      <%= link_to recipe_path(recipe.id) do %>
-        <%= render recipe %>
+  <div class="recipes-index">
+    <h2>Good morning, <%= current_user.email %></h2>
+    <p>
+      Please edit your profile
+    </p>
+    <div class="dashboard-panel utilities-container">
+      <div>
+        <h3>Most Popular Recipes</h3>
+        <p>379 recipes found</p>
+      </div>
+      <div class="recipes-searchbar">
+        <%= render partial: 'recipe_search_form' %>
+      </div>
+    </div>
+    <div class="cards">
+      <% @recipes.each do |recipe| %>
+        <%= link_to recipe_path(recipe.id) do %>
+          <%= render recipe %>
+        <% end %>
       <% end %>
-    <% end %>
+    </div>
   </div>
 </div>
