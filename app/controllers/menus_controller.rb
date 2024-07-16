@@ -7,8 +7,10 @@ class MenusController < ApplicationController
 
   def show
     @menu = Menu.find(params[:id])
-
-    # @recipes = @menu.recipes
+    @recipes = []
+    @menu.recipe_list.each do |recipe_id|
+      @recipes << Recipe.where(id: recipe_id.to_i).first
+    end
   end
 
   def new
@@ -29,6 +31,7 @@ class MenusController < ApplicationController
 
     # Create a sequence array for the desired order
     sequence = ["Breakfast", "Lunch", "Dinner"]
+    menu.recipe_list ||= []
 
     # Loop through the sequence for each day planned
     menu.days_planned.times do
@@ -38,30 +41,31 @@ class MenusController < ApplicationController
           if breakfast.present?
             breakfast_sample = breakfast.sample
             menu.recipes << breakfast_sample
+            menu.recipe_list << breakfast_sample.id
             breakfast.delete(breakfast_sample)
           end
         when "Lunch"
           if lunch.present?
             lunch_sample = lunch.sample
             menu.recipes << lunch_sample
+            menu.recipe_list << lunch_sample.id
+
             lunch.delete(lunch_sample)
           end
         when "Dinner"
           if dinner.present?
             dinner_sample = dinner.sample
             menu.recipes << dinner_sample
+            menu.recipe_list << dinner_sample.id
+
             dinner.delete(dinner_sample)
           end
         end
       end
     end
-    raise
+    menu.recipe_list
+    menu.save
   end
-
-
-
-
-
 
   def create
     @menu = Menu.new(menu_params)
@@ -84,6 +88,7 @@ class MenusController < ApplicationController
 
   def update
     if @menu.update(menu_params)
+      @menu.recipe_list = []
       @menu.recipes.destroy_all
       add_recipes_to_menu(@menu)
       redirect_to @menu, notice: 'Menu was successfully updated.'
@@ -110,7 +115,8 @@ class MenusController < ApplicationController
                                  :description,
                                  :days_planned,
                                  recipe_ids: [],
-                                 ingredient_ids: []
+                                 ingredient_ids: [],
+                                 recipe_list: []
                                 #  :photo,
                                 #  tag_ids: [],
                                 #  meal_type: []
