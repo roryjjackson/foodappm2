@@ -37,3 +37,16 @@
   text-align: right;
   margin: 20px 0 0 0;
 }
+
+.back-btn {
+  color: $white;
+  border-radius: 5px;
+  padding: 5px 10px;
+  background-color: $background-blue-transparent;
+  border: solid 1px $white;
+  margin-bottom: 20px;
+}
+
+.back-btn:hover {
+  color: $white;
+}

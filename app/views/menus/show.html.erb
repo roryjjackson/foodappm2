@@ -1,5 +1,10 @@
 <div class="page">
   <div class="dashboard">
+    <%= link_to menus_path do %>
+      <button class="btn back-btn">
+        <i class="fa-solid fa-arrow-left"></i> Back to Menus
+      </button>
+    <% end %>
     <h2>Welcome to your menu</h2>
     <p>
       Find all your details below
@@ -22,7 +27,6 @@
         <% end %>
       </div>
     </div>
-
     <div class="dashboard-content">
       <div class="dashboard-left">
         <div class="dashboard-panel dashboard-favourite-recipes">
