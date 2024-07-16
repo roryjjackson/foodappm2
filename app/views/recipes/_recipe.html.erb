@@ -5,9 +5,10 @@
   <div class="recipe-card-content">
     <h3><%= recipe.name %></h3>
     <div class="recipe-card-tags">
-      <% recipe.tags.each do |tag| %>
-        <p class="tag"><%= tag.name %></p>
-      <% end %>
+      <%# <% recipe.tags.each do |tag| %>
+        <%# <p class="tag"><%= tag.name %></p>
+      <%# <% end %>
+      <p class="tag">Tag X | Tag Y</p>
     </div>
     <p><%= recipe.description %></p>
     <div class="recipe-card-times">

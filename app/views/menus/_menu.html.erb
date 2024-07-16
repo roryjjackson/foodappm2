@@ -5,9 +5,10 @@
   <div class="recipe-card-content">
     <h3><%= menu.name %></h3>
     <div class="recipe-card-tags">
-      <% menu.meal_type.each do |type| %>
-        <p class="tag"><%= type %></p>
-      <% end %>
+      <%# <% menu.meal_type.each do |type| %>
+        <%# <p class="tag"><%= type %></p>
+      <%# <% end %>
+      <p>Breakfast, Lunch, Dinner</p>
     </div>
     <p>Description: <%= menu.description %></p>
     <div class="recipe-card-times">

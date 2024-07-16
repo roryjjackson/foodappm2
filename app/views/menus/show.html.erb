@@ -32,7 +32,7 @@
         <div class="dashboard-panel dashboard-favourite-recipes">
           <h3>Recipes for day X</h3>
           <div class="recipes-grid">
-            <% @recipes.each_with_index do |recipe, index| %>
+            <% @menu.recipes.each_with_index do |recipe, index| %>
               <%= link_to recipe_path(recipe) do %>
                 <div class="card-product">
                   <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
@@ -94,7 +94,8 @@
               <div>
                 <h5>Meals included</h5>
                 <div class="tag-box">
-                  <%= @menu.meal_type.join(', ') %>
+                  <%# <%= @menu.meal_type.join(', ') %>
+                  Breakfast, Lunch, Dinner
                 </div>
               </div>
               <div>
