@@ -12,13 +12,18 @@ a {
   text-decoration: none;
 }
 
-.tag-box {
+.tag-box, .tag-box-alt {
   background: $grey;
   display: inline;
   padding: 3px;
   border-radius: 5px;
   color: $dark-grey;
   margin-right: 5px;
+}
+
+.tag-box-alt {
+  background-color: $main1hover;
+  color: $white;
 }
 
 .spec-subsection {

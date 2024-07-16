@@ -22,10 +22,53 @@
   width: 30%;
   padding-right: 10px;
 }
-.menu-recipe-list {
-}
 
 .menu-ingredients {
   padding-left: 10px;
   width: 70%;
+}
+
+.menu-btn-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  grid-gap: 5px;
+}
+
+.days-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 5px;
+}
+
+
+// Smallest device
+@media (min-width: 100px) {
+  .menu-banner {
+    flex-direction: column;
+    align-items: baseline;
+    grid-gap: 20px;
+  }
+}
+
+// Small devices (landscape phones, 576px and up)
+@media (min-width: 576px) {
+  .menu-banner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+  }
+}
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) {
+}
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) {
+}
+
+// Extra large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) {
 }

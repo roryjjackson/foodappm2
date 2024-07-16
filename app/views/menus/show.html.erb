@@ -9,8 +9,12 @@
       <div>
         <h2><%= @menu.name %></h2>
         <p>Brief description of menu</p>
+        <div class="menu-btn-container">
+          <%= button_to "Delete Menu", @menu, method: :delete, class: "btn btn-flat" %>
+          <%= link_to "Edit Menu", edit_menu_path(@menu), class: "btn btn-flat" %>
+        </div>
       </div>
-      <div>
+      <div class="days-container">
         <% @menu.days_planned.times do |i| %>
           <button class="btn-flat">
             Day <%= i + 1 %>
@@ -57,43 +61,68 @@
         <div class="dashboard-panel dashboard-menu-plans">
           <h3>Specifications</h3>
           <div class="card-menu">
-            <h4>Menu <%= @menu.id %></h4>
-            <p>Days: <%= @menu.days_planned %></p>
-            <div>
-              <h5>Description</h5>
-              <div class="tag-box">
-                Some short description of the menu here
+            <div class="menu-plan-header">
+              <h4>Menu <%= @menu.id %></h4>
+              <p class="days-box"><i class="fa-solid fa-calendar-days"></i> <%= @menu.days_planned %> days</p>
+            </div>
+            <div class="menu-plan-container">
+              <div>
+                <h5>Dietary requirements</h5>
+                <div class="tag-box-alt">
+                  Diet X
+                </div>
+                <div class="tag-box-alt">
+                  Diet Y
+                </div>
+                <div class="tag-box-alt">
+                  Diet Z
+                </div>
+              </div>
+              <div>
+                <h5>Added Tags</h5>
+                <div class="tag-box">
+                  Tag X
+                </div>
+                <div class="tag-box">
+                  Tag Y
+                </div>
+              </div>
+              <div>
+                <h5>Meals included</h5>
+                <div class="tag-box">
+                  <%= @menu.meal_type.join(', ') %>
+                </div>
+              </div>
+              <div>
+                <h5>Number of People</h5>
+                <div class="tag-box">
+                  # People
+                </div>
               </div>
             </div>
-            <div>
-              <h5>Tags</h5>
-              <div class="tag-box">
-                <%= @menu.tag_ids %>
-              </div>
-            </div>
-            <div>
-              <h5>Meals included</h5>
-              <div class="tag-box">
-                <%= @menu.meal_type.to_s %>
-              </div>
-            </div>
-            <div>
-              <h5>Number of People</h5>
-              <div class="tag-box">
-                12 People
-              </div>
+          </div>
+        </div>
+
+        <div class="dashboard-subscription-banner">
+          <div class="card-product" style="height: 180px">
+            <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" style="width: 180px"/>
+            <div class="card-product-infos">
+              <h2>This is our BETA version</h2>
+              <p style="margin-bottom: 20px">Follow us on social media to track our progess. We will be releasing new <strong>recipes and features</strong> weekly. Thanks for your continued support!</p>
+              <button class="btn-flat" href="/dashboard">
+                Follow us | <i class="fa-solid fa-arrow-up-right-from-square"></i>
+              </button>
             </div>
           </div>
         </div>
 
         <div class="dashboard-panel dashboard-socials">
           <h4>Follow us on</h4>
-          <a href="#"><i class="fab fa-instagram"></i></a>
-          <a href="#"><i class="fab fa-facebook"></i></a>
-          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><img src="https://res.cloudinary.com/dfipoufmj/image/upload/v1721120829/Instagram_1_eymmmh.png" class="social-media-icon" alt="insta-icon"></a>
+          <a href="#"><img src="https://res.cloudinary.com/dfipoufmj/image/upload/v1721120829/X_rgv3zw.png" class="social-media-icon" alt="x-icon"></a>
+          <a href="#"><img src="https://res.cloudinary.com/dfipoufmj/image/upload/v1721120829/Facebook_1_xu71yt.png" class="social-media-icon" alt="fb-icon"></a>
         </div>
         <div class="dashboard-video"></div>
-        <%= button_to "Delete Menu", @menu, method: :delete, class: "btn btn-flat" %>
       </div>
 
 

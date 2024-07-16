@@ -29,6 +29,20 @@
   margin-bottom: 20px;
 }
 
+.menu-plan-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: solid 1px rgba(0, 0, 0, 0.15);
+}
+
+.days-box {
+  background-color: $backgroundcolor2;
+  color: $white;
+  padding: 3px 10px;
+  border-radius: 5px;
+}
+
 .recipes-grid {
   display: grid;
   grid-template-columns: 1fr;
@@ -43,8 +57,21 @@
   margin-top: 20px;
 }
 
+.menu-plan-container {
+  margin: 20px auto;
+  display: grid;
+  grid-gap: 20px;
+  grid-template-columns: 1fr 1fr;
+}
 
-
+.social-media-icon {
+  height: 100px;
+  width: 100px;
+  padding: 10px;
+  border-radius: 20px;
+  background-color: $grey;
+  margin-right: 10px;
+}
 
 // Smallest device
 @media (min-width: 100px) and (max-width: 575px) {
