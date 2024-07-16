@@ -10,6 +10,11 @@
 
 a {
   text-decoration: none;
+  color: $textblue;
+}
+
+a:hover {
+  color: $main1;
 }
 
 .tag-box, .tag-box-alt {
