@@ -2,6 +2,7 @@
   <div class="container">
     <div class="row justify-content-center">
       <div class="col-12 col-sm-8 form-login">
+        <h2>New Menu</h2>
         <%= simple_form_for(@menu) do |f| %>
           <%= f.error_notification %>
           <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>

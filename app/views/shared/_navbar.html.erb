@@ -14,18 +14,18 @@
           <li class="nav-item">
             <div class="nav-item-sub-container">
               <%= link_to "/dashboard", class: "nav-link" do %>
-                <i class="fa-solid fa-table-columns" style="margin-right: 3px;"></i> Dashboard
+                Dashboard
               <% end %>
             </div>
           </li>
           <li class="nav-item active">
             <div class="nav-item-sub-container">
-              <i class="fa-solid fa-bowl-food" style="margin-right: 3px;"></i> <%= link_to " Recipes", "/recipes", class: "nav-link" %>
+              <%= link_to "Recipes", "/recipes", class: "nav-link" %>
             </div>
           </li>
           <li class="nav-item active">
             <div class="nav-item-sub-container">
-              <i class="fa-solid fa-book-open" style="margin-right: 3px;"></i> <%= link_to " Your Menus", "/menus", class: "nav-link" %>
+              <%= link_to "Menus", "/menus", class: "nav-link" %>
             </div>
           </li>
           <%= link_to destroy_user_session_path, data: {turbo_method: :delete} do %>
@@ -40,10 +40,10 @@
           <li class="nav-item">
             <%= link_to "Contact", "/", class: "nav-link" %>
           </li>
-          <li class="nav-item">
-            <%= link_to "Pricing & Plans", "/", class: "nav-link" %>
-          </li>
-          <%= link_to new_user_session_path do %>
+          <%# <li class="nav-item"> %>
+            <%# <%= link_to "Pricing & Plans", "/", class: "nav-link" %>
+          <%# </li> %>
+          <%= link_to new_user_session_path, class: "nav-item" do %>
             <button class="btn-flat" href="/dashboard">
               Log in
             </button>

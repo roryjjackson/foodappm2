@@ -7,7 +7,7 @@
     <div class="dashboard-panel utilities-container">
       <div>
         <h3>Most Popular Recipes</h3>
-        <p>379 recipes found</p>
+        <p><%= Recipe.all.length %> recipes in total</p>
       </div>
       <div class="recipes-searchbar">
         <%= render partial: 'recipe_search_form' %>

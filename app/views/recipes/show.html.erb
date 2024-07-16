@@ -1,5 +1,10 @@
 <div class="page">
   <div class="recipe-show">
+    <%= link_to recipes_path do %>
+      <button class="btn back-btn">
+        <i class="fa-solid fa-arrow-left"></i> Back to Recipes
+      </button>
+    <% end %>
     <div class="dashboard-panel ">
       <div class="recipe-show-header" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg)">
         <%= @recipe.name %>

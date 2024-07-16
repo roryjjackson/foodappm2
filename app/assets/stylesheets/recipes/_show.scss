@@ -18,7 +18,7 @@
 .recipe-show {
   max-width: 1250px;
   margin: auto;
-  margin-bottom: 20px;
+  margin-bottom: 40px;
   color: $textblue;
 }
 
@@ -51,7 +51,7 @@
 // Smallest device
 @media (min-width: 100px) {
   .recipe-show {
-    margin: 0 15px;
+    margin: 0 15px 20px 15px;
   }
 
   .recipe-show-data-container {
@@ -71,7 +71,7 @@
 // Small devices (landscape phones, 576px and up)
 @media (min-width: 576px) {
   .recipe-show {
-    margin: 0 20px;
+    margin: 0 20px 20px 20px;
   }
 }
 
@@ -105,6 +105,6 @@
 // Extra large devices (large desktops, 1200px and up)
 @media (min-width: 1200px) {
   .recipe-show {
-    margin: auto;
+    margin: auto auto 20px auto;
   }
 }
