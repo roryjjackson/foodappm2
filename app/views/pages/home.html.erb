@@ -6,9 +6,11 @@
           <h1>Effortless <span class="highlight">menu</span> planning</h1>
           <p>Your hub for chef-curated recipes to help you organise yourself in the kitchen</p>
           <div class="get-started-container">
-            <button class="btn-flat" href="/dashboard">
-              GET STARTED | <i class="fa-solid fa-arrow-up-right-from-square"></i>
-            </button>
+            <%= link_to "/dashboard" do %>
+              <button class="btn-flat" href="/dashboard">
+                GET STARTED | <i class="fa-solid fa-arrow-up-right-from-square"></i>
+              </button>
+            <% end %>
             <div class="how-it-works-container">
               <img id="play-video" src="https://res.cloudinary.com/dfipoufmj/image/upload/v1720019519/Untitled_Project_20_r6pwj2.png" alt="">
               <p id="how-it-works">How it works</p>
