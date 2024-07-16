@@ -7,14 +7,9 @@ class MenusController < ApplicationController
 
   def show
     @menu = Menu.find(params[:id])
-
-    @recipes = @menu.recipes.each_slice(@menu.days_planned).to_a.transpose.flatten
-
-    @menu_tags = []
-
-    @menu.recipe_ids.each do |recipe_id|
-      recipe = Recipe.where(id: recipe_id)
-      @menu_tags << recipe.first.tag_ids
+    @recipes = []
+    @menu.recipe_list.each do |recipe_id|
+      @recipes << Recipe.where(id: recipe_id.to_i).first
     end
   end
 
@@ -22,48 +17,54 @@ class MenusController < ApplicationController
     @menu = Menu.new
   end
 
-  def add_recipes(menu)
-    snack = []
+  def add_recipes_to_menu(menu)
     breakfast = []
     lunch = []
     dinner = []
-    tagged_recipes = []
 
-    if menu.tags.exists?
-      Recipe.all.each do |recipe|
-        tagged_recipes << recipe if (recipe.tags & menu.tags).any?
-      end
-    else
-      Recipe.all.each do |recipe|
-        tagged_recipes << recipe
-      end
+    # Populate arrays with recipes based on meal type
+    Recipe.all.each do |recipe|
+      breakfast << recipe if recipe.meal_type.include?("Breakfast")
+      lunch << recipe if recipe.meal_type.include?("Lunch")
+      dinner << recipe if recipe.meal_type.include?("Dinner")
     end
 
-    tagged_recipes.each do |recipe|
-      if (recipe.meal_type & menu.meal_type).any?
-        snack << recipe if recipe.meal_type.include?("Snack") && menu.meal_type.include?("Snack")
-        breakfast << recipe if recipe.meal_type.include?("Breakfast") && menu.meal_type.include?("Breakfast")
-        lunch << recipe if recipe.meal_type.include?("Lunch") && menu.meal_type.include?("Lunch")
-        dinner << recipe if recipe.meal_type.include?("Dinner") && menu.meal_type.include?("Dinner")
+    # Create a sequence array for the desired order
+    sequence = ["Breakfast", "Lunch", "Dinner"]
+    menu.recipe_list ||= []
+
+    # Loop through the sequence for each day planned
+    menu.days_planned.times do
+      sequence.each do |meal_type|
+        case meal_type
+        when "Breakfast"
+          if breakfast.present?
+            breakfast_sample = breakfast.sample
+            menu.recipes << breakfast_sample
+            menu.recipe_list << breakfast_sample.id
+            breakfast.delete(breakfast_sample)
+          end
+        when "Lunch"
+          if lunch.present?
+            lunch_sample = lunch.sample
+            menu.recipes << lunch_sample
+            menu.recipe_list << lunch_sample.id
+
+            lunch.delete(lunch_sample)
+          end
+        when "Dinner"
+          if dinner.present?
+            dinner_sample = dinner.sample
+            menu.recipes << dinner_sample
+            menu.recipe_list << dinner_sample.id
+
+            dinner.delete(dinner_sample)
+          end
+        end
       end
     end
-
-    {
-      snack: snack.sample(menu.days_planned),
-      breakfast: breakfast.sample(menu.days_planned),
-      lunch: lunch.sample(menu.days_planned),
-      dinner: dinner.sample(menu.days_planned)
-    }
-  end
-
-  def add_recipes_to_menu(recipe_hash)
-    @menu.recipes.destroy_all
-
-    @menu.meal_type.each do |type|
-      recipe_hash[type.to_sym.downcase].each do |recipe|
-        @menu.recipes << recipe
-      end
-    end
+    menu.recipe_list
+    menu.save
   end
 
   def create
@@ -71,8 +72,7 @@ class MenusController < ApplicationController
 
     respond_to do |format|
       if @menu.save
-        @categorized_recipes = add_recipes(@menu)
-        add_recipes_to_menu(@categorized_recipes)
+        add_recipes_to_menu(@menu)
         format.html { redirect_to menu_url(@menu), notice: "Menu was successfully created." }
         format.json { render :show, status: :created, location: @menu }
         # redirect_to @menu, notice: 'Menu was successfully created.'
@@ -88,8 +88,9 @@ class MenusController < ApplicationController
 
   def update
     if @menu.update(menu_params)
-      @categorized_recipes = add_recipes(@menu)
-      add_recipes_to_menu(@categorized_recipes)
+      @menu.recipe_list = []
+      @menu.recipes.destroy_all
+      add_recipes_to_menu(@menu)
       redirect_to @menu, notice: 'Menu was successfully updated.'
     else
       render :edit
@@ -97,8 +98,8 @@ class MenusController < ApplicationController
   end
 
   def destroy
-    @menu.tags.destroy_all
-    @menu.ingredients.destroy_all
+    # @menu.tags.destroy_all
+    # @menu.ingredients.destroy_all
     @menu.destroy
     redirect_to menus_url, notice: 'Menu was successfully destroyed.'
   end
@@ -113,10 +114,12 @@ class MenusController < ApplicationController
     params.require(:menu).permit(:name,
                                  :description,
                                  :days_planned,
-                                #  :photo,
-                                 tag_ids: [],
                                  recipe_ids: [],
                                  ingredient_ids: [],
-                                 meal_type: [])
+                                 recipe_list: []
+                                #  :photo,
+                                #  tag_ids: [],
+                                #  meal_type: []
+                                )
   end
 end

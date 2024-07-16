@@ -8,8 +8,8 @@
           <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
           <div class="form-inputs">
-            <%= f.input :name, label: "What is this recipe for?" %>
-            <%# <%= f.input :description %>
+            <%= f.input :name, label: "Give your menu a name" %>
+            <%= f.input :description, label: "What is this Menu for?" %>
 
             <%# <div class="field"> %>
               <%# <%= f.input :photo, as: :file %>
@@ -20,15 +20,15 @@
               <%= f.input :days_planned, collection: 1..7, label: "How many days do you want planned?" %>
             </div>
 
-            <div class="field">
-              <%= f.label "What do you want included?" %>
-              <br/>
-              <br/>
-              <%= f.check_box :meal_type, { multiple: true }, "Snack", nil %> Snack
-              <%= f.check_box :meal_type, { multiple: true }, "Breakfast", nil %> Breakfast
-              <%= f.check_box :meal_type, { multiple: true }, "Lunch", nil %> Lunch
-              <%= f.check_box :meal_type, { multiple: true }, "Dinner", nil %> Dinner
-            </div>
+            <%# <div class="field"> %>
+              <%# <%= f.label "What do you want included?" %>
+              <%# <br/> %>
+              <%# <br/> %>
+              <%# <%= f.check_box :meal_type, { multiple: true }, "Snack", nil %>
+              <%# <%= f.check_box :meal_type, { multiple: true }, "Breakfast", nil %>
+              <%# <%= f.check_box :meal_type, { multiple: true }, "Lunch", nil %>
+              <%# <%= f.check_box :meal_type, { multiple: true }, "Dinner", nil %>
+            <%# </div> %>
           </div>
 
           <br/>
