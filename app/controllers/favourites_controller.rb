@@ -12,12 +12,7 @@ class FavouritesController < ApplicationController
 
   # GET /favourites/new
   def new
-    if (existing_favourite = Favourite.find_by(user_id: current_user.id))
-      redirect_to edit_favourite_path(existing_favourite), notice: "You already have a favourites, you cannot create another"
-    else
-      @favourite = Favourite.new
-      @recipes = Recipe.all
-    end
+    @favourite = Favourite.new
   end
 
   # GET /favourites/1/edit
@@ -27,8 +22,6 @@ class FavouritesController < ApplicationController
   # POST /favourites or /favourites.json
   def create
     @favourite = Favourite.new(favourite_params)
-
-    @favourite.user_id = current_user.id
 
     respond_to do |format|
       if @favourite.save
@@ -56,7 +49,6 @@ class FavouritesController < ApplicationController
 
   # DELETE /favourites/1 or /favourites/1.json
   def destroy
-    @favourite.recipes.destroy_all
     @favourite.destroy
 
     respond_to do |format|
@@ -73,6 +65,6 @@ class FavouritesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def favourite_params
-      params.require(:favourite).permit(:user_id, recipe_ids: [])
+      params.require(:favourite).permit(:user_id)
     end
 end

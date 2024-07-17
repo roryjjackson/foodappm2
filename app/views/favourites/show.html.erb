@@ -1,20 +1,10 @@
-<div class="favourites">
+<p style="color: green"><%= notice %></p>
 
-  <p style="color: green"><%= notice %></p>
+<%= render @favourite %>
 
-  <%= render @favourite %>
+<div>
+  <%= link_to "Edit this favourite", edit_favourite_path(@favourite) %> |
+  <%= link_to "Back to favourites", favourites_path %>
 
-  <% @favourite.recipes.each do |recipe| %>
-    <%= link_to recipe_path(recipe.id) do %>
-      <p><%= recipe.name %></p>
-    <% end %>
-  <% end %>
-  <div>
-    <%= link_to "Edit this favourite", edit_favourite_path(@favourite), class: "button" %>
-    <%= link_to "Back to favourites", favourites_path, class: "button" %>
-
-  </div>
-  <div>
-    <%= button_to "Destroy this favourite", @favourite, method: :delete, class: "button" %>
-  </div>
+  <%= button_to "Destroy this favourite", @favourite, method: :delete %>
 </div>
