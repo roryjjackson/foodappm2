@@ -43,16 +43,18 @@
             </div>
             <div class="spec-subsection">
               <h5>Tags</h5>
-              <% @recipe.tags.each do |tag| %>
+              <%# <% @recipe.tags.each do |tag| %>
               <div class="tag-box">
-                <%= tag.name %>
+                <%# <%= tag.name %>
+                Tag X
               </div>
-              <% end %>
+              <%# <% end %>
             </div>
             <div class="spec-subsection">
               <h5>Meal type</h5>
               <div class="tag-box">
-                <%= @recipe.meal_type.join(" | ") %>
+                <%# <%= @recipe.meal_type.join(" | ") %>
+                Breakfast, Lunch, Dinner
               </div>
             </div>
             <div class="spec-subsection">

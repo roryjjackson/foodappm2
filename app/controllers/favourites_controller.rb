@@ -22,6 +22,7 @@ class FavouritesController < ApplicationController
   # POST /favourites or /favourites.json
   def create
     @favourite = Favourite.new(favourite_params)
+    @favourite.user_id = current_user.id
 
     respond_to do |format|
       if @favourite.save
