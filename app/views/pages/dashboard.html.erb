@@ -11,7 +11,7 @@
         </div> %>
 
 
-        <div class="dashboard-panel dashboard-recipes">
+        <div class="dashboard-panel dashboard-recipes" style="margin-bottom: 20px">
           <h3>All Recipes</h3>
           <div class="recipes-grid">
             <% if recipes = Recipe.all.sample(3) %>
@@ -31,6 +31,30 @@
             <% end %>
           </div>
           <%= link_to recipes_path do %>
+            <p class="show-more-btn">Show more <i class="fa-solid fa-arrow-up-right-from-square" style="color: #F80956"></i></p>
+          <% end %>
+        </div>
+
+        <div class="dashboard-panel dashboard-recipes">
+          <h3>Favourite Recipes</h3>
+          <div class="recipes-grid">
+            <% if recipes = Favourite.find_by(user_id: current_user.id).recipes.sample(3) %>
+              <% recipes.each do |recipe| %>
+                <%= link_to recipe_path(recipe) do %>
+                  <div class="card-product">
+                    <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
+                    <div class="card-product-infos">
+                      <h2><%= recipe.name %></h2>
+                      <p><%= recipe.description %></p>
+                    </div>
+                  </div>
+                <% end %>
+              <% end %>
+            <% else %>
+              <p>No favourite recipes available.</p>
+            <% end %>
+          </div>
+          <%= link_to favourite_path((Favourite.find_by(user_id: current_user.id)).id) do %>
             <p class="show-more-btn">Show more <i class="fa-solid fa-arrow-up-right-from-square" style="color: #F80956"></i></p>
           <% end %>
         </div>

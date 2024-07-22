@@ -1,12 +1,10 @@
-<div class="favourites">
-  <h1>Choose your favourite recipes</h1>
+<h1>Editing favourite</h1>
 
-  <%= render "form", favourite: @favourite %>
+<%= render "form", favourite: @favourite %>
 
-  <br>
+<br>
 
-  <div>
-    <%= link_to "Show this favourite", @favourite, class: "button" %>
-    <%= link_to "Back to favourites", favourites_path, class: "button" %>
-  </div>
+<div>
+  <%= link_to "Show this favourite", @favourite %> |
+  <%= link_to "Back to favourites", favourites_path %>
 </div>

@@ -15,9 +15,7 @@
     </div>
     <div class="cards">
       <% @recipes.each do |recipe| %>
-        <%= link_to recipe_path(recipe.id) do %>
-          <%= render recipe %>
-        <% end %>
+        <%= render recipe %>
       <% end %>
     </div>
   </div>

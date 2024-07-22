@@ -1,6 +1,33 @@
 class FavouritesController < ApplicationController
   before_action :set_favourite, only: %i[ show edit update destroy ]
 
+  def add_to_favourites
+    recipe = Recipe.find(params[:recipe_id])
+    favourite = Favourite.find_or_create_by(user: current_user)
+
+    unless favourite.recipes.include?(recipe)
+      favourite.recipes << recipe
+      flash[:notice] = 'Recipe added to your favourites!'
+    else
+      flash[:alert] = 'Recipe is already in your favourites!'
+    end
+
+    redirect_back(fallback_location: root_path)
+  end
+
+  def remove_from_favourites
+    recipe = Recipe.find(params[:recipe_id])
+    favourite = Favourite.find_by(user: current_user)
+
+    if favourite && favourite.recipes.delete(recipe)
+      flash[:notice] = 'Recipe removed from your favourites!'
+    else
+      flash[:alert] = 'Recipe could not be removed from favourites!'
+    end
+
+    redirect_back(fallback_location: root_path)
+  end
+
   # GET /favourites or /favourites.json
   def index
     @favourites = Favourite.all
@@ -12,12 +39,7 @@ class FavouritesController < ApplicationController
 
   # GET /favourites/new
   def new
-    if (existing_favourite = Favourite.find_by(user_id: current_user.id))
-      redirect_to edit_favourite_path(existing_favourite), notice: "You already have a favourites, you cannot create another"
-    else
-      @favourite = Favourite.new
-      @recipes = Recipe.all
-    end
+    @favourite = Favourite.new
   end
 
   # GET /favourites/1/edit
@@ -27,7 +49,6 @@ class FavouritesController < ApplicationController
   # POST /favourites or /favourites.json
   def create
     @favourite = Favourite.new(favourite_params)
-
     @favourite.user_id = current_user.id
 
     respond_to do |format|
@@ -56,7 +77,6 @@ class FavouritesController < ApplicationController
 
   # DELETE /favourites/1 or /favourites/1.json
   def destroy
-    @favourite.recipes.destroy_all
     @favourite.destroy
 
     respond_to do |format|
@@ -68,11 +88,11 @@ class FavouritesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_favourite
-      @favourite = Favourite.find(params[:id])
+      @favourite = Favourite.find_by(user_id: current_user.id)
     end
 
     # Only allow a list of trusted parameters through.
     def favourite_params
-      params.require(:favourite).permit(:user_id, recipe_ids: [])
+      params.require(:favourite).permit(:user_id)
     end
 end
