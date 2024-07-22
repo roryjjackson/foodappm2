@@ -1,16 +1,19 @@
 <div class="page">
-<p style="color: green"><%= notice %></p>
-
-<%= render @favourite %>
-<p>recipes favourited</p>
-<% @favourite.recipes.each do |recipe| %>
-  <%= recipe.name %> |
-<% end %>
-
-<div>
-  <%= link_to "Edit this favourite", edit_favourite_path(@favourite) %> |
-  <%= link_to "Back to favourites", favourites_path %>
-
-  <%= button_to "Destroy this favourite", @favourite, method: :delete %>
-</div>
+  <div class="recipes-index">
+    <h2>Good morning, <%= current_user.email %></h2>
+    <p>
+      Please edit your profile
+    </p>
+    <div class="dashboard-panel utilities-container">
+      <div>
+        <h3>Your Favourite Recipes</h3>
+        <p><%= Recipe.all.length %> recipes in total</p>
+      </div>
+    </div>
+    <div class="cards">
+      <% @favourite.recipes.each do |favourite| %>
+        <%= render favourite %>
+      <% end %>
+    </div>
+  </div>
 </div>

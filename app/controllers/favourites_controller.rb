@@ -15,6 +15,19 @@ class FavouritesController < ApplicationController
     redirect_back(fallback_location: root_path)
   end
 
+  def remove_from_favourites
+    recipe = Recipe.find(params[:recipe_id])
+    favourite = Favourite.find_by(user: current_user)
+
+    if favourite && favourite.recipes.delete(recipe)
+      flash[:notice] = 'Recipe removed from your favourites!'
+    else
+      flash[:alert] = 'Recipe could not be removed from favourites!'
+    end
+
+    redirect_back(fallback_location: root_path)
+  end
+
   # GET /favourites or /favourites.json
   def index
     @favourites = Favourite.all

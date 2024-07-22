@@ -1,6 +1,15 @@
 <div id="<%= dom_id recipe %>" class="card-category">
   <div class="recipe-card-img-container">
     <img src="https://res.cloudinary.com/dfipoufmj/image/upload/v1712152558/development/zfmu8kpkdlsnbygquiftmezglq3w.jpg" class="recipe-card-image" alt="">
+    <% if Favourite.where(user_id: current_user).first.recipes.include?(recipe) %>
+      <%= button_to remove_from_favourites_path(recipe_id: recipe.id), method: :delete, class: "favourite-btn" do %>
+        Remove from Favourites <i class="fa-regular fa-star"></i>
+      <% end %>
+    <% else %>
+      <%= button_to add_to_favourites_path(recipe_id: recipe.id), method: :post, class: "favourite-btn" do %>
+        Add to Favourites <i class="fa-regular fa-star"></i>
+      <% end %>
+    <% end %>
   </div>
   <div class="recipe-card-content">
     <h3><%= recipe.name %></h3>
@@ -16,18 +25,12 @@
       <p class="time"> Cook time: <%= recipe.cook_time %> mins</p>
     </div>
     <div>
+
     <%= link_to recipe_path(recipe.id) do %>
       <button class="btn-flat">
         Read more
       </button>
     <% end %>
-    <br/>
-    <%# <%= link_to new_favourite_path do %>
-      <%# <button class="btn-flat"> %>
-        <%# Add to favourites %>
-      <%# </button> %>
-    <%# <% end %>
     </div>
   </div>
-    <%= button_to 'Add to Favourites', add_to_favourites_path(recipe_id: recipe.id), method: :post, class: "btn-flat" %>
 </div>

@@ -50,3 +50,16 @@
 .back-btn:hover {
   color: $white;
 }
+
+.favourite-btn {
+  color: $white;
+  border-radius: 5px;
+  padding: 5px 10px;
+  background-color: $background-blue-transparent;
+  border: solid 1px $white;
+  margin-bottom: 20px;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-size: small;
+}
