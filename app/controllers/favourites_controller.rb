@@ -1,6 +1,20 @@
 class FavouritesController < ApplicationController
   before_action :set_favourite, only: %i[ show edit update destroy ]
 
+  def add_to_favourites
+    recipe = Recipe.find(params[:recipe_id])
+    favourite = Favourite.find_or_create_by(user: current_user)
+
+    unless favourite.recipes.include?(recipe)
+      favourite.recipes << recipe
+      flash[:notice] = 'Recipe added to your favourites!'
+    else
+      flash[:alert] = 'Recipe is already in your favourites!'
+    end
+
+    redirect_back(fallback_location: root_path)
+  end
+
   # GET /favourites or /favourites.json
   def index
     @favourites = Favourite.all

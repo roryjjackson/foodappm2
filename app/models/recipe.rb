@@ -2,7 +2,7 @@ class Recipe < ApplicationRecord
   belongs_to :user
 
   has_many :favourite_recipes, dependent: :destroy
-  has_many :favourites, through: :recipe_ingredients
+  has_many :favourites, through: :favourite_recipes
 
   has_many :menu_recipes, dependent: :destroy
   has_many :menus, through: :menu_recipes

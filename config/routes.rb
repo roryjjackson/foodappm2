@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  post 'add_to_favourites', to: 'favourites#add_to_favourites'
   resources :favourites
   resources :ingredients
   resources :tags
