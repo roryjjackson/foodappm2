@@ -3,6 +3,7 @@
   <p style="color: green"><%= notice %></p>
 
   <h1>Favourites</h1>
+  <% if Favourite.find_by(user_id: current_user).present? %>
 
   <div id="favourites">
     <% @favourites.each do |favourite| %>
@@ -14,4 +15,7 @@
   </div>
 
   <%= link_to "New favourite", new_favourite_path %>
+  <% else %>
+    <%= link_to "No recipes added, add recipes from here", recipes_path %>
+  <% end %>
 </div>

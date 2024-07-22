@@ -2,6 +2,10 @@
 <p style="color: green"><%= notice %></p>
 
 <%= render @favourite %>
+<p>recipes favourited</p>
+<% @favourite.recipes.each do |recipe| %>
+  <%= recipe.name %> |
+<% end %>
 
 <div>
   <%= link_to "Edit this favourite", edit_favourite_path(@favourite) %> |

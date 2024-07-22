@@ -16,9 +16,11 @@
       <p class="time"> Cook time: <%= recipe.cook_time %> mins</p>
     </div>
     <div>
-    <button class="btn-flat">
-      Read more
-    </button>
+    <%= link_to recipe_path(recipe.id) do %>
+      <button class="btn-flat">
+        Read more
+      </button>
+    <% end %>
     <br/>
     <%# <%= link_to new_favourite_path do %>
       <%# <button class="btn-flat"> %>
