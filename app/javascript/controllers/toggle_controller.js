@@ -2,7 +2,7 @@ import { Controller } from "@hotwired/stimulus"
 
 // Connects to data-controller="toggle"
 export default class extends Controller {
-  static targets = ["togglableElement", "dayHeader"]
+  static targets = ["togglableElement", "dayHeader", "ingredientHeader"]
 
   connect() {
     console.log("hi from toggle")
@@ -17,6 +17,7 @@ export default class extends Controller {
     }
 
     this.dayHeaderTarget.textContent = `Recipes for Day ${dayIndex}`;
+    this.ingredientHeaderTarget.textContent = `Ingredients for Day ${dayIndex}`;
 
     this.togglableElementTargets.forEach((element) => {
       const recipeIndex = element.getAttribute("data-recipe-index")

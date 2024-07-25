@@ -1,10 +1,8 @@
 <div class="page">
   <div data-controller="toggle" class="dashboard">
-    <%= link_to menus_path do %>
-      <button class="btn back-btn">
-        <i class="fa-solid fa-arrow-left"></i> Back to Menus
-      </button>
-    <% end %>
+    <button onclick="window.history.back();" class="btn back-btn">
+      <i class="fa-solid fa-arrow-left"></i> Back
+    </button>
     <h2>Welcome to your menu</h2>
     <p>
       Find all your details below
@@ -29,9 +27,8 @@
     </div>
     <div class="dashboard-content">
       <div class="dashboard-left">
-        <div  class="dashboard-panel dashboard-favourite-recipes">
+        <div class="dashboard-panel dashboard-favourite-recipes">
           <h3 data-toggle-target="dayHeader">All Recipes</h3>
-
           <div class="recipes-grid">
             <% @recipes.each_with_index do |recipe, index| %>
               <div data-toggle-target="togglableElement" data-recipe-index="<%= index + 1 %>">
@@ -55,17 +52,6 @@
 
       <div class="dashboard-right">
         <div class="dashboard-panel dashboard-menu-plans">
-          <h3>Ingredients for Day X's recipes</h3>
-          <div class="card-menu">
-            <ul>
-              <li>Broccoli</li>
-              <li>Carrot</li>
-              <li>Peas</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="dashboard-panel dashboard-menu-plans">
           <h3>Specifications</h3>
           <div class="card-menu">
             <div class="menu-plan-header">
@@ -76,22 +62,13 @@
               <div>
                 <h5>Dietary requirements</h5>
                 <div class="tag-box-alt">
-                  Diet X
-                </div>
-                <div class="tag-box-alt">
-                  Diet Y
-                </div>
-                <div class="tag-box-alt">
-                  Diet Z
+                  Coming soon
                 </div>
               </div>
               <div>
                 <h5>Added Tags</h5>
                 <div class="tag-box">
-                  Tag X
-                </div>
-                <div class="tag-box">
-                  Tag Y
+                  Coming soon
                 </div>
               </div>
               <div>
@@ -104,13 +81,12 @@
               <div>
                 <h5>Number of People</h5>
                 <div class="tag-box">
-                  # People
+                  Coming soon
                 </div>
               </div>
             </div>
           </div>
         </div>
-
         <div class="dashboard-subscription-banner">
           <div class="card-product" style="height: 180px">
             <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" style="width: 180px"/>
@@ -123,6 +99,21 @@
             </div>
           </div>
         </div>
+        <div class="dashboard-panel dashboard-menu-plans">
+          <h3 data-toggle-target="ingredientHeader">Ingredients for all recipes</h3>
+          <div class="card-menu">
+
+            <% @recipes.each_with_index do |recipe, index| %>
+              <h4><%= recipe.name %></h4>
+              <ul data-toggle-target="togglableElement" data-recipe-index="<%= index + 1 %>">
+                <% recipe.recipe_ingredients.each do |ingredient| %>
+                  <li><%= Ingredient.find_by(id: ingredient.ingredient_id).name %> | <%= ingredient.quantity %><%= ingredient.unit_of_measure %></li>
+                <% end %>
+              </ul>
+            <% end %>
+          </div>
+        </div>
+
 
         <div class="dashboard-panel dashboard-socials">
           <h4>Follow us on</h4>
@@ -130,6 +121,7 @@
           <a href="#"><img src="https://res.cloudinary.com/dfipoufmj/image/upload/v1721120829/X_rgv3zw.png" class="social-media-icon" alt="x-icon"></a>
           <a href="#"><img src="https://res.cloudinary.com/dfipoufmj/image/upload/v1721120829/Facebook_1_xu71yt.png" class="social-media-icon" alt="fb-icon"></a>
         </div>
+
         <div class="dashboard-video"></div>
       </div>
 
