@@ -18,11 +18,11 @@
         </div>
       </div>
       <div class="days-container">
-          <% @menu.days_planned.times do |i| %>
-            <button data-action="click->toggle#fire" data-day-index="<%= i + 1 %>" class="btn-flat">
-              Day <%= i + 1 %>
-            </button>
-          <% end %>
+        <% @menu.days_planned.times do |i| %>
+          <button data-action="click->toggle#fire" data-day-index="<%= i + 1 %>" class="btn-flat">
+            Day <%= i + 1 %>
+          </button>
+        <% end %>
       </div>
     </div>
     <div class="dashboard-content">
