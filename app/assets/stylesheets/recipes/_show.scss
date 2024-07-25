@@ -48,6 +48,22 @@
   width: calc(40% + 20px);
 }
 
+@media (min-width: 1px) and (max-width: 800px) {
+  .recipe-show-footer {
+    flex-direction: column;
+  }
+
+  .recipe-photos {
+    width: 100%;
+    margin: auto;
+  }
+
+  .video-panel {
+    width: 100%;
+    margin-top: 20px;
+  }
+}
+
 
 // Smallest device
 @media (min-width: 100px) {

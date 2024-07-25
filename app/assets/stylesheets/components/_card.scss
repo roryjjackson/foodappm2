@@ -80,9 +80,13 @@
   }
 }
 
+.card-product.subscription-banner {
+  height: 180px;
+}
+
 .card-product {
   overflow: hidden;
-  height: 120px;
+  height: 130px;
   background: white;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   display: flex;
@@ -92,7 +96,7 @@
 
 .card-product img {
   height: 100%;
-  width: 120px;
+  width: 130px;
   object-fit: cover;
 }
 
@@ -125,6 +129,10 @@
 @media (min-width: 100px) and (max-width: 575px) {
   .cards {
     grid-template-columns: 1fr;
+  }
+
+  .card-product.subscription-banner {
+    height: 300px;
   }
 }
 

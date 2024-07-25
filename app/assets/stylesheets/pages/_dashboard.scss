@@ -50,6 +50,13 @@
   grid-gap: 10px;
 }
 
+.dashboard-btns {
+  display: flex;
+  flex-direction: column;
+  grid-gap: 20px;
+
+}
+
 .card-menu {
   border:  solid 1px rgba(0, 0, 0, 0.15);
   border-radius: 10px;
@@ -91,6 +98,11 @@
   .dashboard-left, .dashboard-right {
     width: 100%;
   }
+
+  .social-media-icon {
+    height: 70px;
+    width: 70px;
+  }
 }
 
 // Small devices (landscape phones, 576px and up)
@@ -109,6 +121,13 @@
 
   .dashboard-left, .dashboard-right {
     width: 100%;
+  }
+}
+
+@media (min-width: 576px) and (max-width: 992px) {
+  .social-media-icon {
+    height: 85px;
+    width: 85px;
   }
 }
 
