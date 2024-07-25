@@ -36,7 +36,7 @@
                   <div  class="card-product">
                     <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
                     <div class="card-product-infos">
-                      <h2><%= recipe.name %></h2>
+                      <h2><%= recipe.name %> | Day <%= (index / 3).ceil + 1 %></h2>
                       <p><%= recipe.description %></p>
                     </div>
                   </div>
@@ -101,13 +101,13 @@
         </div>
         <div class="dashboard-panel dashboard-menu-plans">
           <h3 data-toggle-target="ingredientHeader">Ingredients for all recipes</h3>
-          <div class="card-menu">
 
+          <div class="card-menu menu-ingredients-display">
             <% @recipes.each_with_index do |recipe, index| %>
-              <h4><%= recipe.name %></h4>
-              <ul data-toggle-target="togglableElement" data-recipe-index="<%= index + 1 %>">
+              <ul data-toggle-target="togglableElement" data-recipe-index="<%= index + 1 %>" class="menu-ingredients-list">
+                <h4><%= recipe.name %></h4>
                 <% recipe.recipe_ingredients.each do |ingredient| %>
-                  <li><%= Ingredient.find_by(id: ingredient.ingredient_id).name %> | <%= ingredient.quantity %><%= ingredient.unit_of_measure %></li>
+                  <li class="tag-box"><%= Ingredient.find_by(id: ingredient.ingredient_id).name %> <%= format_quantity(ingredient.quantity) %><%= ingredient.unit_of_measure %></li>
                 <% end %>
               </ul>
             <% end %>

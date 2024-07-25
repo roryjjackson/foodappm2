@@ -41,6 +41,16 @@
   grid-gap: 5px;
 }
 
+.menu-ingredients-display {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.menu-ingredients-list {
+  display: flex;
+  flex-direction: column;
+}
+
 
 // Smallest device
 @media (min-width: 100px) {
@@ -48,6 +58,10 @@
     flex-direction: column;
     align-items: baseline;
     grid-gap: 20px;
+  }
+
+  .menu-ingredients-display {
+    grid-template-columns: 1fr;
   }
 }
 
@@ -58,6 +72,9 @@
     justify-content: space-between;
     align-items: center;
     flex-direction: row;
+  }
+  .menu-ingredients-display {
+    grid-template-columns: 1fr 1fr;
   }
 }
 
@@ -71,4 +88,7 @@
 
 // Extra large devices (large desktops, 1200px and up)
 @media (min-width: 1200px) {
+  .menu-ingredients-display {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
 }
