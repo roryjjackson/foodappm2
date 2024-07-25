@@ -1,5 +1,8 @@
 <div class="page">
   <div class="recipes-index">
+    <button onclick="window.history.back();" class="btn back-btn">
+      <i class="fa-solid fa-arrow-left"></i> Back
+    </button>
     <h2>Good morning, <%= current_user.email %></h2>
     <p>
       Please edit your profile
@@ -8,7 +11,7 @@
     <div class="dashboard-panel utilities-container">
       <div>
         <h3>Your Menus</h3>
-        <p># recipes found</p>
+        <p><%= Menu.all.length %> menu found</p>
       </div>
       <div class="recipes-searchbar">
         <%= link_to new_menu_path, class: "btn btn-flat" do %>
