@@ -2,7 +2,7 @@ import { Controller } from "@hotwired/stimulus"
 
 // Connects to data-controller="toggle"
 export default class extends Controller {
-  static targets = ["togglableElement"]
+  static targets = ["togglableElement", "dayHeader"]
 
   connect() {
     console.log("hi from toggle")
@@ -15,6 +15,8 @@ export default class extends Controller {
     function roundUp(number) {
       return Math.ceil(number / 3);
     }
+
+    this.dayHeaderTarget.textContent = `Recipes for Day ${dayIndex}`;
 
     this.togglableElementTargets.forEach((element) => {
       const recipeIndex = element.getAttribute("data-recipe-index")
