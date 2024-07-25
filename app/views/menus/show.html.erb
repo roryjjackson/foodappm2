@@ -1,5 +1,5 @@
 <div class="page">
-  <div class="dashboard">
+  <div data-controller="toggle" class="dashboard">
     <%= link_to menus_path do %>
       <button class="btn back-btn">
         <i class="fa-solid fa-arrow-left"></i> Back to Menus
@@ -20,28 +20,31 @@
         </div>
       </div>
       <div class="days-container">
-        <% @menu.days_planned.times do |i| %>
-          <button class="btn-flat">
-            Day <%= i + 1 %>
-          </button>
-        <% end %>
+          <% @menu.days_planned.times do |i| %>
+            <button data-action="click->toggle#fire" data-day-index="<%= i + 1 %>" class="btn-flat">
+              Day <%= i + 1 %>
+            </button>
+          <% end %>
       </div>
     </div>
     <div class="dashboard-content">
       <div class="dashboard-left">
-        <div class="dashboard-panel dashboard-favourite-recipes">
+        <div  class="dashboard-panel dashboard-favourite-recipes">
           <h3>Recipes for day X</h3>
+
           <div class="recipes-grid">
-            <% @recipes.each do |recipe| %>
-              <%= link_to recipe_path(recipe) do %>
-                <div class="card-product">
-                  <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
-                  <div class="card-product-infos">
-                    <h2><%= recipe.name %></h2>
-                    <p><%= recipe.description %></p>
+            <% @recipes.each_with_index do |recipe, index| %>
+              <div data-toggle-target="togglableElement" data-recipe-index="<%= index + 1 %>">
+                <%= link_to recipe_path(recipe) do %>
+                  <div  class="card-product">
+                    <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
+                    <div class="card-product-infos">
+                      <h2><%= recipe.name %></h2>
+                      <p><%= recipe.description %></p>
+                    </div>
                   </div>
-                </div>
-              <% end %>
+                <% end %>
+              </div>
             <% end %>
           </div>
           <%= link_to recipes_path do %>
